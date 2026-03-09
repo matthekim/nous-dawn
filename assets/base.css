@@ -12,6 +12,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 :root {
+  --font-body-family: 'europa_trial-medium', helvetica, arial, sans-serif;
+  --font-heading-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   --alpha-button-background: 1;
   --alpha-button-border: 1;
   --alpha-link: 0.85;

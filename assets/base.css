@@ -1,23 +1,5 @@
-@font-face {
-  font-family: 'europa_trial-medium';
-  src:
-    url('{{ "europatrial-medium-webfont.woff2" | asset_url }}') format('woff2'),
-    url('{{ "europatrial-medium-webfont.woff" | asset_url }}') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'europa_trial-bold';
-  src:
-    url('{{ "europatrial-bold-webfont.woff2" | asset_url }}') format('woff2'),
-    url('{{ "europatrial-bold-webfont.woff" | asset_url }}') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
-  font-family: 'europa_trial-medium', helvetica, arial, sans-serif;
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
 }
 
 * {
@@ -26,7 +8,7 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .h0, .h1, .h2, .h3, .h4, .h5 {
-  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
 }
 
 :root {

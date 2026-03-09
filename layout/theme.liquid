@@ -7,6 +7,26 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
+    <style>
+      @font-face {
+        font-family: 'europa_trial-medium';
+        src: url('{{ "europatrial-medium-webfont.woff2" | asset_url }}') format('woff2'),
+             url('{{ "europatrial-medium-webfont.woff" | asset_url }}') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'europa_trial-bold';
+        src: url('{{ "europatrial-bold-webfont.woff2" | asset_url }}') format('woff2'),
+             url('{{ "europatrial-bold-webfont.woff" | asset_url }}') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}

@@ -19,7 +19,7 @@
 
 .button-container span {
   width: 30px;
-  height: 1px;
+  height: 2px;
   position: absolute;
   background: #fff;
   transition: all 0.35s ease;
@@ -110,8 +110,9 @@ menu-drawer > details[open] > summary::before {
   right: 0;
   bottom: 0;
   background-color: var(--seasonal-color);
+  opacity: 0.85;
   mix-blend-mode: multiply;
-  z-index: -1;
+  pointer-events: none;
 }
 
 .js details[open].menu-opening > .menu-drawer {

@@ -8,15 +8,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 24px;
+  width: 30px;
   height: 24px;
   cursor: pointer;
 }
 
 .hamburger-icon__bar {
   display: block;
-  width: 20px;
-  height: 2px;
+  width: 30px;
+  height: 1px;
   background-color: currentColor;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -35,7 +35,7 @@
 
 /* Hamburger to X animation when menu is open */
 details[open] .hamburger-icon__bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
 }
 
 details[open] .hamburger-icon__bar:nth-child(2) {
@@ -44,7 +44,7 @@ details[open] .hamburger-icon__bar:nth-child(2) {
 }
 
 details[open] .hamburger-icon__bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .js menu-drawer > details > summary::before,

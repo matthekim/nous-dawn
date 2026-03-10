@@ -7,7 +7,8 @@
   display: flex;
   position: fixed;
   top: 23px;
-  right: 70px;
+  /* Calculate right position relative to page-width container */
+  right: calc(max(0px, (100vw - var(--page-width)) / 2) + 70px);
   width: 60px;
   height: 60px;
   z-index: 99999;

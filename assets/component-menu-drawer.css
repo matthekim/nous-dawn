@@ -2,41 +2,55 @@
   position: initial;
 }
 
-/* Animated Hamburger Icon */
-.hamburger-icon {
+/* Button Container - Hamburger Menu */
+.button-container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 30px;
-  height: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  z-index: 99999;
   cursor: pointer;
+  transition: opacity 0.25s;
+  align-items: center;
+  justify-content: center;
 }
 
-.hamburger-icon__bar {
-  display: block;
+.button-container span {
   width: 30px;
   height: 1px;
-  background-color: currentColor;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
+  position: absolute;
+  background: currentColor;
+  transition: all 0.35s ease;
+}
+
+.button-container .top {
+  top: 20px;
+}
+
+.button-container .middle {
+  top: 30px;
+}
+
+.button-container .bottom {
+  top: 40px;
 }
 
 /* Hamburger to X animation when menu is open */
-details[open] .hamburger-icon__bar:nth-child(1),
-details.menu-opening .hamburger-icon__bar:nth-child(1) {
-  transform: translateY(9.5px) rotate(45deg);
+details[open] .button-container .top,
+details.menu-opening .button-container .top {
+  transform: translateY(10px) rotate(45deg);
 }
 
-details[open] .hamburger-icon__bar:nth-child(2),
-details.menu-opening .hamburger-icon__bar:nth-child(2) {
+details[open] .button-container .middle,
+details.menu-opening .button-container .middle {
   opacity: 0;
-  transform: scaleX(0);
 }
 
-details[open] .hamburger-icon__bar:nth-child(3),
-details.menu-opening .hamburger-icon__bar:nth-child(3) {
-  transform: translateY(-9.5px) rotate(-45deg);
+details[open] .button-container .bottom,
+details.menu-opening .button-container .bottom {
+  transform: translateY(-10px) rotate(-45deg);
 }
 
 .js menu-drawer > details > summary::before,
@@ -72,7 +86,7 @@ menu-drawer > details[open] > summary::before {
   height: 100vh;
   transform: translateX(100%);
   visibility: hidden;
-  z-index: 100;
+  z-index: 99998;
   padding: 0;
   background-color: rgb(var(--color-background));
   overflow-x: hidden;

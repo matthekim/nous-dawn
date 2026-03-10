@@ -2,6 +2,16 @@ body {
   font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
 }
 
+/* Header icons fade-in animation */
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Menu Blend Overlay - body level for proper mix-blend-mode */
 #menu-blend-overlay {
   display: block !important;
@@ -2625,6 +2635,9 @@ input[type='checkbox'] {
 .header__icon--cart {
   position: relative;
   margin-right: -1.2rem;
+  opacity: 0;
+  animation: headerFadeIn 0.4s ease forwards;
+  animation-delay: 0.1s;
 }
 
 /* Custom header icons */
@@ -2664,6 +2677,13 @@ input[type='checkbox'] {
   --shop-avatar-size: 2.8rem;
 }
 
+/* Profile icon fade-in animation */
+a.header__icon--account {
+  opacity: 0;
+  animation: headerFadeIn 0.4s ease forwards;
+  animation-delay: 0.2s;
+}
+
 details .header__icon-close {
   display: none;
 }
@@ -2701,6 +2721,9 @@ menu-drawer + .header__search {
 .header__search {
   display: inline-flex;
   line-height: 0;
+  opacity: 0;
+  animation: headerFadeIn 0.4s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .header--top-center > .header__search {

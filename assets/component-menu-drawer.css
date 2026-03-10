@@ -16,6 +16,17 @@
   transition: opacity 0.25s;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  animation: headerFadeIn 0.4s ease forwards;
+}
+
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .button-container span {

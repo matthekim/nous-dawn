@@ -2568,6 +2568,7 @@ input[type='checkbox'] {
 
 .header__icon {
   color: rgb(var(--color-foreground));
+  padding-right: 20px;
 }
 
 .header__icon span {
@@ -2597,9 +2598,8 @@ input[type='checkbox'] {
 
 .header__icon,
 .header__icon--cart .icon {
-  height: 4.4rem;
-  width: 4.4rem;
   padding: 0;
+  padding-right: 20px;
 }
 
 .header__icon--cart {
@@ -2620,12 +2620,12 @@ input[type='checkbox'] {
 }
 
 .header__custom-icon--profile {
-  height: 26px;
+  height: 33px;
   width: auto;
 }
 
 .header__custom-icon--search {
-  height: 24px;
+  height: 34px;
   width: auto;
 }
 

@@ -6,8 +6,8 @@
 .button-container {
   display: flex;
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 34px;
+  right: 130px;
   width: 60px;
   height: 60px;
   z-index: 99999;

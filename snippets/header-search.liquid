@@ -16,9 +16,7 @@
       aria-label="{{ 'general.search.search' | t }}"
     >
       <span>
-        <span class="svg-wrapper">
-          {{- 'icon-search.svg' | inline_asset_content -}}
-        </span>
+        <img src="{{ 'search.svg' | asset_url }}" alt="Search" class="header__custom-icon header__custom-icon--search">
         <span class="svg-wrapper header__icon-close">
           {{- 'icon-close.svg' | inline_asset_content -}}
         </span>

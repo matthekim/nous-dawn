@@ -2607,6 +2607,28 @@ input[type='checkbox'] {
   margin-right: -1.2rem;
 }
 
+/* Custom header icons */
+.header__custom-icon {
+  height: auto;
+  width: auto;
+  display: block;
+}
+
+.header__custom-icon--cart {
+  height: 30px;
+  width: auto;
+}
+
+.header__custom-icon--profile {
+  height: 26px;
+  width: auto;
+}
+
+.header__custom-icon--search {
+  height: 24px;
+  width: auto;
+}
+
 .header__icon--menu[aria-expanded='true']::before {
   content: '';
   top: 100%;

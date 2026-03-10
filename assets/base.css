@@ -34,10 +34,6 @@ h6,
     0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 /* header */
-sticky-header {
-  position: sticky;
-  top: 0;
-}
 
 /* end header */
 .product-card-wrapper .card,
@@ -2392,6 +2388,7 @@ input[type='checkbox'] {
 }
 
 .header {
+  position: absolute;
   display: grid;
   grid-template-areas: 'left-icons heading icons';
   grid-template-columns: 1fr 2fr 1fr;

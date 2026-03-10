@@ -196,9 +196,10 @@ menu-drawer > details[open] > summary::before {
   padding-left: 2rem;
 }
 
-details[open].menu-opening > .menu-drawer__submenu {
+details[open] > .menu-drawer__submenu {
   transform: none;
   visibility: visible;
+  display: block;
 }
 
 .js .menu-drawer__submenu .menu-drawer__submenu {

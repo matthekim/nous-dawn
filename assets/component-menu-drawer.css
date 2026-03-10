@@ -2,15 +2,59 @@
   position: initial;
 }
 
+/* Animated Hamburger Icon */
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.hamburger-icon__bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-icon__bar:nth-child(1) {
+  transform-origin: center;
+}
+
+.hamburger-icon__bar:nth-child(2) {
+  margin: 5px 0;
+}
+
+.hamburger-icon__bar:nth-child(3) {
+  transform-origin: center;
+}
+
+/* Hamburger to X animation when menu is open */
+details[open] .hamburger-icon__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+details[open] .hamburger-icon__bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+details[open] .hamburger-icon__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .js menu-drawer > details > summary::before,
 .js menu-drawer > details[open]:not(.menu-opening) > summary::before {
   content: '';
-  position: absolute;
+  position: fixed;
   cursor: default;
   width: 100%;
-  height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
-  top: 100%;
+  height: 100vh;
+  top: 0;
   left: 0;
   background: rgba(var(--color-foreground), 0.5);
   opacity: 0;
@@ -25,35 +69,26 @@ menu-drawer > details[open] > summary::before {
   transition: opacity var(--duration-default) ease, visibility var(--duration-default) ease;
 }
 
+/* Fullscreen Menu Drawer */
 .menu-drawer {
-  position: absolute;
-  transform: translateX(-100%);
-  visibility: hidden;
-  z-index: 3;
+  position: fixed;
+  top: 0;
   left: 0;
-  top: 100%;
+  right: 0;
+  bottom: 0;
   width: 100%;
+  height: 100vh;
+  transform: translateX(100%);
+  visibility: hidden;
+  z-index: 100;
   padding: 0;
   background-color: rgb(var(--color-background));
   overflow-x: hidden;
-  filter: drop-shadow(
-    var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset) var(--drawer-shadow-blur-radius)
-      rgba(var(--color-shadow), var(--drawer-shadow-opacity))
-  );
+  overflow-y: auto;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.4s ease;
 }
 
-.js .menu-drawer {
-  height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
-}
-
-.js details[open] > .menu-drawer,
-.js details[open] > .menu-drawer__submenu {
-  transition: transform var(--duration-default) ease, visibility var(--duration-default) ease;
-}
-
-.js details[open].menu-opening > .menu-drawer,
-details[open].menu-opening > .menu-drawer__submenu {
+.js details[open].menu-opening > .menu-drawer {
   transform: translateX(0);
   visibility: visible;
 }
@@ -62,30 +97,31 @@ details[open].menu-opening > .menu-drawer__submenu {
   visibility: hidden; /* hide menus from screen readers when hidden by submenu */
 }
 
-@media screen and (min-width: 750px) {
-  .menu-drawer {
-    width: 40rem;
-    border-width: 0 var(--drawer-border-width) 0 0;
-    border-style: solid;
-    border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
-  }
-}
-
 .menu-drawer__inner-container {
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-drawer__navigation-container {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  align-content: space-between;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   overflow-y: auto;
-  height: 100%;
+  padding-top: 100px;
 }
 
 .menu-drawer__navigation {
   padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-drawer__menu.has-submenu {
+  width: 100%;
+  max-width: 500px;
 }
 
 .menu-drawer__inner-submenu {
@@ -99,9 +135,12 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__menu-item {
-  padding: 1.1rem 3rem;
+  padding: 1.5rem 3rem;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
+  text-align: center;
+  display: block;
+  width: 100%;
 }
 
 .menu-drawer summary.menu-drawer__menu-item {
@@ -143,6 +182,12 @@ details[open].menu-opening > .menu-drawer__submenu {
   z-index: 1;
   transform: translateX(100%);
   visibility: hidden;
+  transition: transform 0.3s ease, visibility 0.3s ease;
+}
+
+details[open].menu-opening > .menu-drawer__submenu {
+  transform: translateX(0);
+  visibility: visible;
 }
 
 .js .menu-drawer__submenu .menu-drawer__submenu {

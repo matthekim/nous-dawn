@@ -4,6 +4,7 @@ body {
 
 /* Menu Blend Overlay - body level for proper mix-blend-mode */
 #menu-blend-overlay {
+  display: block !important;
   position: fixed;
   top: 0;
   left: 0;

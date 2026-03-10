@@ -5,10 +5,10 @@
 /* Button Container - Hamburger Menu */
 .button-container {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 23px;
   /* Calculate right position relative to page-width container */
-  right: calc(max(0px, (100vw - var(--page-width)) / 2) + 70px);
+  right: calc(max(0px, (100vw - var(--page-width)) / 2) + 0px);
   width: 60px;
   height: 60px;
   z-index: 99999;

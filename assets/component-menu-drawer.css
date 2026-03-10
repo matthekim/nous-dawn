@@ -102,8 +102,7 @@ menu-drawer > details[open] > summary::before {
     visibility 0.4s ease;
 }
 
-.menu-drawer::before {
-  content: '';
+.menu-drawer__bg-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -112,6 +111,7 @@ menu-drawer > details[open] > summary::before {
   background-color: var(--seasonal-color);
   opacity: 0.85;
   mix-blend-mode: multiply;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -127,6 +127,7 @@ menu-drawer > details[open] > summary::before {
 
 .menu-drawer__inner-container {
   position: relative;
+  z-index: 2;
   height: 100%;
   display: flex;
   flex-direction: column;

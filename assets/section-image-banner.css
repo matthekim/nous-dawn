@@ -6,19 +6,21 @@
   isolation: isolate;
 }
 
-.banner::after {
-  content: '';
+/* Tie-dye overlay image at bottom of banner */
+.banner__tie-dye {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 150px;
-  background-image: url('tie-dye-white.png');
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: bottom center;
+  height: auto;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
+}
+
+.banner__tie-dye img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .banner__box {
@@ -287,8 +289,11 @@
 .banner__content {
   padding: 0;
   display: flex;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
   z-index: 2;
@@ -453,11 +458,6 @@
 
 .banner__heading {
   margin-bottom: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
   text-align: center;
 }
 

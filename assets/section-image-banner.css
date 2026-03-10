@@ -245,7 +245,7 @@
   }
 
   .banner--stacked.banner--adapt .banner__content {
-    height: auto;
+    height: 100%;
   }
 
   .banner:not(.banner--mobile-bottom):not(.email-signup-banner) .banner__box {
@@ -264,13 +264,14 @@
 
   .banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt) .banner__content {
     position: absolute;
-    height: auto;
+    height: 100%;
   }
 
   .banner--stacked.banner--adapt:not(.banner--mobile-bottom) .banner__content {
     max-height: 100%;
     overflow: hidden;
     position: absolute;
+    height: 100%;
   }
 
   .banner--stacked:not(.banner--adapt) .banner__media {
@@ -367,7 +368,7 @@
   height: fit-content;
   align-items: center;
   text-align: center;
-  width: 100%;
+  width: auto;
   word-wrap: break-word;
   z-index: 1;
 }

@@ -336,17 +336,17 @@
   }
 
   .banner__content--bottom-left {
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-start;
   }
 
   .banner__content--bottom-center {
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
   }
 
   .banner__content--bottom-right {
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
   }
 }

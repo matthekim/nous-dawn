@@ -14,9 +14,11 @@
 
 <style>
   header-drawer {
-    justify-self: end;
-    margin-right: -1.2rem;
-    margin-left: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 1.5rem;
   }
 
   {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
@@ -261,11 +263,11 @@
           </div>
         {%- endif -%}
       </a>
-
-      {%- if section.settings.menu != blank -%}
-        {%- render 'header-drawer' -%}
-      {%- endif -%}
     </div>
+
+    {%- if section.settings.menu != blank -%}
+      {%- render 'header-drawer' -%}
+    {%- endif -%}
   </header>
 </{{ header_tag }}>
 

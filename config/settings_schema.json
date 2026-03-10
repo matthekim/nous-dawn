@@ -34,6 +34,18 @@
     ]
   },
   {
+    "name": "Seasonal color",
+    "settings": [
+      {
+        "type": "color",
+        "id": "seasonal_color",
+        "label": "Seasonal color",
+        "default": "#000000",
+        "info": "Used throughout the site as --seasonal-color CSS variable"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.colors.name",
     "settings": [
       {

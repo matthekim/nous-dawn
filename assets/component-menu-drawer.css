@@ -93,13 +93,25 @@ menu-drawer > details[open] > summary::before {
   visibility: hidden;
   z-index: 99998;
   padding: 0;
-  background-color: rgb(var(--color-background));
+  background-color: transparent;
   overflow-x: hidden;
   overflow-y: auto;
   transition:
     transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     opacity 0.4s ease,
     visibility 0.4s ease;
+}
+
+.menu-drawer::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--seasonal-color);
+  mix-blend-mode: multiply;
+  z-index: -1;
 }
 
 .js details[open].menu-opening > .menu-drawer {

@@ -57,6 +57,8 @@
         class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
+        <img src="{{ 'tie-dye-white.png' | asset_url }}" alt="" class="card__tie-dye card__tie-dye--top" aria-hidden="true">
+        <img src="{{ 'tie-dye-white.png' | asset_url }}" alt="" class="card__tie-dye card__tie-dye--bottom" aria-hidden="true">
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
             <div class="media media--transparent media--hover-effect">

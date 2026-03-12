@@ -115,6 +115,24 @@
 
 .card__inner {
   width: 100%;
+  position: relative;
+}
+
+.card__tie-dye {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card__tie-dye--top {
+  top: 0;
+  transform: rotate(180deg);
+}
+
+.card__tie-dye--bottom {
+  bottom: 0;
 }
 
 .card--media .card__inner .card__content {

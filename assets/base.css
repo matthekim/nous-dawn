@@ -2548,6 +2548,25 @@ input[type='checkbox'] {
   }
 }
 
+/* Header background overlay */
+.header-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  z-index: 9;
+  transition: opacity 0.5s ease;
+}
+
+.header-bg.is-visible {
+  opacity: 1;
+}
+
+.header-bg__image {
+  width: 100%;
+  mix-blend-mode: multiply;
+}
+
 @media screen and (min-width: 990px) {
   .header--middle-left .header__heading-link,
   .header--top-left .header__heading-link {

@@ -2556,6 +2556,7 @@ input[type='checkbox'] {
   opacity: 0;
   z-index: 9;
   transition: opacity 0.5s ease;
+  mix-blend-mode: multiply;
 }
 
 .header-bg.is-visible {

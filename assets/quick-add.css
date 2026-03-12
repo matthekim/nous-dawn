@@ -374,8 +374,9 @@ quick-add-modal .product-form__buttons {
 .quick-add__submit::after {
   content: '';
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 2em;
+  height: 2em;
+  flex-shrink: 0;
   background-color: var(--seasonal-color);
   -webkit-mask: url('arrow.svg') no-repeat center / contain;
   mask: url('arrow.svg') no-repeat center / contain;

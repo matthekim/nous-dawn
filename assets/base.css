@@ -3175,6 +3175,19 @@ details-disclosure > details {
     .product-grid .grid__item {
       padding-bottom: var(--grid-desktop-vertical-spacing);
     }
+
+    /* Staggered grid effect */
+    .product-grid .grid__item:nth-child(3n+2) {
+      margin-top: 4rem;
+    }
+
+    .product-grid .grid__item:nth-child(6n+4) {
+      margin-top: 2rem;
+    }
+
+    .product-grid .grid__item:nth-child(6n+6) {
+      margin-top: 3rem;
+    }
   }
 }
 

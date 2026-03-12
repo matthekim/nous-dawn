@@ -2423,6 +2423,7 @@ input[type='checkbox'] {
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   width: 100%;
+  z-index: 10;
 }
 
 @media screen and (max-width: 749px) {

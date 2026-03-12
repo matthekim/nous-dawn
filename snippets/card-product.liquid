@@ -311,11 +311,9 @@
                   data-product-url="{{ card_product.url }}"
                 >
                   {{ 'products.product.choose_options' | t }}
-                  {%- if horizontal_quick_add -%}
-                    <span class="icon-wrap">
-                      {{- 'icon-arrow.svg' | inline_asset_content -}}
-                    </span>
-                  {%- endif -%}
+                  <span class="quick-add__arrow" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.1 14"><path fill="currentColor" d="M48.9,14c3.7-3,8-5.2,12.5-6.9,0,0-.2-.2-.2-.2-1-.5-2.5-1-3.6-1.5-3.1-1.5-6.2-3.2-8.8-5.4.6,2,1.6,4,2.2,6H1c-.6,0-1,.4-1,1s.4,1,1,1h50c0,.1,0,.2-.1.3-.6,1.9-1.5,3.7-2,5.7Z"/></svg>
+                  </span>
                   {%- render 'loading-spinner' -%}
                 </button>
               </modal-opener>
@@ -440,6 +438,9 @@
                   data-product-url="{{ card_product.url }}"
                 >
                   {{ 'products.product.choose_options' | t }}
+                  <span class="quick-add__arrow" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.1 14"><path fill="currentColor" d="M48.9,14c3.7-3,8-5.2,12.5-6.9,0,0-.2-.2-.2-.2-1-.5-2.5-1-3.6-1.5-3.1-1.5-6.2-3.2-8.8-5.4.6,2,1.6,4,2.2,6H1c-.6,0-1,.4-1,1s.4,1,1,1h50c0,.1,0,.2-.1.3-.6,1.9-1.5,3.7-2,5.7Z"/></svg>
+                  </span>
                   {%- render 'loading-spinner' -%}
                 </button>
               </modal-opener>

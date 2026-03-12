@@ -90,8 +90,9 @@
     position: sticky;
     left: 0;
     top: 0;
+    margin-top: 100vh;
     opacity: 0;
-    z-index: -1;
+    z-index: 9;
     transition: opacity 0.5s ease;
   }
 
@@ -392,16 +393,16 @@
   // Header background animation on scroll
   const headerBg = document.querySelector('.header-bg');
   if (headerBg) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.intersectionRatio < 1) {
-          headerBg.classList.add('is-visible');
-        } else {
-          headerBg.classList.remove('is-visible');
-        }
-      });
-    }, { threshold: 1 });
-    observer.observe(headerBg);
+    const checkSticky = () => {
+      const rect = headerBg.getBoundingClientRect();
+      if (rect.top <= 0) {
+        headerBg.classList.add('is-visible');
+      } else {
+        headerBg.classList.remove('is-visible');
+      }
+    };
+    window.addEventListener('scroll', checkSticky, { passive: true });
+    checkSticky();
   }
 {% endjavascript %}
 

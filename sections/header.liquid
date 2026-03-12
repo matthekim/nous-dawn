@@ -252,6 +252,7 @@
     {%- endif -%}
   </header>
   <div class="header-bg">
+  <div class="header-padder"></div>
     <img src="{{ 'header.png' | asset_url }}" alt="" class="header-bg__image">
   </div>
 </{{ header_tag }}>
@@ -375,7 +376,7 @@
   const headerBg = document.querySelector('.header-bg');
   if (headerBg) {
     const checkScroll = () => {
-      if (window.scrollY >= window.innerHeight - 200) {
+      if (window.scrollY >= window.innerHeight - 360) {
         headerBg.classList.add('is-visible');
       } else {
         headerBg.classList.remove('is-visible');

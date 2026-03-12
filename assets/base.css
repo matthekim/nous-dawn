@@ -609,6 +609,10 @@ hr {
   display: block;
 }
 
+.full-unstyled-link:hover {
+  text-decoration: none;
+}
+
 .placeholder {
   background-color: rgba(var(--color-foreground), 0.04);
   color: rgba(var(--color-foreground), 0.55);

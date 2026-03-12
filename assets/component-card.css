@@ -157,6 +157,13 @@
   /*padding: 1.3rem 1rem;*/
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
+  color: var(--seasonal-color);
+  text-transform: lowercase;
+}
+
+.card__information a,
+.card__information a:hover {
+  color: var(--seasonal-color);
 }
 
 .card:not(.ratio) > .card__content {

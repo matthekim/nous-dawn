@@ -89,9 +89,14 @@
   .header-bg {
     position: sticky;
     left: 0;
-    top: 100dvh;
+    top: 0;
     opacity: 0;
     z-index: -1;
+    transition: opacity 0.5s ease;
+  }
+
+  .header-bg.is-visible {
+    opacity: 1;
   }
 
   .header-bg__image {
@@ -383,6 +388,21 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+
+  // Header background animation on scroll
+  const headerBg = document.querySelector('.header-bg');
+  if (headerBg) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio < 1) {
+          headerBg.classList.add('is-visible');
+        } else {
+          headerBg.classList.remove('is-visible');
+        }
+      });
+    }, { threshold: 1 });
+    observer.observe(headerBg);
+  }
 {% endjavascript %}
 
 <script type="application/ld+json">

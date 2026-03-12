@@ -87,10 +87,9 @@
   }
 
   .header-bg {
-    position: sticky;
+    position: fixed;
     left: 0;
     top: 0;
-    margin-top: 100vh;
     opacity: 0;
     z-index: 9;
     transition: opacity 0.5s ease;
@@ -393,16 +392,15 @@
   // Header background animation on scroll
   const headerBg = document.querySelector('.header-bg');
   if (headerBg) {
-    const checkSticky = () => {
-      const rect = headerBg.getBoundingClientRect();
-      if (rect.top <= 0) {
+    const checkScroll = () => {
+      if (window.scrollY >= window.innerHeight) {
         headerBg.classList.add('is-visible');
       } else {
         headerBg.classList.remove('is-visible');
       }
     };
-    window.addEventListener('scroll', checkSticky, { passive: true });
-    checkSticky();
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
   }
 {% endjavascript %}
 

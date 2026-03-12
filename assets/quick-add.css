@@ -355,10 +355,41 @@ quick-add-modal .product-form__buttons {
   max-width: initial;
 }
 
-.quick-add__submit {
+.quick-add__submit,
+.quick-add__submit.button,
+.quick-add__submit.button--secondary {
   padding: 0.8rem;
-  min-width: 100%;
+  min-width: auto;
+  width: auto;
   box-sizing: border-box;
+  background: transparent;
+  border: none;
+  color: var(--seasonal-color);
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quick-add__submit::after {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--seasonal-color);
+  -webkit-mask: url('arrow.svg') no-repeat center / contain;
+  mask: url('arrow.svg') no-repeat center / contain;
+}
+
+.quick-add__submit:hover,
+.quick-add__submit:focus,
+.quick-add__submit.button:hover,
+.quick-add__submit.button:focus,
+.quick-add__submit.button--secondary:hover,
+.quick-add__submit.button--secondary:focus {
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 quick-add-modal .product-media-container.constrain-height {

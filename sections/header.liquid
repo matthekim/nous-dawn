@@ -85,6 +85,19 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .header-bg {
+    position: sticky;
+    left: 0;
+    top: 100dvh;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .header-bg__image {
+    width: 100%;
+    mix-blend-mode: multiply;
+  }
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -251,6 +264,9 @@
       {%- render 'header-drawer' -%}
     {%- endif -%}
   </header>
+  <div class="header-bg">
+    <img src="{{ 'header.png' | asset_url }}" alt="" class="header-bg__image">
+  </div>
 </{{ header_tag }}>
 
 {%- if settings.cart_type == "notification" -%}

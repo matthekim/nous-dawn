@@ -3181,19 +3181,15 @@ details-disclosure > details {
 /* Staggered grid effect for product grid */
 @media screen and (min-width: 750px) {
   .product-grid .grid__item:nth-child(3n+2) {
-    transform: translateY(4rem);
+    margin-top: 6rem;
   }
 
   .product-grid .grid__item:nth-child(6n+4) {
-    transform: translateY(2rem);
+    margin-top: 3rem;
   }
 
   .product-grid .grid__item:nth-child(6n+6) {
-    transform: translateY(3rem);
-  }
-
-  .product-grid {
-    padding-bottom: 4rem;
+    margin-top: 5rem;
   }
 }
 

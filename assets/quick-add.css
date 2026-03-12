@@ -357,17 +357,17 @@ quick-add-modal .product-form__buttons {
 
 .quick-add__submit,
 .quick-add__submit.button,
-.quick-add__submit.button--secondary {
+.quick-add__submit.button--secondary,
+.quick-add__submit.button--full-width {
   padding: 0.8rem;
   min-width: auto;
-  width: auto;
   box-sizing: border-box;
   background: transparent;
   border: none;
   color: var(--seasonal-color);
-  margin-left: auto;
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.5rem;
 }
 

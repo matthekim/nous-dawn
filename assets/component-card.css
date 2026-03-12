@@ -161,6 +161,13 @@
   text-transform: lowercase;
 }
 
+.card__information *,
+.card__information .card__heading,
+.card__information .caption-with-letter-spacing {
+  color: var(--seasonal-color);
+  text-transform: lowercase;
+}
+
 .card__information a,
 .card__information a:hover {
   color: var(--seasonal-color);

@@ -375,7 +375,7 @@
   const headerBg = document.querySelector('.header-bg');
   if (headerBg) {
     const checkScroll = () => {
-      if (window.scrollY >= window.innerHeight) {
+      if (window.scrollY >= window.innerHeight - 100) {
         headerBg.classList.add('is-visible');
       } else {
         headerBg.classList.remove('is-visible');

@@ -1251,15 +1251,16 @@ deferred-media {
 .shopify-challenge__button,
 .customer button,
 button.shopify-payment-button__button--unbranded {
-  --shadow-horizontal-offset: var(--buttons-shadow-horizontal-offset);
-  --shadow-vertical-offset: var(--buttons-shadow-vertical-offset);
-  --shadow-blur-radius: var(--buttons-shadow-blur-radius);
-  --shadow-opacity: var(--buttons-shadow-opacity);
-  --shadow-visible: var(--buttons-shadow-visible);
-  --border-offset: var(--buttons-border-offset); /* reduce radius edge artifacts */
-  --border-opacity: calc(1 - var(--buttons-border-opacity));
+  --shadow-horizontal-offset: 0;
+  --shadow-vertical-offset: 0;
+  --shadow-blur-radius: 0;
+  --shadow-opacity: 0;
+  --shadow-visible: 0;
+  --border-offset: 0;
+  --border-opacity: 1;
   border-radius: var(--buttons-radius-outset);
   position: relative;
+  box-shadow: none;
 }
 
 .button,
@@ -1343,15 +1344,12 @@ button.shopify-payment-button__button--unbranded {
 .shopify-payment-button__button--unbranded:focus-visible,
 .shopify-payment-button__button--unbranded:focus {
   outline: 0;
-  box-shadow:
-    0 0 0 0.3rem rgb(var(--color-background)),
-    0 0 0 0.5rem rgba(var(--color-foreground), 0.5),
-    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  box-shadow: none;
 }
 
 .button:focus:not(:focus-visible):not(.focused),
 .shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(.focused) {
-  box-shadow: inherit;
+  box-shadow: none;
 }
 
 .button::selection,

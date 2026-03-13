@@ -223,6 +223,29 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "retailers_data_DjECJx": {
+      "type": "retailers-data",
+      "blocks": {
+        "retailer_Ap4xqJ": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Dawance",
+            "address": "Avenue de Spa 100",
+            "zip": "4802",
+            "city": "Heusy",
+            "country": "Belgium",
+            "lat": "50.5796252",
+            "long": "5.8622923",
+            "url": "https://www.dawance.eu/"
+          }
+        }
+      },
+      "block_order": [
+        "retailer_Ap4xqJ"
+      ],
+      "name": "Retailers Data",
+      "settings": {}
     }
   },
   "order": [
@@ -231,6 +254,7 @@
     "featured_collection",
     "collage",
     "video",
-    "multicolumn"
+    "multicolumn",
+    "retailers_data_DjECJx"
   ]
 }

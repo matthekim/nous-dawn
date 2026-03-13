@@ -15,9 +15,47 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "retailers_data_9wV6H8": {
+      "type": "retailers-data",
+      "blocks": {
+        "retailer_TDGnKR": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Exes",
+            "address": "MARKT 12",
+            "zip": "3150",
+            "city": "HAACHT",
+            "country": "BELGIUM",
+            "lat": "50.9767902",
+            "long": "4.6359949",
+            "url": "https://exesfashion.cargo.site/"
+          }
+        },
+        "retailer_FFVXxa": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Dawance",
+            "address": "Avenue de Spa 100",
+            "zip": "4802",
+            "city": "Heusy",
+            "country": "Belgium",
+            "lat": "50.5796252",
+            "long": "5.8622923",
+            "url": "https://www.dawance.eu/"
+          }
+        }
+      },
+      "block_order": [
+        "retailer_TDGnKR",
+        "retailer_FFVXxa"
+      ],
+      "name": "Retailers Data",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "retailers_data_9wV6H8"
   ]
 }

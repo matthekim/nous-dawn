@@ -32,7 +32,7 @@
   "blocks": [
     {
       "type": "retailer",
-      "name": "Retailer",
+      "name": "{{ block.settings.shop | default: 'Retailer' }}",
       "settings": [
         {
           "type": "text",

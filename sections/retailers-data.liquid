@@ -1,0 +1,81 @@
+{%- comment -%}
+  This section stores retailer data globally. 
+  Add it to the header group so it loads on every page.
+  The data is available via window.retailersData for custom functionality.
+{%- endcomment -%}
+
+<script>
+  window.retailersData = [
+    {%- for block in section.blocks -%}
+      {
+        "id": "{{ block.id }}",
+        "shop": {{ block.settings.shop | json }},
+        "address": {{ block.settings.address | json }},
+        "zip": {{ block.settings.zip | json }},
+        "city": {{ block.settings.city | json }},
+        "country": {{ block.settings.country | json }},
+        "lat": {{ block.settings.lat | json }},
+        "long": {{ block.settings.long | json }},
+        "url": {{ block.settings.url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ];
+</script>
+
+{% schema %}
+{
+  "name": "Retailers Data",
+  "tag": "div",
+  "class": "retailers-data-section",
+  "max_blocks": 100,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "retailer",
+      "name": "Retailer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "shop",
+          "label": "Shop name"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "text",
+          "id": "zip",
+          "label": "ZIP / Postal code"
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City"
+        },
+        {
+          "type": "text",
+          "id": "country",
+          "label": "Country"
+        },
+        {
+          "type": "text",
+          "id": "lat",
+          "label": "Latitude"
+        },
+        {
+          "type": "text",
+          "id": "long",
+          "label": "Longitude"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Website URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

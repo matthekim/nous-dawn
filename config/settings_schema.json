@@ -46,18 +46,6 @@
     ]
   },
   {
-    "name": "Shop Finder",
-    "settings": [
-      {
-        "type": "textarea",
-        "id": "shop_finder_data",
-        "label": "Retailers JSON",
-        "info": "Enter retailers as JSON array. Each retailer needs: shop, address, zip, city, country, lat, long, url",
-        "default": "[\n  {\n    \"shop\": \"Example Store\",\n    \"address\": \"123 Main Street\",\n    \"zip\": \"1000\",\n    \"city\": \"Brussels\",\n    \"country\": \"Belgium\",\n    \"lat\": \"50.8503\",\n    \"long\": \"4.3517\",\n    \"url\": \"https://example.com\"\n  }\n]"
-      }
-    ]
-  },
-  {
     "name": "t:settings_schema.colors.name",
     "settings": [
       {

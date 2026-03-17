@@ -27,6 +27,10 @@
   }
 {%- endstyle -%}
 
+<div class="footer-bg">
+  <img src="{{ 'header-grey.png' | asset_url }}" alt="" class="footer-bg__image">
+  <div class="footer-padder">&nbsp;</div>
+</div>
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true

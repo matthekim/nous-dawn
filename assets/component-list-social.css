@@ -10,7 +10,8 @@
   }
 }
 
-.list-social__item .icon {
+.list-social__item .icon,
+.icon-instagram {
   height: 36px;
   width: 36px;
 }

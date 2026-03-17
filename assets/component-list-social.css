@@ -11,8 +11,7 @@
 }
 
 .list-social__item .icon,
-.icon-instagram,
-.icon-instagram path {
+.icon-instagram {
   height: 36px;
   width: 36px;
 }

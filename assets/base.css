@@ -2530,6 +2530,8 @@ input[type='checkbox'] {
 .header__heading-logo-wrapper {
   display: inline-block;
   transition: width 0.3s cubic-bezier(0.52, 0, 0.61, 0.99);
+  position: relative;
+  z-index: 99999;
 }
 
 @media screen and (max-width: 989px) {

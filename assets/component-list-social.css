@@ -15,6 +15,7 @@
   height: 36px;
   width: 36px;
   display: block;
+  margin-top: 3px;
 }
 
 .list-social__item .svg-wrapper {
@@ -35,5 +36,5 @@
 }
 
 .list-social__link:hover .icon {
-  transform: scale(1.07);
+  /*transform: scale(1.07);*/
 }

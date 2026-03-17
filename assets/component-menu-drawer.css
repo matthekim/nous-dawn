@@ -106,6 +106,7 @@ menu-drawer > details[open] > summary::before {
   z-index: 10;
   padding: 0;
   background-color: transparent;
+  isolation: isolate;
   overflow-x: hidden;
   overflow-y: auto;
   transition:

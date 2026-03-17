@@ -2562,6 +2562,11 @@ input[type='checkbox'] {
   mix-blend-mode: multiply;
 }
 
+/* Hide header-bg when menu is open */
+.header:has(details[open].menu-opening) ~ .header-bg {
+  opacity: 0 !important;
+}
+
 .header-bg.is-visible {
   opacity: 1;
 }

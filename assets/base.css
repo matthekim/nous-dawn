@@ -2573,7 +2573,7 @@ input[type='checkbox'] {
   position: relative;
   width: 100%;
   height: 80px;
-  background-color: #ccc;
+  background-color: #d8d7d2;
 }
 
 @media screen and (min-width: 990px) {
@@ -3212,15 +3212,15 @@ details-disclosure > details {
     align-items: flex-start;
   }
 
-  .product-grid .grid__item:nth-child(3n+2) {
+  .product-grid .grid__item:nth-child(3n + 2) {
     margin-top: 10rem;
   }
 
-  .product-grid .grid__item:nth-child(6n+4) {
+  .product-grid .grid__item:nth-child(6n + 4) {
     margin-top: 5rem;
   }
 
-  .product-grid .grid__item:nth-child(6n+6) {
+  .product-grid .grid__item:nth-child(6n + 6) {
     margin-top: 8rem;
   }
 }

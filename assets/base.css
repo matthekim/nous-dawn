@@ -2603,6 +2603,12 @@ input[type='checkbox'] {
   mix-blend-mode: multiply;
 }
 
+/* Shopify Follow on Shop button styling */
+shop-follow-button {
+  --shop-follow-button-background: #fff;
+  --shop-follow-button-color: var(--seasonal-color);
+}
+
 @media screen and (min-width: 990px) {
   .header--middle-left .header__heading-link,
   .header--top-left .header__heading-link {

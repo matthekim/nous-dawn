@@ -17,6 +17,11 @@
   display: block;
 }
 
+.list-social__item .svg-wrapper {
+  width: 36px;
+  height: 36px;
+}
+
 .list-social__link {
   align-items: center;
   display: flex;

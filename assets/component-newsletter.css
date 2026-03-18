@@ -69,3 +69,33 @@
 .newsletter-form__button .icon {
   width: 1.5rem;
 }
+
+/* Footer newsletter field styling */
+.footer .newsletter-form .field__input {
+  height: 36px;
+  min-height: 36px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 18px;
+  padding-right: 5rem;
+  border-radius: 18px;
+  background-color: #fff;
+  color: #000;
+}
+
+.footer .newsletter-form .field__input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.footer .newsletter-form .field__label {
+  display: none;
+}
+
+.footer .newsletter-form .field {
+  border-radius: 18px;
+}
+
+.footer .newsletter-form__button {
+  height: 36px;
+  border-radius: 0 18px 18px 0;
+}

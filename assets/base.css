@@ -1674,11 +1674,11 @@ details[open] > .share-button__fallback {
   pointer-events: none;
   content: '';
   position: absolute;
-  top: var(--inputs-border-width);
+  /*top: var(--inputs-border-width);
   right: var(--inputs-border-width);
   bottom: var(--inputs-border-width);
-  left: var(--inputs-border-width);
-  border: 0.1rem solid transparent;
+  left: var(--inputs-border-width);*/
+  border: 0 solid transparent;
   border-radius: var(--inputs-radius);
   box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;

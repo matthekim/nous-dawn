@@ -2786,6 +2786,12 @@ menu-drawer + .header__search {
   animation-delay: 0.3s;
 }
 
+/* When search is open, break out of header stacking context */
+.header__search:has(details[open]) {
+  position: fixed;
+  z-index: 999999;
+}
+
 .header--top-center > .header__search {
   display: none;
 }

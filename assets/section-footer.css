@@ -328,6 +328,10 @@
   justify-content: flex-end;
 }
 
+.footer-block__details-content .footer-currency-column localization-form {
+  display: none;
+}
+
 .footer-block__details-content > a {
   display: block;
   break-inside: avoid;

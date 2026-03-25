@@ -35,7 +35,9 @@ class DetailsModal extends HTMLElement {
     if (menuDrawer && menuDrawer.closeMenuDrawer) {
       // Create a synthetic event to pass to closeMenuDrawer
       const syntheticEvent = new Event('click');
-      menuDrawer.closeMenuDrawer(syntheticEvent);
+      // HeaderDrawer.closeMenuDrawer requires elementToFocus param, pass the summary
+      const menuSummary = menuDrawer.querySelector('summary');
+      menuDrawer.closeMenuDrawer(syntheticEvent, menuSummary);
     }
 
     // Activate the menu blend overlay for the search modal

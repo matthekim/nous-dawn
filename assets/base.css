@@ -2890,12 +2890,26 @@ details[open] .modal-overlay::after {
   top: 23px;
   right: 70px;
   z-index: 99999;
-  color: white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-modal__close-button .icon {
+.search-modal__close-button span {
   width: 30px;
-  height: 30px;
+  height: 2px;
+  position: absolute;
+  background: #fff;
+}
+
+.search-modal__close-button .top {
+  transform: rotate(45deg);
+}
+
+.search-modal__close-button .bottom {
+  transform: rotate(-45deg);
 }
 
 @media screen and (min-width: 750px) {

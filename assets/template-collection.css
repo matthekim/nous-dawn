@@ -100,7 +100,17 @@
 
 .collection__view-all .link.underlined-link {
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 2.7rem;
   color: var(--seasonal-color);
   text-decoration: none;
+  text-transform: lowercase;
+  background: none;
+  margin-top: 5.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .collection__view-all .link.underlined-link {
+    font-size: 3rem;
+    margin-top: 6rem;
+  }
 }

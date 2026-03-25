@@ -251,7 +251,7 @@
       {%- render 'header-drawer' -%}
     {%- endif -%}
   </header>
-  <div class="header-bg">
+  <div class="header-bg{% unless request.page_type == 'index' %} is-visible{% endunless %}">
   <div class="header-padder">&nbsp;</div>
     <img src="{{ 'header-grey.png' | asset_url }}" alt="" class="header-bg__image">
   </div>
@@ -374,23 +374,16 @@
 
   // Header background animation on scroll
   const headerBg = document.querySelector('.header-bg');
-  const isHomepage = {{ request.page_type | json }} === 'index';
   if (headerBg) {
-    if (!isHomepage) {
-      // Non-homepage: show header-bg immediately
-      headerBg.classList.add('is-visible');
-    } else {
-      // Homepage: show header-bg on scroll
-      const checkScroll = () => {
-        if (window.scrollY >= window.innerHeight - 200) {
-          headerBg.classList.add('is-visible');
-        } else {
-          headerBg.classList.remove('is-visible');
-        }
-      };
-      window.addEventListener('scroll', checkScroll, { passive: true });
-      checkScroll();
-    }
+    const checkScroll = () => {
+      if (window.scrollY >= window.innerHeight - 200) {
+        headerBg.classList.add('is-visible');
+      } else {
+        headerBg.classList.remove('is-visible');
+      }
+    };
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
   }
 {% endjavascript %}
 

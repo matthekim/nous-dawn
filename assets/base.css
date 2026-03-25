@@ -2828,8 +2828,7 @@ details[open] .modal-overlay::after {
   width: 100%;
   height: 100vh;
   opacity: 0;
-  background-color: var(--seasonal-color);
-  mix-blend-mode: multiply;
+  background-color: transparent;
   z-index: 99998;
   display: flex;
   align-items: center;
@@ -2847,7 +2846,6 @@ details[open] .modal-overlay::after {
   padding: 0 2rem;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
   position: relative;
-  mix-blend-mode: normal;
   isolation: isolate;
 }
 

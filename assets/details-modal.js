@@ -30,15 +30,18 @@ class DetailsModal extends HTMLElement {
     document.body.addEventListener('click', this.onBodyClickEvent);
     document.body.classList.add('overflow-hidden');
 
-    // Close the menu drawer if open
+    // Close the menu drawer if open using its proper close method
     const menuDrawer = document.querySelector('header-drawer');
-    if (menuDrawer) {
-      const menuDetails = menuDrawer.querySelector('details[open]');
-      if (menuDetails) {
-        menuDetails.removeAttribute('open');
-        menuDetails.classList.remove('menu-opening');
-        document.body.classList.remove('overflow-hidden-desktop');
-      }
+    if (menuDrawer && menuDrawer.closeMenuDrawer) {
+      // Create a synthetic event to pass to closeMenuDrawer
+      const syntheticEvent = new Event('click');
+      menuDrawer.closeMenuDrawer(syntheticEvent);
+    }
+
+    // Activate the menu blend overlay for the search modal
+    const blendOverlay = document.getElementById('menu-blend-overlay');
+    if (blendOverlay) {
+      blendOverlay.classList.add('active');
     }
 
     trapFocus(
@@ -52,6 +55,12 @@ class DetailsModal extends HTMLElement {
     this.detailsContainer.removeAttribute('open');
     document.body.removeEventListener('click', this.onBodyClickEvent);
     document.body.classList.remove('overflow-hidden');
+
+    // Deactivate the menu blend overlay
+    const blendOverlay = document.getElementById('menu-blend-overlay');
+    if (blendOverlay) {
+      blendOverlay.classList.remove('active');
+    }
   }
 }
 

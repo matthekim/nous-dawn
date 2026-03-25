@@ -406,9 +406,12 @@
           const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
               if (mutation.attributeName === 'class' || mutation.attributeName === 'open') {
+                // Check if search modal is open
+                const searchModal = document.querySelector('.header__search details[open]');
                 if (menuDetails.hasAttribute('open') && menuDetails.classList.contains('menu-opening')) {
                   blendOverlay.classList.add('active');
-                } else {
+                } else if (!searchModal) {
+                  // Only remove active if search modal is not open
                   blendOverlay.classList.remove('active');
                 }
               }

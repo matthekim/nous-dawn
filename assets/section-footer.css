@@ -316,6 +316,7 @@
   margin-bottom: 4rem;
   column-count: 3;
   column-gap: 2rem;
+  padding-right: 50%;
 }
 
 .footer-block__details-content > a {

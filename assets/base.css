@@ -2639,6 +2639,8 @@ shop-follow-button {
   grid-area: icons;
   justify-self: end;
   padding-right: 80px;
+  position: relative;
+  z-index: 99999;
 }
 
 .header__icons .shopify-app-block {

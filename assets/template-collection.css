@@ -9,6 +9,12 @@
   margin-top: 100px;
 }
 
+/* Fix for transparent scheme-1 background showing white underneath */
+.collection .gradient.color-scheme-1,
+[class*="section-"][class*="-padding"].gradient.color-scheme-1 {
+  background: #d8d7d2;
+}
+
 @media screen and (max-width: 989px) {
   .collection .slider.slider--tablet {
     margin-bottom: 1.5rem;

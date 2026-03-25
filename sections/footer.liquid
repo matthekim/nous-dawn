@@ -91,24 +91,28 @@
                   {%- when 'link_list' -%}
                     {%- if block.settings.menu != blank -%}
                       <div class="footer-block__details-content">
-                        {%- for link in block.settings.menu.links -%}
-                          <a
-                            href="{{ link.url }}"
-                            class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
-                          >
-                            {{ link.title | escape }}
-                          </a>
-                          {%- if link.links != blank -%}
-                            {%- for childlink in link.links -%}
-                              <a
-                                href="{{ childlink.url }}"
-                                class="link link--text list-menu__item list-menu__item--link{% if childlink.active %} list-menu__item--active{% endif %}"
-                              >
-                                {{ childlink.title | escape }}
-                              </a>
-                            {%- endfor -%}
-                          {%- endif -%}
-                        {%- endfor -%}
+                        <div class="footer-menu-column">
+                          {%- for link in block.settings.menu.links -%}
+                            <a
+                              href="{{ link.url }}"
+                              class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                            >
+                              {{ link.title | escape }}
+                            </a>
+                            {%- if link.links != blank -%}
+                              {%- for childlink in link.links -%}
+                                <a
+                                  href="{{ childlink.url }}"
+                                  class="link link--text list-menu__item list-menu__item--link{% if childlink.active %} list-menu__item--active{% endif %}"
+                                >
+                                  {{ childlink.title | escape }}
+                                </a>
+                              {%- endfor -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </div>
+                        <div class="footer-currency-column">
+                        </div>
                       </div>
                     {%- endif -%}
                   {%- when 'brand_information' -%}

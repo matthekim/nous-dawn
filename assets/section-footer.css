@@ -314,9 +314,18 @@
 
 .footer-block__details-content {
   margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.footer-block__details-content .footer-menu-column {
   column-count: 3;
   column-gap: 2rem;
-  padding-right: 50%;
+}
+
+.footer-block__details-content .footer-currency-column {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .footer-block__details-content > a {

@@ -498,7 +498,11 @@ class MenuDrawer extends HTMLElement {
     if (event === undefined) return;
 
     this.mainDetailsToggle.classList.remove('menu-opening');
+    // Only close the main menu drawer, not the submenu details
     this.mainDetailsToggle.querySelectorAll('details').forEach((details) => {
+      // Skip submenu details - they should stay open
+      if (details.id && details.id.includes('menu-drawer-menu-item')) return;
+      if (details.id && details.id.includes('Details-menu-drawer-') && details.id !== 'Details-menu-drawer-container') return;
       details.removeAttribute('open');
       details.classList.remove('menu-opening');
     });

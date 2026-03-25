@@ -8,7 +8,8 @@
 
 .footer__content-top {
   padding-bottom: 5rem;
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 @media screen and (max-width: 749px) {
@@ -30,6 +31,12 @@
     padding-bottom: 3rem;
     padding-left: calc(4rem / var(--font-body-scale));
     padding-right: calc(4rem / var(--font-body-scale));
+    grid-template-columns: 1fr;
+  }
+
+  .footer__localization-column {
+    align-items: flex-start;
+    margin-top: 2rem;
   }
 }
 
@@ -316,7 +323,13 @@
   margin-bottom: 4rem;
   column-count: 3;
   column-gap: 2rem;
-  padding-right: 50%;
+}
+
+.footer__localization-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 
 .footer-block__details-content > a {

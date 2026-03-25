@@ -5,6 +5,11 @@
   }
 }
 
+/* Fix background for collection pages - targets pages that have collection-hero */
+body:has(.collection-hero) {
+  background-color: #d8d7d2;
+}
+
 .collection .product-grid {
   margin-top: 100px;
 }

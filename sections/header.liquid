@@ -372,7 +372,8 @@
 
   customElements.define('sticky-header', StickyHeader);
 
-  // Header background animation on scroll
+  // Header background animation on scroll (homepage only)
+  {% if request.page_type == 'index' %}
   const headerBg = document.querySelector('.header-bg');
   if (headerBg) {
     const checkScroll = () => {
@@ -385,6 +386,7 @@
     window.addEventListener('scroll', checkScroll, { passive: true });
     checkScroll();
   }
+  {% endif %}
 {% endjavascript %}
 
 <script type="application/ld+json">

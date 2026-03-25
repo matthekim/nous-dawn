@@ -87,8 +87,8 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.footer .newsletter-form .field__label {
-  display: none;
+#mc_embed_signup_footer {
+  margin-bottom: 3px;
 }
 
 .footer .newsletter-form .field {

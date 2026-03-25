@@ -2592,6 +2592,7 @@ input[type='checkbox'] {
 .footer {
   display: flex;
   flex-direction: column;
+  background-color: #d8d7d2;
 }
 
 .footer-bg__image {
@@ -2599,7 +2600,6 @@ input[type='checkbox'] {
   display: block;
   mix-blend-mode: multiply;
   transform: scaleY(-1);
-  margin-bottom: -1px;
 }
 
 .footer-padder {
@@ -2607,7 +2607,6 @@ input[type='checkbox'] {
   width: 100%;
   background-color: #d8d7d2;
   mix-blend-mode: multiply;
-  margin-top: -1px;
 }
 
 /* Shopify Follow on Shop button styling */

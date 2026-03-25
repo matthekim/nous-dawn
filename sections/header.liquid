@@ -371,9 +371,11 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+{% endjavascript %}
 
+{% if request.page_type == 'index' %}
+<script>
   // Header background animation on scroll (homepage only)
-  {% if request.page_type == 'index' %}
   const headerBg = document.querySelector('.header-bg');
   if (headerBg) {
     const checkScroll = () => {
@@ -386,8 +388,8 @@
     window.addEventListener('scroll', checkScroll, { passive: true });
     checkScroll();
   }
-  {% endif %}
-{% endjavascript %}
+</script>
+{% endif %}
 
 <script type="application/ld+json">
   {

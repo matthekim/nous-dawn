@@ -2600,7 +2600,7 @@ input[type='checkbox'] {
   display: block;
   mix-blend-mode: multiply;
   transform: scaleY(-1);
-  margin-bottom: -1px; /* Remove gap between image and footer-padder */
+  box-shadow: 0 1px 0 0 #d8d7d2; /* Fill sub-pixel gap from decimal image height */
 }
 
 .footer-padder {

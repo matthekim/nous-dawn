@@ -2872,6 +2872,17 @@ details[open] .modal-overlay::after {
   margin-top: 1rem;
   max-height: 50vh;
   overflow-y: auto;
+  color: var(--seasonal-color);
+}
+
+.search-modal .predictive-search a,
+.search-modal .predictive-search__item-heading {
+  color: var(--seasonal-color);
+}
+
+.search-modal .predictive-search__item-content,
+.search-modal .price {
+  color: #CCC;
 }
 
 .search-modal__content-bottom {

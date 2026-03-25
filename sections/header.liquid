@@ -374,16 +374,23 @@
 
   // Header background animation on scroll
   const headerBg = document.querySelector('.header-bg');
+  const isHomepage = {{ request.page_type | json }} === 'index';
   if (headerBg) {
-    const checkScroll = () => {
-      if (window.scrollY >= window.innerHeight - 200) {
-        headerBg.classList.add('is-visible');
-      } else {
-        headerBg.classList.remove('is-visible');
-      }
-    };
-    window.addEventListener('scroll', checkScroll, { passive: true });
-    checkScroll();
+    if (!isHomepage) {
+      // Non-homepage: show header-bg immediately
+      headerBg.classList.add('is-visible');
+    } else {
+      // Homepage: show header-bg on scroll
+      const checkScroll = () => {
+        if (window.scrollY >= window.innerHeight - 200) {
+          headerBg.classList.add('is-visible');
+        } else {
+          headerBg.classList.remove('is-visible');
+        }
+      };
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+    }
   }
 {% endjavascript %}
 

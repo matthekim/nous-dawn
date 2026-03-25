@@ -2567,6 +2567,11 @@ input[type='checkbox'] {
   opacity: 0 !important;
 }
 
+/* Hide header-bg when search is open */
+.header:has(.header__search details[open]) ~ .header-bg {
+  opacity: 0 !important;
+}
+
 .header-bg.is-visible {
   opacity: 1;
 }
@@ -2784,12 +2789,6 @@ menu-drawer + .header__search {
   opacity: 0;
   animation: headerFadeIn 0.4s ease forwards;
   animation-delay: 0.3s;
-}
-
-/* When search is open, break out of header stacking context */
-.header__search:has(details[open]) {
-  position: fixed;
-  z-index: 999999;
 }
 
 .header--top-center > .header__search {

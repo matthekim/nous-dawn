@@ -2829,7 +2829,7 @@ details[open] .modal-overlay::after {
   height: 100vh;
   opacity: 0;
   background-color: transparent;
-  z-index: 99998;
+  z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2886,10 +2886,10 @@ details[open] .modal-overlay::after {
 }
 
 .search-modal__close-button {
-  position: fixed;
+  position: absolute;
   top: 23px;
   right: 70px;
-  z-index: 99999;
+  z-index: 999999;
   width: 60px;
   height: 60px;
   display: flex;
@@ -2929,7 +2929,6 @@ details[open] .modal-overlay::after {
   }
 
   .search-modal__close-button {
-    position: fixed;
     top: 23px;
     right: 70px;
   }

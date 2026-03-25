@@ -81,15 +81,28 @@
   border-radius: 18px;
   background-color: #fff;
   color: #000;
+  box-shadow: none !important;
+  outline: none;
+  border: none;
 }
 
-.footer .newsletter-form .field__label {
-  display: none;
+.footer .newsletter-form .field__label,
+.newsletter-form .field__label,
+.newsletter-form__field-wrapper .field__label {
+  display: none !important;
 }
 
 .footer .newsletter-form .field__input::placeholder {
-  color: rgba(0, 0, 0, 0.5);
+  color: #CCC;
   opacity: 1;
+}
+
+/* Remove any visual artifacts */
+.footer .newsletter-form .field::before,
+.footer .newsletter-form .field::after,
+.footer .newsletter-form .field__input::before,
+.footer .newsletter-form .field__input::after {
+  display: none !important;
 }
 
 #mc_embed_signup_footer {
@@ -98,6 +111,9 @@
 
 .footer .newsletter-form .field {
   border-radius: 18px;
+  box-shadow: none !important;
+  outline: none;
+  border: none;
 }
 
 .footer .newsletter-form__button {

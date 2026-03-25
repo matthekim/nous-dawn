@@ -2886,12 +2886,21 @@ details[open] .modal-overlay::after {
   width: 100%;
 }
 
+.search-modal__form .field {
+  box-shadow: none !important;
+  outline: none;
+  border: none;
+}
+
 .search-modal__form .field__input {
   background-color: white;
   color: black;
   border-radius: 50px;
   height: 50px;
   padding: 0 60px 0 25px;
+  box-shadow: none !important;
+  outline: none;
+  border: none;
 }
 
 .search-modal__form .field__label {

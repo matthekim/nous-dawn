@@ -2894,6 +2894,10 @@ details[open] .modal-overlay::after {
   padding: 0 60px 0 25px;
 }
 
+.search-modal__form .field__label {
+  display: none;
+}
+
 .search-modal__form .field__button {
   color: black;
 }

@@ -83,8 +83,13 @@
   color: #000;
 }
 
+.footer .newsletter-form .field__label {
+  display: none;
+}
+
 .footer .newsletter-form .field__input::placeholder {
   color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
 }
 
 #mc_embed_signup_footer {

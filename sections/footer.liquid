@@ -99,6 +99,20 @@
                             >
                               {{ link.title | escape }}
                             </a>
+                            {%- if link.links != blank -%}
+                              <ul class="footer-submenu list-unstyled">
+                                {%- for childlink in link.links -%}
+                                  <li>
+                                    <a
+                                      href="{{ childlink.url }}"
+                                      class="link link--text list-menu__item list-menu__item--link{% if childlink.active %} list-menu__item--active{% endif %}"
+                                    >
+                                      {{ childlink.title | escape }}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            {%- endif -%}
                           </li>
                         {%- endfor -%}
                       </ul>

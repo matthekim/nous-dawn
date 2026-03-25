@@ -5,6 +5,10 @@
   }
 }
 
+.collection .product-grid {
+  margin-top: 100px;
+}
+
 @media screen and (max-width: 989px) {
   .collection .slider.slider--tablet {
     margin-bottom: 1.5rem;

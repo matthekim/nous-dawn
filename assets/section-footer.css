@@ -355,7 +355,7 @@
 }
 
 .footer-block__details-content .list-menu__item--active {
-  transition: text-decoration-thickness var(--duration-short) ease;
+  text-decoration: none;
   color: rgb(var(--color-foreground));
 }
 
@@ -367,8 +367,9 @@
     text-underline-offset: 0.3rem;
   }
 
+  .footer-block__details-content .list-menu__item--active,
   .footer-block__details-content .list-menu__item--active:hover {
-    text-decoration-thickness: 0.2rem;
+    text-decoration: none;
   }
 }
 

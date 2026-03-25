@@ -97,3 +97,10 @@
 .collection__view-all a:not(.link) {
   margin-top: 1rem;
 }
+
+.collection__view-all .link.underlined-link {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: var(--seasonal-color);
+  text-decoration: none;
+}

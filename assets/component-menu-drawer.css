@@ -273,8 +273,7 @@ details[open] > .menu-drawer__submenu {
 }
 
 .menu-drawer .list-social {
-  justify-content: flex-start;
-  margin-left: -1.25rem;
+  display: none;
 }
 
 .menu-drawer .list-social:empty {

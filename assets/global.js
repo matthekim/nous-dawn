@@ -482,6 +482,10 @@ class MenuDrawer extends HTMLElement {
   }
 
   openMenuDrawer(summaryElement) {
+    // Re-open all submenu details
+    this.mainDetailsToggle.querySelectorAll('.menu-drawer__menu details, .menu-drawer__submenu details').forEach((details) => {
+      details.setAttribute('open', '');
+    });
     setTimeout(() => {
       this.mainDetailsToggle.classList.add('menu-opening');
     });

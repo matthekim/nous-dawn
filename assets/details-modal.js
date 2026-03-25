@@ -30,6 +30,17 @@ class DetailsModal extends HTMLElement {
     document.body.addEventListener('click', this.onBodyClickEvent);
     document.body.classList.add('overflow-hidden');
 
+    // Close the menu drawer if open
+    const menuDrawer = document.querySelector('header-drawer');
+    if (menuDrawer) {
+      const menuDetails = menuDrawer.querySelector('details[open]');
+      if (menuDetails) {
+        menuDetails.removeAttribute('open');
+        menuDetails.classList.remove('menu-opening');
+        document.body.classList.remove('overflow-hidden-desktop');
+      }
+    }
+
     trapFocus(
       this.detailsContainer.querySelector('[tabindex="-1"]'),
       this.detailsContainer.querySelector('input:not([type="hidden"])')

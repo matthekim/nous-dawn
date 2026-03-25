@@ -2593,6 +2593,7 @@ input[type='checkbox'] {
   display: flex;
   flex-direction: column;
   background-color: #d8d7d2;
+  overflow: hidden; /* Prevent any gap from showing */
 }
 
 .footer-bg__image {
@@ -2600,7 +2601,6 @@ input[type='checkbox'] {
   display: block;
   mix-blend-mode: multiply;
   transform: scaleY(-1);
-  box-shadow: 0 1px 0 0 #d8d7d2; /* Fill sub-pixel gap from decimal image height */
 }
 
 .footer-padder {

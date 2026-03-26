@@ -966,6 +966,11 @@ summary::-webkit-details-marker {
   flex-shrink: 0;
 }
 
+.title-wrapper-with-link .underlined-link {
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  text-transform: lowercase;
+}
+
 .title-wrapper--no-top-margin {
   margin-top: 0;
 }

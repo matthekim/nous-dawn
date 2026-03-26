@@ -1400,21 +1400,35 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!el.shadowRoot.querySelector('#nous-custom-style')) {
           const styleEl = document.createElement('style');
           styleEl.id = 'nous-custom-style';
+          // Use nuclear option - override ALL purple-related backgrounds
           styleEl.textContent = `
-            [class*="bg-purple"], 
-            [class*="purple"],
-            .bg-purple-primary,
-            .bg-purple-d0,
-            [class*="gravity"] {
+            *[class*="purple"] {
               background-color: ${seasonalColor} !important;
+              background: ${seasonalColor} !important;
             }
-            [class*="hover_bg-purple"]:hover,
-            .group:hover [class*="group-hover_bg-purple"],
-            [class*="gravity"]:hover {
+            div[class*="purple"] {
               background-color: ${seasonalColor} !important;
+              background: ${seasonalColor} !important;
+            }
+            .bg-purple-primary {
+              background-color: ${seasonalColor} !important;
+              background: ${seasonalColor} !important;
+            }
+            *[class*="hover"][class*="purple"]:hover {
+              background-color: ${seasonalColor} !important;
+              background: ${seasonalColor} !important;
+            }
+            .group:hover *[class*="purple"] {
+              background-color: ${seasonalColor} !important;
+              background: ${seasonalColor} !important;
+            }
+            *[class*="gravity"] {
+              background-color: ${seasonalColor} !important;
+              background: ${seasonalColor} !important;
             }
           `;
-          el.shadowRoot.appendChild(styleEl);
+          // Prepend instead of append for higher priority
+          el.shadowRoot.prepend(styleEl);
           console.log('[Follow on Shop] Injected style into shadow of', el.tagName);
         }
         
@@ -1496,19 +1510,31 @@ document.addEventListener('DOMContentLoaded', function() {
           if (!el.shadowRoot.querySelector('#nous-custom-style')) {
             const styleEl = document.createElement('style');
             styleEl.id = 'nous-custom-style';
+            // Use nuclear option - override ALL purple-related backgrounds
             styleEl.textContent = `
-              [class*="bg-purple"], 
-              [class*="purple"],
-              .bg-purple-primary,
-              .bg-purple-d0 {
+              *[class*="purple"] {
                 background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
               }
-              [class*="hover_bg-purple"]:hover,
-              .group:hover [class*="group-hover_bg-purple"] {
+              div[class*="purple"] {
                 background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              .bg-purple-primary {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              *[class*="hover"][class*="purple"]:hover {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              .group:hover *[class*="purple"] {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
               }
             `;
-            el.shadowRoot.appendChild(styleEl);
+            // Prepend instead of append for higher priority
+            el.shadowRoot.prepend(styleEl);
             console.log('[Footer Follow] Injected style element into shadow DOM');
           }
           

@@ -2599,15 +2599,14 @@ input[type='checkbox'] {
 .footer-bg__image {
   width: 100%;
   display: block;
-  mix-blend-mode: multiply;
   transform: scaleY(-1);
+  margin-bottom: -1px;
 }
 
 .footer-padder {
   flex: 1;
   width: 100%;
   background-color: #d8d7d2;
-  mix-blend-mode: multiply;
 }
 
 /* Shopify Follow on Shop button styling */

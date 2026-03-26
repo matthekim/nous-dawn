@@ -2664,6 +2664,16 @@ product-info .page-width {
   padding-right: 0 !important;
 }
 
+/* Product page - header icons in seasonal color */
+body:has(product-info) .header__icon .icon {
+  stroke: var(--seasonal-color) !important;
+  color: var(--seasonal-color) !important;
+}
+
+body:has(product-info) .button-container span {
+  background: var(--seasonal-color) !important;
+}
+
 .header-bg.is-visible {
   opacity: 1;
 }

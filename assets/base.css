@@ -3260,13 +3260,15 @@ details-disclosure > details {
   padding: 0.5rem;
 }
 
-/* Sold out sizes - grey */
+/* Sold out sizes - grey, non-clickable */
 .product-form__input--pill input[type='radio']:disabled + label,
 .product-form__input--pill input[type='radio'].disabled + label {
   background: none !important;
   border: none !important;
   color: var(--color-soldout) !important;
   text-decoration: none !important;
+  pointer-events: none;
+  cursor: default;
 }
 
 /* Disabled checked - still grey with circle */

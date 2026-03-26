@@ -24,7 +24,7 @@
 }
 
 .pagination__item {
-  color: rgb(var(--color-foreground));
+  color: #CCC;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -33,6 +33,11 @@
   width: 100%;
   padding: 0;
   text-decoration: none;
+}
+
+.pagination__item--current {
+  color: var(--seasonal-color);
+  font-weight: bold;
 }
 
 a.pagination__item:hover::after {

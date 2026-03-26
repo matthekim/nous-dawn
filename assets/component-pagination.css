@@ -47,37 +47,26 @@
   height: 3rem;
 }
 
-.pagination__item .icon-caret {
-  height: 0.6rem;
-}
-
 .pagination__item:hover {
   color: var(--seasonal-color);
 }
 
-.pagination__item--next .icon,
-.pagination__item--prev .icon {
-  stroke-width: 2px;
+.pagination__arrow {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
 }
 
-.pagination__item--next .icon {
-  margin-left: -0.2rem;
-  transform: rotate(90deg);
+.pagination__arrow--left {
+  transform: rotate(-135deg);
 }
 
-.pagination__item--next:hover .icon {
-  transform: rotate(90deg) scale(1.07);
+.pagination__arrow--right {
+  transform: rotate(45deg);
 }
 
-.pagination__item--prev .icon {
-  margin-right: -0.2rem;
-  transform: rotate(-90deg);
-}
-
-.pagination__item--prev:hover .icon {
-  transform: rotate(-90deg) scale(1.07);
-}
-
-.pagination__item-arrow:hover::after {
-  display: none;
+.pagination__item-arrow:hover .pagination__arrow {
+  border-color: var(--seasonal-color);
 }

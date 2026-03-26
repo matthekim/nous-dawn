@@ -3351,6 +3351,24 @@ details-disclosure > details {
   z-index: 1;
 }
 
+/* Product media modal - remove image borders */
+.product-media-modal .global-media-settings,
+.product-media-modal__content .global-media-settings {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.product-media-modal .global-media-settings:after,
+.product-media-modal__content .global-media-settings:after {
+  box-shadow: none !important;
+  display: none !important;
+}
+
+.product-media-modal .global-media-settings img,
+.product-media-modal__content .global-media-settings img {
+  border-radius: 0 !important;
+}
+
 /* Product media modal X button - match menu hamburger X style */
 .product-media-modal__toggle {
   background-color: transparent !important;
@@ -3358,7 +3376,7 @@ details-disclosure > details {
   width: 60px !important;
   height: 60px !important;
   padding: 0 !important;
-  right: 70px !important;
+  right: 23px !important;
   top: 23px !important;
 }
 

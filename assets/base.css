@@ -102,6 +102,7 @@ body .bg-purple-primary,
 :root {
   --font-body-family: 'orticalinear', helvetica, arial, sans-serif;
   --font-heading-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  --color-soldout: #cccccc;
   --alpha-button-background: 1;
   --alpha-button-border: 1;
   --alpha-link: 0.85;
@@ -3222,6 +3223,53 @@ details-disclosure > details {
   margin-bottom: 1rem;
 }
 
+/* Product detail page - Size variant buttons */
+.product-form__input--pill input[type='radio'] + label {
+  background: none !important;
+  border: none !important;
+  font-family: 'orticalinear', helvetica, arial, sans-serif !important;
+  font-weight: 400;
+  color: var(--seasonal-color) !important;
+  text-decoration: none !important;
+  padding: 0.8rem 1.2rem;
+  box-shadow: none !important;
+}
+
+.product-form__input--pill input[type='radio'] + label:before {
+  box-shadow: none !important;
+}
+
+.product-form__input--pill input[type='radio'] + label:hover {
+  border: none !important;
+}
+
+/* Selected size - circle with bold */
+.product-form__input--pill input[type='radio']:checked + label {
+  background: none !important;
+  color: var(--seasonal-color) !important;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  font-weight: 700;
+  border: 2px solid var(--seasonal-color) !important;
+  border-radius: 50% !important;
+}
+
+/* Sold out sizes - grey */
+.product-form__input--pill input[type='radio']:disabled + label,
+.product-form__input--pill input[type='radio'].disabled + label {
+  background: none !important;
+  border: none !important;
+  color: var(--color-soldout) !important;
+  text-decoration: none !important;
+}
+
+/* Disabled checked - still grey with circle */
+.product-form__input--pill input[type='radio'].disabled:checked + label,
+.product-form__input--pill input[type='radio']:disabled:checked + label {
+  color: var(--color-soldout) !important;
+  border: 2px solid var(--color-soldout) !important;
+  border-radius: 50% !important;
+}
+
 .gradient {
   background: rgb(var(--color-background));
   background: none; /*var(--gradient-background);*/
@@ -3294,6 +3342,17 @@ details-disclosure > details {
   border-radius: var(--media-radius);
   overflow: visible !important;
   background-color: rgb(var(--color-background));
+}
+
+/* Product detail page - remove image borders */
+.product__media-wrapper .global-media-settings,
+.product__media-item .global-media-settings {
+  border: none !important;
+}
+
+.product__media-wrapper .global-media-settings:after,
+.product__media-item .global-media-settings:after {
+  box-shadow: none !important;
 }
 
 .global-media-settings:after {

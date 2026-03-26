@@ -84,7 +84,11 @@ button.shopify-payment-button__button--unbranded,
   font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
 }
 
-.bg-purple-primary {
+/* Override Shopify Follow on Shop button */
+.bg-purple-primary,
+body .bg-purple-primary,
+[class*="bg-purple-primary"],
+.bg-purple-primary.bg-purple-primary {
   background-color: var(--seasonal-color) !important;
 }
 

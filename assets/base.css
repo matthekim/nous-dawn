@@ -3697,6 +3697,8 @@ details-disclosure > details {
   background-color: var(--seasonal-color) !important;
   border-color: var(--seasonal-color) !important;
   color: #fff !important;
+  top: 38px !important;
+  left: 38px !important;
 }
 
 .product__media-icon .icon {

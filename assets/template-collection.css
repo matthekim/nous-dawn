@@ -1,6 +1,7 @@
 .collection-title {
   color: var(--seasonal-color);
-  text-align: center;
+  text-align: left;
+  margin-top: 150px;
   margin-bottom: 3rem;
   font-size: 3rem;
 }

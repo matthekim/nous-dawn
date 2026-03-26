@@ -3251,17 +3251,28 @@ details-disclosure > details {
   color: var(--seasonal-color) !important;
 }
 
-/* Product info - reduced line-height */
-.product__info-container,
-.product__info-container p,
+/* Product description - line-height */
 .product__info-container .product__description {
-  line-height: 1.3 !important;
+  line-height: 1.5em !important;
 }
 
 /* Product form labels - lowercase */
-.product-form__input .form__label,
-.product__info-container .form__label {
+.form__label {
   text-transform: lowercase;
+}
+
+/* Product grid - 50/50 layout */
+@media screen and (min-width: 990px) {
+  .product--large:not(.product--no-media) .grid__item,
+  .product--large:not(.product--no-media) .product__media-wrapper {
+    max-width: 50% !important;
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+  }
+
+  .product--large:not(.product--no-media) .product__info-wrapper {
+    max-width: 50% !important;
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+  }
 }
 
 /* Product title - half size */

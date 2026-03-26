@@ -3692,6 +3692,17 @@ details-disclosure > details {
   box-shadow: none !important;
 }
 
+/* Product magnifying glass icon - seasonal color background */
+.product__media-icon {
+  background-color: var(--seasonal-color) !important;
+  border-color: var(--seasonal-color) !important;
+  color: #fff !important;
+}
+
+.product__media-icon .icon {
+  color: #fff !important;
+}
+
 .thumbnail:focus,
 .thumbnail:focus-visible,
 .thumbnail.focused,

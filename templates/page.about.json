@@ -33,7 +33,7 @@
       "type": "main-page",
       "custom_css": [
         "h1 {color: var(--seasonal-color);}",
-        "@media screen and (min-width: 990px) {.page-width--narrow {max-width: var(--page-width); }}"
+        "@media screen and (min-width: 990px) {.page-width--narrow {max-width: var(--page-width); padding: 0 5rem; }}"
       ],
       "settings": {
         "padding_top": 28,

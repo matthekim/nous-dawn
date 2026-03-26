@@ -2643,6 +2643,13 @@ input[type='checkbox'] {
   opacity: 0 !important;
 }
 
+/* Hide header-bg on product pages */
+body:has(product-info) .header-bg,
+body:has(product-info) .header-bg.is-visible {
+  opacity: 0 !important;
+  display: none !important;
+}
+
 .header-bg.is-visible {
   opacity: 1;
 }

@@ -1395,6 +1395,29 @@ document.addEventListener('DOMContentLoaded', function() {
     allElements.forEach(el => {
       if (el.shadowRoot) {
         console.log('[Follow on Shop] Found element with shadowRoot:', el.tagName);
+        
+        // Inject a style element into every shadow DOM to override purple styles
+        if (!el.shadowRoot.querySelector('#nous-custom-style')) {
+          const styleEl = document.createElement('style');
+          styleEl.id = 'nous-custom-style';
+          styleEl.textContent = `
+            [class*="bg-purple"], 
+            [class*="purple"],
+            .bg-purple-primary,
+            .bg-purple-d0,
+            [class*="gravity"] {
+              background-color: ${seasonalColor} !important;
+            }
+            [class*="hover_bg-purple"]:hover,
+            .group:hover [class*="group-hover_bg-purple"],
+            [class*="gravity"]:hover {
+              background-color: ${seasonalColor} !important;
+            }
+          `;
+          el.shadowRoot.appendChild(styleEl);
+          console.log('[Follow on Shop] Injected style into shadow of', el.tagName);
+        }
+        
         const shadowPurple = el.shadowRoot.querySelectorAll('.bg-purple-primary');
         const shadowButtons = el.shadowRoot.querySelectorAll('button');
         console.log('[Follow on Shop] In', el.tagName, '- purple:', shadowPurple.length, 'buttons:', shadowButtons.length);
@@ -1468,6 +1491,27 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('[Footer Follow] Child:', el.tagName, String(el.className || ''));
         if (el.shadowRoot) {
           console.log('[Footer Follow] Has shadow root:', el.tagName);
+          
+          // Inject a style element into the shadow DOM to override all purple styles
+          if (!el.shadowRoot.querySelector('#nous-custom-style')) {
+            const styleEl = document.createElement('style');
+            styleEl.id = 'nous-custom-style';
+            styleEl.textContent = `
+              [class*="bg-purple"], 
+              [class*="purple"],
+              .bg-purple-primary,
+              .bg-purple-d0 {
+                background-color: ${seasonalColor} !important;
+              }
+              [class*="hover_bg-purple"]:hover,
+              .group:hover [class*="group-hover_bg-purple"] {
+                background-color: ${seasonalColor} !important;
+              }
+            `;
+            el.shadowRoot.appendChild(styleEl);
+            console.log('[Footer Follow] Injected style element into shadow DOM');
+          }
+          
           const shadowAll = el.shadowRoot.querySelectorAll('*');
           shadowAll.forEach(inner => {
             const cls = String(inner.className || '');

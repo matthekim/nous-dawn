@@ -32,7 +32,8 @@
     "main": {
       "type": "main-page",
       "custom_css": [
-        "h1{color: var(--seasonal-color);}"
+        "h1 {color: var(--seasonal-color);}",
+        "@media screen and (min-width: 990px) {.page-width--narrow {max-width: 72.6rem; padding: 0; }}"
       ],
       "settings": {
         "padding_top": 28,

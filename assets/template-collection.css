@@ -2,7 +2,7 @@
   color: var(--seasonal-color);
   text-align: left;
   text-transform: lowercase;
-  margin-top: 150px;
+  margin-top: 200px;
   margin-bottom: 3rem;
   font-size: 3rem;
 }
@@ -19,7 +19,7 @@
 }
 
 .collection .product-grid {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 @media screen and (max-width: 989px) {

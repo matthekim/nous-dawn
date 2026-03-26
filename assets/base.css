@@ -30,7 +30,6 @@ body {
 
 #menu-blend-overlay.active {
   opacity: 0.85;
-  z-index: 9999999;
 }
 
 * {
@@ -2854,7 +2853,7 @@ details[open] .modal-overlay::after {
   padding: 0 2rem;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
   position: relative;
-  z-index: 99999999;
+  z-index: 2;
 }
 
 .search-modal .modal-overlay {

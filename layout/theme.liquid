@@ -402,22 +402,44 @@
       document.addEventListener('DOMContentLoaded', function() {
         const menuDetails = document.getElementById('Details-menu-drawer-container');
         const blendOverlay = document.getElementById('menu-blend-overlay');
-        if (menuDetails && blendOverlay) {
-          const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-              if (mutation.attributeName === 'class' || mutation.attributeName === 'open') {
-                // Check if search modal is open
-                const searchModal = document.querySelector('.header__search details[open]');
-                if (menuDetails.hasAttribute('open') && menuDetails.classList.contains('menu-opening')) {
-                  blendOverlay.classList.add('active');
-                } else if (!searchModal) {
-                  // Only remove active if search modal is not open
-                  blendOverlay.classList.remove('active');
+        const searchDetails = document.querySelector('.header__search details');
+        
+        if (blendOverlay) {
+          // Observer for menu drawer
+          if (menuDetails) {
+            const menuObserver = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'class' || mutation.attributeName === 'open') {
+                  const searchModal = document.querySelector('.header__search details[open]');
+                  if (menuDetails.hasAttribute('open') && menuDetails.classList.contains('menu-opening')) {
+                    blendOverlay.classList.add('active');
+                  } else if (!searchModal) {
+                    blendOverlay.classList.remove('active');
+                  }
                 }
-              }
+              });
             });
-          });
-          observer.observe(menuDetails, { attributes: true });
+            menuObserver.observe(menuDetails, { attributes: true });
+          }
+          
+          // Observer for search modal
+          if (searchDetails) {
+            const searchObserver = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'open') {
+                  if (searchDetails.hasAttribute('open')) {
+                    blendOverlay.classList.add('active');
+                  } else {
+                    const menuOpen = menuDetails && menuDetails.hasAttribute('open') && menuDetails.classList.contains('menu-opening');
+                    if (!menuOpen) {
+                      blendOverlay.classList.remove('active');
+                    }
+                  }
+                }
+              });
+            });
+            searchObserver.observe(searchDetails, { attributes: true });
+          }
         }
       });
     </script>

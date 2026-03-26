@@ -176,6 +176,7 @@ menu-drawer > details[open] > summary::before {
 
 .menu-drawer summary.menu-drawer__menu-item {
   padding-right: 2rem;
+  cursor: default;
 }
 
 .menu-drawer__menu-item--active,

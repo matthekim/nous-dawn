@@ -1718,3 +1718,129 @@ document.addEventListener('DOMContentLoaded', function() {
     if (pollCount >= 10) clearInterval(pollInterval);
   }, 1000);
 });
+
+// ============================================
+// Shop Pay Button Override (Product Pages)
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  const seasonalColor = getComputedStyle(document.documentElement).getPropertyValue('--seasonal-color').trim() || '#48a3df';
+  console.log('[Shop Pay] Starting Shop Pay button override with color:', seasonalColor);
+  
+  function styleShopPayButton() {
+    // Find all shop-pay-wallet-button elements
+    const shopPayButtons = document.querySelectorAll('shop-pay-wallet-button');
+    console.log('[Shop Pay] Found shop-pay-wallet-button elements:', shopPayButtons.length);
+    
+    shopPayButtons.forEach((btn, idx) => {
+      console.log('[Shop Pay] Processing button', idx);
+      
+      // Try shadow root
+      if (btn.shadowRoot) {
+        console.log('[Shop Pay] Button has shadow root!');
+        
+        // Target the purple background div
+        const bgDiv = btn.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
+        if (bgDiv) {
+          console.log('[Shop Pay] Found background div:', bgDiv.className);
+          bgDiv.style.setProperty('display', 'none', 'important');
+          
+          // Create replacement
+          if (!btn.shadowRoot.querySelector('#nous-shoppay-bg')) {
+            const replacement = document.createElement('div');
+            replacement.id = 'nous-shoppay-bg';
+            replacement.style.cssText = `
+              position: absolute;
+              inset: 0;
+              z-index: -10;
+              border-radius: 9999px;
+              background-color: ${seasonalColor};
+              pointer-events: none;
+            `;
+            bgDiv.parentNode.insertBefore(replacement, bgDiv);
+            console.log('[Shop Pay] Created replacement div');
+          }
+        }
+        
+        // Also try broader purple selector
+        const purpleEls = btn.shadowRoot.querySelectorAll('[class*="purple"]');
+        purpleEls.forEach(el => {
+          if (el.id !== 'nous-shoppay-bg') {
+            console.log('[Shop Pay] Hiding purple element:', el.className);
+            el.style.setProperty('display', 'none', 'important');
+          }
+        });
+        
+        // Inject adoptedStyleSheets
+        try {
+          const sheet = new CSSStyleSheet();
+          sheet.replaceSync(`
+            [class*="purple"]:not(#nous-shoppay-bg),
+            div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]:not(#nous-shoppay-bg) {
+              display: none !important;
+            }
+          `);
+          const existing = btn.shadowRoot.adoptedStyleSheets || [];
+          btn.shadowRoot.adoptedStyleSheets = [...existing, sheet];
+          console.log('[Shop Pay] Injected adoptedStyleSheet');
+        } catch (e) {
+          console.log('[Shop Pay] adoptedStyleSheets failed:', e);
+        }
+        
+        // MutationObserver on shadow
+        if (!btn.shadowRoot._nousShopPayObserver) {
+          btn.shadowRoot._nousShopPayObserver = true;
+          const observer = new MutationObserver(() => {
+            const bg = btn.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]:not(#nous-shoppay-bg)');
+            if (bg) {
+              bg.style.setProperty('display', 'none', 'important');
+            }
+          });
+          observer.observe(btn.shadowRoot, { childList: true, subtree: true, attributes: true });
+          console.log('[Shop Pay] Added mutation observer');
+        }
+      } else {
+        console.log('[Shop Pay] No shadow root yet for button', idx);
+      }
+    });
+    
+    // Also look inside shopify-accelerated-checkout
+    const checkoutEl = document.querySelectorAll('shopify-accelerated-checkout');
+    checkoutEl.forEach(checkout => {
+      if (checkout.shadowRoot) {
+        console.log('[Shop Pay] shopify-accelerated-checkout has shadow');
+        // Try to find nested shop-pay-wallet-button
+        const innerBtn = checkout.shadowRoot.querySelector('shop-pay-wallet-button');
+        if (innerBtn && innerBtn.shadowRoot) {
+          console.log('[Shop Pay] Found inner shop-pay-wallet-button');
+          // Same styling logic
+          const bgDiv = innerBtn.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
+          if (bgDiv && bgDiv.id !== 'nous-shoppay-bg') {
+            bgDiv.style.setProperty('display', 'none', 'important');
+          }
+        }
+      }
+    });
+  }
+  
+  // Run immediately and with delays
+  styleShopPayButton();
+  setTimeout(styleShopPayButton, 500);
+  setTimeout(styleShopPayButton, 1000);
+  setTimeout(styleShopPayButton, 2000);
+  setTimeout(styleShopPayButton, 3000);
+  
+  // Observer for dynamically added buttons
+  const observer = new MutationObserver(() => {
+    styleShopPayButton();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  console.log('[Shop Pay] Observer started');
+  
+  // Poll for late shadow DOM
+  let pollCount = 0;
+  const pollInterval = setInterval(() => {
+    styleShopPayButton();
+    pollCount++;
+    if (pollCount >= 15) clearInterval(pollInterval);
+  }, 1000);
+});

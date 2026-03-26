@@ -1503,14 +1503,55 @@ document.addEventListener('DOMContentLoaded', function() {
       const nestedElements = followOnShopContainer.querySelectorAll('*');
       nestedElements.forEach(el => {
         console.log('[Footer Follow] Child:', el.tagName, String(el.className || ''));
+        
+        // Also try targeting SHOP-FOLLOW-BUTTON directly
+        if (el.tagName === 'SHOP-FOLLOW-BUTTON' && el.shadowRoot) {
+          console.log('[Footer Follow] Direct SHOP-FOLLOW-BUTTON with shadow!');
+          
+          // Direct querySelector for purple div
+          const purpleDiv = el.shadowRoot.querySelector('[class*="purple"]');
+          if (purpleDiv) {
+            console.log('[Footer Follow] Direct found purple div!');
+            purpleDiv.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
+            purpleDiv.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
+          }
+          
+          // Try with different class patterns
+          const bgPurple = el.shadowRoot.querySelector('.bg-purple-primary');
+          if (bgPurple) {
+            console.log('[Footer Follow] Found .bg-purple-primary directly!');
+            bgPurple.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
+            bgPurple.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
+          }
+        }
         if (el.shadowRoot) {
           console.log('[Footer Follow] Has shadow root:', el.tagName);
           
-          // Inject a style element into the shadow DOM to override all purple styles
+          // Try using adoptedStyleSheets API (highest priority in shadow DOM)
+          try {
+            const sheet = new CSSStyleSheet();
+            sheet.replaceSync(`
+              *[class*="purple"], div[class*="purple"], .bg-purple-primary, .bg-purple-d0, [class*="bg-purple"] {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              *[class*="hover_bg-purple"]:hover, *[class*="group-hover"]:hover {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+            `);
+            // Put our sheet LAST so it wins
+            const existingSheets = el.shadowRoot.adoptedStyleSheets || [];
+            el.shadowRoot.adoptedStyleSheets = [...existingSheets, sheet];
+            console.log('[Footer Follow] Added adoptedStyleSheet, total sheets:', el.shadowRoot.adoptedStyleSheets.length);
+          } catch (e) {
+            console.log('[Footer Follow] adoptedStyleSheets failed:', e);
+          }
+          
+          // Also inject a style element as fallback
           if (!el.shadowRoot.querySelector('#nous-custom-style')) {
             const styleEl = document.createElement('style');
             styleEl.id = 'nous-custom-style';
-            // Use nuclear option - override ALL purple-related backgrounds
             styleEl.textContent = `
               *[class*="purple"] {
                 background-color: ${seasonalColor} !important;
@@ -1524,16 +1565,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
               }
-              *[class*="hover"][class*="purple"]:hover {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
               .group:hover *[class*="purple"] {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
               }
             `;
-            // Prepend instead of append for higher priority
             el.shadowRoot.prepend(styleEl);
             console.log('[Footer Follow] Injected style element into shadow DOM');
           }
@@ -1542,13 +1578,27 @@ document.addEventListener('DOMContentLoaded', function() {
           shadowAll.forEach(inner => {
             const cls = String(inner.className || '');
             console.log('[Footer Follow] Shadow child:', inner.tagName, cls);
+            
+            // Check computed style for purple background
+            const computed = window.getComputedStyle(inner);
+            const bgColor = computed.backgroundColor;
+            // rgb(136, 71, 224) is approximately purple
+            if (bgColor && (bgColor.includes('136') || bgColor.includes('purple') || bgColor.includes('129'))) {
+              console.log('[Footer Follow] Found purple computed bg!', bgColor);
+              inner.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
+              inner.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
+            }
+            
             // Style any element with purple class or button class
             if (cls.includes('bg-purple') || cls.includes('purple')) {
-              inner.style.setProperty('background-color', seasonalColor, 'important');
+              // Use multiple methods to force the style
+              inner.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
+              inner.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
               console.log('[Footer Follow] Styled purple element in shadow:', cls);
             }
             if (inner.tagName === 'BUTTON' || cls.includes('button')) {
-              inner.style.setProperty('background-color', seasonalColor, 'important');
+              inner.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
+              inner.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
               console.log('[Footer Follow] Styled button in shadow');
             }
           });
@@ -1570,7 +1620,16 @@ document.addEventListener('DOMContentLoaded', function() {
   findAndStyleButtons();
   
   // Retry a few times with delays since shadow DOM may load later
+  setTimeout(findAndStyleButtons, 500);
   setTimeout(findAndStyleButtons, 1000);
   setTimeout(findAndStyleButtons, 2000);
   setTimeout(findAndStyleButtons, 4000);
+  
+  // Also poll every second for 10 seconds to catch late-renders
+  let pollCount = 0;
+  const pollInterval = setInterval(() => {
+    findAndStyleButtons();
+    pollCount++;
+    if (pollCount >= 10) clearInterval(pollInterval);
+  }, 1000);
 });

@@ -84,6 +84,10 @@ button.shopify-payment-button__button--unbranded,
   font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
 }
 
+.bg-purple-primary {
+  background-color: var(--seasonal-color) !important;
+}
+
 :root {
   --font-body-family: 'orticalinear', helvetica, arial, sans-serif;
   --font-heading-family: 'europa_trial-bold', helvetica, arial, sans-serif;

@@ -1537,15 +1537,30 @@ document.addEventListener('DOMContentLoaded', function() {
           const bgDiv = el.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
           if (bgDiv) {
             console.log('[Footer Follow] Found background div by structure!', bgDiv.className);
-            // Remove purple classes
-            if (bgDiv.className && typeof bgDiv.className === 'string') {
-              bgDiv.className = bgDiv.className.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
-            }
-            // Set style directly - this is what works manually
-            bgDiv.style.backgroundColor = seasonalColor;
-            bgDiv.style.setProperty('background-color', seasonalColor, 'important');
-            bgDiv.style.setProperty('background', seasonalColor, 'important');
-            console.log('[Footer Follow] Applied style to bgDiv, style now:', bgDiv.getAttribute('style'));
+            
+            // Function to force the style
+            const applyStyle = () => {
+              // Remove purple classes
+              if (bgDiv.className && typeof bgDiv.className === 'string') {
+                bgDiv.className = bgDiv.className.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
+              }
+              // Set style directly - this is what works manually
+              bgDiv.style.backgroundColor = seasonalColor;
+              bgDiv.style.setProperty('background-color', seasonalColor, 'important');
+              bgDiv.style.setProperty('background', seasonalColor, 'important');
+            };
+            
+            // Apply immediately
+            applyStyle();
+            
+            // Also apply on next frames to catch any re-renders
+            requestAnimationFrame(() => {
+              applyStyle();
+              requestAnimationFrame(() => {
+                applyStyle();
+                console.log('[Footer Follow] Applied style after RAF, style now:', bgDiv.getAttribute('style'));
+              });
+            });
           }
           
           // Also try first child div after button
@@ -1599,25 +1614,82 @@ document.addEventListener('DOMContentLoaded', function() {
         if (el.shadowRoot) {
           console.log('[Footer Follow] Has shadow root:', el.tagName);
           
-          // Try using adoptedStyleSheets API (highest priority in shadow DOM)
+          // Try modifying existing adoptedStyleSheets to remove purple
           try {
-            const sheet = new CSSStyleSheet();
-            sheet.replaceSync(`
-              *[class*="purple"], div[class*="purple"], .bg-purple-primary, .bg-purple-d0, [class*="bg-purple"] {
+            const existingSheets = el.shadowRoot.adoptedStyleSheets || [];
+            console.log('[Footer Follow] Existing sheets:', existingSheets.length);
+            
+            // Create a completely new stylesheet array with our overrides
+            const ourSheet = new CSSStyleSheet();
+            ourSheet.replaceSync(`
+              /* Nuclear override - target everything with purple */
+              .bg-purple-primary,
+              .bg-purple-d0,
+              [class*="bg-purple"],
+              [class*="purple"],
+              div[class*="absolute"][class*="rounded-max"],
+              div[class*="absolute"][class*="inset-y-0"] {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+                --tw-bg-opacity: 1 !important;
+              }
+              .bg-purple-primary::before,
+              .bg-purple-primary::after,
+              [class*="purple"]::before,
+              [class*="purple"]::after {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
               }
-              *[class*="hover_bg-purple"]:hover, *[class*="group-hover"]:hover {
+              .group:hover .bg-purple-d0,
+              .group:hover [class*="purple"],
+              .group-hover_bg-purple-d0,
+              [class*="group-hover_bg-purple"] {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
               }
             `);
-            // Put our sheet LAST so it wins
-            const existingSheets = el.shadowRoot.adoptedStyleSheets || [];
-            el.shadowRoot.adoptedStyleSheets = [...existingSheets, sheet];
+            
+            // Put our sheet LAST and also try FIRST
+            el.shadowRoot.adoptedStyleSheets = [...existingSheets, ourSheet];
             console.log('[Footer Follow] Added adoptedStyleSheet, total sheets:', el.shadowRoot.adoptedStyleSheets.length);
           } catch (e) {
             console.log('[Footer Follow] adoptedStyleSheets failed:', e);
+          }
+          
+          // First, find and modify the existing STYLE element in shadow DOM
+          const existingStyle = el.shadowRoot.querySelector('style');
+          if (existingStyle) {
+            console.log('[Footer Follow] Found existing style element, modifying...');
+            // Append our overrides to the existing style
+            existingStyle.textContent += `
+              /* NOUS OVERRIDE */
+              .bg-purple-primary,
+              .bg-purple-d0,
+              [class*="bg-purple"],
+              [class*="purple"],
+              div[class*="absolute"][class*="inset-y-0"] {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              .bg-purple-primary::before,
+              .bg-purple-primary::after,
+              [class*="purple"]::before,
+              [class*="purple"]::after,
+              div[class*="absolute"]::before,
+              div[class*="absolute"]::after {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              .group-hover_bg-purple-d0:hover,
+              .group:hover [class*="purple"] {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              * {
+                --tw-bg-opacity: 1 !important;
+              }
+            `;
+            console.log('[Footer Follow] Modified existing style');
           }
           
           // Also inject a style element as fallback
@@ -1625,21 +1697,42 @@ document.addEventListener('DOMContentLoaded', function() {
             const styleEl = document.createElement('style');
             styleEl.id = 'nous-custom-style';
             styleEl.textContent = `
-              *[class*="purple"] {
+              /* Target all potential purple elements and their pseudo-elements */
+              *[class*="purple"],
+              *[class*="purple"]::before,
+              *[class*="purple"]::after {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
               }
-              div[class*="purple"] {
+              div[class*="purple"],
+              div[class*="purple"]::before,
+              div[class*="purple"]::after {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
               }
-              .bg-purple-primary {
+              .bg-purple-primary,
+              .bg-purple-primary::before,
+              .bg-purple-primary::after {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
               }
-              .group:hover *[class*="purple"] {
+              /* Target by structure */
+              div[class*="absolute"][class*="inset-y-0"],
+              div[class*="absolute"][class*="inset-y-0"]::before,
+              div[class*="absolute"][class*="inset-y-0"]::after {
                 background-color: ${seasonalColor} !important;
                 background: ${seasonalColor} !important;
+              }
+              /* Force on hover */
+              .group:hover *[class*="purple"],
+              .group:hover div[class*="absolute"] {
+                background-color: ${seasonalColor} !important;
+                background: ${seasonalColor} !important;
+              }
+              /* Override Tailwind CSS variables */
+              :host {
+                --color-purple-primary: ${seasonalColor} !important;
+                --color-purple-d0: ${seasonalColor} !important;
               }
             `;
             el.shadowRoot.prepend(styleEl);

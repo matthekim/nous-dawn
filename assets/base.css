@@ -3273,6 +3273,11 @@ details-disclosure > details {
     max-width: 50% !important;
     width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
   }
+
+  /* Thumbnails - larger for 50/50 layout */
+  .product--large .thumbnail-list {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
 }
 
 /* Product title - half size */

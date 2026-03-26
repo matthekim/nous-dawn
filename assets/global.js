@@ -1335,17 +1335,33 @@ class CartPerformance {
 
 // Style "Follow on Shop" button
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('[Follow on Shop] Script started');
   const seasonalColor = getComputedStyle(document.documentElement).getPropertyValue('--seasonal-color').trim();
+  console.log('[Follow on Shop] Seasonal color:', seasonalColor);
   
   const observer = new MutationObserver(() => {
     const purpleButtons = document.querySelectorAll('.bg-purple-primary');
     if (purpleButtons.length > 0) {
-      purpleButtons.forEach(btn => {
+      console.log('[Follow on Shop] Found', purpleButtons.length, 'purple buttons');
+      purpleButtons.forEach((btn, i) => {
         btn.style.setProperty('background-color', seasonalColor, 'important');
+        console.log('[Follow on Shop] Styled button', i, btn);
       });
       observer.disconnect();
+      console.log('[Follow on Shop] SUCCESS - Observer disconnected');
     }
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
+  console.log('[Follow on Shop] Observer started, watching for .bg-purple-primary');
+  
+  // Also try immediately in case it's already there
+  const existing = document.querySelectorAll('.bg-purple-primary');
+  if (existing.length > 0) {
+    console.log('[Follow on Shop] Found existing buttons on load:', existing.length);
+    existing.forEach((btn, i) => {
+      btn.style.setProperty('background-color', seasonalColor, 'important');
+      console.log('[Follow on Shop] Styled existing button', i, btn);
+    });
+  }
 });

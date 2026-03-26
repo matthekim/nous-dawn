@@ -3295,10 +3295,11 @@ details-disclosure > details {
 
 /* Product image pagination bullets */
 .product__media-pagination {
-  display: flex;
-  justify-content: flex-end;
+  display: flex !important;
+  justify-content: flex-end !important;
   gap: 1.2rem;
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .product__media-pagination-bullet {

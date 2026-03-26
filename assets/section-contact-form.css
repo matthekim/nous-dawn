@@ -19,15 +19,41 @@
 .contact .field__input::placeholder,
 .contact .text-area.field__input::placeholder {
   color: #ccc !important;
+  opacity: 1 !important;
 }
 
 .contact .field__label {
-  display: none;
+  display: none !important;
 }
 
 .contact .text-area.field__input {
   min-height: 150px;
   border-radius: 25px !important;
+}
+
+/* Contact submit button - tilted seasonal style */
+.contact__button .button {
+  background-color: var(--seasonal-color) !important;
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 2.7rem;
+  text-transform: lowercase;
+  transform: rotate(-0.8deg);
+  border: none !important;
+  padding: 0.8rem 2rem;
+  min-height: auto;
+  box-shadow: none !important;
+}
+
+.contact__button .button::before,
+.contact__button .button::after {
+  display: none !important;
+}
+
+@media screen and (min-width: 750px) {
+  .contact__button .button {
+    font-size: 3rem;
+  }
 }
 
 .contact img {

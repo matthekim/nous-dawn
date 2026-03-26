@@ -470,7 +470,7 @@ class MenuDrawer extends HTMLElement {
         document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`);
       }
     } else {
-      // Prevent submenu toggle - keep submenus always open
+      // Submenu summaries are hidden, so this branch shouldn't be reached
       event.preventDefault();
     }
   }

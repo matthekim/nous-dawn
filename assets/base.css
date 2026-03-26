@@ -3227,7 +3227,7 @@ details-disclosure > details {
 .product-form__input--pill input[type='radio'] + label {
   background: none !important;
   border: none !important;
-  font-family: 'orticalinear', helvetica, arial, sans-serif !important;
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
   font-weight: 400;
   color: var(--seasonal-color) !important;
   text-decoration: none !important;
@@ -3247,7 +3247,7 @@ details-disclosure > details {
 .product-form__input--pill input[type='radio']:checked + label {
   background-color: var(--seasonal-color) !important;
   color: #ffffff !important;
-  font-family: 'orticalinear', helvetica, arial, sans-serif !important;
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
   font-weight: 400;
   border: none !important;
   border-radius: 50% !important;
@@ -3363,6 +3363,38 @@ details-disclosure > details {
 
 .product__media-wrapper .global-media-settings:after,
 .product__media-item .global-media-settings:after {
+  box-shadow: none !important;
+}
+
+/* Product images - remove all focus/click borders */
+.product__media-toggle:focus,
+.product__media-toggle:focus-visible,
+.product__media-toggle.focused,
+.product__media-toggle:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.product__media-toggle:focus-visible:after,
+.product__media-toggle.focused:after,
+.product__media-toggle:active:after {
+  box-shadow: none !important;
+}
+
+.thumbnail:focus,
+.thumbnail:focus-visible,
+.thumbnail.focused,
+.thumbnail:active,
+.thumbnail[aria-current]:focus,
+.thumbnail[aria-current]:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.deferred-media__poster:focus,
+.deferred-media__poster:focus-visible,
+.deferred-media__poster:active {
+  outline: none !important;
   box-shadow: none !important;
 }
 

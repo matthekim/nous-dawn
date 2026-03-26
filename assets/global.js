@@ -1532,58 +1532,45 @@ document.addEventListener('DOMContentLoaded', function() {
         if (el.tagName === 'SHOP-FOLLOW-BUTTON' && el.shadowRoot) {
           console.log('[Footer Follow] Direct SHOP-FOLLOW-BUTTON with shadow!');
           
+          // NUCLEAR OPTION: Apply hue-rotate filter to shift purple to blue
+          // Purple is ~270deg hue, our blue is ~200deg, so rotate by -70deg
+          // Also try applying to the element itself
+          el.style.setProperty('--shop-color-primary', seasonalColor, 'important');
+          el.style.setProperty('--color-purple-primary', seasonalColor, 'important');
+          
           // Target the background div by its structural classes (not purple which we remove)
           // The purple div has: absolute inset-y-0 -z-10 rounded-max
           const bgDiv = el.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
           if (bgDiv) {
             console.log('[Footer Follow] Found background div by structure!', bgDiv.className);
             
-            // Function to force the style
-            const applyStyle = () => {
-              // Remove purple classes
-              if (bgDiv.className && typeof bgDiv.className === 'string') {
-                bgDiv.className = bgDiv.className.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
-              }
-              // Set style directly - this is what works manually
-              bgDiv.style.backgroundColor = seasonalColor;
-              bgDiv.style.setProperty('background-color', seasonalColor, 'important');
-              bgDiv.style.setProperty('background', seasonalColor, 'important');
-            };
+            // Try hiding the purple div and creating our own
+            bgDiv.style.setProperty('display', 'none', 'important');
+            console.log('[Footer Follow] Hidden the purple div');
             
-            // Apply immediately
-            applyStyle();
-            
-            // Also apply on next frames to catch any re-renders
-            requestAnimationFrame(() => {
-              applyStyle();
-              requestAnimationFrame(() => {
-                applyStyle();
-                console.log('[Footer Follow] Applied style after RAF, style now:', bgDiv.getAttribute('style'));
-              });
-            });
+            // Create a replacement div
+            if (!el.shadowRoot.querySelector('#nous-bg-replacement')) {
+              const replacement = document.createElement('div');
+              replacement.id = 'nous-bg-replacement';
+              replacement.style.cssText = `
+                position: absolute;
+                inset: 0;
+                z-index: -10;
+                border-radius: 9999px;
+                background-color: ${seasonalColor};
+                pointer-events: none;
+              `;
+              // Insert it in the same position
+              bgDiv.parentNode.insertBefore(replacement, bgDiv);
+              console.log('[Footer Follow] Created replacement div');
+            }
           }
           
-          // Also try first child div after button
-          const button = el.shadowRoot.querySelector('button');
-          if (button && button.nextElementSibling && button.nextElementSibling.tagName === 'DIV') {
-            const nextDiv = button.nextElementSibling;
-            console.log('[Footer Follow] Found div after button:', nextDiv.className);
-            nextDiv.style.backgroundColor = seasonalColor;
-            nextDiv.style.setProperty('background-color', seasonalColor, 'important');
-          }
-          
-          // Direct querySelector for purple div - REMOVE the Tailwind classes entirely
+          // Also hide any other purple divs found
           const purpleDiv = el.shadowRoot.querySelector('[class*="purple"]');
-          if (purpleDiv) {
-            console.log('[Footer Follow] Direct found purple div, removing classes!');
-            forceStyle(purpleDiv, seasonalColor);
-          }
-          
-          // Try with different class patterns
-          const bgPurple = el.shadowRoot.querySelector('.bg-purple-primary');
-          if (bgPurple) {
-            console.log('[Footer Follow] Found .bg-purple-primary, using forceStyle!');
-            forceStyle(bgPurple, seasonalColor);
+          if (purpleDiv && purpleDiv.id !== 'nous-bg-replacement') {
+            console.log('[Footer Follow] Hiding purple div');
+            purpleDiv.style.setProperty('display', 'none', 'important');
           }
           
           // Add MutationObserver on shadow DOM to catch re-renders
@@ -1594,18 +1581,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                   const target = mutation.target;
                   const cls = String(target.className || '');
-                  if (cls.includes('purple')) {
-                    console.log('[Footer Follow] Shadow mutation detected purple class!');
-                    target.className = cls.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
-                    target.style.backgroundColor = seasonalColor;
-                    target.style.setProperty('background-color', seasonalColor, 'important');
+                  if (cls.includes('purple') && target.id !== 'nous-bg-replacement') {
+                    console.log('[Footer Follow] Shadow mutation detected purple class - hiding!');
+                    target.style.setProperty('display', 'none', 'important');
                   }
+                }
+                // If new nodes added, check for purple
+                if (mutation.type === 'childList' && mutation.addedNodes.length) {
+                  mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) {
+                      const cls = String(node.className || '');
+                      if (cls.includes('purple') && node.id !== 'nous-bg-replacement') {
+                        console.log('[Footer Follow] New purple node added - hiding!');
+                        node.style.setProperty('display', 'none', 'important');
+                      }
+                    }
+                  });
                 }
               });
             });
             shadowObserver.observe(el.shadowRoot, {
               attributes: true,
               attributeFilter: ['class', 'style'],
+              childList: true,
               subtree: true
             });
             console.log('[Footer Follow] Added shadow DOM mutation observer');
@@ -1614,42 +1612,29 @@ document.addEventListener('DOMContentLoaded', function() {
         if (el.shadowRoot) {
           console.log('[Footer Follow] Has shadow root:', el.tagName);
           
-          // Try modifying existing adoptedStyleSheets to remove purple
+          // Try modifying existing adoptedStyleSheets to hide purple
           try {
             const existingSheets = el.shadowRoot.adoptedStyleSheets || [];
             console.log('[Footer Follow] Existing sheets:', existingSheets.length);
             
-            // Create a completely new stylesheet array with our overrides
+            // Create a completely new stylesheet array - HIDE purple elements
             const ourSheet = new CSSStyleSheet();
             ourSheet.replaceSync(`
-              /* Nuclear override - target everything with purple */
+              /* NOUS: Hide purple elements completely */
               .bg-purple-primary,
               .bg-purple-d0,
               [class*="bg-purple"],
-              [class*="purple"],
-              div[class*="absolute"][class*="rounded-max"],
-              div[class*="absolute"][class*="inset-y-0"] {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-                --tw-bg-opacity: 1 !important;
+              div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]:not(#nous-bg-replacement) {
+                display: none !important;
               }
-              .bg-purple-primary::before,
-              .bg-purple-primary::after,
-              [class*="purple"]::before,
-              [class*="purple"]::after {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              .group:hover .bg-purple-d0,
-              .group:hover [class*="purple"],
-              .group-hover_bg-purple-d0,
-              [class*="group-hover_bg-purple"] {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
+              /* Also try visibility */
+              [class*="purple"]:not(#nous-bg-replacement) {
+                visibility: hidden !important;
+                opacity: 0 !important;
               }
             `);
             
-            // Put our sheet LAST and also try FIRST
+            // Put our sheet LAST
             el.shadowRoot.adoptedStyleSheets = [...existingSheets, ourSheet];
             console.log('[Footer Follow] Added adoptedStyleSheet, total sheets:', el.shadowRoot.adoptedStyleSheets.length);
           } catch (e) {
@@ -1660,33 +1645,16 @@ document.addEventListener('DOMContentLoaded', function() {
           const existingStyle = el.shadowRoot.querySelector('style');
           if (existingStyle) {
             console.log('[Footer Follow] Found existing style element, modifying...');
-            // Append our overrides to the existing style
+            // Append our overrides to the existing style - HIDE purple
             existingStyle.textContent += `
-              /* NOUS OVERRIDE */
+              /* NOUS OVERRIDE - HIDE */
               .bg-purple-primary,
               .bg-purple-d0,
               [class*="bg-purple"],
               [class*="purple"],
-              div[class*="absolute"][class*="inset-y-0"] {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              .bg-purple-primary::before,
-              .bg-purple-primary::after,
-              [class*="purple"]::before,
-              [class*="purple"]::after,
-              div[class*="absolute"]::before,
-              div[class*="absolute"]::after {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              .group-hover_bg-purple-d0:hover,
-              .group:hover [class*="purple"] {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              * {
-                --tw-bg-opacity: 1 !important;
+              div[class*="absolute"][class*="inset-y-0"]:not(#nous-bg-replacement) {
+                display: none !important;
+                visibility: hidden !important;
               }
             `;
             console.log('[Footer Follow] Modified existing style');
@@ -1697,66 +1665,26 @@ document.addEventListener('DOMContentLoaded', function() {
             const styleEl = document.createElement('style');
             styleEl.id = 'nous-custom-style';
             styleEl.textContent = `
-              /* Target all potential purple elements and their pseudo-elements */
-              *[class*="purple"],
-              *[class*="purple"]::before,
-              *[class*="purple"]::after {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              div[class*="purple"],
-              div[class*="purple"]::before,
-              div[class*="purple"]::after {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              .bg-purple-primary,
-              .bg-purple-primary::before,
-              .bg-purple-primary::after {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              /* Target by structure */
-              div[class*="absolute"][class*="inset-y-0"],
-              div[class*="absolute"][class*="inset-y-0"]::before,
-              div[class*="absolute"][class*="inset-y-0"]::after {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              /* Force on hover */
-              .group:hover *[class*="purple"],
-              .group:hover div[class*="absolute"] {
-                background-color: ${seasonalColor} !important;
-                background: ${seasonalColor} !important;
-              }
-              /* Override Tailwind CSS variables */
-              :host {
-                --color-purple-primary: ${seasonalColor} !important;
-                --color-purple-d0: ${seasonalColor} !important;
+              /* NOUS: Hide purple and show nothing */
+              *[class*="purple"]:not(#nous-bg-replacement),
+              div[class*="absolute"][class*="inset-y-0"]:not(#nous-bg-replacement) {
+                display: none !important;
+                visibility: hidden !important;
               }
             `;
             el.shadowRoot.prepend(styleEl);
             console.log('[Footer Follow] Injected style element into shadow DOM');
           }
           
+          // Also directly hide any purple elements we find
           const shadowAll = el.shadowRoot.querySelectorAll('*');
           shadowAll.forEach(inner => {
             const cls = String(inner.className || '');
-            console.log('[Footer Follow] Shadow child:', inner.tagName, cls);
             
-            // Check computed style for purple background
-            const computed = window.getComputedStyle(inner);
-            const bgColor = computed.backgroundColor;
-            // rgb(136, 71, 224) is approximately purple - also check RGB values
-            if (bgColor && (bgColor.includes('136') || bgColor.includes('purple') || bgColor.includes('129') || bgColor.includes('88, 47, 224'))) {
-              console.log('[Footer Follow] Found purple computed bg!', bgColor);
-              forceStyle(inner, seasonalColor);
-            }
-            
-            // Style any element with purple class or button class
-            if (cls.includes('bg-purple') || cls.includes('purple')) {
-              console.log('[Footer Follow] Removing purple from:', cls);
-              forceStyle(inner, seasonalColor);
+            // Hide any element with purple class (except our replacement)
+            if ((cls.includes('bg-purple') || cls.includes('purple')) && inner.id !== 'nous-bg-replacement') {
+              console.log('[Footer Follow] Directly hiding purple element:', cls);
+              inner.style.setProperty('display', 'none', 'important');
             }
           });
         }

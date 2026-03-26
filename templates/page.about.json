@@ -12,7 +12,7 @@
     "image_banner_DHnM7f": {
       "type": "image-banner",
       "custom_css": [
-        ".media>img {object-fit: cover; object-position: top center;}"
+        ".media > img {object-fit: cover; object-position: top center;}"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
@@ -31,6 +31,9 @@
     },
     "main": {
       "type": "main-page",
+      "custom_css": [
+        "h1{color: var(--seasonal-color);}"
+      ],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28

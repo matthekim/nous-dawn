@@ -1339,29 +1339,60 @@ document.addEventListener('DOMContentLoaded', function() {
   const seasonalColor = getComputedStyle(document.documentElement).getPropertyValue('--seasonal-color').trim();
   console.log('[Follow on Shop] Seasonal color:', seasonalColor);
   
-  const observer = new MutationObserver(() => {
+  function styleShopFollowButton() {
+    // Try regular DOM first
     const purpleButtons = document.querySelectorAll('.bg-purple-primary');
     if (purpleButtons.length > 0) {
-      console.log('[Follow on Shop] Found', purpleButtons.length, 'purple buttons');
+      console.log('[Follow on Shop] Found', purpleButtons.length, 'purple buttons in DOM');
       purpleButtons.forEach((btn, i) => {
         btn.style.setProperty('background-color', seasonalColor, 'important');
-        console.log('[Follow on Shop] Styled button', i, btn);
+        console.log('[Follow on Shop] Styled DOM button', i, btn);
       });
+      return true;
+    }
+    
+    // Try shadow DOM approach
+    const shopFollow = document.querySelector('shop-follow');
+    if (shopFollow) {
+      console.log('[Follow on Shop] Found shop-follow element:', shopFollow);
+      if (shopFollow.shadowRoot) {
+        console.log('[Follow on Shop] Shadow root exists');
+        const shadowPurple = shopFollow.shadowRoot.querySelectorAll('.bg-purple-primary');
+        const shadowButton = shopFollow.shadowRoot.querySelector('button');
+        console.log('[Follow on Shop] Shadow .bg-purple-primary:', shadowPurple.length);
+        console.log('[Follow on Shop] Shadow button:', shadowButton);
+        
+        if (shadowPurple.length > 0) {
+          shadowPurple.forEach((btn, i) => {
+            btn.style.setProperty('background-color', seasonalColor, 'important');
+            console.log('[Follow on Shop] Styled shadow button', i);
+          });
+          return true;
+        }
+        if (shadowButton) {
+          shadowButton.style.setProperty('background-color', seasonalColor, 'important');
+          console.log('[Follow on Shop] Styled shadow button directly');
+          return true;
+        }
+      } else {
+        console.log('[Follow on Shop] No shadow root yet');
+      }
+    } else {
+      console.log('[Follow on Shop] No shop-follow element found');
+    }
+    return false;
+  }
+  
+  const observer = new MutationObserver(() => {
+    if (styleShopFollowButton()) {
       observer.disconnect();
       console.log('[Follow on Shop] SUCCESS - Observer disconnected');
     }
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
-  console.log('[Follow on Shop] Observer started, watching for .bg-purple-primary');
+  console.log('[Follow on Shop] Observer started');
   
-  // Also try immediately in case it's already there
-  const existing = document.querySelectorAll('.bg-purple-primary');
-  if (existing.length > 0) {
-    console.log('[Follow on Shop] Found existing buttons on load:', existing.length);
-    existing.forEach((btn, i) => {
-      btn.style.setProperty('background-color', seasonalColor, 'important');
-      console.log('[Follow on Shop] Styled existing button', i, btn);
-    });
-  }
+  // Also try immediately
+  styleShopFollowButton();
 });

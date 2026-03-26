@@ -1532,6 +1532,31 @@ document.addEventListener('DOMContentLoaded', function() {
         if (el.tagName === 'SHOP-FOLLOW-BUTTON' && el.shadowRoot) {
           console.log('[Footer Follow] Direct SHOP-FOLLOW-BUTTON with shadow!');
           
+          // Target the background div by its structural classes (not purple which we remove)
+          // The purple div has: absolute inset-y-0 -z-10 rounded-max
+          const bgDiv = el.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
+          if (bgDiv) {
+            console.log('[Footer Follow] Found background div by structure!', bgDiv.className);
+            // Remove purple classes
+            if (bgDiv.className && typeof bgDiv.className === 'string') {
+              bgDiv.className = bgDiv.className.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
+            }
+            // Set style directly - this is what works manually
+            bgDiv.style.backgroundColor = seasonalColor;
+            bgDiv.style.setProperty('background-color', seasonalColor, 'important');
+            bgDiv.style.setProperty('background', seasonalColor, 'important');
+            console.log('[Footer Follow] Applied style to bgDiv, style now:', bgDiv.getAttribute('style'));
+          }
+          
+          // Also try first child div after button
+          const button = el.shadowRoot.querySelector('button');
+          if (button && button.nextElementSibling && button.nextElementSibling.tagName === 'DIV') {
+            const nextDiv = button.nextElementSibling;
+            console.log('[Footer Follow] Found div after button:', nextDiv.className);
+            nextDiv.style.backgroundColor = seasonalColor;
+            nextDiv.style.setProperty('background-color', seasonalColor, 'important');
+          }
+          
           // Direct querySelector for purple div - REMOVE the Tailwind classes entirely
           const purpleDiv = el.shadowRoot.querySelector('[class*="purple"]');
           if (purpleDiv) {
@@ -1544,6 +1569,31 @@ document.addEventListener('DOMContentLoaded', function() {
           if (bgPurple) {
             console.log('[Footer Follow] Found .bg-purple-primary, using forceStyle!');
             forceStyle(bgPurple, seasonalColor);
+          }
+          
+          // Add MutationObserver on shadow DOM to catch re-renders
+          if (!el.shadowRoot._nousObserverAdded) {
+            el.shadowRoot._nousObserverAdded = true;
+            const shadowObserver = new MutationObserver((mutations) => {
+              mutations.forEach(mutation => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                  const target = mutation.target;
+                  const cls = String(target.className || '');
+                  if (cls.includes('purple')) {
+                    console.log('[Footer Follow] Shadow mutation detected purple class!');
+                    target.className = cls.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
+                    target.style.backgroundColor = seasonalColor;
+                    target.style.setProperty('background-color', seasonalColor, 'important');
+                  }
+                }
+              });
+            });
+            shadowObserver.observe(el.shadowRoot, {
+              attributes: true,
+              attributeFilter: ['class', 'style'],
+              subtree: true
+            });
+            console.log('[Footer Follow] Added shadow DOM mutation observer');
           }
         }
         if (el.shadowRoot) {

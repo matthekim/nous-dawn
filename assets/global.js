@@ -1342,13 +1342,24 @@ document.addEventListener('DOMContentLoaded', function() {
   function findAndStyleButtons() {
     let found = false;
     
-    // 1. Check regular DOM for .bg-purple-primary
+    // 1. Check regular DOM for .bg-purple-primary and .gravity-button
     const purpleButtons = document.querySelectorAll('.bg-purple-primary');
     if (purpleButtons.length > 0) {
       console.log('[Follow on Shop] Found', purpleButtons.length, 'purple buttons in DOM');
       purpleButtons.forEach((btn, i) => {
         btn.style.setProperty('background-color', seasonalColor, 'important');
         console.log('[Follow on Shop] Styled DOM button', i, btn);
+      });
+      found = true;
+    }
+    
+    // Check for .gravity-button
+    const gravityButtons = document.querySelectorAll('.gravity-button');
+    if (gravityButtons.length > 0) {
+      console.log('[Gravity Button] Found', gravityButtons.length, 'gravity buttons in DOM');
+      gravityButtons.forEach((btn, i) => {
+        btn.style.setProperty('background-color', seasonalColor, 'important');
+        console.log('[Gravity Button] Styled DOM button', i, btn);
       });
       found = true;
     }
@@ -1365,6 +1376,14 @@ document.addEventListener('DOMContentLoaded', function() {
         shadowPurple.forEach((btn, i) => {
           btn.style.setProperty('background-color', seasonalColor, 'important');
           console.log('[Follow on Shop] Styled shadow .bg-purple-primary in', el.tagName);
+          found = true;
+        });
+        
+        // Also check for .gravity-button in shadow DOM
+        const shadowGravity = el.shadowRoot.querySelectorAll('.gravity-button');
+        shadowGravity.forEach((btn, i) => {
+          btn.style.setProperty('background-color', seasonalColor, 'important');
+          console.log('[Gravity Button] Styled shadow .gravity-button in', el.tagName);
           found = true;
         });
         

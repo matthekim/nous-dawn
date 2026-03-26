@@ -95,6 +95,13 @@ body .bg-purple-primary,
   background-color: var(--seasonal-color) !important;
 }
 
+/* Override gravity-button (Shopify dynamic button) */
+.gravity-button,
+body .gravity-button,
+[class*="gravity-button"] {
+  background-color: var(--seasonal-color) !important;
+}
+
 .menu-drawer__utility-links {
   display: none !important;
 }
@@ -3267,7 +3274,7 @@ details-disclosure > details {
 }
 
 .product__title-regular {
-  font-family: 'orticalinear', helvetica, arial, sans-serif !important;
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
   font-weight: 400;
 }
 

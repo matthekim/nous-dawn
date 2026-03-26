@@ -3293,6 +3293,33 @@ details-disclosure > details {
   }
 }
 
+/* Product image pagination bullets */
+.product__media-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.product__media-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--seasonal-color, #48a3df);
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.product__media-pagination-bullet:hover {
+  background-color: rgba(72, 163, 223, 0.3);
+}
+
+.product__media-pagination-bullet.is-active {
+  background-color: var(--seasonal-color, #48a3df);
+}
+
 /* Product title - half size */
 .product__title {
   margin-bottom: 0 !important;

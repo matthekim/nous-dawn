@@ -8,8 +8,17 @@ if (!customElements.get('media-gallery')) {
           liveRegion: this.querySelector('[id^="GalleryStatus"]'),
           viewer: this.querySelector('[id^="GalleryViewer"]'),
           thumbnails: this.querySelector('[id^="GalleryThumbnails"]'),
+          pagination: this.querySelector('[id^="MediaPagination"]'),
         };
         this.mql = window.matchMedia('(min-width: 750px)');
+        
+        // Setup pagination bullet click handlers
+        if (this.elements.pagination) {
+          this.elements.pagination.querySelectorAll('.product__media-pagination-bullet').forEach((bullet, index) => {
+            bullet.addEventListener('click', () => this.onPaginationClick(index));
+          });
+        }
+        
         if (!this.elements.thumbnails) return;
 
         this.elements.viewer.addEventListener('slideChanged', debounce(this.onSlideChanged.bind(this), 500));
@@ -19,6 +28,14 @@ if (!customElements.get('media-gallery')) {
             .addEventListener('click', this.setActiveMedia.bind(this, mediaToSwitch.dataset.target, false));
         });
         if (this.dataset.desktopLayout.includes('thumbnail') && this.mql.matches) this.removeListSemantic();
+      }
+
+      onPaginationClick(index) {
+        const thumbnailItems = this.elements.thumbnails.querySelectorAll('[data-target]');
+        if (thumbnailItems[index]) {
+          const mediaId = thumbnailItems[index].dataset.target;
+          this.setActiveMedia(mediaId, false);
+        }
       }
 
       onSlideChanged(event) {
@@ -77,6 +94,16 @@ if (!customElements.get('media-gallery')) {
           .querySelectorAll('button')
           .forEach((element) => element.removeAttribute('aria-current'));
         thumbnail.querySelector('button').setAttribute('aria-current', true);
+        
+        // Update pagination bullets
+        if (this.elements.pagination) {
+          const thumbnailItems = Array.from(this.elements.thumbnails.querySelectorAll('[data-target]'));
+          const activeIndex = thumbnailItems.indexOf(thumbnail);
+          this.elements.pagination.querySelectorAll('.product__media-pagination-bullet').forEach((bullet, index) => {
+            bullet.classList.toggle('is-active', index === activeIndex);
+          });
+        }
+        
         if (this.elements.thumbnails.isSlideVisible(thumbnail, 10)) return;
 
         this.elements.thumbnails.slider.scrollTo({ left: thumbnail.offsetLeft });

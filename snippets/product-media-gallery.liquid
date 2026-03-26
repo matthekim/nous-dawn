@@ -181,6 +181,17 @@
     and section.settings.gallery_layout contains 'thumbnail'
     or section.settings.mobile_thumbnails == 'show'
   -%}
+    {%- comment -%} Bullet pagination for product images {%- endcomment -%}
+    <div class="product__media-pagination" id="MediaPagination-{{ section.id }}">
+      {%- for i in (1..media_count) -%}
+        <button 
+          type="button" 
+          class="product__media-pagination-bullet{% if i == 1 %} is-active{% endif %}"
+          data-index="{{ i }}"
+          aria-label="Go to image {{ i }}"
+        ></button>
+      {%- endfor -%}
+    </div>
     <slider-component
       id="GalleryThumbnails-{{ section.id }}"
       class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"

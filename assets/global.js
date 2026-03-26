@@ -1744,7 +1744,7 @@ document.addEventListener('DOMContentLoaded', function() {
         iframes.forEach((iframe, i) => {
           console.log('[Shop Pay] iframe', i, 'src:', iframe.src);
           // Apply filter to iframe
-          iframe.style.setProperty('filter', 'hue-rotate(-10deg)', 'important');
+          iframe.style.setProperty('filter', 'hue-rotate(-10deg) brightness(1.4) saturate(0.7)', 'important');
         });
       }
       
@@ -1754,7 +1754,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!btn.shadowRoot && !btn._nousFilterApplied) {
         btn._nousFilterApplied = true;
         console.log('[Shop Pay] Applying hue-rotate filter to button (no shadow access)');
-        btn.style.setProperty('filter', 'hue-rotate(-10deg)', 'important');
+        btn.style.setProperty('filter', 'hue-rotate(-10deg) brightness(1.4) saturate(0.7)', 'important');
         
         // Also style parent container
         const container = btn.closest('.shopify-payment-button');
@@ -1811,7 +1811,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Apply filter to the checkout element if no shadow access
       if (!checkout._nousFilterApplied) {
         checkout._nousFilterApplied = true;
-        checkout.style.setProperty('filter', 'hue-rotate(-10deg)', 'important');
+        checkout.style.setProperty('filter', 'hue-rotate(-10deg) brightness(1.4) saturate(0.7)', 'important');
         console.log('[Shop Pay] Applied filter to accelerated-checkout');
       }
       
@@ -1822,7 +1822,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log('[Shop Pay] Found inner shop-pay-wallet-button, shadowRoot:', !!innerBtn.shadowRoot);
           if (!innerBtn.shadowRoot && !innerBtn._nousFilterApplied) {
             innerBtn._nousFilterApplied = true;
-            innerBtn.style.setProperty('filter', 'hue-rotate(-10deg)', 'important');
+            innerBtn.style.setProperty('filter', 'hue-rotate(-10deg) brightness(1.4) saturate(0.7)', 'important');
           }
         }
       }

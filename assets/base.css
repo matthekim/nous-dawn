@@ -72,7 +72,10 @@ h6,
 .button,
 .shopify-challenge__button,
 .customer button,
-button.shopify-payment-button__button--unbranded,
+button.shopify-payment-button__button--unbranded {
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+}
+
 .footer__content-top,
 .footer-block--menu,
 .newsletter-form,

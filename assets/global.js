@@ -1333,25 +1333,17 @@ class CartPerformance {
   }
 }
 
-// Style "Follow on Shop" button (shadow DOM)
+// Style "Follow on Shop" button
 document.addEventListener('DOMContentLoaded', function() {
   const seasonalColor = getComputedStyle(document.documentElement).getPropertyValue('--seasonal-color').trim();
   
   const observer = new MutationObserver(() => {
-    const shopFollow = document.querySelector('shop-follow');
-    if (shopFollow && shopFollow.shadowRoot) {
-      const btn = shopFollow.shadowRoot.querySelector('button');
-      if (btn) {
-        btn.style.backgroundColor = seasonalColor;
-        btn.style.color = '#ffffff';
-
-        const innerDiv = shopFollow.shadowRoot.querySelector('.follow-icon-wrapper');
-        if (innerDiv) {
-          innerDiv.style.backgroundColor = seasonalColor;
-        }
-
-        observer.disconnect();
-      }
+    const purpleButtons = document.querySelectorAll('.bg-purple-primary');
+    if (purpleButtons.length > 0) {
+      purpleButtons.forEach(btn => {
+        btn.style.setProperty('background-color', seasonalColor, 'important');
+      });
+      observer.disconnect();
     }
   });
 

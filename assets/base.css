@@ -611,10 +611,12 @@ h6:empty {
 
 .link-with-icon {
   display: inline-flex;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 0.1rem;
   text-decoration: none;
+  text-transform: lowercase;
   margin-bottom: 4.5rem;
   white-space: nowrap;
 }

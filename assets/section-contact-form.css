@@ -1,3 +1,35 @@
+/* Contact page title */
+.contact-title {
+  color: var(--seasonal-color);
+  text-transform: lowercase;
+  text-align: left;
+  margin-top: 200px;
+  margin-bottom: 50px;
+}
+
+/* Contact form field styling - match search bar */
+.contact .field__input,
+.contact .text-area.field__input {
+  background-color: #fff !important;
+  border-radius: 50px !important;
+  border: 1px solid #ccc !important;
+  padding: 1.2rem 2rem !important;
+}
+
+.contact .field__input::placeholder,
+.contact .text-area.field__input::placeholder {
+  color: #ccc !important;
+}
+
+.contact .field__label {
+  display: none;
+}
+
+.contact .text-area.field__input {
+  min-height: 150px;
+  border-radius: 25px !important;
+}
+
 .contact img {
   max-width: 100%;
 }

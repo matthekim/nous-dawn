@@ -92,6 +92,10 @@ body .bg-purple-primary,
   background-color: var(--seasonal-color) !important;
 }
 
+.menu-drawer__utility-links {
+  display: none !important;
+}
+
 :root {
   --font-body-family: 'orticalinear', helvetica, arial, sans-serif;
   --font-heading-family: 'europa_trial-bold', helvetica, arial, sans-serif;

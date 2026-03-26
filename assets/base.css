@@ -1,5 +1,23 @@
+@font-face {
+  font-family: 'orticalinear';
+  src: url('orticalinear-regular-webfont.woff2') format('woff2'),
+       url('orticalinear-regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'orticalinear';
+  src: url('orticalinear-bold-webfont.woff2') format('woff2'),
+       url('orticalinear-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-  font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
+  font-family: 'orticalinear', helvetica, arial, sans-serif !important;
 }
 
 /* Header icons fade-in animation */
@@ -52,7 +70,7 @@ h6,
 }
 
 :root {
-  --font-body-family: 'europa_trial-medium', helvetica, arial, sans-serif;
+  --font-body-family: 'orticalinear', helvetica, arial, sans-serif;
   --font-heading-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   --alpha-button-background: 1;
   --alpha-button-border: 1;

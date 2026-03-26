@@ -1434,6 +1434,31 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('[Follow on Shop] Found:', el.tagName, el.className, el.id);
     });
     
+    // 4. Find ALL gravity-related elements (any tag/class/id containing 'gravity')
+    const allElems = document.querySelectorAll('*');
+    allElems.forEach(el => {
+      const tag = el.tagName.toLowerCase();
+      const cls = el.className || '';
+      const id = el.id || '';
+      if (tag.includes('gravity') || cls.toString().includes('gravity') || id.includes('gravity')) {
+        console.log('[Gravity Debug] Found gravity element:', tag, cls, id);
+        el.style.setProperty('background-color', seasonalColor, 'important');
+      }
+      // Also check shadow DOM for gravity
+      if (el.shadowRoot) {
+        const shadowAll = el.shadowRoot.querySelectorAll('*');
+        shadowAll.forEach(inner => {
+          const innerTag = inner.tagName.toLowerCase();
+          const innerCls = inner.className || '';
+          const innerId = inner.id || '';
+          if (innerTag.includes('gravity') || innerCls.toString().includes('gravity') || innerId.includes('gravity')) {
+            console.log('[Gravity Debug] Found gravity in shadow of', el.tagName, ':', innerTag, innerCls, innerId);
+            inner.style.setProperty('background-color', seasonalColor, 'important');
+          }
+        });
+      }
+    });
+    
     return found;
   }
   

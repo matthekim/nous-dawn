@@ -1431,16 +1431,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const customElements = document.querySelectorAll('[class*="shop"], shop-follow, shop-login-button, [id*="shop"]');
     console.log('[Follow on Shop] Shop-related elements:', customElements.length);
     customElements.forEach(el => {
-      console.log('[Follow on Shop] Found:', el.tagName, el.className, el.id);
+      console.log('[Follow on Shop] Found:', el.tagName, el.className, typeof el.id === 'string' ? el.id : '(non-string id)');
     });
     
     // 4. Find ALL gravity-related elements (any tag/class/id containing 'gravity')
     const allElems = document.querySelectorAll('*');
     allElems.forEach(el => {
       const tag = el.tagName.toLowerCase();
-      const cls = el.className || '';
-      const id = el.id || '';
-      if (tag.includes('gravity') || cls.toString().includes('gravity') || id.includes('gravity')) {
+      const cls = String(el.className || '');
+      const id = typeof el.id === 'string' ? el.id : '';
+      if (tag.includes('gravity') || cls.includes('gravity') || id.includes('gravity')) {
         console.log('[Gravity Debug] Found gravity element:', tag, cls, id);
         el.style.setProperty('background-color', seasonalColor, 'important');
       }
@@ -1449,15 +1449,37 @@ document.addEventListener('DOMContentLoaded', function() {
         const shadowAll = el.shadowRoot.querySelectorAll('*');
         shadowAll.forEach(inner => {
           const innerTag = inner.tagName.toLowerCase();
-          const innerCls = inner.className || '';
-          const innerId = inner.id || '';
-          if (innerTag.includes('gravity') || innerCls.toString().includes('gravity') || innerId.includes('gravity')) {
+          const innerCls = String(inner.className || '');
+          const innerId = typeof inner.id === 'string' ? inner.id : '';
+          if (innerTag.includes('gravity') || innerCls.includes('gravity') || innerId.includes('gravity')) {
             console.log('[Gravity Debug] Found gravity in shadow of', el.tagName, ':', innerTag, innerCls, innerId);
             inner.style.setProperty('background-color', seasonalColor, 'important');
           }
         });
       }
     });
+    
+    // 5. Check footer__follow-on-shop for nested elements with shadow DOM
+    const followOnShopContainer = document.querySelector('.footer__follow-on-shop');
+    if (followOnShopContainer) {
+      console.log('[Footer Follow] Found footer__follow-on-shop container');
+      const nestedElements = followOnShopContainer.querySelectorAll('*');
+      nestedElements.forEach(el => {
+        console.log('[Footer Follow] Child:', el.tagName, String(el.className || ''));
+        if (el.shadowRoot) {
+          console.log('[Footer Follow] Has shadow root:', el.tagName);
+          const shadowAll = el.shadowRoot.querySelectorAll('*');
+          shadowAll.forEach(inner => {
+            console.log('[Footer Follow] Shadow child:', inner.tagName, String(inner.className || ''));
+            // Style any button or purple element
+            if (inner.tagName === 'BUTTON' || String(inner.className || '').includes('button')) {
+              inner.style.setProperty('background-color', seasonalColor, 'important');
+              console.log('[Footer Follow] Styled button in shadow');
+            }
+          });
+        }
+      });
+    }
     
     return found;
   }

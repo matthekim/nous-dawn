@@ -51,6 +51,10 @@
   color: var(--seasonal-color);
 }
 
+.pagination__item--current:hover {
+  color: #fff;
+}
+
 .pagination__arrow {
   display: inline-block;
   width: 1rem;

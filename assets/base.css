@@ -3296,14 +3296,14 @@ details-disclosure > details {
 /* Product image pagination bullets */
 .product__media-pagination {
   display: flex;
-  justify-content: center;
-  gap: 0.8rem;
+  justify-content: flex-end;
+  gap: 1.2rem;
   margin-bottom: 1.5rem;
 }
 
 .product__media-pagination-bullet {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   border: 1.5px solid var(--seasonal-color, #48a3df);
   background-color: transparent;

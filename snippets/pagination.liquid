@@ -51,7 +51,7 @@
                   {{- part.title -}}
                 </a>
               {%- else -%}
-                <span class="pagination__item">{{ part.title }}</span>
+                <span class="pagination__item">{{ part.title | replace: '…', '. . .' | replace: '...', '. . .' }}</span>
               {%- endif -%}
             {%- endif -%}
           </li>

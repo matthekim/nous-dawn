@@ -30,6 +30,7 @@ body {
 
 #menu-blend-overlay.active {
   opacity: 0.85;
+  z-index: 999998;
 }
 
 * {
@@ -2865,8 +2866,7 @@ details[open] .modal-overlay::after {
   bottom: 0;
   cursor: pointer;
   z-index: 1;
-  background-color: var(--seasonal-color);
-  mix-blend-mode: multiply;
+  background-color: transparent;
 }
 
 .search-modal .predictive-search {

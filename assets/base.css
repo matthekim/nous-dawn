@@ -3213,6 +3213,15 @@ details-disclosure > details {
   word-break: break-word;
 }
 
+/* Sold out badge custom styling */
+.badge.badge--bottom-left {
+  background-color: var(--seasonal-color) !important;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  text-transform: lowercase;
+  border: none;
+  margin-bottom: 1rem;
+}
+
 .gradient {
   background: rgb(var(--color-background));
   background: none; /*var(--gradient-background);*/

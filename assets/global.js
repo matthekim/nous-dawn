@@ -1504,24 +1504,46 @@ document.addEventListener('DOMContentLoaded', function() {
       nestedElements.forEach(el => {
         console.log('[Footer Follow] Child:', el.tagName, String(el.className || ''));
         
+        // Helper function to force style and lock it
+        const forceStyle = (element, color) => {
+          if (!element) return;
+          // Remove purple classes
+          if (element.className && typeof element.className === 'string') {
+            element.className = element.className.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
+          }
+          // Set inline style
+          element.style.cssText = `background-color: ${color} !important; background: ${color} !important;`;
+          element.setAttribute('style', `background-color: ${color} !important; background: ${color} !important;`);
+          // Try to lock the className property
+          try {
+            Object.defineProperty(element, 'className', {
+              get: () => element.getAttribute('class') || '',
+              set: (val) => {
+                // Filter out purple classes when being set
+                const filtered = String(val).replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
+                element.setAttribute('class', filtered);
+              },
+              configurable: true
+            });
+          } catch(e) { /* ignore */ }
+        };
+        
         // Also try targeting SHOP-FOLLOW-BUTTON directly
         if (el.tagName === 'SHOP-FOLLOW-BUTTON' && el.shadowRoot) {
           console.log('[Footer Follow] Direct SHOP-FOLLOW-BUTTON with shadow!');
           
-          // Direct querySelector for purple div
+          // Direct querySelector for purple div - REMOVE the Tailwind classes entirely
           const purpleDiv = el.shadowRoot.querySelector('[class*="purple"]');
           if (purpleDiv) {
-            console.log('[Footer Follow] Direct found purple div!');
-            purpleDiv.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
-            purpleDiv.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
+            console.log('[Footer Follow] Direct found purple div, removing classes!');
+            forceStyle(purpleDiv, seasonalColor);
           }
           
           // Try with different class patterns
           const bgPurple = el.shadowRoot.querySelector('.bg-purple-primary');
           if (bgPurple) {
-            console.log('[Footer Follow] Found .bg-purple-primary directly!');
-            bgPurple.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
-            bgPurple.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
+            console.log('[Footer Follow] Found .bg-purple-primary, using forceStyle!');
+            forceStyle(bgPurple, seasonalColor);
           }
         }
         if (el.shadowRoot) {
@@ -1582,24 +1604,16 @@ document.addEventListener('DOMContentLoaded', function() {
             // Check computed style for purple background
             const computed = window.getComputedStyle(inner);
             const bgColor = computed.backgroundColor;
-            // rgb(136, 71, 224) is approximately purple
-            if (bgColor && (bgColor.includes('136') || bgColor.includes('purple') || bgColor.includes('129'))) {
+            // rgb(136, 71, 224) is approximately purple - also check RGB values
+            if (bgColor && (bgColor.includes('136') || bgColor.includes('purple') || bgColor.includes('129') || bgColor.includes('88, 47, 224'))) {
               console.log('[Footer Follow] Found purple computed bg!', bgColor);
-              inner.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
-              inner.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
+              forceStyle(inner, seasonalColor);
             }
             
             // Style any element with purple class or button class
             if (cls.includes('bg-purple') || cls.includes('purple')) {
-              // Use multiple methods to force the style
-              inner.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
-              inner.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
-              console.log('[Footer Follow] Styled purple element in shadow:', cls);
-            }
-            if (inner.tagName === 'BUTTON' || cls.includes('button')) {
-              inner.style.cssText = `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`;
-              inner.setAttribute('style', `background-color: ${seasonalColor} !important; background: ${seasonalColor} !important;`);
-              console.log('[Footer Follow] Styled button in shadow');
+              console.log('[Footer Follow] Removing purple from:', cls);
+              forceStyle(inner, seasonalColor);
             }
           });
         }

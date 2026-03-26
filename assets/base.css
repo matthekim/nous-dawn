@@ -3278,6 +3278,17 @@ details-disclosure > details {
   .product--large .thumbnail-list {
     grid-template-columns: repeat(4, 1fr) !important;
   }
+
+  /* Main product image - full width */
+  .product--thumbnail .product__media-item,
+  .product--thumbnail_slider .product__media-item {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .product__media-list.slider {
+    overflow: visible !important;
+  }
 }
 
 /* Product title - half size */

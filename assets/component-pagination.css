@@ -36,8 +36,10 @@
 }
 
 .pagination__item--current {
-  color: var(--seasonal-color);
+  color: #fff;
   font-weight: bold;
+  background-color: var(--seasonal-color);
+  border-radius: 50%;
 }
 
 a.pagination__item:hover::after {
@@ -49,10 +51,9 @@ a.pagination__item:hover::after {
 }
 
 .pagination__item--current::after {
-  height: 0.1rem;
+  display: none;
 }
 
-.pagination__item--current::after,
 .pagination__item:hover::after {
   content: '';
   display: block;

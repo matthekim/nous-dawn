@@ -3263,7 +3263,7 @@ details-disclosure > details {
 
 /* Product grid - 50/50 layout */
 @media screen and (min-width: 990px) {
-  .product--large:not(.product--no-media) .grid__item,
+  .product--large:not(.product--no-media) > .grid__item.product__media-wrapper,
   .product--large:not(.product--no-media) .product__media-wrapper {
     max-width: 50% !important;
     width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
@@ -3279,7 +3279,9 @@ details-disclosure > details {
     grid-template-columns: repeat(4, 1fr) !important;
   }
 
-  /* Main product image - full width */
+  /* Main product image - full width within media wrapper */
+  .product--thumbnail .product__media-item.grid__item.slider__slide,
+  .product--thumbnail_slider .product__media-item.grid__item.slider__slide,
   .product--thumbnail .product__media-item,
   .product--thumbnail_slider .product__media-item {
     width: 100% !important;

@@ -3321,6 +3321,70 @@ details-disclosure > details {
   background-color: var(--seasonal-color, #48a3df);
 }
 
+/* Hide thumbnail list */
+.thumbnail-list {
+  display: none !important;
+}
+
+/* Product media modal (zoom) - seasonal color overlay */
+.product-media-modal {
+  background-color: transparent !important;
+}
+
+.product-media-modal::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--seasonal-color);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.product-media-modal__dialog {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Product media modal X button - match menu hamburger X style */
+.product-media-modal__toggle {
+  background-color: transparent !important;
+  border: none !important;
+  width: 60px !important;
+  height: 60px !important;
+  padding: 0 !important;
+  right: 70px !important;
+  top: 23px !important;
+}
+
+.product-media-modal__toggle svg {
+  display: none !important;
+}
+
+.product-media-modal__toggle::before,
+.product-media-modal__toggle::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+}
+
+.product-media-modal__toggle::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.product-media-modal__toggle::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 /* Product title - half size */
 .product__title {
   margin-bottom: 0 !important;

@@ -40,29 +40,12 @@
   font-weight: bold;
   background-color: var(--seasonal-color);
   border-radius: 50%;
-}
-
-a.pagination__item:hover::after {
-  height: 0.1rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .pagination__item .icon-caret {
   height: 0.6rem;
-}
-
-.pagination__item--current::after {
-  display: none;
-}
-
-.pagination__item:hover::after {
-  content: '';
-  display: block;
-  width: 2rem;
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: currentColor;
 }
 
 .pagination__item--next .icon {

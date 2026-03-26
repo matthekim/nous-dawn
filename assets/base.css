@@ -710,6 +710,11 @@ details > * {
   transition: text-decoration-thickness ease 100ms;
 }
 
+.link.underlined-link {
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  text-transform: lowercase;
+}
+
 .underlined-link,
 .customer a {
   color: rgba(var(--color-link), var(--alpha-link));

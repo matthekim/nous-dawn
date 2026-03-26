@@ -1732,9 +1732,40 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('[Shop Pay] Found shop-pay-wallet-button elements:', shopPayButtons.length);
     
     shopPayButtons.forEach((btn, idx) => {
-      console.log('[Shop Pay] Processing button', idx);
+      console.log('[Shop Pay] Processing button', idx, 'shadowRoot:', !!btn.shadowRoot);
       
-      // Try shadow root
+      // Log all children to understand structure
+      console.log('[Shop Pay] Button children:', btn.children.length, 'innerHTML length:', btn.innerHTML.length);
+      
+      // Check for iframes inside
+      const iframes = btn.querySelectorAll('iframe');
+      if (iframes.length) {
+        console.log('[Shop Pay] Found iframes:', iframes.length);
+        iframes.forEach((iframe, i) => {
+          console.log('[Shop Pay] iframe', i, 'src:', iframe.src);
+          // Apply filter to iframe
+          iframe.style.setProperty('filter', 'hue-rotate(-70deg)', 'important');
+        });
+      }
+      
+      // FALLBACK: Apply CSS filter to shift purple to blue
+      // Purple ~270deg, Blue ~200deg, so rotate by -70deg
+      // This affects the whole button but is our only option without shadow access
+      if (!btn.shadowRoot && !btn._nousFilterApplied) {
+        btn._nousFilterApplied = true;
+        console.log('[Shop Pay] Applying hue-rotate filter to button (no shadow access)');
+        btn.style.setProperty('filter', 'hue-rotate(-70deg)', 'important');
+        
+        // Also style parent container
+        const container = btn.closest('.shopify-payment-button');
+        if (container) {
+          console.log('[Shop Pay] Found .shopify-payment-button container');
+          // Make sure our filter takes effect
+          container.style.setProperty('isolation', 'isolate');
+        }
+      }
+      
+      // Try shadow root if available
       if (btn.shadowRoot) {
         console.log('[Shop Pay] Button has shadow root!');
         
@@ -1769,53 +1800,29 @@ document.addEventListener('DOMContentLoaded', function() {
             el.style.setProperty('display', 'none', 'important');
           }
         });
-        
-        // Inject adoptedStyleSheets
-        try {
-          const sheet = new CSSStyleSheet();
-          sheet.replaceSync(`
-            [class*="purple"]:not(#nous-shoppay-bg),
-            div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]:not(#nous-shoppay-bg) {
-              display: none !important;
-            }
-          `);
-          const existing = btn.shadowRoot.adoptedStyleSheets || [];
-          btn.shadowRoot.adoptedStyleSheets = [...existing, sheet];
-          console.log('[Shop Pay] Injected adoptedStyleSheet');
-        } catch (e) {
-          console.log('[Shop Pay] adoptedStyleSheets failed:', e);
-        }
-        
-        // MutationObserver on shadow
-        if (!btn.shadowRoot._nousShopPayObserver) {
-          btn.shadowRoot._nousShopPayObserver = true;
-          const observer = new MutationObserver(() => {
-            const bg = btn.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]:not(#nous-shoppay-bg)');
-            if (bg) {
-              bg.style.setProperty('display', 'none', 'important');
-            }
-          });
-          observer.observe(btn.shadowRoot, { childList: true, subtree: true, attributes: true });
-          console.log('[Shop Pay] Added mutation observer');
-        }
-      } else {
-        console.log('[Shop Pay] No shadow root yet for button', idx);
       }
     });
     
-    // Also look inside shopify-accelerated-checkout
-    const checkoutEl = document.querySelectorAll('shopify-accelerated-checkout');
-    checkoutEl.forEach(checkout => {
+    // Also apply to shopify-accelerated-checkout container  
+    const checkoutEls = document.querySelectorAll('shopify-accelerated-checkout');
+    checkoutEls.forEach((checkout, idx) => {
+      console.log('[Shop Pay] accelerated-checkout', idx, 'shadowRoot:', !!checkout.shadowRoot);
+      
+      // Apply filter to the checkout element if no shadow access
+      if (!checkout._nousFilterApplied) {
+        checkout._nousFilterApplied = true;
+        checkout.style.setProperty('filter', 'hue-rotate(-70deg)', 'important');
+        console.log('[Shop Pay] Applied filter to accelerated-checkout');
+      }
+      
       if (checkout.shadowRoot) {
         console.log('[Shop Pay] shopify-accelerated-checkout has shadow');
-        // Try to find nested shop-pay-wallet-button
         const innerBtn = checkout.shadowRoot.querySelector('shop-pay-wallet-button');
-        if (innerBtn && innerBtn.shadowRoot) {
-          console.log('[Shop Pay] Found inner shop-pay-wallet-button');
-          // Same styling logic
-          const bgDiv = innerBtn.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
-          if (bgDiv && bgDiv.id !== 'nous-shoppay-bg') {
-            bgDiv.style.setProperty('display', 'none', 'important');
+        if (innerBtn) {
+          console.log('[Shop Pay] Found inner shop-pay-wallet-button, shadowRoot:', !!innerBtn.shadowRoot);
+          if (!innerBtn.shadowRoot && !innerBtn._nousFilterApplied) {
+            innerBtn._nousFilterApplied = true;
+            innerBtn.style.setProperty('filter', 'hue-rotate(-70deg)', 'important');
           }
         }
       }

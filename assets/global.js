@@ -1470,9 +1470,14 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log('[Footer Follow] Has shadow root:', el.tagName);
           const shadowAll = el.shadowRoot.querySelectorAll('*');
           shadowAll.forEach(inner => {
-            console.log('[Footer Follow] Shadow child:', inner.tagName, String(inner.className || ''));
-            // Style any button or purple element
-            if (inner.tagName === 'BUTTON' || String(inner.className || '').includes('button')) {
+            const cls = String(inner.className || '');
+            console.log('[Footer Follow] Shadow child:', inner.tagName, cls);
+            // Style any element with purple class or button class
+            if (cls.includes('bg-purple') || cls.includes('purple')) {
+              inner.style.setProperty('background-color', seasonalColor, 'important');
+              console.log('[Footer Follow] Styled purple element in shadow:', cls);
+            }
+            if (inner.tagName === 'BUTTON' || cls.includes('button')) {
               inner.style.setProperty('background-color', seasonalColor, 'important');
               console.log('[Footer Follow] Styled button in shadow');
             }

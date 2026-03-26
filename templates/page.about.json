@@ -34,7 +34,7 @@
       "custom_css": [
         "h1 {color: var(--seasonal-color);}",
         "@media screen and (min-width: 990px) {.page-width--narrow {max-width: var(--page-width); padding: 0 5rem; }}",
-        ".rte {column-count: 2; /* Creates 2 columns */ column-gap: 2.5rem; /* Space between columns */ /* Optional: better readability */ font-size: 1.1rem; line-height: 1.7; text-align: justify; color: var(--seasonal-color);}",
+        ".rte {column-count: 2; /* Creates 2 columns */ column-gap: 2.5rem; /* Space between columns */ /* Optional: better readability */ font-size: 2rem; line-height: 1.7; text-align: justify; color: var(--seasonal-color);}",
         " /* Optional: Make it responsive */@media (max-width: 768px) {.rte {column-count: 1; /* Stack into 1 column on mobile */ }}"
       ],
       "settings": {

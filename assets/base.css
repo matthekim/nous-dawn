@@ -69,6 +69,21 @@ h6,
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
 }
 
+.button,
+.shopify-challenge__button,
+.customer button,
+button.shopify-payment-button__button--unbranded,
+.footer__content-top,
+.footer-block--menu,
+.newsletter-form,
+.newsletter-form__field-wrapper,
+.newsletter-form input,
+.footer a,
+.footer__list-social,
+.field__input {
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
+}
+
 :root {
   --font-body-family: 'orticalinear', helvetica, arial, sans-serif;
   --font-heading-family: 'europa_trial-bold', helvetica, arial, sans-serif;

@@ -70,7 +70,3 @@
 .pagination__item-arrow:hover .pagination__arrow {
   border-color: var(--seasonal-color);
 }
-
-.pagination__item--ellipsis {
-  letter-spacing: 0.4em;
-}

@@ -51,7 +51,11 @@
                   {{- part.title -}}
                 </a>
               {%- else -%}
-                <span class="pagination__item pagination__item--ellipsis">{{ part.title }}</span>
+                {%- if part.title == '…' or part.title == '...' -%}
+                  <span class="pagination__item pagination__item--ellipsis">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+                {%- else -%}
+                  <span class="pagination__item">{{ part.title }}</span>
+                {%- endif -%}
               {%- endif -%}
             {%- endif -%}
           </li>

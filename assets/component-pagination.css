@@ -53,8 +53,8 @@
 
 .pagination__arrow {
   display: inline-block;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 1rem;
+  height: 1rem;
   border-top: 2px solid currentColor;
   border-right: 2px solid currentColor;
 }

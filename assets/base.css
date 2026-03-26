@@ -3262,6 +3262,21 @@ details-disclosure > details {
   background-color: transparent !important;
 }
 
+/* Product accordion - hidden for now */
+.product__accordion {
+  display: none !important;
+}
+
+/* Product quantity input - hidden for now */
+.product-form__quantity {
+  display: none !important;
+}
+
+/* Product tax info - hidden for now */
+.product__tax {
+  display: none !important;
+}
+
 /* Product detail page - Size variant buttons */
 .product-form__input--pill input[type='radio'] + label {
   background: none !important;
@@ -3271,15 +3286,18 @@ details-disclosure > details {
   color: var(--seasonal-color) !important;
   text-decoration: none !important;
   box-shadow: none !important;
-  min-width: 3.6rem;
-  min-height: 3.6rem;
-  width: 3.6rem;
-  height: 3.6rem;
-  padding: 0;
-  display: inline-flex;
+  min-width: 3.6rem !important;
+  min-height: 3.6rem !important;
+  width: 3.6rem !important;
+  height: 3.6rem !important;
+  padding: 0 !important;
+  margin: 0.7rem 0.5rem 0.2rem 0 !important;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
   border-radius: 50% !important;
+  box-sizing: border-box !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 .product-form__input--pill input[type='radio'] + label:before {

@@ -1,4 +1,15 @@
+.collection-title {
+  color: var(--seasonal-color);
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+}
+
 @media screen and (max-width: 749px) {
+  .collection-title {
+    font-size: 2rem;
+  }
+  
   .collection .grid__item:only-child {
     flex: 0 0 100%;
     max-width: 100%;

@@ -53,7 +53,7 @@
               {%- else -%}
                 {%- assign title_number = part.title | times: 1 -%}
                 {%- if title_number == 0 and part.title != '0' -%}
-                  <span class="pagination__item pagination__item--ellipsis">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+                  <span class="pagination__item pagination__item--ellipsis">·&nbsp;·&nbsp;·</span>
                 {%- else -%}
                   <span class="pagination__item">{{ part.title }}</span>
                 {%- endif -%}

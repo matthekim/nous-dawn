@@ -2865,6 +2865,7 @@ details[open] .modal-overlay::after {
   bottom: 0;
   cursor: pointer;
   z-index: 1;
+  background-color: var(--seasonal-color);
 }
 
 .search-modal .predictive-search {

@@ -34,9 +34,10 @@
       "custom_css": [
         "h1 {color: var(--seasonal-color);}",
         "@media screen and (min-width: 990px) {.page-width--narrow {max-width: var(--page-width); padding: 0 5rem; }}",
-        ".rte {column-count: 2; /* Creates 2 columns */ column-gap: 2.5rem; /* Space between columns */ /* Optional: better readability */ font-size: 2rem; line-height: 1.4; text-align: justify; color: var(--seasonal-color);}",
-        " /* Optional: Make it responsive */@media (max-width: 768px) {.rte {column-count: 1; /* Stack into 1 column on mobile */ }}",
-        "strong,b {font-family: europa_trial-bold, helvetica, arial, sans-serif !important;}"
+        ".rte {column-count: 2; column-gap: 2.5rem; font-size: 2rem; line-height: 1.4; text-align: justify; color: var(--seasonal-color);}",
+        " @media (max-width: 768px) {.rte {column-count: 1; }}",
+        "strong,b {font-family: europa_trial-bold, helvetica, arial, sans-serif !important;}",
+        ".rte a {color: var(--seasonal-color); text-decoration:none; border-bottom: 1px solid var(--seasonal-color);}"
       ],
       "settings": {
         "padding_top": 28,

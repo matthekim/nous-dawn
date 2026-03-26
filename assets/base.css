@@ -98,7 +98,10 @@ body .bg-purple-primary,
 /* Override gravity-button (Shopify dynamic button) */
 .gravity-button,
 body .gravity-button,
-[class*="gravity-button"] {
+[class*="gravity-button"],
+gravity-button,
+gravity-button button,
+gravity-button [role="button"] {
   background-color: var(--seasonal-color) !important;
 }
 

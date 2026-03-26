@@ -1353,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', function() {
       found = true;
     }
     
-    // Check for .gravity-button
+    // Check for .gravity-button class
     const gravityButtons = document.querySelectorAll('.gravity-button');
     if (gravityButtons.length > 0) {
       console.log('[Gravity Button] Found', gravityButtons.length, 'gravity buttons in DOM');
@@ -1363,6 +1363,32 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       found = true;
     }
+    
+    // Check for <gravity-button> custom element (has its own shadow DOM)
+    const gravityElements = document.querySelectorAll('gravity-button');
+    gravityElements.forEach((el, i) => {
+      console.log('[Gravity Button] Found <gravity-button> element', i);
+      if (el.shadowRoot) {
+        const innerButtons = el.shadowRoot.querySelectorAll('button, [role="button"]');
+        innerButtons.forEach(btn => {
+          btn.style.setProperty('background-color', seasonalColor, 'important');
+          console.log('[Gravity Button] Styled button inside gravity-button shadow');
+          found = true;
+        });
+        // Also style the host itself via adoptedStyleSheets or direct style
+        const allInner = el.shadowRoot.querySelectorAll('*');
+        allInner.forEach(inner => {
+          const bg = getComputedStyle(inner).backgroundColor;
+          if (bg.includes('128') || bg.includes('124') || bg.includes('purple')) {
+            inner.style.setProperty('background-color', seasonalColor, 'important');
+            console.log('[Gravity Button] Styled purple element in gravity-button shadow');
+            found = true;
+          }
+        });
+      }
+      // Also style the element itself if it has bg
+      el.style.setProperty('background-color', seasonalColor, 'important');
+    });
     
     // 2. Find ALL elements with shadow roots and check inside them
     const allElements = document.querySelectorAll('*');

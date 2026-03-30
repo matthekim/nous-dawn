@@ -4511,3 +4511,8 @@ button.cart__checkout-button::after,
   background-color: var(--seasonal-color) !important;
   border-radius: 50px !important;
 }
+
+/* Cart page - dynamic checkout buttons greyscale */
+.cart__dynamic-checkout-buttons.additional-checkout-buttons {
+  filter: grayscale(100%);
+}

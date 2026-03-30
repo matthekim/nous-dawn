@@ -4523,15 +4523,11 @@ shop-paypal-button,
 shopify-google-pay-button {
   border-radius: 50px !important;
   overflow: hidden;
+  display: block;
 }
 
-/* PayPal button specific rounded corners */
-shop-paypal-button *,
-shop-paypal-button iframe,
-shop-paypal-button div,
-[data-paypal-button],
-.paypal-button,
-.paypal-button-container {
-  border-radius: 50px !important;
-  overflow: hidden;
+/* PayPal button - clip-path to round iframe content */
+shop-paypal-button {
+  clip-path: inset(0 round 50px) !important;
+  -webkit-clip-path: inset(0 round 50px) !important;
 }

@@ -4461,9 +4461,21 @@ cart-items {
   text-decoration: none !important;
 }
 
+/* Cart page - cart item name styling to match product card headings */
+.cart-item__name {
+  text-transform: lowercase !important;
+  font-size: 1.8rem !important;
+}
+
+@media screen and (min-width: 750px) {
+  .cart-item__name {
+    font-size: 2rem !important;
+  }
+}
+
 /* Cart page - price end bigger padding-top */
 .price.price--end {
-  padding-top: 2rem;
+  padding-top: 0.4rem;
 }
 
 /* Cart page - error text color */

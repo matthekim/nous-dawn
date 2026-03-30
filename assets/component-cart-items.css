@@ -325,10 +325,6 @@ cart-remove-button .icon-remove {
     padding-right: 20px;
   }
 
-  .cart-item__price-wrapper > *:only-child:not(.cart-item__discounted-prices) {
-    margin-top: 0rem;
-  }
-
   .cart-item__error {
     margin-left: 0.3rem;
   }

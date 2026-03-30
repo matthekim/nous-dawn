@@ -4583,3 +4583,18 @@ shop-paypal-button iframe,
 .product-option dt {
   text-transform: lowercase;
 }
+
+/* Product media tie-dye overlay */
+.product-media-container {
+  position: relative;
+}
+
+.product-media-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}

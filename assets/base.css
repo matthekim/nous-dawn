@@ -4397,12 +4397,12 @@ cart-items {
 
 /* Cart page - bigger thumbnails with tie-dye overlay */
 .cart-item__image {
-  max-width: calc(20rem / var(--font-body-scale)) !important;
+  max-width: calc(32rem / var(--font-body-scale)) !important;
 }
 
 @media screen and (min-width: 750px) {
   .cart-item__image {
-    max-width: 20rem !important;
+    max-width: 32rem !important;
   }
 }
 
@@ -4455,4 +4455,13 @@ cart-items {
 .cart-item__price-wrapper,
 .cart-item__price-wrapper .price {
   color: var(--seasonal-color) !important;
+}
+
+.cart-item__name:hover {
+  text-decoration: none !important;
+}
+
+/* Cart page - price end bigger padding-top */
+.price.price--end {
+  padding-top: 2rem;
 }

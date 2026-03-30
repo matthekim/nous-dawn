@@ -4502,13 +4502,8 @@ button.cart__checkout-button,
   text-transform: lowercase !important;
   font-weight: bold !important;
   color: white !important;
-}
-
-button.cart__checkout-button span,
-.cart__checkout-button.button span {
   position: relative;
-  z-index: 2;
-  color: white !important;
+  isolation: isolate;
 }
 
 button.cart__checkout-button::before,
@@ -4517,6 +4512,7 @@ button.cart__checkout-button::after,
 .cart__checkout-button.button::after {
   background-color: var(--seasonal-color) !important;
   border-radius: 50px !important;
+  z-index: -1 !important;
 }
 
 /* Cart page - dynamic checkout buttons greyscale */
@@ -4527,9 +4523,11 @@ button.cart__checkout-button::after,
 /* Cart page - rounded payment buttons */
 shop-pay-wallet-button,
 shop-paypal-button,
-shopify-google-pay-button {
+shopify-google-pay-button,
+.additional-checkout-buttons > *,
+.shopify-payment-button__button {
   border-radius: 50px !important;
-  overflow: hidden;
+  overflow: hidden !important;
   display: block;
   clip-path: inset(0 round 50px) !important;
   -webkit-clip-path: inset(0 round 50px) !important;

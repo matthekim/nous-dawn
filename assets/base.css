@@ -4411,11 +4411,18 @@ cart-items {
   overflow: visible !important;
 }
 
+.cart-item__image-container {
+  position: relative;
+  overflow: visible !important;
+}
+
 /* Cart page tie-dye overlays using img elements (same approach as product cards) */
 .cart-item__tie-dye {
+  display: block !important;
   position: absolute;
   left: 0;
   width: 100%;
+  height: auto;
   pointer-events: none;
   z-index: 10;
 }

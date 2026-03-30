@@ -2222,6 +2222,7 @@ input[type='checkbox'] {
   bottom: 1.4rem;
   left: 2rem;
   line-height: calc(1 + 0.1 / var(--font-body-scale));
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
 }
 
 /* utility-bar */
@@ -4498,6 +4499,9 @@ button.cart__checkout-button,
 .cart__checkout-button.button {
   background-color: var(--seasonal-color) !important;
   border-radius: 50px !important;
+  text-transform: lowercase !important;
+  font-weight: bold !important;
+  color: white !important;
 }
 
 button.cart__checkout-button::before,

@@ -4436,10 +4436,23 @@ cart-items {
   bottom: 0;
 }
 
+/* Cart page - image container no background */
+.cart-item__image-container.gradient.global-media-settings {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Cart page - details fill remaining space */
+.cart-item__details > * {
+  max-width: none !important;
+}
+
 /* Cart page - details in seasonal color */
 .cart-item__details,
 .cart-item__details a,
 .cart-item__details .price,
-.cart-item__name {
+.cart-item__name,
+.cart-item__price-wrapper,
+.cart-item__price-wrapper .price {
   color: var(--seasonal-color) !important;
 }

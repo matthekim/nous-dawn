@@ -4539,3 +4539,14 @@ shop-paypal-button iframe,
   border-radius: 50px !important;
   overflow: hidden !important;
 }
+
+/* Cart items table padding */
+.cart-items td,
+.cart-items th {
+  padding: 0;
+}
+
+.cart-item__image {
+  width: 12rem;
+  padding-right: 20px;
+}

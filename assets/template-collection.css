@@ -114,22 +114,3 @@
 .collection__view-all a:not(.link) {
   margin-top: 1rem;
 }
-
-.collection__view-all .link.underlined-link {
-  font-weight: bold;
-  font-size: 2.7rem;
-  color: var(--seasonal-color);
-  text-decoration: none;
-  text-transform: lowercase;
-  background: none;
-  margin-top: 5.4rem;
-  transform: rotate(-0.8deg);
-  display: inline-block;
-}
-
-@media screen and (min-width: 750px) {
-  .collection__view-all .link.underlined-link {
-    font-size: 3rem;
-    margin-top: 6rem;
-  }
-}

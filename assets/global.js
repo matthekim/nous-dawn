@@ -1851,3 +1851,26 @@ document.addEventListener('DOMContentLoaded', function() {
     if (pollCount >= 15) clearInterval(pollInterval);
   }, 1000);
 });
+
+// Random tie-dye borders on cards
+document.addEventListener('DOMContentLoaded', () => {
+  const tieDyeClasses = ['tie-dye-top', 'tie-dye-bottom', 'tie-dye-both'];
+  
+  function applyRandomTieDye() {
+    const cardInners = document.querySelectorAll('.card__inner:not([data-tie-dye-applied])');
+    cardInners.forEach(card => {
+      const randomClass = tieDyeClasses[Math.floor(Math.random() * tieDyeClasses.length)];
+      card.classList.add(randomClass);
+      card.setAttribute('data-tie-dye-applied', 'true');
+    });
+  }
+  
+  // Run immediately
+  applyRandomTieDye();
+  
+  // Observer for dynamically added cards
+  const tieDyeObserver = new MutationObserver(() => {
+    applyRandomTieDye();
+  });
+  tieDyeObserver.observe(document.body, { childList: true, subtree: true });
+});

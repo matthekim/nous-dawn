@@ -4602,3 +4602,41 @@ h2.related-products__heading {
   font-size: 3rem !important;
   text-transform: lowercase;
 }
+
+/* Card tie-dye borders - randomized via JS */
+.card__inner {
+  position: relative;
+}
+
+.card__inner.tie-dye-top::before,
+.card__inner.tie-dye-both::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-image: url('tie-dye-white.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: 10;
+  pointer-events: none;
+  transform: rotate(180deg);
+}
+
+.card__inner.tie-dye-bottom::after,
+.card__inner.tie-dye-both::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-image: url('tie-dye-white.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  z-index: 10;
+  pointer-events: none;
+}

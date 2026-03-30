@@ -4604,35 +4604,15 @@ h2.related-products__heading {
 }
 
 /* Card tie-dye borders - randomized via JS */
-.card__inner.tie-dye-top .card__media::before,
-.card__inner.tie-dye-both .card__media::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background-image: url('tie-dye-white.png');
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: top center;
-  z-index: 10;
-  pointer-events: none;
-  transform: rotate(180deg);
+/* Hide all tie-dye images by default */
+.card__inner .card__tie-dye {
+  display: none;
 }
 
-.card__inner.tie-dye-bottom .card__media::after,
-.card__inner.tie-dye-both .card__media::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background-image: url('tie-dye-white.png');
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  z-index: 10;
-  pointer-events: none;
+/* Show based on random class */
+.card__inner.tie-dye-top .card__tie-dye--top,
+.card__inner.tie-dye-both .card__tie-dye--top,
+.card__inner.tie-dye-both .card__tie-dye--bottom,
+.card__inner.tie-dye-bottom .card__tie-dye--bottom {
+  display: block;
 }

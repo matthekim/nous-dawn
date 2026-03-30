@@ -2775,10 +2775,6 @@ shop-follow-button {
   padding-right: 20px;
 }
 
-.header__icon:last-child {
-  padding-right: 0;
-}
-
 .header__icon span {
   height: 100%;
 }

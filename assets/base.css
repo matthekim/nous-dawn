@@ -4606,7 +4606,7 @@ h2.related-products__heading {
 /* Card tie-dye borders - randomized via JS */
 /* Hide all tie-dye images by default */
 .card__inner .card__tie-dye {
-  display: none;
+  display: none !important;
 }
 
 /* Show based on random class */
@@ -4614,5 +4614,5 @@ h2.related-products__heading {
 .card__inner.tie-dye-both .card__tie-dye--top,
 .card__inner.tie-dye-both .card__tie-dye--bottom,
 .card__inner.tie-dye-bottom .card__tie-dye--bottom {
-  display: block;
+  display: block !important;
 }

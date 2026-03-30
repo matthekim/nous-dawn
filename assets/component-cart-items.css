@@ -4,7 +4,8 @@ cart-items .title-wrapper-with-link {
 
 .cart-items td,
 .cart-items th {
-  padding: 0;
+  padding-left: 20px;
+  padding-right: 20px;
   border: none;
 }
 

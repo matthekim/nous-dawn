@@ -4373,10 +4373,11 @@ details-disclosure > details {
 
 .cart-item .quantity::before {
   background: transparent !important;
+  box-shadow: none !important;
 }
 
 .cart-item .quantity::after {
-  box-shadow: 0 0 0 var(--inputs-border-width) var(--seasonal-color) !important;
+  box-shadow: none !important;
 }
 
 /* Cart page - trashcan in seasonal color */
@@ -4396,39 +4397,46 @@ cart-items {
 
 /* Cart page - bigger thumbnails with tie-dye overlay */
 .cart-item__image {
-  max-width: calc(15rem / var(--font-body-scale)) !important;
+  max-width: calc(20rem / var(--font-body-scale)) !important;
 }
 
 @media screen and (min-width: 750px) {
   .cart-item__image {
-    max-width: 15rem !important;
+    max-width: 20rem !important;
   }
 }
 
-.cart-item__image-container {
+.cart-item__media {
   position: relative;
   overflow: hidden;
 }
 
-.cart-item__image-container::before,
-.cart-item__image-container::after {
+.cart-item__media::before {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
+  top: 0;
   height: 25%;
   background-image: url('tie-dye-white.png');
   background-size: cover;
   background-position: center;
   pointer-events: none;
   z-index: 1;
-}
-
-.cart-item__image-container::before {
-  top: 0;
   transform: rotate(180deg);
 }
 
-.cart-item__image-container::after {
+.cart-item__media::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
+  height: 25%;
+  background-image: url('tie-dye-white.png');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
 }

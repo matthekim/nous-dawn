@@ -4561,7 +4561,7 @@ shop-paypal-button iframe,
 
 /* Discount icon and text styling */
 .icon.icon-discount {
-  color: var(--seasonal-color);
+  display: none;
 }
 
 .icon.icon-discount + span,

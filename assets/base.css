@@ -4411,39 +4411,22 @@ cart-items {
   overflow: visible !important;
 }
 
-.cart-item__media::before {
-  content: '' !important;
-  display: block !important;
+/* Cart page tie-dye overlays using img elements (same approach as product cards) */
+.cart-item__tie-dye {
   position: absolute;
   left: 0;
-  right: 0;
-  top: 0;
   width: 100%;
-  height: 30%;
-  background-image: url('tie-dye-white.png');
-  background-size: 100% auto;
-  background-position: top center;
-  background-repeat: no-repeat;
   pointer-events: none;
   z-index: 10;
+}
+
+.cart-item__tie-dye--top {
+  top: 0;
   transform: rotate(180deg);
 }
 
-.cart-item__media::after {
-  content: '' !important;
-  display: block !important;
-  position: absolute;
-  left: 0;
-  right: 0;
+.cart-item__tie-dye--bottom {
   bottom: 0;
-  width: 100%;
-  height: 30%;
-  background-image: url('tie-dye-white.png');
-  background-size: 100% auto;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 10;
 }
 
 /* Cart page - details in seasonal color */

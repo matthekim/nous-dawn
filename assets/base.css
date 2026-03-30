@@ -4516,3 +4516,11 @@ button.cart__checkout-button::after,
 .cart__dynamic-checkout-buttons.additional-checkout-buttons {
   filter: grayscale(100%);
 }
+
+/* Cart page - rounded payment buttons */
+shop-pay-wallet-button,
+shop-paypal-button,
+shopify-google-pay-button {
+  border-radius: 50px !important;
+  overflow: hidden;
+}

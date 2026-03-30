@@ -4478,7 +4478,8 @@ cart-items {
 
 /* Cart page - price end bigger padding-top */
 .price.price--end {
-  padding-top: 0.4rem;
+  padding-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 /* Cart page - error text color */

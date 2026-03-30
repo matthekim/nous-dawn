@@ -4544,9 +4544,26 @@ shop-paypal-button iframe,
 .cart-items td,
 .cart-items th {
   padding: 0;
+  border: none;
 }
 
 .cart-item__image {
-  width: 120px;
+  width: 240px;
   padding-right: 20px;
+}
+
+.cart-item__totals .cart-item__old-price.price.price--end {
+  display: none;
+}
+
+/* Discount icon and text styling */
+.icon.icon-discount {
+  color: var(--seasonal-color);
+}
+
+.icon.icon-discount + span,
+.icon-discount ~ span,
+.cart-item__discounts span,
+.discounts span {
+  text-transform: lowercase;
 }

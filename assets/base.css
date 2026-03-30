@@ -4352,3 +4352,83 @@ details-disclosure > details {
 .cart-item__media .global-media-settings::after {
   display: none !important;
 }
+
+/* Cart page - quantity buttons in seasonal color, no background */
+.cart-item .quantity__button {
+  background-color: transparent !important;
+  color: var(--seasonal-color) !important;
+}
+
+.cart-item .quantity__button svg {
+  stroke: var(--seasonal-color) !important;
+}
+
+.cart-item .quantity__input {
+  color: var(--seasonal-color) !important;
+}
+
+.cart-item .quantity {
+  background-color: transparent !important;
+}
+
+.cart-item .quantity::before {
+  background: transparent !important;
+}
+
+.cart-item .quantity::after {
+  box-shadow: 0 0 0 var(--inputs-border-width) var(--seasonal-color) !important;
+}
+
+/* Cart page - trashcan in seasonal color */
+cart-remove-button .button {
+  color: var(--seasonal-color) !important;
+}
+
+cart-remove-button .icon-remove {
+  stroke: var(--seasonal-color) !important;
+}
+
+/* Cart page - add padding top so items can be clicked */
+.cart-items,
+cart-items {
+  padding-top: 80px;
+}
+
+/* Cart page - bigger thumbnails with tie-dye overlay */
+.cart-item__image {
+  max-width: calc(15rem / var(--font-body-scale)) !important;
+}
+
+@media screen and (min-width: 750px) {
+  .cart-item__image {
+    max-width: 15rem !important;
+  }
+}
+
+.cart-item__image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-item__image-container::before,
+.cart-item__image-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background-image: url('tie-dye-white.png');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cart-item__image-container::before {
+  top: 0;
+  transform: rotate(180deg);
+}
+
+.cart-item__image-container::after {
+  bottom: 0;
+}

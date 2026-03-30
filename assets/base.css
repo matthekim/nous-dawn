@@ -4465,3 +4465,18 @@ cart-items {
 .price.price--end {
   padding-top: 2rem;
 }
+
+/* Cart page - error text color */
+.cart-item__error-text {
+  color: #CCC !important;
+}
+
+/* Cart page - quantity buttons disabled state */
+.cart-item .quantity__button:disabled,
+.cart-item .quantity__button[disabled],
+.cart-item .quantity__button.disabled {
+  color: #CCC !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -4570,3 +4570,11 @@ shop-paypal-button iframe,
 .discounts span {
   text-transform: lowercase;
 }
+
+.discounts__discount {
+  text-transform: lowercase;
+}
+
+.product-option dt {
+  text-transform: lowercase;
+}

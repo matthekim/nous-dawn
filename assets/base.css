@@ -4604,12 +4604,8 @@ h2.related-products__heading {
 }
 
 /* Card tie-dye borders - randomized via JS */
-.card__inner {
-  position: relative;
-}
-
-.card__inner.tie-dye-top::before,
-.card__inner.tie-dye-both::before {
+.card__inner.tie-dye-top .card__media::before,
+.card__inner.tie-dye-both .card__media::before {
   content: '';
   position: absolute;
   top: 0;
@@ -4625,8 +4621,8 @@ h2.related-products__heading {
   transform: rotate(180deg);
 }
 
-.card__inner.tie-dye-bottom::after,
-.card__inner.tie-dye-both::after {
+.card__inner.tie-dye-bottom .card__media::after,
+.card__inner.tie-dye-both .card__media::after {
   content: '';
   position: absolute;
   bottom: 0;

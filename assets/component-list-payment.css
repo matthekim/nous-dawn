@@ -6,6 +6,8 @@
   padding-top: 1rem;
   padding-left: 0;
   filter: grayscale();
+  mix-blend-mode: multiply;
+  isolation: isolate;
 }
 
 @media screen and (min-width: 750px) {

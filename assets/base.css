@@ -4340,3 +4340,15 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* Cart page - remove borders from product images */
+.cart-item__image-container.global-media-settings,
+.cart-item__media .global-media-settings {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.cart-item__image-container.global-media-settings::after,
+.cart-item__media .global-media-settings::after {
+  display: none !important;
+}

@@ -4524,3 +4524,14 @@ shopify-google-pay-button {
   border-radius: 50px !important;
   overflow: hidden;
 }
+
+/* PayPal button specific rounded corners */
+shop-paypal-button *,
+shop-paypal-button iframe,
+shop-paypal-button div,
+[data-paypal-button],
+.paypal-button,
+.paypal-button-container {
+  border-radius: 50px !important;
+  overflow: hidden;
+}

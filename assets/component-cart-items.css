@@ -311,7 +311,7 @@ cart-remove-button .icon-remove {
   }
 
   .cart-item > td + td {
-    padding-left: 4rem;
+    padding-left: 0;
   }
 
   .cart-item__details {

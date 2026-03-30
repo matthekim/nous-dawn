@@ -4492,3 +4492,18 @@ cart-items {
   pointer-events: none;
   opacity: 0.5;
 }
+
+/* Cart page - checkout button styling */
+button.cart__checkout-button,
+.cart__checkout-button.button {
+  background-color: var(--seasonal-color) !important;
+  border-radius: 50px !important;
+}
+
+button.cart__checkout-button::before,
+button.cart__checkout-button::after,
+.cart__checkout-button.button::before,
+.cart__checkout-button.button::after {
+  background-color: var(--seasonal-color) !important;
+  border-radius: 50px !important;
+}

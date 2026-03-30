@@ -4595,3 +4595,10 @@ shop-paypal-button iframe,
   pointer-events: none;
   transform: rotate(180deg);
 }
+
+/* Related products heading */
+.related-products__heading inline-richtext h2 {
+  color: var(--seasonal-color);
+  font-size: 3rem;
+  text-transform: lowercase;
+}

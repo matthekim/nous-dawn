@@ -2752,7 +2752,7 @@ shop-follow-button {
   display: flex;
   grid-area: icons;
   justify-self: end;
-  padding-right: 80px;
+  padding-right: 40px;
   position: relative;
   z-index: 99999;
 }

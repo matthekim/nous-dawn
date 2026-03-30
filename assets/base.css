@@ -4532,3 +4532,10 @@ shopify-google-pay-button,
   clip-path: inset(0 round 50px) !important;
   -webkit-clip-path: inset(0 round 50px) !important;
 }
+
+/* Target PayPal iframe directly */
+shop-paypal-button iframe,
+.additional-checkout-buttons iframe {
+  border-radius: 50px !important;
+  overflow: hidden !important;
+}

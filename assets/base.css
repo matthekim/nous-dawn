@@ -4504,6 +4504,13 @@ button.cart__checkout-button,
   color: white !important;
 }
 
+button.cart__checkout-button span,
+.cart__checkout-button.button span {
+  position: relative;
+  z-index: 2;
+  color: white !important;
+}
+
 button.cart__checkout-button::before,
 button.cart__checkout-button::after,
 .cart__checkout-button.button::before,
@@ -4524,10 +4531,6 @@ shopify-google-pay-button {
   border-radius: 50px !important;
   overflow: hidden;
   display: block;
-}
-
-/* PayPal button - clip-path to round iframe content */
-shop-paypal-button {
   clip-path: inset(0 round 50px) !important;
   -webkit-clip-path: inset(0 round 50px) !important;
 }

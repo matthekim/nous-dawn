@@ -429,9 +429,10 @@ a.product__text {
     padding-right: calc(var(--media-shadow-horizontal-offset) * var(--media-shadow-visible));
   }
 
+  /* Crossfade handled in base.css - visibility controlled by opacity */
   .product--thumbnail .product__media-item:not(.is-active),
   .product--thumbnail_slider .product__media-item:not(.is-active) {
-    display: none;
+    /* display: none; - removed for crossfade effect */
   }
 
   .product-media-modal__content > .product__media-item--variant.product__media-item--variant {

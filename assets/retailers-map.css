@@ -52,7 +52,7 @@
   min-height: calc(100dvh - 106px);
   width: 25vw;
   margin-left: 75vw;
-  padding: 2rem;
+  padding: 100px 2rem 2rem 2rem;
   box-sizing: border-box;
 }
 

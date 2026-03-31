@@ -4618,10 +4618,14 @@ shopify-accelerated-checkout-cart {
   padding: 0 !important;
 }
 
-shopify-accelerated-checkout-cart > * {
+shopify-accelerated-checkout-cart > *,
+shopify-accelerated-checkout-cart shop-pay-wallet-button,
+shopify-accelerated-checkout-cart shopify-paypal-button,
+shopify-accelerated-checkout-cart shopify-google-pay-button {
   margin: 0 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  padding: 0 !important;
 }
 
 /* Remove gap from wallet button container (product page) */
@@ -4655,6 +4659,7 @@ shop-pay-wallet-button {
   border-radius: 50px 0 0 50px !important;
   overflow: hidden !important;
   display: block;
+  margin: 0 !important;
   clip-path: inset(0 round 50px 0 0 50px) !important;
   -webkit-clip-path: inset(0 round 50px 0 0 50px) !important;
 }
@@ -4663,23 +4668,27 @@ shop-pay-wallet-button {
 shopify-google-pay-button {
   border-radius: 0 50px 50px 0 !important;
   overflow: hidden !important;
+  margin: 0 !important;
   display: block;
   clip-path: inset(0 round 0 50px 50px 0) !important;
   -webkit-clip-path: inset(0 round 0 50px 50px 0) !important;
 }
 
-/* Cart page - PayPal and other buttons */
+/* Cart page - PayPal button */
+shopify-paypal-button,
 shop-paypal-button,
 .additional-checkout-buttons > *:not(shop-pay-wallet-button):not(shopify-google-pay-button),
 .shopify-payment-button__button {
   border-radius: 50px !important;
   overflow: hidden !important;
   display: block;
+  margin: 0 !important;
   clip-path: inset(0 round 50px) !important;
   -webkit-clip-path: inset(0 round 50px) !important;
 }
 
 /* Target PayPal iframe directly */
+shopify-paypal-button iframe,
 shop-paypal-button iframe,
 .additional-checkout-buttons iframe {
   border-radius: 50px !important;

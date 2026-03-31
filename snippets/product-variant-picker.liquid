@@ -34,6 +34,9 @@
             <span data-selected-value>
               {{- option.selected_value -}}
             </span>
+            {%- if option.name == 'Size' or option.name == 'size' or option.name == 'Maat' or option.name == 'maat' -%}
+              <button type="button" class="size-chart-toggle" data-size-chart-toggle>size chart</button>
+            {%- endif -%}
           </legend>
           {% render 'product-variant-options',
             product: product,
@@ -44,7 +47,12 @@
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">{{ option.name }}</legend>
+          <legend class="form__label">
+            {{ option.name }}
+            {%- if option.name == 'Size' or option.name == 'size' or option.name == 'Maat' or option.name == 'maat' -%}
+              <button type="button" class="size-chart-toggle" data-size-chart-toggle>size chart</button>
+            {%- endif -%}
+          </legend>
           {% render 'product-variant-options',
             product: product,
             option: option,
@@ -56,6 +64,9 @@
         <div class="product-form__input product-form__input--dropdown">
           <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
             {{ option.name }}
+            {%- if option.name == 'Size' or option.name == 'size' or option.name == 'Maat' or option.name == 'maat' -%}
+              <button type="button" class="size-chart-toggle" data-size-chart-toggle>size chart</button>
+            {%- endif -%}
           </label>
           <div class="select">
             {%- if picker_type == 'swatch_dropdown' -%}

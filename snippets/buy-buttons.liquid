@@ -97,6 +97,13 @@
             {{ form | payment_button }}
           {%- endif -%}
         </div>
+
+        <!-- Size Chart Container -->
+        <div class="size-chart-container" id="size-chart-container" style="display: none;">
+          <div class="size-chart-content">
+            <p>Size chart coming soon...</p>
+          </div>
+        </div>
       {%- endform -%}
     </product-form>
   {%- else -%}
@@ -148,4 +155,21 @@
 
     <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sizeChartToggle = document.querySelector('[data-size-chart-toggle]');
+      const sizeChartContainer = document.getElementById('size-chart-container');
+      
+      if (sizeChartToggle && sizeChartContainer) {
+        sizeChartToggle.addEventListener('click', function() {
+          if (sizeChartContainer.style.display === 'none') {
+            sizeChartContainer.style.display = 'block';
+          } else {
+            sizeChartContainer.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
 </div>

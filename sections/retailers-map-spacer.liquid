@@ -17,9 +17,9 @@
     
     if (!retailers.length || !container) return;
     
-    // Group by country
+    // Group by country (normalize to lowercase for consistent grouping)
     const grouped = retailers.reduce((acc, r) => {
-      const country = r.country || 'Other';
+      const country = (r.country || 'Other').toLowerCase();
       if (!acc[country]) acc[country] = [];
       acc[country].push(r);
       return acc;

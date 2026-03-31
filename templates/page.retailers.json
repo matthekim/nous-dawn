@@ -26,7 +26,7 @@
             "address": "MARKT 12",
             "zip": "3150",
             "city": "HAACHT",
-            "country": "BELGIUM",
+            "country": "Belgium",
             "lat": "50.9767902",
             "long": "4.6359949",
             "url": "https://exesfashion.cargo.site/"
@@ -38,17 +38,1095 @@
             "shop": "Dawance",
             "address": "Avenue de Spa 100",
             "zip": "4802",
-            "city": "Heusy",
+            "city": "Verviers",
             "country": "Belgium",
             "lat": "50.5796252",
             "long": "5.8622923",
             "url": "https://www.dawance.eu/"
           }
+        },
+        "retailer_51b6hd": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Princess",
+            "address": "Lange Gasthuisstraat 12",
+            "zip": "2000",
+            "city": "Antwerpen",
+            "country": "Belgium",
+            "lat": "51.2169089",
+            "long": "4.4051936",
+            "url": "https://www.princess.eu"
+          }
+        },
+        "retailer_hs35vx": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Princess Knokke",
+            "address": "Zeedijk-Het Zoute 807",
+            "zip": "8300",
+            "city": "Knokke-Heist",
+            "country": "Belgium",
+            "lat": "51.3546932",
+            "long": "3.2928181",
+            "url": "https://www.princess.eu"
+          }
+        },
+        "retailer_sndsbh": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Kelly",
+            "address": "George Brugmannplein 36",
+            "zip": "1050",
+            "city": "Brussel",
+            "country": "Belgium",
+            "lat": "50.8211883",
+            "long": "4.3613649",
+            "url": "https://www.kellyshop.be"
+          }
+        },
+        "retailer_ws0kj9": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Frau",
+            "address": "Dorp-West 114",
+            "zip": "9080",
+            "city": "Lochristi",
+            "country": "Belgium",
+            "lat": "51.0809875",
+            "long": "3.8238968",
+            "url": "https://www.frau.boutique"
+          }
+        },
+        "retailer_q1dwix": {
+          "type": "retailer",
+          "settings": {
+            "shop": "John's Boetiek",
+            "address": "Kortrijkstraat 50",
+            "zip": "9800",
+            "city": "Deinze",
+            "country": "Belgium",
+            "lat": "50.9810649",
+            "long": "3.5293098",
+            "url": ""
+          }
+        },
+        "retailer_2cbkaz": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Harlekijn",
+            "address": "Onze-Lieve-Vrouwestraat 121",
+            "zip": "2800",
+            "city": "Mechelen",
+            "country": "Belgium",
+            "lat": "51.0244174",
+            "long": "4.4785316",
+            "url": "https://www.harlekijnmechelen.be"
+          }
+        },
+        "retailer_vo2pjc": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Feliz Concept Store",
+            "address": "Wampenberg 23",
+            "zip": "2370",
+            "city": "Arendonk",
+            "country": "Belgium",
+            "lat": "51.3226011",
+            "long": "5.0899989",
+            "url": "https://www.felizconceptstore.be"
+          }
+        },
+        "retailer_t6l5q0": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Manufactuur",
+            "address": "Lembergsesteenweg 136",
+            "zip": "9820",
+            "city": "Merelbeke-Melle",
+            "country": "Belgium",
+            "lat": "50.9958741",
+            "long": "3.7812612",
+            "url": "https://www.manufactuur.be"
+          }
+        },
+        "retailer_ksm90v": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Manou",
+            "address": "Steenhouwersvest 33",
+            "zip": "2000",
+            "city": "Antwerpen",
+            "country": "Belgium",
+            "lat": "51.2179336",
+            "long": "4.3982571",
+            "url": "https://www.manouantwerp.com"
+          }
+        },
+        "retailer_hztjys": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Caress",
+            "address": "Dokter Roosensplein 43",
+            "zip": "2930",
+            "city": "Brasschaat",
+            "country": "Belgium",
+            "lat": "51.2975918",
+            "long": "4.4881227",
+            "url": "https://www.caress.be"
+          }
+        },
+        "retailer_ok5s96": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Ko.Shu",
+            "address": "Solleveld 30",
+            "zip": "9550",
+            "city": "Herzele",
+            "country": "Belgium",
+            "lat": "50.8825270",
+            "long": "3.8894415",
+            "url": "https://www.koshu.be"
+          }
+        },
+        "retailer_tkcie1": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Niinsky Mode",
+            "address": "Sint Jacobsstraat 5",
+            "zip": "8911 HR",
+            "city": "Leeuwarden",
+            "country": "Netherlands",
+            "lat": "53.2012989",
+            "long": "5.7966060",
+            "url": "https://www.niinsky.nl"
+          }
+        },
+        "retailer_jzu8ee": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Heemels",
+            "address": "Binnenweg 180",
+            "zip": "2101 JS",
+            "city": "Heemstede",
+            "country": "Netherlands",
+            "lat": "52.3556932",
+            "long": "4.6213484",
+            "url": "https://www.heemelsmode.nl"
+          }
+        },
+        "retailer_d8j4k7": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Matchbox",
+            "address": "1, Psihari str Neo Psihiko",
+            "zip": "154 51",
+            "city": "Athens",
+            "country": "Greece",
+            "lat": "",
+            "long": "",
+            "url": "https://www.matchboxathens.com"
+          }
+        },
+        "retailer_j4mhnf": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Orfanidis",
+            "address": "27, Kolokotroni str",
+            "zip": "105 62",
+            "city": "Athens",
+            "country": "Greece",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_0utmm8": {
+          "type": "retailer",
+          "settings": {
+            "shop": "La Suite",
+            "address": "68, Rue du Vieux Village",
+            "zip": "74260",
+            "city": "Les Gets",
+            "country": "France",
+            "lat": "46.1611108",
+            "long": "6.6725985",
+            "url": ""
+          }
+        },
+        "retailer_huhfbp": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Ma Première Boutique",
+            "address": "14, Rue du Petit Saint-Jean",
+            "zip": "34000",
+            "city": "Montpellier",
+            "country": "France",
+            "lat": "43.6079219",
+            "long": "3.8756400",
+            "url": "https://www.mapremiereboutique.fr"
+          }
+        },
+        "retailer_n7gpsm": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Boutique Zazie",
+            "address": "25, Rue de la République",
+            "zip": "84800",
+            "city": "L'Isle-sur-la-Sorgue",
+            "country": "France",
+            "lat": "43.9188074",
+            "long": "5.0520250",
+            "url": ""
+          }
+        },
+        "retailer_gmm95i": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Luxstore",
+            "address": "8, Rue Emmanuel Arène",
+            "zip": "20000",
+            "city": "Ajaccio",
+            "country": "France",
+            "lat": "41.9189674",
+            "long": "8.7374476",
+            "url": "https://www.luxstore.fr"
+          }
+        },
+        "retailer_8slvs3": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Titaibi Le Touquet",
+            "address": "3, Avenue du Verger",
+            "zip": "62520",
+            "city": "Le Touquet-Paris-Plage",
+            "country": "France",
+            "lat": "50.5213378",
+            "long": "1.5921770",
+            "url": "https://www.laboutiquetitaibi.com"
+          }
+        },
+        "retailer_od8ya1": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Titaibi Wimereux",
+            "address": "61, Rue Carnot",
+            "zip": "62930",
+            "city": "Wimereux",
+            "country": "France",
+            "lat": "50.7677872",
+            "long": "1.6114765",
+            "url": "https://www.laboutiquetitaibi.com"
+          }
+        },
+        "retailer_12ns86": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Paloca Store",
+            "address": "51, Rue de Moscou",
+            "zip": "62520",
+            "city": "Le Touquet-Paris-Plage",
+            "country": "France",
+            "lat": "50.5235522",
+            "long": "1.5866422",
+            "url": "https://www.paloca.fr"
+          }
+        },
+        "retailer_qjhwp0": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Blush Concept Store",
+            "address": "3, Rue des Quatre Chapeaux",
+            "zip": "69002",
+            "city": "Lyon",
+            "country": "France",
+            "lat": "45.7626739",
+            "long": "4.8345626",
+            "url": "https://www.blush-conceptstore.com"
+          }
+        },
+        "retailer_tziqg9": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Oxygene",
+            "address": "19, Rue des Boulangers",
+            "zip": "68100",
+            "city": "Mulhouse",
+            "country": "France",
+            "lat": "47.7466990",
+            "long": "7.3366683",
+            "url": "https://www.boutiqueoxygene.com"
+          }
+        },
+        "retailer_h4n9dq": {
+          "type": "retailer",
+          "settings": {
+            "shop": "La Cabane Plaza",
+            "address": "1, Boulevard Frédéric Mistral",
+            "zip": "83120",
+            "city": "Saint-Maxime",
+            "country": "France",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_n76w11": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Fati Fati Concept Store",
+            "address": "18, Rue de Sault",
+            "zip": "38000",
+            "city": "Grenoble",
+            "country": "France",
+            "lat": "45.1886426",
+            "long": "5.7271845",
+            "url": ""
+          }
+        },
+        "retailer_jp3uzh": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Di Mare",
+            "address": "Pôle d'activités",
+            "zip": "20166",
+            "city": "Porticcio",
+            "country": "France",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_k9h6n4": {
+          "type": "retailer",
+          "settings": {
+            "shop": "La Boutique",
+            "address": "32, Rue du Bourg",
+            "zip": "21000",
+            "city": "Dijon",
+            "country": "France",
+            "lat": "47.3212197",
+            "long": "5.0394659",
+            "url": ""
+          }
+        },
+        "retailer_dac7nj": {
+          "type": "retailer",
+          "settings": {
+            "shop": "By dé Bo",
+            "address": "22, Rue Jacques d'Uzès",
+            "zip": "30700",
+            "city": "Uzès",
+            "country": "France",
+            "lat": "44.0128104",
+            "long": "4.4192551",
+            "url": ""
+          }
+        },
+        "retailer_04osm5": {
+          "type": "retailer",
+          "settings": {
+            "shop": "L'Atelier 31",
+            "address": "31, Route de Gordes",
+            "zip": "84220",
+            "city": "Coustellet",
+            "country": "France",
+            "lat": "43.8552785",
+            "long": "5.1622011",
+            "url": ""
+          }
+        },
+        "retailer_t930mt": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Spontini",
+            "address": "1, Rue Sainte-Hilaire",
+            "zip": "94120",
+            "city": "La Varenne Sainte-Hilaire",
+            "country": "France",
+            "lat": "",
+            "long": "",
+            "url": "https://www.spontini.fr"
+          }
+        },
+        "retailer_g3468j": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Paula",
+            "address": "93, Avenue de Bourbon",
+            "zip": "97460",
+            "city": "Saint-Paul",
+            "country": "France",
+            "lat": "-21.0612401",
+            "long": "55.2231692",
+            "url": ""
+          }
+        },
+        "retailer_6zc8wm": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Capucine",
+            "address": "4, Place du Marché des Trois Six",
+            "zip": "34120",
+            "city": "Pézenas",
+            "country": "France",
+            "lat": "43.4602170",
+            "long": "3.4245912",
+            "url": ""
+          }
+        },
+        "retailer_biccvd": {
+          "type": "retailer",
+          "settings": {
+            "shop": "J'entends le loup Ars",
+            "address": "4, Quai de la Prée",
+            "zip": "17590",
+            "city": "Ars-en-Ré",
+            "country": "France",
+            "lat": "46.2098825",
+            "long": "-1.5125446",
+            "url": ""
+          }
+        },
+        "retailer_o9lpqa": {
+          "type": "retailer",
+          "settings": {
+            "shop": "J'entends le loup La Rochelle",
+            "address": "17, Rue du Minage",
+            "zip": "17000",
+            "city": "La Rochelle",
+            "country": "France",
+            "lat": "46.1626141",
+            "long": "-1.1500818",
+            "url": ""
+          }
+        },
+        "retailer_svfz7z": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Snob",
+            "address": "45, Rue Marceau",
+            "zip": "37000",
+            "city": "Tours",
+            "country": "France",
+            "lat": "47.3925639",
+            "long": "0.6853602",
+            "url": ""
+          }
+        },
+        "retailer_kxtthe": {
+          "type": "retailer",
+          "settings": {
+            "shop": "L'Ylang",
+            "address": "18, Rue du Général de Gaulle",
+            "zip": "20137",
+            "city": "Porto-Vecchio",
+            "country": "France",
+            "lat": "41.5901455",
+            "long": "9.2787030",
+            "url": ""
+          }
+        },
+        "retailer_mq1ljw": {
+          "type": "retailer",
+          "settings": {
+            "shop": "AB33",
+            "address": "33, Rue Charlot",
+            "zip": "75003",
+            "city": "Paris",
+            "country": "France",
+            "lat": "48.8624712",
+            "long": "2.3620241",
+            "url": "https://www.ab33.fr"
+          }
+        },
+        "retailer_kyc4cz": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Club 55",
+            "address": "43, Boulevard Patch",
+            "zip": "83350",
+            "city": "Ramatuelle",
+            "country": "France",
+            "lat": "43.2295343",
+            "long": "6.6530105",
+            "url": "https://www.club55.fr"
+          }
+        },
+        "retailer_nwv92u": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Nude",
+            "address": "16, Boulevard Edouard Baudoin",
+            "zip": "06160",
+            "city": "Juan-les-Pins",
+            "country": "France",
+            "lat": "43.5676610",
+            "long": "7.1134860",
+            "url": ""
+          }
+        },
+        "retailer_at6jd9": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Moma",
+            "address": "38, Rue des Forges",
+            "zip": "21000",
+            "city": "Dijon",
+            "country": "France",
+            "lat": "47.3221881",
+            "long": "5.0402764",
+            "url": ""
+          }
+        },
+        "retailer_n8n6zz": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Gipsy James",
+            "address": "49, Rue de la liberté",
+            "zip": "97150",
+            "city": "Saint-Martin",
+            "country": "France",
+            "lat": "18.0671862",
+            "long": "-63.0855782",
+            "url": ""
+          }
+        },
+        "retailer_mzet3x": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Les Cocottes",
+            "address": "76, Boulevard du Chaudron",
+            "zip": "97490",
+            "city": "Saint-Denis",
+            "country": "Réunion",
+            "lat": "-20.8901339",
+            "long": "55.4905947",
+            "url": ""
+          }
+        },
+        "retailer_p3gwrn": {
+          "type": "retailer",
+          "settings": {
+            "shop": "La Plaza Cosy",
+            "address": "12, Rue Louis Martin",
+            "zip": "83420",
+            "city": "La Croix-Valmer",
+            "country": "France",
+            "lat": "43.2086863",
+            "long": "6.5685735",
+            "url": ""
+          }
+        },
+        "retailer_u049sk": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Tentation",
+            "address": "Résidence du Port",
+            "zip": "20217",
+            "city": "Saint-Florent",
+            "country": "France",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_n9bd2v": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Alba",
+            "address": "Torraccia",
+            "zip": "20130",
+            "city": "Cargèse",
+            "country": "France",
+            "lat": "42.1610653",
+            "long": "8.5994947",
+            "url": ""
+          }
+        },
+        "retailer_ldblx6": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Vestiras",
+            "address": "Carrer de Sant Pere 2",
+            "zip": "17255",
+            "city": "Begur",
+            "country": "Spain",
+            "lat": "41.9546735",
+            "long": "3.2068333",
+            "url": ""
+          }
+        },
+        "retailer_m9iuy0": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Mad",
+            "address": "Rambla de Catalunya 107",
+            "zip": "08008",
+            "city": "Barcelona",
+            "country": "Spain",
+            "lat": "41.3937246",
+            "long": "2.1595472",
+            "url": ""
+          }
+        },
+        "retailer_mbahif": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Dandelion",
+            "address": "Carrer del Tenor Viñas 12",
+            "zip": "08021",
+            "city": "Barcelona",
+            "country": "Spain",
+            "lat": "41.3950925",
+            "long": "2.1424355",
+            "url": ""
+          }
+        },
+        "retailer_dnfp80": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Boto & Co",
+            "address": "Carrer de Bonavista 3",
+            "zip": "08012",
+            "city": "Barcelona",
+            "country": "Spain",
+            "lat": "41.3978144",
+            "long": "2.1588393",
+            "url": ""
+          }
+        },
+        "retailer_4tthg6": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Pour Toi",
+            "address": "Carrer de Salvador Lluch 7",
+            "zip": "08850",
+            "city": "Gavà",
+            "country": "Spain",
+            "lat": "41.3054613",
+            "long": "2.0051068",
+            "url": ""
+          }
+        },
+        "retailer_ewopis": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Itsomi",
+            "address": "Av. De la Marina 14",
+            "zip": "11310",
+            "city": "Sotogrande",
+            "country": "Spain",
+            "lat": "36.2870732",
+            "long": "-5.2828821",
+            "url": ""
+          }
+        },
+        "retailer_lwzm1x": {
+          "type": "retailer",
+          "settings": {
+            "shop": "BLiNk",
+            "address": "Carrer de Ramon Llull 11",
+            "zip": "07860",
+            "city": "Sant Francesc de Formentera",
+            "country": "Spain",
+            "lat": "38.7052491",
+            "long": "1.4292468",
+            "url": ""
+          }
+        },
+        "retailer_nwcp9r": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Noss",
+            "address": "Carrer del Bisbe Azare 2",
+            "zip": "07800",
+            "city": "Ibiza",
+            "country": "Spain",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_1eiihg": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Kala",
+            "address": "Carrer del Rosari 29",
+            "zip": "07701",
+            "city": "Menorca",
+            "country": "Spain",
+            "lat": "39.8898130",
+            "long": "4.2637387",
+            "url": ""
+          }
+        },
+        "retailer_hq6nmj": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Tommy",
+            "address": "Carrer de Gràcia 45",
+            "zip": "08201",
+            "city": "Sabadell",
+            "country": "Spain",
+            "lat": "41.5474439",
+            "long": "2.1074017",
+            "url": ""
+          }
+        },
+        "retailer_kcopyw": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Il Baco di Seta",
+            "address": "Carrer del Comte de Salvatierra 34",
+            "zip": "46004",
+            "city": "Valencia",
+            "country": "Spain",
+            "lat": "39.4707267",
+            "long": "-0.3689192",
+            "url": ""
+          }
+        },
+        "retailer_gmqa3l": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Zoe",
+            "address": "C/ de la Nau 28",
+            "zip": "46003",
+            "city": "Valencia",
+            "country": "Spain",
+            "lat": "39.4722552",
+            "long": "-0.3728425",
+            "url": ""
+          }
+        },
+        "retailer_4riz2x": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Maria Nava",
+            "address": "Av. Del Dr. Gadea 19",
+            "zip": "03003",
+            "city": "Alicante",
+            "country": "Spain",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_ep23se": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Maria Alonso",
+            "address": "C. Felipe Gorriti 23 bis",
+            "zip": "31004",
+            "city": "Pamplona",
+            "country": "Spain",
+            "lat": "42.8107624",
+            "long": "-1.6380293",
+            "url": ""
+          }
+        },
+        "retailer_58qfyo": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Yuppi",
+            "address": "Carrer Pintor Domènech i Farré 2-4 A",
+            "zip": "08320",
+            "city": "El Masnou",
+            "country": "Spain",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_60gcoe": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Pez",
+            "address": "C. de Reguerros 15",
+            "zip": "28004",
+            "city": "Madrid",
+            "country": "Spain",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_pnktrk": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Leto",
+            "address": "C. de Jorge Juan 14",
+            "zip": "28001",
+            "city": "Madrid",
+            "country": "Spain",
+            "lat": "40.4236986",
+            "long": "-3.6829353",
+            "url": ""
+          }
+        },
+        "retailer_dhv5k0": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Cedry",
+            "address": "Toribio Etxebarria Kalea 19",
+            "zip": "20600",
+            "city": "Eibar",
+            "country": "Spain",
+            "lat": "43.1854877",
+            "long": "-2.4717088",
+            "url": ""
+          }
+        },
+        "retailer_5prasx": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Blanca",
+            "address": "Correhuela 17",
+            "zip": "37001",
+            "city": "Salamanca",
+            "country": "Spain",
+            "lat": "40.9652520",
+            "long": "-5.6609361",
+            "url": ""
+          }
+        },
+        "retailer_xzqlmp": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Alberta",
+            "address": "Carrer d'Alloza 32",
+            "zip": "12001",
+            "city": "Castellon",
+            "country": "Spain",
+            "lat": "39.9879184",
+            "long": "-0.0386214",
+            "url": ""
+          }
+        },
+        "retailer_ehq05x": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Mequieres",
+            "address": "Calle Ntra. Sra. De la Luz 22A",
+            "zip": "11380",
+            "city": "Tarifa",
+            "country": "Spain",
+            "lat": "36.0135077",
+            "long": "-5.6032680",
+            "url": ""
+          }
+        },
+        "retailer_vdd9vy": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Be On Blue Cadaqués",
+            "address": "Plaça del Dr. Pont 6",
+            "zip": "17488",
+            "city": "Cadaqués",
+            "country": "Spain",
+            "lat": "42.2874655",
+            "long": "3.2759353",
+            "url": ""
+          }
+        },
+        "retailer_l2pj28": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Be On Blue Calella",
+            "address": "Passatge Jimmy Rena 17-19",
+            "zip": "17210",
+            "city": "Calella de Palafrugell",
+            "country": "Spain",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_4b73bl": {
+          "type": "retailer",
+          "settings": {
+            "shop": "India Mon Amour",
+            "address": "Carrer de Sant Gaudenci 26",
+            "zip": "08870",
+            "city": "Sitges",
+            "country": "Spain",
+            "lat": "41.2374928",
+            "long": "1.8089276",
+            "url": ""
+          }
+        },
+        "retailer_p7vjb8": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Global",
+            "address": "C/ Asunción 12",
+            "zip": "41011",
+            "city": "Sevilla",
+            "country": "Spain",
+            "lat": "37.3785551",
+            "long": "-5.9978530",
+            "url": ""
+          }
+        },
+        "retailer_5cfksk": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Safari Blu",
+            "address": "Cala Galera box 41/42/43",
+            "zip": "58019",
+            "city": "Monte Argentario",
+            "country": "Italy",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_f9fapd": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Gallery A",
+            "address": "Via Abbrescia 83A",
+            "zip": "70121",
+            "city": "Bari",
+            "country": "Italy",
+            "lat": "",
+            "long": "",
+            "url": ""
+          }
+        },
+        "retailer_jec44p": {
+          "type": "retailer",
+          "settings": {
+            "shop": "The Family Market",
+            "address": "Rathausgasse 62",
+            "zip": "3011",
+            "city": "Bern",
+            "country": "Switzerland",
+            "lat": "46.9485385",
+            "long": "7.4491644",
+            "url": ""
+          }
+        },
+        "retailer_k1sg58": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Brunello Shoes & Fashion",
+            "address": "Kornmarktgasse 5",
+            "zip": "6004",
+            "city": "Luzern",
+            "country": "Switzerland",
+            "lat": "47.0520707",
+            "long": "8.3053362",
+            "url": ""
+          }
+        },
+        "retailer_qcxemd": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Boutique Mai",
+            "address": "Waldstätterstrasse 19",
+            "zip": "6003",
+            "city": "Luzern",
+            "country": "Switzerland",
+            "lat": "47.0464090",
+            "long": "8.3079118",
+            "url": ""
+          }
+        },
+        "retailer_zzm3e5": {
+          "type": "retailer",
+          "settings": {
+            "shop": "Pompons",
+            "address": "Forchstrasse 186",
+            "zip": "8032",
+            "city": "Zürich",
+            "country": "Switzerland",
+            "lat": "47.3601371",
+            "long": "8.5671595",
+            "url": ""
+          }
         }
       },
       "block_order": [
         "retailer_TDGnKR",
-        "retailer_FFVXxa"
+        "retailer_FFVXxa",
+        "retailer_51b6hd",
+        "retailer_hs35vx",
+        "retailer_sndsbh",
+        "retailer_ws0kj9",
+        "retailer_q1dwix",
+        "retailer_2cbkaz",
+        "retailer_vo2pjc",
+        "retailer_t6l5q0",
+        "retailer_ksm90v",
+        "retailer_hztjys",
+        "retailer_ok5s96",
+        "retailer_tkcie1",
+        "retailer_jzu8ee",
+        "retailer_d8j4k7",
+        "retailer_j4mhnf",
+        "retailer_0utmm8",
+        "retailer_huhfbp",
+        "retailer_n7gpsm",
+        "retailer_gmm95i",
+        "retailer_8slvs3",
+        "retailer_od8ya1",
+        "retailer_12ns86",
+        "retailer_qjhwp0",
+        "retailer_tziqg9",
+        "retailer_h4n9dq",
+        "retailer_n76w11",
+        "retailer_jp3uzh",
+        "retailer_k9h6n4",
+        "retailer_dac7nj",
+        "retailer_04osm5",
+        "retailer_t930mt",
+        "retailer_g3468j",
+        "retailer_6zc8wm",
+        "retailer_biccvd",
+        "retailer_o9lpqa",
+        "retailer_svfz7z",
+        "retailer_kxtthe",
+        "retailer_mq1ljw",
+        "retailer_kyc4cz",
+        "retailer_nwv92u",
+        "retailer_at6jd9",
+        "retailer_n8n6zz",
+        "retailer_mzet3x",
+        "retailer_p3gwrn",
+        "retailer_u049sk",
+        "retailer_n9bd2v",
+        "retailer_ldblx6",
+        "retailer_m9iuy0",
+        "retailer_mbahif",
+        "retailer_dnfp80",
+        "retailer_4tthg6",
+        "retailer_ewopis",
+        "retailer_lwzm1x",
+        "retailer_nwcp9r",
+        "retailer_1eiihg",
+        "retailer_hq6nmj",
+        "retailer_kcopyw",
+        "retailer_gmqa3l",
+        "retailer_4riz2x",
+        "retailer_ep23se",
+        "retailer_58qfyo",
+        "retailer_60gcoe",
+        "retailer_pnktrk",
+        "retailer_dhv5k0",
+        "retailer_5prasx",
+        "retailer_xzqlmp",
+        "retailer_ehq05x",
+        "retailer_vdd9vy",
+        "retailer_l2pj28",
+        "retailer_4b73bl",
+        "retailer_p7vjb8",
+        "retailer_5cfksk",
+        "retailer_f9fapd",
+        "retailer_jec44p",
+        "retailer_k1sg58",
+        "retailer_qcxemd",
+        "retailer_zzm3e5"
       ],
       "name": "Retailers Data",
       "settings": {}

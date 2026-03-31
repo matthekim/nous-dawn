@@ -18,16 +18,13 @@
 }
 
 .retailers-map {
-  width: 100%;
-  height: 500px;
-  border-radius: var(--media-radius, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75vw;
+  height: 100dvh;
+  border-radius: 0;
   overflow: hidden;
-}
-
-@media screen and (min-width: 750px) {
-  .retailers-map {
-    height: 600px;
-  }
 }
 
 .retailers-map__container--full-width .retailers-map {

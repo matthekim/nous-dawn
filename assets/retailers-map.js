@@ -29,6 +29,10 @@ class RetailersMap {
       return;
     }
 
+    // Debug: log first few retailers to verify data
+    console.log('Retailers loaded:', this.retailers.length);
+    console.log('Sample retailer:', this.retailers[0]);
+
     this.init();
   }
 
@@ -95,13 +99,17 @@ class RetailersMap {
   createMarkerElement(retailer) {
     const el = document.createElement('div');
     el.className = 'retailers-map__marker';
+    el.style.width = '24px';
+    el.style.height = '32px';
 
     const img = document.createElement('img');
     img.src = this.markerSvg;
-    img.style.width = '24px';
-    img.style.height = '32px';
+    img.alt = retailer.shop || 'Store location';
+    img.style.width = '100%';
+    img.style.height = '100%';
     img.style.display = 'block';
     img.style.cursor = 'pointer';
+    img.style.pointerEvents = 'none'; // Let click pass through to parent div
 
     el.appendChild(img);
 
@@ -144,29 +152,41 @@ class RetailersMap {
     this.retailers.forEach((retailer, index) => {
       if (!retailer.lat || !retailer.long) return;
 
+      const lng = parseFloat(retailer.long);
+      const lat = parseFloat(retailer.lat);
+      
+      // Validate coordinates
+      if (isNaN(lng) || isNaN(lat)) {
+        console.warn('Invalid coordinates for retailer:', retailer.shop, retailer.lat, retailer.long);
+        return;
+      }
+
       const el = this.createMarkerElement(retailer);
       
       const popup = new mapboxgl.Popup({
-        offset: 25,
+        offset: [0, -32], // Offset to account for marker height
         closeButton: true,
-        closeOnClick: false,
+        closeOnClick: true,
         className: 'retailers-map__popup-container'
-      }).setHTML(this.createPopupContent(retailer));
+      })
+        .setLngLat([lng, lat])
+        .setHTML(this.createPopupContent(retailer));
 
       const marker = new mapboxgl.Marker({
         element: el,
         anchor: 'bottom'
       })
-        .setLngLat([parseFloat(retailer.long), parseFloat(retailer.lat)])
-        .setPopup(popup)
+        .setLngLat([lng, lat])
         .addTo(this.map);
 
       // Store reference for list interaction
       marker.retailerIndex = index;
+      marker._popup = popup;
       this.markers.push(marker);
 
-      // Add click handler
-      el.addEventListener('click', () => {
+      // Add click handler to marker element
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.closeActivePopup();
         popup.addTo(this.map);
         this.activePopup = popup;
@@ -241,9 +261,11 @@ class RetailersMap {
 
     // Open popup
     this.closeActivePopup();
-    const popup = marker.getPopup();
-    popup.addTo(this.map);
-    this.activePopup = popup;
+    const popup = marker._popup;
+    if (popup) {
+      popup.addTo(this.map);
+      this.activePopup = popup;
+    }
 
     // Highlight list item
     this.highlightListItem(index);

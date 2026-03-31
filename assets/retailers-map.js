@@ -63,10 +63,21 @@ class RetailersMap {
 
     // Wait for map to load before adding markers
     this.map.on('load', () => {
+      // Force resize to ensure Mapbox correctly measures the container
+      // (important when container uses position:fixed or is inside a transformed element)
+      this.map.resize();
       this.addMarkers();
       this.fitMapToBounds();
       this.renderRetailerList();
     });
+
+    // Also resize after fonts/images load in case layout shifts
+    window.addEventListener('load', () => {
+      this.map.resize();
+    });
+
+    // Extra resize after a short delay in case of CSS transitions on the container
+    setTimeout(() => this.map.resize(), 300);
   }
 
   calculateCenter() {

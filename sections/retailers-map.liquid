@@ -34,7 +34,7 @@
     
     <div class="retailers-map__container{% if section.settings.full_width %} retailers-map__container--full-width{% else %} page-width{% endif %}">
       <div id="retailers-map" 
-           class="retailers-map{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+           class="retailers-map"
            data-mapbox-token="{{ section.settings.mapbox_token }}"
            data-map-style="{{ section.settings.map_style }}"
            data-initial-zoom="{{ section.settings.initial_zoom }}"

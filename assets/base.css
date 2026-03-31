@@ -3630,7 +3630,7 @@ details-disclosure > details {
   padding: 1rem 0.5rem;
   text-align: center;
   border: none;
-  border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+  border-bottom: 1px solid #ccc;
 }
 
 .size-chart-table th {

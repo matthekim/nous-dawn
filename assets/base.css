@@ -4603,6 +4603,14 @@ h2.related-products__heading {
   text-transform: lowercase;
 }
 
+/* Featured collection heading (homepage popular products) */
+.collection__title h2.title.inline-richtext {
+  color: var(--seasonal-color) !important;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  font-size: 3rem !important;
+  text-transform: lowercase;
+}
+
 /* Card tie-dye borders - randomized via JS */
 /* Hide all tie-dye images by default */
 .card__inner .card__tie-dye {

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Retailer Coordinate Picker</title>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: -apple-system, sans-serif; }
+    #map { position: absolute; top: 0; bottom: 0; left: 0; right: 350px; }
+    #sidebar { position: absolute; top: 0; bottom: 0; right: 0; width: 350px; background: #f5f5f5; overflow-y: auto; }
+    #coords { padding: 15px; background: #fff; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 10; }
+    #coords h3 { margin: 0 0 10px; }
+    #coords code { display: block; background: #e8e8e8; padding: 10px; font-size: 14px; margin: 5px 0; }
+    #coords button { background: #000; color: #fff; border: none; padding: 8px 16px; cursor: pointer; margin-top: 10px; }
+    .retailer { padding: 12px 15px; border-bottom: 1px solid #ddd; cursor: pointer; background: #fff; }
+    .retailer:hover { background: #f0f0f0; }
+    .retailer.active { background: #e3f2fd; }
+    .retailer h4 { margin: 0 0 5px; font-size: 14px; }
+    .retailer p { margin: 0; font-size: 12px; color: #666; }
+    .retailer .coords { font-size: 11px; color: #999; margin-top: 5px; }
+    .retailer .coords.updated { color: #4caf50; font-weight: bold; }
+    #search { width: calc(100% - 30px); padding: 10px; margin: 15px; border: 1px solid #ddd; font-size: 14px; }
+    #export { padding: 15px; background: #fff; border-top: 1px solid #ddd; position: sticky; bottom: 0; }
+    #export button { width: 100%; background: #4caf50; color: #fff; border: none; padding: 12px; cursor: pointer; font-size: 14px; }
+    #export button:hover { background: #43a047; }
+    .marker { width: 20px; height: 20px; background: #000; border: 2px solid #fff; border-radius: 50%; cursor: pointer; }
+    .marker.selected { background: #2196f3; transform: scale(1.3); }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="sidebar">
+    <div id="coords">
+      <h3>📍 Click map to get coordinates</h3>
+      <p id="selected-shop">Select a shop from the list, then click the map to set its location.</p>
+      <code id="coord-display">lat: —, long: —</code>
+      <button onclick="applyCoords()" id="apply-btn" style="display:none;">Apply to selected shop</button>
+    </div>
+    <input type="text" id="search" placeholder="Search shops...">
+    <div id="retailers-list"></div>
+    <div id="export">
+      <button onclick="exportJSON()">Export Updated Coordinates</button>
+    </div>
+  </div>
+
+  <script>
+    // Your Mapbox token
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhla2ltIiwiYSI6ImNrdjZmdW4ydjFibXUydm8wNmoxOWxua3cifQ.t3zhCOwIdsJh180Kgukq8Q';
+
+    // Retailers data - paste from page.retailers.json
+    const retailers = [
+      { shop: "Exes", address: "MARKT 12", zip: "3150", city: "HAACHT", country: "Belgium", lat: "50.9767902", long: "4.6359949" },
+      { shop: "Dawance", address: "Avenue de Spa 100", zip: "4802", city: "Verviers", country: "Belgium", lat: "50.5796252", long: "5.8622923" },
+      { shop: "Princess", address: "Lange Gasthuisstraat 12", zip: "2000", city: "Antwerpen", country: "Belgium", lat: "51.2169089", long: "4.4051936" },
+      { shop: "Princess Knokke", address: "Zeedijk-Het Zoute 807", zip: "8300", city: "Knokke-Heist", country: "Belgium", lat: "51.3546932", long: "3.2928181" },
+      { shop: "Kelly", address: "George Brugmannplein 36", zip: "1050", city: "Brussel", country: "Belgium", lat: "50.8211883", long: "4.3613649" },
+      { shop: "Frau", address: "Dorp-West 114", zip: "9080", city: "Lochristi", country: "Belgium", lat: "51.0809875", long: "3.8238968" },
+      { shop: "John's Boetiek", address: "Kortrijkstraat 50", zip: "9800", city: "Deinze", country: "Belgium", lat: "50.9810649", long: "3.5293098" },
+      { shop: "Harlekijn", address: "Onze-Lieve-Vrouwestraat 121", zip: "2800", city: "Mechelen", country: "Belgium", lat: "51.0244174", long: "4.4785316" },
+      { shop: "Feliz Concept Store", address: "Wampenberg 23", zip: "2370", city: "Arendonk", country: "Belgium", lat: "51.3226011", long: "5.0899989" },
+      { shop: "Manufactuur", address: "Lembergsesteenweg 136", zip: "9820", city: "Merelbeke-Melle", country: "Belgium", lat: "50.9958741", long: "3.7812612" },
+      { shop: "Manou", address: "Steenhouwersvest 33", zip: "2000", city: "Antwerpen", country: "Belgium", lat: "51.2179336", long: "4.3982571" },
+      { shop: "Caress", address: "Dokter Roosensplein 43", zip: "2930", city: "Brasschaat", country: "Belgium", lat: "51.2975918", long: "4.4881227" },
+      { shop: "Ko.Shu", address: "Solleveld 30", zip: "9550", city: "Herzele", country: "Belgium", lat: "50.8825270", long: "3.8894415" },
+      // Add more retailers here from your JSON...
+    ];
+
+    let selectedIndex = null;
+    let clickedLat = null;
+    let clickedLng = null;
+    let markers = [];
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/matthekim/ckv6gc88y0c9u15t5ppk1horn',
+      center: [4.5, 47],
+      zoom: 5
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Click handler to get coordinates
+    map.on('click', (e) => {
+      clickedLat = e.lngLat.lat.toFixed(7);
+      clickedLng = e.lngLat.lng.toFixed(7);
+      document.getElementById('coord-display').textContent = `lat: "${clickedLat}", long: "${clickedLng}"`;
+      document.getElementById('apply-btn').style.display = selectedIndex !== null ? 'block' : 'none';
+    });
+
+    // Add markers for all retailers
+    function addMarkers() {
+      markers.forEach(m => m.remove());
+      markers = [];
+      
+      retailers.forEach((r, i) => {
+        if (!r.lat || !r.long) return;
+        
+        const el = document.createElement('div');
+        el.className = 'marker' + (i === selectedIndex ? ' selected' : '');
+        el.onclick = (e) => {
+          e.stopPropagation();
+          selectShop(i);
+        };
+        
+        const marker = new mapboxgl.Marker({ element: el })
+          .setLngLat([parseFloat(r.long), parseFloat(r.lat)])
+          .addTo(map);
+        
+        markers.push(marker);
+      });
+    }
+
+    // Render retailer list
+    function renderList(filter = '') {
+      const container = document.getElementById('retailers-list');
+      container.innerHTML = retailers
+        .map((r, i) => {
+          const fullText = `${r.shop} ${r.address} ${r.city} ${r.country}`.toLowerCase();
+          if (filter && !fullText.includes(filter.toLowerCase())) return '';
+          
+          const hasCoords = r.lat && r.long;
+          const isUpdated = r.updated;
+          
+          return `
+            <div class="retailer ${i === selectedIndex ? 'active' : ''}" onclick="selectShop(${i})">
+              <h4>${r.shop}</h4>
+              <p>${r.address}, ${r.zip} ${r.city}, ${r.country}</p>
+              <div class="coords ${isUpdated ? 'updated' : ''}">${hasCoords ? `${r.lat}, ${r.long}` : 'No coordinates'} ${isUpdated ? '✓ Updated' : ''}</div>
+            </div>
+          `;
+        })
+        .join('');
+    }
+
+    function selectShop(index) {
+      selectedIndex = index;
+      const r = retailers[index];
+      document.getElementById('selected-shop').innerHTML = `<strong>${r.shop}</strong><br>${r.address}, ${r.city}`;
+      document.getElementById('apply-btn').style.display = clickedLat ? 'block' : 'none';
+      
+      // Fly to location if it has coords
+      if (r.lat && r.long) {
+        map.flyTo({ center: [parseFloat(r.long), parseFloat(r.lat)], zoom: 15 });
+      }
+      
+      renderList(document.getElementById('search').value);
+      addMarkers();
+    }
+
+    function applyCoords() {
+      if (selectedIndex === null || !clickedLat) return;
+      
+      retailers[selectedIndex].lat = clickedLat;
+      retailers[selectedIndex].long = clickedLng;
+      retailers[selectedIndex].updated = true;
+      
+      addMarkers();
+      renderList(document.getElementById('search').value);
+      
+      // Move to next shop
+      if (selectedIndex < retailers.length - 1) {
+        selectShop(selectedIndex + 1);
+      }
+    }
+
+    function exportJSON() {
+      const output = retailers.map(r => ({
+        shop: r.shop,
+        address: r.address,
+        zip: r.zip,
+        city: r.city,
+        country: r.country,
+        lat: r.lat,
+        long: r.long
+      }));
+      
+      const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'updated-retailers.json';
+      a.click();
+    }
+
+    document.getElementById('search').addEventListener('input', (e) => {
+      renderList(e.target.value);
+    });
+
+    map.on('load', () => {
+      addMarkers();
+      renderList();
+    });
+  </script>
+</body>
+</html>

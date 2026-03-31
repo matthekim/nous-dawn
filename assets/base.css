@@ -3610,6 +3610,45 @@ details-disclosure > details {
   font-family: 'orticalinear', helvetica, arial, sans-serif;
 }
 
+.size-chart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.3rem;
+  text-transform: lowercase;
+  box-shadow: none;
+}
+
+.size-chart-table th,
+.size-chart-table td {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.size-chart-table th {
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif;
+  font-weight: normal;
+  color: #999;
+  padding-bottom: 1.2rem;
+}
+
+.size-chart-table td {
+  color: rgb(var(--color-foreground));
+}
+
+.size-chart-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.size-chart-note {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #999;
+  text-align: center;
+  font-style: italic;
+}
+
 .gradient {
   background: rgb(var(--color-background));
   background: none; /*var(--gradient-background);*/

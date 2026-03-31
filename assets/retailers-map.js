@@ -50,11 +50,16 @@ class RetailersMap {
     // Calculate center from retailers
     const center = this.calculateCenter();
 
+    // Debug: log container dimensions at init time
+    const rect = this.mapContainer.getBoundingClientRect();
+    console.log('Map container rect at init:', rect);
+
     this.map = new mapboxgl.Map({
       container: 'retailers-map',
       style: this.style,
       center: center,
       zoom: this.zoom,
+      projection: 'mercator', // Force mercator - Mapbox v3 defaults to globe which misplaces markers
       attributionControl: true
     });
 
@@ -64,8 +69,15 @@ class RetailersMap {
     // Wait for map to load before adding markers
     this.map.on('load', () => {
       // Force resize to ensure Mapbox correctly measures the container
-      // (important when container uses position:fixed or is inside a transformed element)
       this.map.resize();
+
+      // Debug: verify a known coordinate projects to a sensible pixel position
+      const testPoint = this.map.project([4.4028, 51.2175]);
+      const containerRect = this.map.getContainer().getBoundingClientRect();
+      console.log('Container size:', containerRect.width, 'x', containerRect.height);
+      console.log('Antwerpen projects to pixel:', testPoint);
+      console.log('First retailer coords:', this.retailers[0]?.long, this.retailers[0]?.lat);
+
       this.addMarkers();
       this.fitMapToBounds();
       this.renderRetailerList();
@@ -160,49 +172,102 @@ class RetailersMap {
   }
 
   addMarkers() {
-    this.retailers.forEach((retailer, index) => {
-      if (!retailer.lat || !retailer.long) return;
+    // Build GeoJSON from retailers
+    const geojson = {
+      type: 'FeatureCollection',
+      features: this.retailers
+        .map((retailer, index) => {
+          const lng = parseFloat(retailer.long);
+          const lat = parseFloat(retailer.lat);
+          if (isNaN(lng) || isNaN(lat)) return null;
+          return {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [lng, lat] },
+            properties: {
+              index,
+              shop: retailer.shop || '',
+              address: retailer.address || '',
+              zip: retailer.zip || '',
+              city: retailer.city || '',
+              country: retailer.country || '',
+              url: retailer.url || ''
+            }
+          };
+        })
+        .filter(Boolean)
+    };
 
-      const lng = parseFloat(retailer.long);
-      const lat = parseFloat(retailer.lat);
-      
-      // Validate coordinates
-      if (isNaN(lng) || isNaN(lat)) {
-        console.warn('Invalid coordinates for retailer:', retailer.shop, retailer.lat, retailer.long);
+    // Load SVG pin image then add layer
+    this.map.loadImage(this.markerSvg, (error, image) => {
+      if (error) {
+        console.warn('Could not load marker SVG, using circle fallback:', error);
+        this._addCircleLayer(geojson);
         return;
       }
+      if (!this.map.hasImage('retailer-pin')) {
+        this.map.addImage('retailer-pin', image, { pixelRatio: 2 });
+      }
+      this.map.addSource('retailers', { type: 'geojson', data: geojson });
+      this.map.addLayer({
+        id: 'retailer-markers',
+        type: 'symbol',
+        source: 'retailers',
+        layout: {
+          'icon-image': 'retailer-pin',
+          'icon-size': 1,
+          'icon-anchor': 'bottom',
+          'icon-allow-overlap': true
+        }
+      });
+      this._bindMarkerEvents();
+    });
+  }
 
-      const el = this.createMarkerElement(retailer);
-      
+  _addCircleLayer(geojson) {
+    this.map.addSource('retailers', { type: 'geojson', data: geojson });
+    this.map.addLayer({
+      id: 'retailer-markers',
+      type: 'circle',
+      source: 'retailers',
+      paint: {
+        'circle-radius': 8,
+        'circle-color': this.markerColor || '#000000',
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#ffffff'
+      }
+    });
+    this._bindMarkerEvents();
+  }
+
+  _bindMarkerEvents() {
+    // Click to show popup
+    this.map.on('click', 'retailer-markers', (e) => {
+      const props = e.features[0].properties;
+      const coords = e.features[0].geometry.coordinates.slice();
+      const retailer = this.retailers[props.index];
+
+      this.closeActivePopup();
+
       const popup = new mapboxgl.Popup({
-        offset: [0, -32], // Offset to account for marker height
+        offset: [0, -30],
         closeButton: true,
         closeOnClick: true,
         className: 'retailers-map__popup-container'
       })
-        .setLngLat([lng, lat])
-        .setHTML(this.createPopupContent(retailer));
-
-      const marker = new mapboxgl.Marker({
-        element: el,
-        anchor: 'bottom'
-      })
-        .setLngLat([lng, lat])
+        .setLngLat(coords)
+        .setHTML(this.createPopupContent(retailer))
         .addTo(this.map);
 
-      // Store reference for list interaction
-      marker.retailerIndex = index;
-      marker._popup = popup;
-      this.markers.push(marker);
+      this.activePopup = popup;
+      this.highlightListItem(props.index);
+    });
 
-      // Add click handler to marker element
-      el.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.closeActivePopup();
-        popup.addTo(this.map);
-        this.activePopup = popup;
-        this.highlightListItem(index);
-      });
+    // Pointer cursor on hover
+    this.map.on('mouseenter', 'retailer-markers', () => {
+      this.map.getCanvas().style.cursor = 'pointer';
+    });
+    this.map.on('mouseleave', 'retailer-markers', () => {
+      this.map.getCanvas().style.cursor = '';
     });
   }
 
@@ -259,26 +324,30 @@ class RetailersMap {
 
   focusOnRetailer(index) {
     const retailer = this.retailers[index];
-    const marker = this.markers[index];
-    
-    if (!retailer || !marker) return;
+    if (!retailer) return;
 
-    // Fly to location
+    const lng = parseFloat(retailer.long);
+    const lat = parseFloat(retailer.lat);
+
     this.map.flyTo({
-      center: [parseFloat(retailer.long), parseFloat(retailer.lat)],
+      center: [lng, lat],
       zoom: 14,
       duration: 1000
     });
 
-    // Open popup
     this.closeActivePopup();
-    const popup = marker._popup;
-    if (popup) {
-      popup.addTo(this.map);
-      this.activePopup = popup;
-    }
 
-    // Highlight list item
+    const popup = new mapboxgl.Popup({
+      offset: [0, -30],
+      closeButton: true,
+      closeOnClick: true,
+      className: 'retailers-map__popup-container'
+    })
+      .setLngLat([lng, lat])
+      .setHTML(this.createPopupContent(retailer))
+      .addTo(this.map);
+
+    this.activePopup = popup;
     this.highlightListItem(index);
   }
 }

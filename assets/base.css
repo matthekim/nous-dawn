@@ -4632,5 +4632,10 @@ h2.related-products__heading {
 
 /* Newsletter subscribe button arrow */
 .newsletter-form__button .icon-arrow {
+  color: #ccc !important;
+  transition: color 0.2s ease;
+}
+
+.newsletter-form__button:hover .icon-arrow {
   color: var(--seasonal-color) !important;
 }

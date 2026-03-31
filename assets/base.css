@@ -3586,7 +3586,8 @@ details-disclosure > details {
   border: none;
   padding: 0;
   margin-left: 0.5rem;
-  font-family: 'orticalinear', helvetica, arial, sans-serif !important;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  font-weight: normal;
   font-size: 1.2rem;
   color: #ccc;
   cursor: pointer;

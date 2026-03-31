@@ -4613,15 +4613,20 @@ button.cart__checkout-button::after,
 /* Remove gap from wallet button container */
 .wallet-cart-button-container,
 .additional-checkout-buttons .dynamic-checkout__content,
-.additional-checkout-buttons ul {
+.additional-checkout-buttons ul,
+.additional-checkout-buttons li,
+.cart__dynamic-checkout-buttons li,
+.cart__dynamic-checkout-buttons .wallet-cart-button-container {
   gap: 0 !important;
   margin: 0 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   padding: 0 !important;
 }
 
-.cart__dynamic-checkout-buttons .wallet-cart-button-container {
+.cart__dynamic-checkout-buttons .wallet-cart-button-container[style] {
   margin: 0 !important;
 }
 

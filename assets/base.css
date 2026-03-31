@@ -3586,8 +3586,6 @@ details-disclosure > details {
   border: none;
   padding: 0;
   margin-left: 0.5rem;
-  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
-  font-weight: normal;
   font-size: 1.2rem;
   color: #ccc;
   cursor: pointer;
@@ -4677,4 +4675,11 @@ h2.related-products__heading {
 
 .newsletter-form__button:hover .icon-arrow {
   color: var(--seasonal-color) !important;
+}
+
+/* Size Chart Toggle - europa font override */
+button[data-size-chart-toggle],
+button.size-chart-toggle {
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  font-weight: 400 !important;
 }

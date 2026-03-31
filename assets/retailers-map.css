@@ -1,0 +1,217 @@
+/* Retailers Map Styles */
+
+.retailers-map-section {
+  width: 100%;
+}
+
+.retailers-map__title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.retailers-map__container {
+  position: relative;
+}
+
+.retailers-map__container--full-width {
+  width: 100%;
+}
+
+.retailers-map {
+  width: 100%;
+  height: 500px;
+  border-radius: var(--media-radius, 0);
+  overflow: hidden;
+}
+
+@media screen and (min-width: 750px) {
+  .retailers-map {
+    height: 600px;
+  }
+}
+
+.retailers-map__container--full-width .retailers-map {
+  border-radius: 0;
+}
+
+/* Mapbox overrides */
+.mapboxgl-popup {
+  max-width: 280px !important;
+}
+
+.retailers-map__popup-container .mapboxgl-popup-content {
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.retailers-map__popup-container .mapboxgl-popup-close-button {
+  padding: 8px 12px;
+  font-size: 18px;
+  color: #666;
+  right: 0;
+  top: 0;
+}
+
+.retailers-map__popup-container .mapboxgl-popup-close-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+.retailers-map__popup {
+  padding: 1.5rem;
+}
+
+.retailers-map__popup-title {
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  font-size: 1.4rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.retailers-map__popup-address {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.retailers-map__popup-link {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  color: var(--seasonal-color, #000);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.retailers-map__popup-link:hover {
+  opacity: 0.7;
+}
+
+/* Custom marker styling via JS (fallback) */
+.retailers-map__marker {
+  position: relative;
+}
+
+/* Warning message */
+.retailers-map__warning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.retailers-map__warning p {
+  color: #666;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Retailer List */
+.retailers-map__list-container {
+  margin-top: 3rem;
+}
+
+.retailers-map__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 750px) {
+  .retailers-map__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .retailers-map__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.retailers-map__list-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: rgba(var(--color-foreground), 0.03);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retailers-map__list-item:hover,
+.retailers-map__list-item.active {
+  background-color: rgba(var(--color-foreground), 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.retailers-map__list-item.active {
+  border-left: 3px solid var(--seasonal-color, #000);
+}
+
+.retailers-map__list-item-content {
+  flex: 1;
+}
+
+.retailers-map__list-name {
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.retailers-map__list-address {
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.7);
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.retailers-map__list-link {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  color: var(--seasonal-color, #000);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.retailers-map__list-link:hover {
+  opacity: 0.7;
+}
+
+.retailers-map__list-locate {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  border-radius: 50%;
+  color: rgba(var(--color-foreground), 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 1rem;
+}
+
+.retailers-map__list-locate:hover {
+  background-color: var(--seasonal-color, #000);
+  border-color: var(--seasonal-color, #000);
+  color: #fff;
+}
+
+.retailers-map__list-item.active .retailers-map__list-locate {
+  background-color: var(--seasonal-color, #000);
+  border-color: var(--seasonal-color, #000);
+  color: #fff;
+}

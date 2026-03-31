@@ -52,10 +52,25 @@
       ],
       "name": "Retailers Data",
       "settings": {}
+    },
+    "retailers_map_Xk8mPq": {
+      "type": "retailers-map",
+      "settings": {
+        "title": "Find a Retailer",
+        "mapbox_token": "pk.eyJ1IjoibWF0dGhla2ltIiwiYSI6ImNrdjZmdW4ydjFibXUydm8wNmoxOWxua3cifQ.t3zhCOwIdsJh180Kgukq8Q",
+        "map_style": "mapbox://styles/matthekim/ckv6gc88y0c9u15t5ppk1horn",
+        "initial_zoom": 6,
+        "marker_color": "#000000",
+        "full_width": false,
+        "show_list": true,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "retailers_data_9wV6H8"
+    "retailers_data_9wV6H8",
+    "retailers_map_Xk8mPq"
   ]
 }

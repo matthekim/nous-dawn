@@ -1,0 +1,144 @@
+{%- comment -%}
+  Retailers Map Section - Displays a Mapbox map with retailer locations
+  Requires: retailers-data section to be loaded first
+{%- endcomment -%}
+
+{{ 'retailers-map.css' | asset_url | stylesheet_tag }}
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="retailers-map-section section-{{ section.id }}-padding">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="retailers-map__title h2{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+  </div>
+  
+  <div class="retailers-map__container{% if section.settings.full_width %} retailers-map__container--full-width{% else %} page-width{% endif %}">
+    <div id="retailers-map" 
+         class="retailers-map{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+         data-mapbox-token="{{ section.settings.mapbox_token }}"
+         data-map-style="{{ section.settings.map_style }}"
+         data-initial-zoom="{{ section.settings.initial_zoom }}"
+         data-marker-color="{{ section.settings.marker_color }}">
+    </div>
+  </div>
+  
+  {% if section.settings.show_list %}
+    <div class="page-width retailers-map__list-container">
+      <div class="retailers-map__list" id="retailers-list">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script src="{{ 'retailers-map.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Retailers Map",
+  "tag": "section",
+  "class": "section retailers-map-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Find a Retailer"
+    },
+    {
+      "type": "text",
+      "id": "mapbox_token",
+      "label": "Mapbox Access Token",
+      "info": "Get your token from mapbox.com/account/access-tokens"
+    },
+    {
+      "type": "select",
+      "id": "map_style",
+      "label": "Map Style",
+      "options": [
+        { "value": "mapbox://styles/mapbox/streets-v12", "label": "Streets" },
+        { "value": "mapbox://styles/mapbox/light-v11", "label": "Light" },
+        { "value": "mapbox://styles/mapbox/dark-v11", "label": "Dark" },
+        { "value": "mapbox://styles/mapbox/outdoors-v12", "label": "Outdoors" },
+        { "value": "mapbox://styles/mapbox/satellite-streets-v12", "label": "Satellite" }
+      ],
+      "default": "mapbox://styles/mapbox/light-v11"
+    },
+    {
+      "type": "range",
+      "id": "initial_zoom",
+      "label": "Initial Zoom Level",
+      "min": 1,
+      "max": 18,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "color",
+      "id": "marker_color",
+      "label": "Marker Color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width Map",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_list",
+      "label": "Show Retailer List Below Map",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retailers Map"
+    }
+  ]
+}
+{% endschema %}

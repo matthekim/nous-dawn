@@ -4797,3 +4797,11 @@ button.size-chart-toggle {
   font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
   padding-top: 2px !important;
 }
+
+/* Retailers page - hide continue shopping button */
+.template-page-retailers .underlined-link,
+.template-page-retailers a[href*="collections/all"],
+body[class*="retailers"] .link-with-icon,
+body[class*="retailers"] .underlined-link {
+  display: none !important;
+}

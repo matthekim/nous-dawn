@@ -12,6 +12,7 @@ class RetailersMap {
     this.style = this.mapContainer.dataset.mapStyle || 'mapbox://styles/mapbox/light-v11';
     this.zoom = parseInt(this.mapContainer.dataset.initialZoom) || 6;
     this.markerColor = this.mapContainer.dataset.markerColor || '#000000';
+    this.markerSvg = this.mapContainer.dataset.markerSvg || '';
     this.retailers = window.retailersData || [];
     this.markers = [];
     this.map = null;
@@ -94,38 +95,15 @@ class RetailersMap {
   createMarkerElement(retailer) {
     const el = document.createElement('div');
     el.className = 'retailers-map__marker';
-    el.style.cssText = `
-      width: 32px;
-      height: 32px;
-      background-color: ${this.markerColor};
-      border: 3px solid white;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease;
-    `;
 
-    // Add inner dot
-    const inner = document.createElement('div');
-    inner.style.cssText = `
-      width: 8px;
-      height: 8px;
-      background-color: white;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    `;
-    el.appendChild(inner);
+    const img = document.createElement('img');
+    img.src = this.markerSvg;
+    img.style.width = '24px';
+    img.style.height = '32px';
+    img.style.display = 'block';
+    img.style.cursor = 'pointer';
 
-    // Hover effect
-    el.addEventListener('mouseenter', () => {
-      el.style.transform = 'scale(1.2)';
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'scale(1)';
-    });
+    el.appendChild(img);
 
     return el;
   }
@@ -177,7 +155,7 @@ class RetailersMap {
 
       const marker = new mapboxgl.Marker({
         element: el,
-        anchor: 'center'
+        anchor: 'bottom'
       })
         .setLngLat([parseFloat(retailer.long), parseFloat(retailer.lat)])
         .setPopup(popup)

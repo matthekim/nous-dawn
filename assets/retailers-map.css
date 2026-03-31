@@ -64,7 +64,7 @@
 }
 
 .retailers-country {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--seasonal-color);
 }
 
 .retailers-country__title {
@@ -72,12 +72,13 @@
   padding: 1.5rem 0;
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   font-size: 1.4rem;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.1em;
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--seasonal-color);
 }
 
 .retailers-country__title::-webkit-details-marker {
@@ -89,6 +90,7 @@
   font-size: 1.6rem;
   font-weight: 300;
   transition: transform 0.2s ease;
+  color: var(--seasonal-color);
 }
 
 .retailers-country[open] .retailers-country__title::after {
@@ -107,7 +109,7 @@
 
 .retailers-shop__link {
   text-decoration: none;
-  color: inherit;
+  color: var(--seasonal-color);
   display: block;
 }
 
@@ -116,6 +118,7 @@
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   font-size: 1.3rem;
   margin-bottom: 0.25rem;
+  text-transform: lowercase;
 }
 
 .retailers-shop__link:hover .retailers-shop__name {
@@ -124,9 +127,11 @@
 
 .retailers-shop__address {
   display: block;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   font-size: 1.1rem;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--seasonal-color);
   line-height: 1.4;
+  text-transform: lowercase;
 }
 
 /* Mapbox overrides */

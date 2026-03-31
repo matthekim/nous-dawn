@@ -69,7 +69,7 @@
 
 .retailers-map__spacer {
   margin-left: 75vw;
-  min-height: 100dvh;
+  min-height: calc(100dvh - 156px);
   padding: 100px 2rem 2rem 2rem;
   box-sizing: border-box;
 }

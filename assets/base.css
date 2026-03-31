@@ -4629,3 +4629,8 @@ h2.related-products__heading {
 .deferred-media__poster-button {
   background-color: var(--seasonal-color) !important;
 }
+
+/* Newsletter subscribe button arrow */
+.newsletter-form__button .icon-arrow {
+  color: var(--seasonal-color) !important;
+}

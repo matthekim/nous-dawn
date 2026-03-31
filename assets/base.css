@@ -4680,6 +4680,6 @@ h2.related-products__heading {
 /* Size Chart Toggle - europa font override */
 button[data-size-chart-toggle],
 button.size-chart-toggle {
-  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
-  font-weight: 400 !important;
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif !important;
+  padding-top: 2px !important;
 }

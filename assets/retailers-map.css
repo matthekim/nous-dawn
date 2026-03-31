@@ -11,7 +11,7 @@
   width: 75vw;
   height: 100dvh;
   z-index: 1;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .retailers-map-left.is-at-bottom {

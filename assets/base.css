@@ -3574,18 +3574,24 @@ details-disclosure > details {
 }
 
 /* Size Chart Button */
+.product-form__input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 .size-chart-toggle {
   background: none;
   border: none;
   padding: 0;
-  margin-left: 1rem;
-  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  margin-left: 0.5rem;
+  font-family: 'orticalinear', helvetica, arial, sans-serif !important;
   font-size: 1.2rem;
   color: #ccc;
   cursor: pointer;
   text-transform: lowercase;
-  text-decoration: underline;
-  text-underline-offset: 0.2rem;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 

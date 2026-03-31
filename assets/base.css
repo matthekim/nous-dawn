@@ -4612,6 +4612,8 @@ button.cart__checkout-button::after,
 
 /* Remove gap from wallet button container */
 .wallet-cart-button-container,
+.wallet-cart-button-container.wallet-cart-button-container,
+body .wallet-cart-button-container,
 .additional-checkout-buttons .dynamic-checkout__content,
 .additional-checkout-buttons ul,
 .additional-checkout-buttons li,
@@ -4626,8 +4628,12 @@ button.cart__checkout-button::after,
   padding: 0 !important;
 }
 
-.cart__dynamic-checkout-buttons .wallet-cart-button-container[style] {
+.cart__dynamic-checkout-buttons .wallet-cart-button-container[style],
+.additional-checkout-buttons .wallet-cart-button-container[style],
+.wallet-cart-button-container[style] {
   margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* Cart page - Shop Pay button (rounded left only) */

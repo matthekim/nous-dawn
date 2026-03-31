@@ -4616,7 +4616,13 @@ button.cart__checkout-button::after,
 .additional-checkout-buttons ul {
   gap: 0 !important;
   margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   padding: 0 !important;
+}
+
+.cart__dynamic-checkout-buttons .wallet-cart-button-container {
+  margin: 0 !important;
 }
 
 /* Cart page - Shop Pay button (rounded left only) */

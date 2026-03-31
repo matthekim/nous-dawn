@@ -2,10 +2,10 @@
 
 .retailers-map-wrapper {
   position: fixed;
-  top: 0;
+  top: 106px;
   left: 0;
   width: 75vw;
-  height: 100dvh;
+  height: calc(100dvh - 106px);
   margin: 0 !important;
   z-index: 1;
 }
@@ -45,6 +45,13 @@
 
 .retailers-map__container--full-width .retailers-map {
   border-radius: 0;
+}
+
+.retailers-map__spacer {
+  position: relative;
+  min-height: calc(100dvh - 106px);
+  width: 75vw;
+  pointer-events: none;
 }
 
 /* Mapbox overrides */

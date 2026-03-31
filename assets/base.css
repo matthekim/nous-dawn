@@ -3598,6 +3598,12 @@ details-disclosure > details {
   color: var(--seasonal-color) !important;
 }
 
+.size-chart-toggle:focus,
+.size-chart-toggle:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* Size Chart Container */
 .size-chart-container {
   margin-top: 2rem;
@@ -3616,6 +3622,7 @@ details-disclosure > details {
   font-size: 1.3rem;
   text-transform: lowercase;
   box-shadow: none;
+  table-layout: fixed;
 }
 
 .size-chart-table th,

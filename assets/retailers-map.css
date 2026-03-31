@@ -50,8 +50,83 @@
 .retailers-map__spacer {
   position: relative;
   min-height: calc(100dvh - 106px);
-  width: 75vw;
-  pointer-events: none;
+  width: 25vw;
+  margin-left: 75vw;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Retailers List Styles */
+.retailers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.retailers-country {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.retailers-country__title {
+  cursor: pointer;
+  padding: 1.5rem 0;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.retailers-country__title::-webkit-details-marker {
+  display: none;
+}
+
+.retailers-country__title::after {
+  content: '+';
+  font-size: 1.6rem;
+  font-weight: 300;
+  transition: transform 0.2s ease;
+}
+
+.retailers-country[open] .retailers-country__title::after {
+  content: '−';
+}
+
+.retailers-country__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1.5rem 0;
+}
+
+.retailers-country__shop {
+  padding: 0.75rem 0;
+}
+
+.retailers-shop__link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.retailers-shop__name {
+  display: block;
+  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.retailers-shop__link:hover .retailers-shop__name {
+  text-decoration: underline;
+}
+
+.retailers-shop__address {
+  display: block;
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
 }
 
 /* Mapbox overrides */

@@ -1,8 +1,58 @@
 {%- comment -%}
-  Retailers Map Spacer Section - Pushes content below the fixed map
+  Retailers Map Spacer Section - Shows retailer list grouped by country
 {%- endcomment -%}
 
-<div class="retailers-map__spacer">&nbsp;</div>
+{{ 'retailers-map.css' | asset_url | stylesheet_tag }}
+
+<div class="retailers-map__spacer">
+  <div class="retailers-list" id="retailers-country-list">
+    <!-- Populated by JavaScript -->
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const retailers = window.retailersData || [];
+    const container = document.getElementById('retailers-country-list');
+    
+    if (!retailers.length || !container) return;
+    
+    // Group by country
+    const grouped = retailers.reduce((acc, r) => {
+      const country = r.country || 'Other';
+      if (!acc[country]) acc[country] = [];
+      acc[country].push(r);
+      return acc;
+    }, {});
+    
+    // Sort countries alphabetically
+    const sortedCountries = Object.keys(grouped).sort();
+    
+    let html = '';
+    sortedCountries.forEach(country => {
+      // Sort shops alphabetically within country
+      const shops = grouped[country].sort((a, b) => a.shop.localeCompare(b.shop));
+      
+      html += `
+        <details class="retailers-country">
+          <summary class="retailers-country__title">${country}</summary>
+          <ul class="retailers-country__list">
+            ${shops.map(shop => `
+              <li class="retailers-country__shop">
+                <a href="${shop.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
+                  <span class="retailers-shop__name">${shop.shop}</span>
+                </a>
+                <span class="retailers-shop__address">${shop.address}, ${shop.zip} ${shop.city}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </details>
+      `;
+    });
+    
+    container.innerHTML = html;
+  });
+</script>
 
 {% schema %}
 {

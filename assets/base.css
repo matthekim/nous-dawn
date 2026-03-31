@@ -4610,6 +4610,15 @@ button.cart__checkout-button::after,
   gap: 0 !important;
 }
 
+/* Remove gap from wallet button container */
+.wallet-cart-button-container,
+.additional-checkout-buttons .dynamic-checkout__content,
+.additional-checkout-buttons ul {
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /* Cart page - Shop Pay button (rounded left only) */
 shop-pay-wallet-button {
   border-radius: 50px 0 0 50px !important;

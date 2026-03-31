@@ -4616,3 +4616,8 @@ h2.related-products__heading {
 .card__inner.tie-dye-bottom .card__tie-dye--bottom {
   display: block !important;
 }
+
+/* Deferred media poster button */
+.deferred-media__poster-button {
+  background-color: var(--seasonal-color) !important;
+}

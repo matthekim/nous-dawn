@@ -4654,24 +4654,24 @@ body .wallet-cart-button-container,
   margin-right: 0 !important;
 }
 
-/* Cart page - Shop Pay button (rounded left only) */
+/* Cart page - Shop Pay button */
 shop-pay-wallet-button {
-  border-radius: 50px 0 0 50px !important;
+  border-radius: 50px !important;
   overflow: hidden !important;
   display: block;
   margin: 0 !important;
-  clip-path: inset(0 round 50px 0 0 50px) !important;
-  -webkit-clip-path: inset(0 round 50px 0 0 50px) !important;
+  clip-path: inset(0 round 50px) !important;
+  -webkit-clip-path: inset(0 round 50px) !important;
 }
 
-/* Cart page - Google Pay button (rounded right only) */
+/* Cart page - Google Pay button */
 shopify-google-pay-button {
-  border-radius: 0 50px 50px 0 !important;
+  border-radius: 50px !important;
   overflow: hidden !important;
   margin: 0 !important;
   display: block;
-  clip-path: inset(0 round 0 50px 50px 0) !important;
-  -webkit-clip-path: inset(0 round 0 50px 50px 0) !important;
+  clip-path: inset(0 round 50px) !important;
+  -webkit-clip-path: inset(0 round 50px) !important;
 }
 
 /* Cart page - PayPal button */

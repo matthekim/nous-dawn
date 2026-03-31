@@ -3609,7 +3609,7 @@ details-disclosure > details {
   width: 100%;
   max-width: 44rem;
   margin-top: 2rem;
-  padding: 2rem 0;
+  padding: 1rem 0;
   border: none;
   background: transparent;
 }
@@ -4607,13 +4607,30 @@ button.cart__checkout-button::after,
 /* Cart page - dynamic checkout buttons greyscale */
 .cart__dynamic-checkout-buttons.additional-checkout-buttons {
   filter: grayscale(100%);
+  gap: 0 !important;
 }
 
-/* Cart page - rounded payment buttons */
-shop-pay-wallet-button,
+/* Cart page - Shop Pay button (rounded left only) */
+shop-pay-wallet-button {
+  border-radius: 50px 0 0 50px !important;
+  overflow: hidden !important;
+  display: block;
+  clip-path: inset(0 round 50px 0 0 50px) !important;
+  -webkit-clip-path: inset(0 round 50px 0 0 50px) !important;
+}
+
+/* Cart page - Google Pay button (rounded right only) */
+shopify-google-pay-button {
+  border-radius: 0 50px 50px 0 !important;
+  overflow: hidden !important;
+  display: block;
+  clip-path: inset(0 round 0 50px 50px 0) !important;
+  -webkit-clip-path: inset(0 round 0 50px 50px 0) !important;
+}
+
+/* Cart page - PayPal and other buttons */
 shop-paypal-button,
-shopify-google-pay-button,
-.additional-checkout-buttons > *,
+.additional-checkout-buttons > *:not(shop-pay-wallet-button):not(shopify-google-pay-button),
 .shopify-payment-button__button {
   border-radius: 50px !important;
   overflow: hidden !important;

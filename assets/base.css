@@ -3607,6 +3607,7 @@ details-disclosure > details {
 /* Size Chart Container */
 .size-chart-container {
   width: 100%;
+  max-width: 44rem;
   margin-top: 2rem;
   padding: 2rem 0;
   border: none;

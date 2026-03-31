@@ -1,17 +1,21 @@
 /* Retailers Map Styles */
 
 .retailers-page-layout {
-  display: flex;
-  align-items: flex-start;
+  position: relative;
 }
 
 .retailers-map-left {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 75vw;
   height: 100dvh;
-  flex-shrink: 0;
+  z-index: 1;
   overflow: hidden;
+}
+
+.retailers-map-left.is-at-bottom {
+  position: absolute;
 }
 
 .retailers-map-top-bar {
@@ -64,10 +68,14 @@
 }
 
 .retailers-map__spacer {
-  width: 25vw;
+  margin-left: 75vw;
   min-height: 100dvh;
   padding: 100px 2rem 2rem 2rem;
   box-sizing: border-box;
+}
+
+.retailers-bottom-sentinel {
+  height: 1px;
 }
 
 /* Retailers List Styles */

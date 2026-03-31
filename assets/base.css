@@ -4610,7 +4610,21 @@ button.cart__checkout-button::after,
   gap: 0 !important;
 }
 
-/* Remove gap from wallet button container */
+/* Remove gap from accelerated checkout container (cart page) */
+shopify-accelerated-checkout-cart {
+  display: flex !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+shopify-accelerated-checkout-cart > * {
+  margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Remove gap from wallet button container (product page) */
 .wallet-cart-button-container,
 .wallet-cart-button-container.wallet-cart-button-container,
 body .wallet-cart-button-container,

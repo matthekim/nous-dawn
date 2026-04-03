@@ -98,34 +98,39 @@
 
     container.innerHTML = html;
 
-    // Initialise all lists as collapsed (JS owns max-height entirely)
-    container.querySelectorAll('.retailers-country__list').forEach(list => {
-      list.style.maxHeight = '0';
-    });
-
-    // Animate open/close of <details> foldouts
+    // Animate open/close of <details> foldouts using Web Animations API
     container.querySelectorAll('.retailers-country').forEach(details => {
       const summary = details.querySelector('summary');
       const list = details.querySelector('.retailers-country__list');
+      let animation = null;
 
       summary.addEventListener('click', e => {
         e.preventDefault();
+        if (animation) { animation.cancel(); animation = null; }
 
         if (details.hasAttribute('open')) {
-          // Closing: list.style.maxHeight is already a px value, animate to 0
-          list.style.maxHeight = '0';
-          list.addEventListener('transitionend', () => {
+          // Closing
+          animation = list.animate(
+            [{ maxHeight: list.scrollHeight + 'px' }, { maxHeight: '0px' }],
+            { duration: 400, easing: 'ease', fill: 'forwards' }
+          );
+          animation.onfinish = () => {
             details.removeAttribute('open');
-          }, { once: true });
+            list.style.maxHeight = '';
+            animation = null;
+          };
         } else {
-          // Opening: set [open], measure natural height, animate from 0
+          // Opening
           details.setAttribute('open', '');
-          list.style.maxHeight = 'none';       // lift constraint to measure
           const targetHeight = list.scrollHeight;
-          list.style.maxHeight = '0';          // snap back to 0
-          list.offsetHeight;                   // force reflow so browser registers 0
-          list.style.maxHeight = targetHeight + 'px'; // trigger transition
-          // Keep at px value after open — never set to 'none' (would break close transition)
+          animation = list.animate(
+            [{ maxHeight: '0px' }, { maxHeight: targetHeight + 'px' }],
+            { duration: 400, easing: 'ease', fill: 'forwards' }
+          );
+          animation.onfinish = () => {
+            list.style.maxHeight = targetHeight + 'px';
+            animation = null;
+          };
         }
       });
     });

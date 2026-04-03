@@ -24,6 +24,7 @@
   .retailers-country__list {
     overflow: hidden;
     height: 0;
+    transition: height 0.4s ease;
   }
 {%- endstyle -%}
 
@@ -114,25 +115,18 @@
         icon.textContent = isOpen ? '\u2212' : '+';
 
         if (isOpen) {
-          // Remove ALL constraints via inline style, then measure true height
-          list.style.cssText = 'overflow:hidden;height:auto;max-height:none;';
-          const h = list.offsetHeight;
-          list.style.cssText = 'overflow:hidden;height:0;max-height:0;';
-          void list.offsetHeight;
-          list.animate(
-            [{ height: '0px', maxHeight: '0px' }, { height: h + 'px', maxHeight: h + 'px' }],
-            { duration: 400, easing: 'ease', fill: 'forwards' }
-          ).onfinish = function() {
-            list.style.cssText = 'overflow:hidden;height:auto;max-height:none;';
-          };
+          // scrollHeight = full content height, accurate even when height:0 is set
+          list.style.height = list.scrollHeight + 'px';
+          list.addEventListener('transitionend', function done() {
+            list.style.height = 'auto';
+            list.removeEventListener('transitionend', done);
+          });
         } else {
-          const h = list.offsetHeight;
-          list.animate(
-            [{ height: h + 'px', maxHeight: h + 'px' }, { height: '0px', maxHeight: '0px' }],
-            { duration: 400, easing: 'ease', fill: 'forwards' }
-          ).onfinish = function() {
-            list.style.cssText = 'overflow:hidden;height:0;max-height:0;';
-          };
+          // Lock to current px before collapsing (offsetHeight is correct here as it's open)
+          list.style.height = list.offsetHeight + 'px';
+          requestAnimationFrame(() => {
+            list.style.height = '0px';
+          });
         }
       });
     });

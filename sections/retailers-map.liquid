@@ -107,20 +107,28 @@
         e.preventDefault();
 
         if (details.hasAttribute('open')) {
-          // Closing: animate then remove [open]
-          details.style.overflow = 'hidden';
-          // Force grid-template-rows back to 0fr before removing open
-          list.style.gridTemplateRows = '0fr';
-          list.style.paddingBottom = '0';
+          // Closing: lock current height then animate to 0
+          list.style.maxHeight = list.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            list.style.maxHeight = '0';
+          });
           list.addEventListener('transitionend', () => {
             details.removeAttribute('open');
-            details.style.overflow = '';
-            list.style.gridTemplateRows = '';
-            list.style.paddingBottom = '';
+            list.style.maxHeight = '';
           }, { once: true });
         } else {
-          // Opening: add [open] then let CSS animate to 1fr
+          // Opening: set [open], measure full height, animate from 0
           details.setAttribute('open', '');
+          const targetHeight = list.scrollHeight;
+          list.style.maxHeight = '0';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              list.style.maxHeight = targetHeight + 'px';
+            });
+          });
+          list.addEventListener('transitionend', () => {
+            list.style.maxHeight = 'none';
+          }, { once: true });
         }
       });
     });

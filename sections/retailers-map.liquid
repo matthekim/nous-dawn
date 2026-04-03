@@ -20,13 +20,6 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  .retailers-country__list {
-    overflow: hidden;
-    height: 0;
-    max-height: none !important;
-    transition: height 0.4s ease;
-  }
 {%- endstyle -%}
 
 <div class="retailers-page-layout">
@@ -89,7 +82,7 @@
       html += `
         <div class="retailers-country">
           <div class="retailers-country__title">${country}<span class="retailers-country__icon">+</span></div>
-          <ul class="retailers-country__list">
+          <ul class="retailers-country__list" style="overflow:hidden;height:0;transition:height 0.4s ease;">
             ${shops.map(shop => `
               <li class="retailers-country__shop">
                 <a href="${shop.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">

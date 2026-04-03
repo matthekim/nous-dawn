@@ -98,6 +98,11 @@
 
     container.innerHTML = html;
 
+    // Initialise all lists as collapsed (JS owns max-height entirely)
+    container.querySelectorAll('.retailers-country__list').forEach(list => {
+      list.style.maxHeight = '0';
+    });
+
     // Animate open/close of <details> foldouts
     container.querySelectorAll('.retailers-country').forEach(details => {
       const summary = details.querySelector('summary');
@@ -107,28 +112,21 @@
         e.preventDefault();
 
         if (details.hasAttribute('open')) {
-          // Closing: lock current height then animate to 0
-          list.style.maxHeight = list.scrollHeight + 'px';
-          requestAnimationFrame(() => {
-            list.style.maxHeight = '0';
-          });
+          // Closing: list.style.maxHeight is already a px value, animate to 0
+          list.style.maxHeight = '0';
           list.addEventListener('transitionend', () => {
             details.removeAttribute('open');
-            list.style.maxHeight = '';
           }, { once: true });
         } else {
-          // Opening: set [open], measure full height, animate from 0
+          // Opening: set [open], measure natural height, animate from 0
           details.setAttribute('open', '');
+          list.style.maxHeight = 'none';       // lift constraint to measure
           const targetHeight = list.scrollHeight;
-          list.style.maxHeight = '0';
+          list.style.maxHeight = '0';          // snap back to 0 (no transition yet)
           requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              list.style.maxHeight = targetHeight + 'px';
-            });
+            list.style.maxHeight = targetHeight + 'px'; // trigger transition
           });
-          list.addEventListener('transitionend', () => {
-            list.style.maxHeight = 'none';
-          }, { once: true });
+          // Keep at px value after open — never set to 'none' (would break close transition)
         }
       });
     });

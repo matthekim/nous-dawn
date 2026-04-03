@@ -404,21 +404,8 @@
         
         if (blendOverlay) {
           // Observer for menu drawer
-          if (menuDetails) {
-            const menuObserver = new MutationObserver(function(mutations) {
-              mutations.forEach(function(mutation) {
-                if (mutation.attributeName === 'class' || mutation.attributeName === 'open') {
-                  const searchModal = document.querySelector('.header__search details[open]');
-                  if (menuDetails.hasAttribute('open') && menuDetails.classList.contains('menu-opening')) {
-                    blendOverlay.classList.add('active');
-                  } else if (!searchModal) {
-                    blendOverlay.classList.remove('active');
-                  }
-                }
-              });
-            });
-            menuObserver.observe(menuDetails, { attributes: true });
-          }
+          // Menu drawer has its own solid background - blend overlay not needed for menu
+          // (overlay lives at body z-index and paints over the header stacking context)
           
           // Observer for search modal
           if (searchDetails) {
@@ -428,10 +415,7 @@
                   if (searchDetails.hasAttribute('open')) {
                     blendOverlay.classList.add('active');
                   } else {
-                    const menuOpen = menuDetails && menuDetails.hasAttribute('open') && menuDetails.classList.contains('menu-opening');
-                    if (!menuOpen) {
-                      blendOverlay.classList.remove('active');
-                    }
+                    blendOverlay.classList.remove('active');
                   }
                 }
               });

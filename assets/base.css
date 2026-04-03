@@ -2579,6 +2579,7 @@ input[type='checkbox'] {
   width: 164px;
   height: auto;
   max-width: 100%;
+  transition: filter 0.5s ease;
 }
 
 .header__heading-logo-wrapper {
@@ -2670,6 +2671,16 @@ body:has(product-info) .button-container span {
 .header-bg__image {
   width: 100%;
   mix-blend-mode: multiply;
+}
+
+/* Scrolled state - logo and icons animate to black */
+.header--scrolled .header__heading-logo,
+.header--scrolled .header__custom-icon {
+  filter: brightness(0);
+}
+
+.header--scrolled .button-container span {
+  background: #000;
 }
 
 .header-padder {
@@ -2802,6 +2813,7 @@ shop-follow-button {
   height: auto;
   width: auto;
   display: block;
+  transition: filter 0.5s ease;
 }
 
 .header__custom-icon--cart {

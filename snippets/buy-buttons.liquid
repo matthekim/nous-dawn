@@ -229,6 +229,11 @@
       const sizeChartOverlay = document.getElementById('size-chart-overlay');
       const sizeChartClose = document.getElementById('size-chart-close');
 
+      // Move overlay to body to escape any overflow/position constraints
+      if (sizeChartOverlay) {
+        document.body.appendChild(sizeChartOverlay);
+      }
+
       function openSizeChart() {
         sizeChartOverlay.style.display = 'flex';
         document.body.style.overflow = 'hidden';

@@ -80,8 +80,8 @@
       const shops = grouped[country].sort((a, b) => a.shop.localeCompare(b.shop));
 
       html += `
-        <details class="retailers-country">
-          <summary class="retailers-country__title">${country}</summary>
+        <div class="retailers-country">
+          <div class="retailers-country__title">${country}<span class="retailers-country__icon">+</span></div>
           <ul class="retailers-country__list">
             ${shops.map(shop => `
               <li class="retailers-country__shop">
@@ -92,45 +92,32 @@
               </li>
             `).join('')}
           </ul>
-        </details>
+        </div>
       `;
     });
 
     container.innerHTML = html;
 
-    // Animate open/close of <details> foldouts using Web Animations API
-    container.querySelectorAll('.retailers-country').forEach(details => {
-      const summary = details.querySelector('summary');
-      const list = details.querySelector('.retailers-country__list');
-      let animation = null;
+    // Accordion with CSS transition
+    container.querySelectorAll('.retailers-country').forEach(item => {
+      const header = item.querySelector('.retailers-country__title');
+      const list = item.querySelector('.retailers-country__list');
+      const icon = item.querySelector('.retailers-country__icon');
 
-      summary.addEventListener('click', e => {
-        e.preventDefault();
-        if (animation) { animation.cancel(); animation = null; }
-
-        if (details.hasAttribute('open')) {
-          // Closing
-          animation = list.animate(
-            [{ maxHeight: list.scrollHeight + 'px' }, { maxHeight: '0px' }],
-            { duration: 400, easing: 'ease', fill: 'forwards' }
-          );
-          animation.onfinish = () => {
-            details.removeAttribute('open');
-            list.style.maxHeight = '';
-            animation = null;
-          };
+      header.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        if (isOpen) {
+          // Lock to px (in case it's 'none'), then animate to 0
+          list.style.maxHeight = list.scrollHeight + 'px';
+          list.offsetHeight; // force reflow
+          list.style.maxHeight = '0';
+          item.classList.remove('is-open');
+          icon.textContent = '+';
         } else {
-          // Opening
-          details.setAttribute('open', '');
-          const targetHeight = list.scrollHeight;
-          animation = list.animate(
-            [{ maxHeight: '0px' }, { maxHeight: targetHeight + 'px' }],
-            { duration: 400, easing: 'ease', fill: 'forwards' }
-          );
-          animation.onfinish = () => {
-            list.style.maxHeight = targetHeight + 'px';
-            animation = null;
-          };
+          item.classList.add('is-open');
+          icon.textContent = '\u2212';
+          // Stay at px so close transition can always animate back to 0
+          list.style.maxHeight = list.scrollHeight + 'px';
         }
       });
     });

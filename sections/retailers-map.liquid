@@ -114,15 +114,16 @@
         const isOpen = item.classList.toggle('is-open');
         icon.textContent = isOpen ? '\u2212' : '+';
 
+        const cs = getComputedStyle(list);
+        console.log('[NOUS accordion] scrollHeight:', list.scrollHeight, '| offsetHeight:', list.offsetHeight, '| computed height:', cs.height, '| computed transition:', cs.transition, '| computed overflow:', cs.overflow);
+
         if (isOpen) {
-          // scrollHeight = full content height, accurate even when height:0 is set
           list.style.height = list.scrollHeight + 'px';
           list.addEventListener('transitionend', function done() {
             list.style.height = 'auto';
             list.removeEventListener('transitionend', done);
           });
         } else {
-          // Lock to current px before collapsing (offsetHeight is correct here as it's open)
           list.style.height = list.offsetHeight + 'px';
           requestAnimationFrame(() => {
             list.style.height = '0px';

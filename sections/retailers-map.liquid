@@ -71,7 +71,7 @@
     const retailers = window.retailersData || [];
     const container = document.getElementById('retailers-country-list');
 
-    console.log('[NOUS] DOMContentLoaded fired. retailers:', retailers.length, '| container:', !!container);
+    if (!retailers.length || !container) return;
 
     const grouped = retailers.reduce((acc, r) => {
       const country = (r.country || 'Other').toLowerCase();
@@ -114,9 +114,6 @@
       header.addEventListener('click', () => {
         const isOpen = item.classList.toggle('is-open');
         icon.textContent = isOpen ? '\u2212' : '+';
-
-        const cs = getComputedStyle(list);
-        console.log('[NOUS accordion] scrollHeight:', list.scrollHeight, '| offsetHeight:', list.offsetHeight, '| computed height:', cs.height, '| computed transition:', cs.transition, '| computed overflow:', cs.overflow);
 
         if (isOpen) {
           list.style.height = list.scrollHeight + 'px';

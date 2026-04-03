@@ -1335,9 +1335,7 @@ class CartPerformance {
 
 // Style "Follow on Shop" button
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('[Follow on Shop] Script started');
   const seasonalColor = getComputedStyle(document.documentElement).getPropertyValue('--seasonal-color').trim();
-  console.log('[Follow on Shop] Seasonal color:', seasonalColor);
   
   function findAndStyleButtons() {
     let found = false;
@@ -1345,10 +1343,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. Check regular DOM for .bg-purple-primary and .gravity-button
     const purpleButtons = document.querySelectorAll('.bg-purple-primary');
     if (purpleButtons.length > 0) {
-      console.log('[Follow on Shop] Found', purpleButtons.length, 'purple buttons in DOM');
       purpleButtons.forEach((btn, i) => {
         btn.style.setProperty('background-color', seasonalColor, 'important');
-        console.log('[Follow on Shop] Styled DOM button', i, btn);
       });
       found = true;
     }
@@ -1394,7 +1390,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const allElements = document.querySelectorAll('*');
     allElements.forEach(el => {
       if (el.shadowRoot) {
-        console.log('[Follow on Shop] Found element with shadowRoot:', el.tagName);
         
         // Inject a style element into every shadow DOM to override purple styles
         if (!el.shadowRoot.querySelector('#nous-custom-style')) {
@@ -1429,16 +1424,13 @@ document.addEventListener('DOMContentLoaded', function() {
           `;
           // Prepend instead of append for higher priority
           el.shadowRoot.prepend(styleEl);
-          console.log('[Follow on Shop] Injected style into shadow of', el.tagName);
         }
         
         const shadowPurple = el.shadowRoot.querySelectorAll('.bg-purple-primary');
         const shadowButtons = el.shadowRoot.querySelectorAll('button');
-        console.log('[Follow on Shop] In', el.tagName, '- purple:', shadowPurple.length, 'buttons:', shadowButtons.length);
         
         shadowPurple.forEach((btn, i) => {
           btn.style.setProperty('background-color', seasonalColor, 'important');
-          console.log('[Follow on Shop] Styled shadow .bg-purple-primary in', el.tagName);
           found = true;
         });
         
@@ -1453,11 +1445,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Also style any purple-colored button
         shadowButtons.forEach(btn => {
           const computedBg = getComputedStyle(btn).backgroundColor;
-          console.log('[Follow on Shop] Button in', el.tagName, 'has bg:', computedBg);
           // Check for purple-ish colors (rgb values around 128-140, 90-100, 213-220)
           if (computedBg.includes('128') || computedBg.includes('purple') || btn.classList.contains('bg-purple-primary')) {
             btn.style.setProperty('background-color', seasonalColor, 'important');
-            console.log('[Follow on Shop] Styled purple button in', el.tagName);
             found = true;
           }
         });
@@ -1466,9 +1456,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 3. Log all custom elements for debugging
     const customElements = document.querySelectorAll('[class*="shop"], shop-follow, shop-login-button, [id*="shop"]');
-    console.log('[Follow on Shop] Shop-related elements:', customElements.length);
     customElements.forEach(el => {
-      console.log('[Follow on Shop] Found:', el.tagName, el.className, typeof el.id === 'string' ? el.id : '(non-string id)');
     });
     
     // 4. Find ALL gravity-related elements (any tag/class/id containing 'gravity')
@@ -1699,7 +1687,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
-  console.log('[Follow on Shop] Observer started');
   
   // Try immediately
   findAndStyleButtons();

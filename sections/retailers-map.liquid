@@ -20,6 +20,11 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .retailers-country__list {
+    overflow: hidden;
+    height: 0;
+  }
 {%- endstyle -%}
 
 <div class="retailers-page-layout">
@@ -98,14 +103,33 @@
 
     container.innerHTML = html;
 
-    // Accordion with CSS transition
+    // Accordion — JS-driven animation (bypasses CSS caching)
     container.querySelectorAll('.retailers-country').forEach(item => {
       const header = item.querySelector('.retailers-country__title');
+      const list = item.querySelector('.retailers-country__list');
       const icon = item.querySelector('.retailers-country__icon');
 
       header.addEventListener('click', () => {
         const isOpen = item.classList.toggle('is-open');
         icon.textContent = isOpen ? '\u2212' : '+';
+
+        if (isOpen) {
+          // Measure natural height, then animate from 0 to it
+          list.style.height = 'auto';
+          const h = list.offsetHeight;
+          list.style.height = '0px';
+          void list.offsetHeight;
+          list.animate(
+            [{ height: '0px' }, { height: h + 'px' }],
+            { duration: 400, easing: 'ease', fill: 'forwards' }
+          ).onfinish = function() { list.style.height = 'auto'; };
+        } else {
+          const h = list.offsetHeight;
+          list.animate(
+            [{ height: h + 'px' }, { height: '0px' }],
+            { duration: 400, easing: 'ease', fill: 'forwards' }
+          ).onfinish = function() { list.style.height = '0px'; };
+        }
       });
     });
   });

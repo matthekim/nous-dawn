@@ -111,14 +111,6 @@
 .retailers-country__list {
   list-style: none;
   margin: 0;
-  padding: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.45s ease, padding 0.45s ease;
-}
-
-.retailers-country.is-open .retailers-country__list {
-  max-height: 600px;
   padding: 0 0 1.5rem 0;
 }
 

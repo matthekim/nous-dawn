@@ -122,10 +122,9 @@
           details.setAttribute('open', '');
           list.style.maxHeight = 'none';       // lift constraint to measure
           const targetHeight = list.scrollHeight;
-          list.style.maxHeight = '0';          // snap back to 0 (no transition yet)
-          requestAnimationFrame(() => {
-            list.style.maxHeight = targetHeight + 'px'; // trigger transition
-          });
+          list.style.maxHeight = '0';          // snap back to 0
+          list.offsetHeight;                   // force reflow so browser registers 0
+          list.style.maxHeight = targetHeight + 'px'; // trigger transition
           // Keep at px value after open — never set to 'none' (would break close transition)
         }
       });

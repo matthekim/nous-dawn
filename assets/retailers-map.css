@@ -108,17 +108,22 @@
 }
 
 
+.retailers-country__collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.retailers-country.is-open .retailers-country__collapse {
+  grid-template-rows: 1fr;
+}
+
 .retailers-country__list {
   list-style: none;
   margin: 0;
   padding: 0 0 1.5rem 0;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.4s ease;
-}
-
-.retailers-country__list > * {
   min-height: 0;
+  overflow: hidden;
 }
 
 .retailers-country__shop {

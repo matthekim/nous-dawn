@@ -1352,10 +1352,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check for .gravity-button class
     const gravityButtons = document.querySelectorAll('.gravity-button');
     if (gravityButtons.length > 0) {
-      console.log('[Gravity Button] Found', gravityButtons.length, 'gravity buttons in DOM');
       gravityButtons.forEach((btn, i) => {
         btn.style.setProperty('background-color', seasonalColor, 'important');
-        console.log('[Gravity Button] Styled DOM button', i, btn);
       });
       found = true;
     }
@@ -1363,12 +1361,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check for <gravity-button> custom element (has its own shadow DOM)
     const gravityElements = document.querySelectorAll('gravity-button');
     gravityElements.forEach((el, i) => {
-      console.log('[Gravity Button] Found <gravity-button> element', i);
       if (el.shadowRoot) {
         const innerButtons = el.shadowRoot.querySelectorAll('button, [role="button"]');
         innerButtons.forEach(btn => {
           btn.style.setProperty('background-color', seasonalColor, 'important');
-          console.log('[Gravity Button] Styled button inside gravity-button shadow');
           found = true;
         });
         // Also style the host itself via adoptedStyleSheets or direct style
@@ -1377,7 +1373,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const bg = getComputedStyle(inner).backgroundColor;
           if (bg.includes('128') || bg.includes('124') || bg.includes('purple')) {
             inner.style.setProperty('background-color', seasonalColor, 'important');
-            console.log('[Gravity Button] Styled purple element in gravity-button shadow');
             found = true;
           }
         });
@@ -1438,7 +1433,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const shadowGravity = el.shadowRoot.querySelectorAll('.gravity-button');
         shadowGravity.forEach((btn, i) => {
           btn.style.setProperty('background-color', seasonalColor, 'important');
-          console.log('[Gravity Button] Styled shadow .gravity-button in', el.tagName);
           found = true;
         });
         
@@ -1466,7 +1460,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const cls = String(el.className || '');
       const id = typeof el.id === 'string' ? el.id : '';
       if (tag.includes('gravity') || cls.includes('gravity') || id.includes('gravity')) {
-        console.log('[Gravity Debug] Found gravity element:', tag, cls, id);
         el.style.setProperty('background-color', seasonalColor, 'important');
       }
       // Also check shadow DOM for gravity
@@ -1477,7 +1470,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const innerCls = String(inner.className || '');
           const innerId = typeof inner.id === 'string' ? inner.id : '';
           if (innerTag.includes('gravity') || innerCls.includes('gravity') || innerId.includes('gravity')) {
-            console.log('[Gravity Debug] Found gravity in shadow of', el.tagName, ':', innerTag, innerCls, innerId);
             inner.style.setProperty('background-color', seasonalColor, 'important');
           }
         });
@@ -1487,10 +1479,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 5. Check footer__follow-on-shop for nested elements with shadow DOM
     const followOnShopContainer = document.querySelector('.footer__follow-on-shop');
     if (followOnShopContainer) {
-      console.log('[Footer Follow] Found footer__follow-on-shop container');
       const nestedElements = followOnShopContainer.querySelectorAll('*');
       nestedElements.forEach(el => {
-        console.log('[Footer Follow] Child:', el.tagName, String(el.className || ''));
         
         // Helper function to force style and lock it
         const forceStyle = (element, color) => {
@@ -1518,7 +1508,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Also try targeting SHOP-FOLLOW-BUTTON directly
         if (el.tagName === 'SHOP-FOLLOW-BUTTON' && el.shadowRoot) {
-          console.log('[Footer Follow] Direct SHOP-FOLLOW-BUTTON with shadow!');
           
           // NUCLEAR OPTION: Apply hue-rotate filter to shift purple to blue
           // Purple is ~270deg hue, our blue is ~200deg, so rotate by -70deg
@@ -1530,11 +1519,9 @@ document.addEventListener('DOMContentLoaded', function() {
           // The purple div has: absolute inset-y-0 -z-10 rounded-max
           const bgDiv = el.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
           if (bgDiv) {
-            console.log('[Footer Follow] Found background div by structure!', bgDiv.className);
             
             // Try hiding the purple div and creating our own
             bgDiv.style.setProperty('display', 'none', 'important');
-            console.log('[Footer Follow] Hidden the purple div');
             
             // Create a replacement div
             if (!el.shadowRoot.querySelector('#nous-bg-replacement')) {
@@ -1550,14 +1537,12 @@ document.addEventListener('DOMContentLoaded', function() {
               `;
               // Insert it in the same position
               bgDiv.parentNode.insertBefore(replacement, bgDiv);
-              console.log('[Footer Follow] Created replacement div');
             }
           }
           
           // Also hide any other purple divs found
           const purpleDiv = el.shadowRoot.querySelector('[class*="purple"]');
           if (purpleDiv && purpleDiv.id !== 'nous-bg-replacement') {
-            console.log('[Footer Follow] Hiding purple div');
             purpleDiv.style.setProperty('display', 'none', 'important');
           }
           
@@ -1570,7 +1555,6 @@ document.addEventListener('DOMContentLoaded', function() {
                   const target = mutation.target;
                   const cls = String(target.className || '');
                   if (cls.includes('purple') && target.id !== 'nous-bg-replacement') {
-                    console.log('[Footer Follow] Shadow mutation detected purple class - hiding!');
                     target.style.setProperty('display', 'none', 'important');
                   }
                 }
@@ -1580,7 +1564,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (node.nodeType === 1) {
                       const cls = String(node.className || '');
                       if (cls.includes('purple') && node.id !== 'nous-bg-replacement') {
-                        console.log('[Footer Follow] New purple node added - hiding!');
                         node.style.setProperty('display', 'none', 'important');
                       }
                     }
@@ -1594,16 +1577,13 @@ document.addEventListener('DOMContentLoaded', function() {
               childList: true,
               subtree: true
             });
-            console.log('[Footer Follow] Added shadow DOM mutation observer');
           }
         }
         if (el.shadowRoot) {
-          console.log('[Footer Follow] Has shadow root:', el.tagName);
           
           // Try modifying existing adoptedStyleSheets to hide purple
           try {
             const existingSheets = el.shadowRoot.adoptedStyleSheets || [];
-            console.log('[Footer Follow] Existing sheets:', existingSheets.length);
             
             // Create a completely new stylesheet array - HIDE purple elements
             const ourSheet = new CSSStyleSheet();
@@ -1624,15 +1604,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Put our sheet LAST
             el.shadowRoot.adoptedStyleSheets = [...existingSheets, ourSheet];
-            console.log('[Footer Follow] Added adoptedStyleSheet, total sheets:', el.shadowRoot.adoptedStyleSheets.length);
           } catch (e) {
-            console.log('[Footer Follow] adoptedStyleSheets failed:', e);
           }
           
           // First, find and modify the existing STYLE element in shadow DOM
           const existingStyle = el.shadowRoot.querySelector('style');
           if (existingStyle) {
-            console.log('[Footer Follow] Found existing style element, modifying...');
             // Append our overrides to the existing style - HIDE purple
             existingStyle.textContent += `
               /* NOUS OVERRIDE - HIDE */
@@ -1645,7 +1622,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 visibility: hidden !important;
               }
             `;
-            console.log('[Footer Follow] Modified existing style');
           }
           
           // Also inject a style element as fallback
@@ -1661,7 +1637,6 @@ document.addEventListener('DOMContentLoaded', function() {
               }
             `;
             el.shadowRoot.prepend(styleEl);
-            console.log('[Footer Follow] Injected style element into shadow DOM');
           }
           
           // Also directly hide any purple elements we find
@@ -1671,7 +1646,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Hide any element with purple class (except our replacement)
             if ((cls.includes('bg-purple') || cls.includes('purple')) && inner.id !== 'nous-bg-replacement') {
-              console.log('[Footer Follow] Directly hiding purple element:', cls);
               inner.style.setProperty('display', 'none', 'important');
             }
           });
@@ -1711,25 +1685,19 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
   const seasonalColor = '#000000';
-  console.log('[Shop Pay] Starting Shop Pay button override with color:', seasonalColor);
   
   function styleShopPayButton() {
     // Find all shop-pay-wallet-button elements
     const shopPayButtons = document.querySelectorAll('shop-pay-wallet-button');
-    console.log('[Shop Pay] Found shop-pay-wallet-button elements:', shopPayButtons.length);
     
     shopPayButtons.forEach((btn, idx) => {
-      console.log('[Shop Pay] Processing button', idx, 'shadowRoot:', !!btn.shadowRoot);
       
       // Log all children to understand structure
-      console.log('[Shop Pay] Button children:', btn.children.length, 'innerHTML length:', btn.innerHTML.length);
       
       // Check for iframes inside
       const iframes = btn.querySelectorAll('iframe');
       if (iframes.length) {
-        console.log('[Shop Pay] Found iframes:', iframes.length);
         iframes.forEach((iframe, i) => {
-          console.log('[Shop Pay] iframe', i, 'src:', iframe.src);
           // Apply filter to iframe
           iframe.style.setProperty('filter', 'grayscale(1) contrast(100)', 'important');
         });
@@ -1738,25 +1706,21 @@ document.addEventListener('DOMContentLoaded', function() {
       // FALLBACK: Apply CSS filter to shift purple to black
       if (!btn.shadowRoot && !btn._nousFilterApplied) {
         btn._nousFilterApplied = true;
-        console.log('[Shop Pay] Applying filter to button (no shadow access)');
         btn.style.setProperty('filter', 'grayscale(1) contrast(100)', 'important');
         
         // Also style parent container
         const container = btn.closest('.shopify-payment-button');
         if (container) {
-          console.log('[Shop Pay] Found .shopify-payment-button container');
           container.style.setProperty('isolation', 'isolate');
         }
       }
       
       // Try shadow root if available
       if (btn.shadowRoot) {
-        console.log('[Shop Pay] Button has shadow root!');
         
         // Target the purple background div
         const bgDiv = btn.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
         if (bgDiv) {
-          console.log('[Shop Pay] Found background div:', bgDiv.className);
           bgDiv.style.setProperty('display', 'none', 'important');
           
           // Create replacement
@@ -1772,7 +1736,6 @@ document.addEventListener('DOMContentLoaded', function() {
               pointer-events: none;
             `;
             bgDiv.parentNode.insertBefore(replacement, bgDiv);
-            console.log('[Shop Pay] Created replacement div');
           }
         }
         
@@ -1780,7 +1743,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const purpleEls = btn.shadowRoot.querySelectorAll('[class*="purple"]');
         purpleEls.forEach(el => {
           if (el.id !== 'nous-shoppay-bg') {
-            console.log('[Shop Pay] Hiding purple element:', el.className);
             el.style.setProperty('display', 'none', 'important');
           }
         });
@@ -1790,20 +1752,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Also apply to shopify-accelerated-checkout container  
     const checkoutEls = document.querySelectorAll('shopify-accelerated-checkout');
     checkoutEls.forEach((checkout, idx) => {
-      console.log('[Shop Pay] accelerated-checkout', idx, 'shadowRoot:', !!checkout.shadowRoot);
       
       // Apply filter to the checkout element if no shadow access
       if (!checkout._nousFilterApplied) {
         checkout._nousFilterApplied = true;
         checkout.style.setProperty('filter', 'grayscale(1) contrast(100)', 'important');
-        console.log('[Shop Pay] Applied filter to accelerated-checkout');
       }
       
       if (checkout.shadowRoot) {
-        console.log('[Shop Pay] shopify-accelerated-checkout has shadow');
         const innerBtn = checkout.shadowRoot.querySelector('shop-pay-wallet-button');
         if (innerBtn) {
-          console.log('[Shop Pay] Found inner shop-pay-wallet-button, shadowRoot:', !!innerBtn.shadowRoot);
           if (!innerBtn.shadowRoot && !innerBtn._nousFilterApplied) {
             innerBtn._nousFilterApplied = true;
             innerBtn.style.setProperty('filter', 'grayscale(1) contrast(100)', 'important');
@@ -1825,7 +1783,6 @@ document.addEventListener('DOMContentLoaded', function() {
     styleShopPayButton();
   });
   observer.observe(document.body, { childList: true, subtree: true });
-  console.log('[Shop Pay] Observer started');
   
   // Poll for late shadow DOM
   let pollCount = 0;

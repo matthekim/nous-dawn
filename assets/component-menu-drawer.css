@@ -172,6 +172,7 @@ menu-drawer > details[open] > summary::before {
   text-align: center;
   display: block;
   width: 100%;
+  color: #fff;
 }
 
 .menu-drawer summary.menu-drawer__menu-item {
@@ -181,7 +182,7 @@ menu-drawer > details[open] > summary::before {
 .menu-drawer__menu-item--active,
 .menu-drawer__menu-item:focus,
 .menu-drawer__menu-item:hover {
-  color: rgb(var(--color-foreground));
+  color: #fff;
 }
 
 .js .menu-drawer__menu-item .icon-caret {

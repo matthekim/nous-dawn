@@ -97,6 +97,33 @@
     });
 
     container.innerHTML = html;
+
+    // Animate open/close of <details> foldouts
+    container.querySelectorAll('.retailers-country').forEach(details => {
+      const summary = details.querySelector('summary');
+      const list = details.querySelector('.retailers-country__list');
+
+      summary.addEventListener('click', e => {
+        e.preventDefault();
+
+        if (details.hasAttribute('open')) {
+          // Closing: animate then remove [open]
+          details.style.overflow = 'hidden';
+          // Force grid-template-rows back to 0fr before removing open
+          list.style.gridTemplateRows = '0fr';
+          list.style.paddingBottom = '0';
+          list.addEventListener('transitionend', () => {
+            details.removeAttribute('open');
+            details.style.overflow = '';
+            list.style.gridTemplateRows = '';
+            list.style.paddingBottom = '';
+          }, { once: true });
+        } else {
+          // Opening: add [open] then let CSS animate to 1fr
+          details.setAttribute('open', '');
+        }
+      });
+    });
   });
 
   // Detach fixed map panel when layout bottom passes viewport bottom, letting footer show

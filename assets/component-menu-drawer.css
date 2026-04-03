@@ -66,7 +66,8 @@ details.menu-opening .button-container .bottom {
 }
 
 .js menu-drawer > details > summary::before,
-.js menu-drawer > details[open]:not(.menu-opening) > summary::before {
+.js menu-drawer > details[open]:not(.menu-opening) > summary::before,
+menu-drawer > details[open] > summary::before {
   content: '';
   position: fixed;
   cursor: default;
@@ -83,13 +84,7 @@ details.menu-opening .button-container .bottom {
     visibility 0s;
 }
 
-menu-drawer > details[open] > summary::before {
-  visibility: visible;
-  opacity: 1;
-  transition:
-    opacity var(--duration-default) ease,
-    visibility var(--duration-default) ease;
-}
+/* summary::before scrim is handled by #menu-blend-overlay instead */
 
 /* Fullscreen Menu Drawer */
 .menu-drawer {
@@ -105,7 +100,7 @@ menu-drawer > details[open] > summary::before {
   visibility: hidden;
   z-index: 99998;
   padding: 0;
-  background-color: #000;
+  background-color: transparent;
   isolation: isolate;
   overflow-x: hidden;
   overflow-y: auto;

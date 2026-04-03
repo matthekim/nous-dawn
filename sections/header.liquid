@@ -375,17 +375,14 @@
 
 {% if request.page_type == 'index' %}
 <script>
-  // Header background animation on scroll (homepage only)
-  const headerBg = document.querySelector('.header-bg');
+  // Header icon color animation on scroll (homepage only)
   const headerEl = document.querySelector('.header');
-  if (headerBg) {
+  if (headerEl) {
     const checkScroll = () => {
       if (window.scrollY >= window.innerHeight - 200) {
-        headerBg.classList.add('is-visible');
-        if (headerEl) headerEl.classList.add('header--scrolled');
+        headerEl.classList.add('header--scrolled');
       } else {
-        headerBg.classList.remove('is-visible');
-        if (headerEl) headerEl.classList.remove('header--scrolled');
+        headerEl.classList.remove('header--scrolled');
       }
     };
     window.addEventListener('scroll', checkScroll, { passive: true });

@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'orticalinear';
-  src: url('orticalinear-regular-webfont.woff2') format('woff2'),
-       url('orticalinear-regular-webfont.woff') format('woff');
+  src:
+    url('orticalinear-regular-webfont.woff2') format('woff2'),
+    url('orticalinear-regular-webfont.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -9,8 +10,9 @@
 
 @font-face {
   font-family: 'orticalinear';
-  src: url('orticalinear-bold-webfont.woff2') format('woff2'),
-       url('orticalinear-bold-webfont.woff') format('woff');
+  src:
+    url('orticalinear-bold-webfont.woff2') format('woff2'),
+    url('orticalinear-bold-webfont.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -90,7 +92,7 @@ button.shopify-payment-button__button--unbranded {
 /* Override Shopify Follow on Shop button */
 .bg-purple-primary,
 body .bg-purple-primary,
-[class*="bg-purple-primary"],
+[class*='bg-purple-primary'],
 .bg-purple-primary.bg-purple-primary {
   background-color: var(--seasonal-color) !important;
 }
@@ -98,10 +100,10 @@ body .bg-purple-primary,
 /* Override gravity-button (Shopify dynamic button) */
 .gravity-button,
 body .gravity-button,
-[class*="gravity-button"],
+[class*='gravity-button'],
 gravity-button,
 gravity-button button,
-gravity-button [role="button"] {
+gravity-button [role='button'] {
   background-color: var(--seasonal-color) !important;
 }
 
@@ -2673,7 +2675,8 @@ body:has(product-info) .header__icon .icon {
 
 /* Product page - custom header icons (img tags) filter to seasonal color */
 body:has(product-info) .header__custom-icon {
-  filter: brightness(0) saturate(100%) invert(58%) sepia(65%) saturate(503%) hue-rotate(172deg) brightness(92%) contrast(89%) !important;
+  filter: brightness(0) saturate(100%) invert(58%) sepia(65%) saturate(503%) hue-rotate(172deg) brightness(92%)
+    contrast(89%) !important;
 }
 
 body:has(product-info) .button-container span {
@@ -2991,7 +2994,7 @@ details[open] .modal-overlay::after {
 
 .search-modal .predictive-search__item-content,
 .search-modal .price {
-  color: #CCC;
+  color: #ccc;
 }
 
 .search-modal__content-bottom {
@@ -3014,7 +3017,7 @@ details[open] .modal-overlay::after {
 
 .search-modal__form .field__input {
   background-color: white;
-  color: #CCC;
+  color: #ccc;
   border-radius: 50px;
   height: 50px;
   padding: 0 60px 0 25px;
@@ -3024,7 +3027,7 @@ details[open] .modal-overlay::after {
 }
 
 .search-modal__form .field__input::placeholder {
-  color: #CCC;
+  color: #ccc;
   opacity: 1;
 }
 
@@ -4570,14 +4573,14 @@ cart-items {
 
 /* Cart page - error text color */
 .cart-item__error-text {
-  color: #CCC !important;
+  color: #ccc !important;
 }
 
 /* Cart page - quantity buttons disabled state */
 .cart-item .quantity__button:disabled,
 .cart-item .quantity__button[disabled],
 .cart-item .quantity__button.disabled {
-  color: #CCC !important;
+  color: #ccc !important;
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.5;
@@ -4773,7 +4776,7 @@ h2.related-products__heading {
 .card__inner.tie-dye-both .card__tie-dye--top,
 .card__inner.tie-dye-both .card__tie-dye--bottom,
 .card__inner.tie-dye-bottom .card__tie-dye--bottom {
-  display: block !important;
+  /*display: block !important;*/
 }
 
 /* Deferred media poster button */
@@ -4800,8 +4803,8 @@ button.size-chart-toggle {
 
 /* Retailers page - hide continue shopping button */
 .template-page-retailers .underlined-link,
-.template-page-retailers a[href*="collections/all"],
-body[class*="retailers"] .link-with-icon,
-body[class*="retailers"] .underlined-link {
+.template-page-retailers a[href*='collections/all'],
+body[class*='retailers'] .link-with-icon,
+body[class*='retailers'] .underlined-link {
   display: none !important;
 }

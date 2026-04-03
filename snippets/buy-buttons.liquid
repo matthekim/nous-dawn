@@ -98,8 +98,9 @@
           {%- endif -%}
         </div>
 
-        <!-- Size Chart Container -->
-        <div class="size-chart-container" id="size-chart-container" style="display: none;">
+        <!-- Size Chart Modal -->
+        <div class="size-chart-overlay" id="size-chart-overlay" style="display: none;" aria-modal="true" role="dialog" aria-label="Size chart">
+        <div class="size-chart-container" id="size-chart-container">
           <div class="size-chart-content">
             <table class="size-chart-table">
               <thead>
@@ -165,6 +166,8 @@
             </table>
             <p class="size-chart-note">measure yourself without clothing for best results</p>
           </div>
+          <button type="button" class="size-chart-close" id="size-chart-close" aria-label="Close size chart">&times;</button>
+        </div>
         </div>
       {%- endform -%}
     </product-form>
@@ -223,15 +226,32 @@
       const sizeChartToggle = document.querySelector('[data-size-chart-toggle]');
       const sizeChartContainer = document.getElementById('size-chart-container');
       
-      if (sizeChartToggle && sizeChartContainer) {
-        sizeChartToggle.addEventListener('click', function() {
-          if (sizeChartContainer.style.display === 'none') {
-            sizeChartContainer.style.display = 'block';
-          } else {
-            sizeChartContainer.style.display = 'none';
-          }
+      const sizeChartOverlay = document.getElementById('size-chart-overlay');
+      const sizeChartClose = document.getElementById('size-chart-close');
+
+      function openSizeChart() {
+        sizeChartOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSizeChart() {
+        sizeChartOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      if (sizeChartToggle && sizeChartOverlay) {
+        sizeChartToggle.addEventListener('click', openSizeChart);
+      }
+      if (sizeChartClose) {
+        sizeChartClose.addEventListener('click', closeSizeChart);
+      }
+      if (sizeChartOverlay) {
+        sizeChartOverlay.addEventListener('click', function(e) {
+          if (e.target === sizeChartOverlay) closeSizeChart();
         });
       }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeSizeChart();
+      });
     });
   </script>
 </div>

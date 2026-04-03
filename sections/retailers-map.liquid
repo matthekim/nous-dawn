@@ -82,18 +82,16 @@
       html += `
         <div class="retailers-country">
           <div class="retailers-country__title">${country}<span class="retailers-country__icon">+</span></div>
-          <div class="retailers-country__collapse">
-            <ul class="retailers-country__list">
-              ${shops.map(shop => `
-                <li class="retailers-country__shop">
-                  <a href="${shop.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
-                    <span class="retailers-shop__name">${shop.shop}</span>
-                  </a>
-                  <span class="retailers-shop__address">${shop.address}, ${shop.zip} ${shop.city}</span>
-                </li>
-              `).join('')}
-            </ul>
-          </div>
+          <ul class="retailers-country__list">
+            ${shops.map(shop => `
+              <li class="retailers-country__shop">
+                <a href="${shop.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
+                  <span class="retailers-shop__name">${shop.shop}</span>
+                </a>
+                <span class="retailers-shop__address">${shop.address}, ${shop.zip} ${shop.city}</span>
+              </li>
+            `).join('')}
+          </ul>
         </div>
       `;
     });
@@ -106,14 +104,8 @@
       const icon = item.querySelector('.retailers-country__icon');
 
       header.addEventListener('click', () => {
-        const isOpen = item.classList.contains('is-open');
-        if (isOpen) {
-          item.classList.remove('is-open');
-          icon.textContent = '+';
-        } else {
-          item.classList.add('is-open');
-          icon.textContent = '\u2212';
-        }
+        const isOpen = item.classList.toggle('is-open');
+        icon.textContent = isOpen ? '\u2212' : '+';
       });
     });
   });

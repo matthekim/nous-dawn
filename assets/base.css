@@ -2634,6 +2634,27 @@ body:has(product-info) .header-bg.is-visible {
   display: none !important;
 }
 
+/* About page - no header-bg, black logo/icons/hamburger */
+body.template-page-about .header-bg,
+body.template-page-about .header-bg.is-visible {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+body.template-page-about .header__custom-icon,
+body.template-page-about .header__heading-logo {
+  filter: brightness(0) !important;
+}
+
+body.template-page-about .button-container span {
+  background: #000 !important;
+}
+
+body.template-page-about .header__icon .icon {
+  stroke: #000 !important;
+  color: #000 !important;
+}
+
 /* Product page layout - full width, no padding */
 product-info {
   padding-top: 0 !important;

@@ -24,7 +24,7 @@ body {
   opacity: 0;
   mix-blend-mode: multiply;
   pointer-events: none;
-  z-index: 99997;
+  z-index: 100;
   transition: opacity 0.4s ease;
 }
 
@@ -2429,7 +2429,7 @@ input[type='checkbox'] {
 
 /* section-header */
 .section-header.shopify-section-group-header-group {
-  z-index: 3;
+  z-index: 200;
 }
 
 .shopify-section-header-sticky {
@@ -2450,7 +2450,7 @@ input[type='checkbox'] {
 }
 
 .shopify-section-group-header-group {
-  z-index: 4;
+  z-index: 200;
 }
 
 .section-header ~ .shopify-section-group-header-group {

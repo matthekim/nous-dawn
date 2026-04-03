@@ -402,15 +402,6 @@
         const blendOverlay = document.getElementById('menu-blend-overlay');
         const searchDetails = document.querySelector('.header__search details');
 
-        // Move blend overlay into the header stacking context.
-        // The header section (z-index 4 in root) creates its own stacking context.
-        // By placing the overlay inside it, the menu drawer (z-index 99998 within header)
-        // paints ABOVE the overlay, while the overlay still covers the page below.
-        if (blendOverlay) {
-          const headerSection = document.querySelector('.shopify-section-group-header-group');
-          if (headerSection) headerSection.appendChild(blendOverlay);
-        }
-
         if (blendOverlay) {
           // Observer for menu drawer
           if (menuDetails) {

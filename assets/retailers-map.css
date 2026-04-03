@@ -19,21 +19,19 @@
 }
 
 .retailers-map-top-bar {
-  width: 100%;
-  height: 156px;
-  background: #d8d7d2;
+  display: none;
 }
 
 .retailers-map-wrapper {
   width: 100%;
-  height: calc(100dvh - 606px);
+  height: 100dvh;
+  top: 0;
+  bottom: 0;
   margin: 0 !important;
 }
 
 .retailers-map-bottom-bar {
-  width: 100%;
-  height: 450px;
-  background: #d8d7d2;
+  display: none;
 }
 
 .retailers-map-section {

@@ -2697,7 +2697,7 @@ body:has(product-info) .button-container span {
 .footer-padder {
   flex: 1;
   width: 100%;
-  background-color: #d8d7d2;
+  background-color: #000;
 }
 
 /* Shopify Follow on Shop button styling */

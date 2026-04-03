@@ -107,17 +107,21 @@
       header.addEventListener('click', () => {
         const isOpen = item.classList.contains('is-open');
         if (isOpen) {
-          // Lock to px (in case it's 'none'), then animate to 0
-          list.style.maxHeight = list.scrollHeight + 'px';
-          list.offsetHeight; // force reflow
-          list.style.maxHeight = '0';
+          // Lock to current rendered height, then animate to 0
+          list.style.maxHeight = list.offsetHeight + 'px';
+          void list.offsetHeight; // force reflow
+          list.style.maxHeight = '0px';
           item.classList.remove('is-open');
           icon.textContent = '+';
         } else {
+          // Temporarily remove constraint to measure true height
+          list.style.maxHeight = 'none';
+          const fullHeight = list.offsetHeight;
+          list.style.maxHeight = '0px';
+          void list.offsetHeight; // force reflow to establish 0 state
           item.classList.add('is-open');
           icon.textContent = '\u2212';
-          // Stay at px so close transition can always animate back to 0
-          list.style.maxHeight = list.scrollHeight + 'px';
+          list.style.maxHeight = fullHeight + 'px';
         }
       });
     });

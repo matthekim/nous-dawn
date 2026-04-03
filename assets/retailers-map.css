@@ -107,17 +107,6 @@
   display: none;
 }
 
-.retailers-country__title::after {
-  content: '+';
-  font-size: 1.6rem;
-  font-weight: 300;
-  transition: transform 0.2s ease;
-  color: var(--seasonal-color);
-}
-
-.retailers-country[open] .retailers-country__title::after {
-  content: '−';
-}
 
 .retailers-country__list {
   list-style: none;

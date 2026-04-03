@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: calc(((100vw - 1200px) / 2) + 200px);
+  right: calc(((100vw - 1200px) / 2) + 300px);
   height: 100dvh;
   z-index: 1;
   overflow: visible;

@@ -396,6 +396,7 @@ quick-add-modal .product-form__buttons {
   border: none;
   border-top: 1px solid #000000;
   box-shadow: none;
+  text-decoration: none;
 }
 
 quick-add-modal .product-media-container.constrain-height {

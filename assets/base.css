@@ -2654,10 +2654,9 @@ body:has(product-info) .header__icon .icon {
   color: var(--seasonal-color) !important;
 }
 
-/* Product page - custom header icons (img tags) filter to seasonal color */
+/* Product page - custom header icons (img tags) filter to black */
 body:has(product-info) .header__custom-icon {
-  filter: brightness(0) saturate(100%) invert(58%) sepia(65%) saturate(503%) hue-rotate(172deg) brightness(92%)
-    contrast(89%) !important;
+  filter: brightness(0) !important;
 }
 
 body:has(product-info) .button-container span {

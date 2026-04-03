@@ -108,6 +108,8 @@
         const isOpen = item.classList.toggle('is-open');
         icon.textContent = isOpen ? '\u2212' : '+';
 
+        console.warn('NOUS', 'scrollH:', list.scrollHeight, 'offH:', list.offsetHeight, 'transition:', list.style.transition, 'height:', list.style.height);
+
         if (isOpen) {
           list.style.height = list.scrollHeight + 'px';
           list.addEventListener('transitionend', function done() {

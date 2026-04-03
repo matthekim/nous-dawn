@@ -112,13 +112,28 @@
               autoplay: true,
               loop: section.settings.enable_video_looping,
               controls: true,
-              muted: false
+              muted: true
           }}
         {%- endif -%}
       </template>
     </deferred-media>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-section__media.deferred-media').forEach(function (el) {
+      const poster = el.querySelector('.video-section__poster');
+      if (poster) poster.style.display = 'none';
+      if (typeof el.loadContent === 'function') {
+        el.loadContent(false);
+      } else {
+        const btn = el.querySelector('[id^="Deferred-Poster-"]');
+        if (btn) btn.click();
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {

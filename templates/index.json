@@ -73,6 +73,22 @@
         "padding_bottom": 0
       }
     },
+    "video_b7YXKL": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/02.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -252,6 +268,7 @@
   "order": [
     "image_banner",
     "video",
+    "video_b7YXKL",
     "rich_text",
     "featured_collection",
     "collage",

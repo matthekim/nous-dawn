@@ -1824,10 +1824,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const b = sections[i + 1];
     if (!a.querySelector('.video-section') || !b.querySelector('.video-section')) continue;
 
-    // They're consecutive video sections — stack them
-    const showA = Math.random() < 0.5;
-    a.style.display = showA ? '' : 'none';
-    b.style.display = showA ? 'none' : '';
-    i++; // skip b in next iteration
+    // They're consecutive video sections — pick one to show
+    const winner = Math.random() < 0.5 ? a : b;
+    const loser  = winner === a ? b : a;
+
+    loser.style.display = 'none';
+
+    // Force the winner's deferred-media to load (in case the inline script already ran on the hidden one)
+    winner.querySelectorAll('.video-section__media.deferred-media').forEach(el => {
+      const poster = el.querySelector('.video-section__poster');
+      if (poster) poster.style.display = 'none';
+      if (typeof el.loadContent === 'function') {
+        el.loadContent(false);
+      } else {
+        const btn = el.querySelector('[id^="Deferred-Poster-"]');
+        if (btn) btn.click();
+      }
+    });
+
+    i++; // skip loser in next iteration
   }
 });

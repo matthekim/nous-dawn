@@ -190,35 +190,31 @@
 }
 
 .retailers-map__popup {
-  padding: 1.5rem;
+  display: block;
+  padding: 1.2rem 1.5rem;
+  text-decoration: none;
+  color: var(--seasonal-color);
+  cursor: pointer;
 }
 
 .retailers-map__popup-title {
+  display: block;
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
-  font-size: 1.4rem;
-  margin: 0 0 0.75rem;
-  line-height: 1.3;
+  font-size: 1.6rem;
+  line-height: 1.4em;
+  margin-bottom: 0.25rem;
+  text-transform: lowercase;
   color: var(--seasonal-color);
 }
 
 .retailers-map__popup-address {
-  font-size: 1.2rem;
-  color: #666;
-  margin: 0 0 1rem;
-  line-height: 1.5;
-}
-
-.retailers-map__popup-link {
-  display: inline-block;
-  font-size: 1.2rem;
-  font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
-  color: var(--seasonal-color, #000);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.retailers-map__popup-link:hover {
-  opacity: 0.7;
+  display: block;
+  font-family: 'europa_trial-medium', helvetica, arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-transform: lowercase;
+  color: var(--seasonal-color);
 }
 
 /* Custom marker styling via JS (fallback) */

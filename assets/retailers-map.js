@@ -142,28 +142,22 @@ class RetailersMap {
   }
 
   createPopupContent(retailer) {
-    const parts = [];
-    
-    if (retailer.shop) {
-      parts.push(`<h3 class="retailers-map__popup-title">${this.escapeHtml(retailer.shop)}</h3>`);
-    }
-    
+    const name = retailer.shop ? `<span class="retailers-map__popup-title">${this.escapeHtml(retailer.shop)}</span>` : '';
+
     const addressParts = [];
     if (retailer.address) addressParts.push(this.escapeHtml(retailer.address));
     if (retailer.zip || retailer.city) {
       addressParts.push(`${this.escapeHtml(retailer.zip || '')} ${this.escapeHtml(retailer.city || '')}`.trim());
     }
-    if (retailer.country) addressParts.push(this.escapeHtml(retailer.country));
-    
-    if (addressParts.length > 0) {
-      parts.push(`<p class="retailers-map__popup-address">${addressParts.join('<br>')}</p>`);
-    }
-    
-    if (retailer.url) {
-      parts.push(`<a href="${this.escapeHtml(retailer.url)}" target="_blank" rel="noopener" class="retailers-map__popup-link">Visit Website →</a>`);
-    }
+    const address = addressParts.length > 0 ? `<span class="retailers-map__popup-address">${addressParts.join(', ')}</span>` : '';
 
-    return `<div class="retailers-map__popup">${parts.join('')}</div>`;
+    const inner = `${name}${address}`;
+
+    if (retailer.url) {
+      const href = this.escapeHtml(retailer.url.startsWith('http') ? retailer.url : 'https://' + retailer.url);
+      return `<a href="${href}" target="_blank" rel="noopener" class="retailers-map__popup">${inner}</a>`;
+    }
+    return `<div class="retailers-map__popup">${inner}</div>`;
   }
 
   escapeHtml(text) {

@@ -352,7 +352,71 @@ class RetailersMap {
   }
 }
 
+function buildCountryAccordion() {
+  const retailers = window.retailersData || [];
+  const container = document.getElementById('retailers-country-list');
+  if (!retailers.length || !container) return;
+
+  const grouped = retailers.reduce((acc, r) => {
+    const country = (r.country || 'Other').toLowerCase();
+    if (!acc[country]) acc[country] = [];
+    acc[country].push(r);
+    return acc;
+  }, {});
+
+  let html = '';
+  Object.keys(grouped).sort().forEach(country => {
+    const shops = grouped[country].sort((a, b) => a.shop.localeCompare(b.shop));
+    html += `<div class="retailers-country">
+      <div class="retailers-country__title">${country}<span class="retailers-country__icon">+</span></div>
+      <ul class="retailers-country__list" style="overflow:hidden;height:0;">${
+        shops.map(s => `<li class="retailers-country__shop">
+          <a href="${s.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
+            <span class="retailers-shop__name">${s.shop}</span>
+          </a>
+          <span class="retailers-shop__address">${s.address}, ${s.zip} ${s.city}</span>
+        </li>`).join('')
+      }</ul>
+    </div>`;
+  });
+  container.innerHTML = html;
+
+  container.querySelectorAll('.retailers-country').forEach(item => {
+    const header = item.querySelector('.retailers-country__title');
+    const list   = item.querySelector('.retailers-country__list');
+    const icon   = item.querySelector('.retailers-country__icon');
+
+    header.addEventListener('click', () => {
+      const opening = item.classList.toggle('is-open');
+      icon.textContent = opening ? '\u2212' : '+';
+
+      if (list._raf) cancelAnimationFrame(list._raf);
+
+      // Measure with no constraints
+      list.style.height = 'auto';
+      list.style.maxHeight = 'none';
+      const fullH = list.offsetHeight;
+      const startH = opening ? 0 : fullH;
+      const endH   = opening ? fullH : 0;
+      list.style.height = startH + 'px';
+
+      const duration = 350;
+      let t0 = null;
+      function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+      function tick(ts) {
+        if (!t0) t0 = ts;
+        const p = Math.min((ts - t0) / duration, 1);
+        list.style.height = (startH + (endH - startH) * ease(p)) + 'px';
+        if (p < 1) { list._raf = requestAnimationFrame(tick); }
+        else { list.style.height = opening ? 'auto' : '0'; }
+      }
+      list._raf = requestAnimationFrame(tick);
+    });
+  });
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   new RetailersMap();
+  buildCountryAccordion();
 });

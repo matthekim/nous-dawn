@@ -8,6 +8,7 @@
   position: relative;
   width: 100%;
   height: calc(100dvh - 150px);
+  z-index: -1;
 }
 
 .retailers-map-left {

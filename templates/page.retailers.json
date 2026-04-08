@@ -10,7 +10,7 @@
     "retailers_data_9wV6H8": {
       "type": "retailers-data",
       "blocks": {
-        "retailer_aerwez": {
+        "retailer_fsnfgd": {
           "type": "retailer",
           "settings": {
             "shop": "Princess",
@@ -23,7 +23,7 @@
             "url": "https://www.princess.eu"
           }
         },
-        "retailer_w8u784": {
+        "retailer_m0o496": {
           "type": "retailer",
           "settings": {
             "shop": "Princess",
@@ -36,7 +36,7 @@
             "url": "https://www.princess.eu"
           }
         },
-        "retailer_ddaw4d": {
+        "retailer_04lnpl": {
           "type": "retailer",
           "settings": {
             "shop": "Kelly",
@@ -49,7 +49,7 @@
             "url": "https://www.kellyshop.be"
           }
         },
-        "retailer_8o3bwf": {
+        "retailer_s2nwzl": {
           "type": "retailer",
           "settings": {
             "shop": "Frau",
@@ -62,7 +62,7 @@
             "url": "https://www.frau.boutique"
           }
         },
-        "retailer_86vxba": {
+        "retailer_cylgra": {
           "type": "retailer",
           "settings": {
             "shop": "John's Boetiek",
@@ -75,7 +75,7 @@
             "url": ""
           }
         },
-        "retailer_wweh9d": {
+        "retailer_yii0vv": {
           "type": "retailer",
           "settings": {
             "shop": "Harlekijn",
@@ -88,7 +88,7 @@
             "url": "https://www.harlekijnmechelen.be"
           }
         },
-        "retailer_59ij0f": {
+        "retailer_c8bomu": {
           "type": "retailer",
           "settings": {
             "shop": "Feliz Concept Store",
@@ -101,7 +101,7 @@
             "url": "https://www.felizconceptstore.be"
           }
         },
-        "retailer_l3ly0h": {
+        "retailer_wz770r": {
           "type": "retailer",
           "settings": {
             "shop": "Manufactuur",
@@ -114,7 +114,7 @@
             "url": "https://www.manufactuur.be"
           }
         },
-        "retailer_4moecp": {
+        "retailer_b1vjry": {
           "type": "retailer",
           "settings": {
             "shop": "Manou",
@@ -127,7 +127,7 @@
             "url": "https://www.manouantwerp.com"
           }
         },
-        "retailer_u1ld2n": {
+        "retailer_xe6zc6": {
           "type": "retailer",
           "settings": {
             "shop": "Dawance",
@@ -140,7 +140,7 @@
             "url": "https://www.dawance.eu"
           }
         },
-        "retailer_6amdtu": {
+        "retailer_za42fh": {
           "type": "retailer",
           "settings": {
             "shop": "Caress",
@@ -153,7 +153,7 @@
             "url": "https://www.caress.be"
           }
         },
-        "retailer_9h9rzp": {
+        "retailer_acx2z9": {
           "type": "retailer",
           "settings": {
             "shop": "Ko.Shu",
@@ -166,7 +166,7 @@
             "url": "https://www.koshu.be"
           }
         },
-        "retailer_proidx": {
+        "retailer_9ovjcs": {
           "type": "retailer",
           "settings": {
             "shop": "Niinsky Mode",
@@ -179,7 +179,7 @@
             "url": "https://www.niinsky.nl"
           }
         },
-        "retailer_17mpkn": {
+        "retailer_yx1q95": {
           "type": "retailer",
           "settings": {
             "shop": "Heemels",
@@ -192,7 +192,7 @@
             "url": "https://www.heemelsmode.nl"
           }
         },
-        "retailer_yrr7dt": {
+        "retailer_t4sec1": {
           "type": "retailer",
           "settings": {
             "shop": "Matchbox",
@@ -205,7 +205,7 @@
             "url": "https://www.matchboxathens.com"
           }
         },
-        "retailer_am4dar": {
+        "retailer_fra4v8": {
           "type": "retailer",
           "settings": {
             "shop": "Orfanidis",
@@ -218,7 +218,7 @@
             "url": ""
           }
         },
-        "retailer_sdzfcs": {
+        "retailer_6epwyp": {
           "type": "retailer",
           "settings": {
             "shop": "La Suite",
@@ -231,7 +231,7 @@
             "url": ""
           }
         },
-        "retailer_nok5fz": {
+        "retailer_2jp9i6": {
           "type": "retailer",
           "settings": {
             "shop": "Ma Première Boutique",
@@ -244,7 +244,7 @@
             "url": "https://www.mapremiereboutique.fr"
           }
         },
-        "retailer_whya22": {
+        "retailer_1vnw58": {
           "type": "retailer",
           "settings": {
             "shop": "Boutique Zazie",
@@ -257,7 +257,7 @@
             "url": ""
           }
         },
-        "retailer_nt357i": {
+        "retailer_ppii6k": {
           "type": "retailer",
           "settings": {
             "shop": "Luxstore",
@@ -270,7 +270,7 @@
             "url": "https://www.luxstore.fr"
           }
         },
-        "retailer_5632ot": {
+        "retailer_nazc6q": {
           "type": "retailer",
           "settings": {
             "shop": "Titaibi",
@@ -283,7 +283,7 @@
             "url": "https://www.laboutiquetitaibi.com"
           }
         },
-        "retailer_jwwhbe": {
+        "retailer_yczsbv": {
           "type": "retailer",
           "settings": {
             "shop": "Titaibi",
@@ -296,7 +296,7 @@
             "url": "https://www.laboutiquetitaibi.com"
           }
         },
-        "retailer_29gs0x": {
+        "retailer_rzfbat": {
           "type": "retailer",
           "settings": {
             "shop": "Paloca Store",
@@ -309,7 +309,7 @@
             "url": "https://www.paloca.fr"
           }
         },
-        "retailer_9pmxfy": {
+        "retailer_4e9gz1": {
           "type": "retailer",
           "settings": {
             "shop": "Blush Concept Store",
@@ -322,7 +322,7 @@
             "url": "https://www.blush-conceptstore.com"
           }
         },
-        "retailer_p96myl": {
+        "retailer_x1cac0": {
           "type": "retailer",
           "settings": {
             "shop": "Oxygene",
@@ -335,7 +335,7 @@
             "url": "https://www.boutiqueoxygene.com"
           }
         },
-        "retailer_f63ndh": {
+        "retailer_cht214": {
           "type": "retailer",
           "settings": {
             "shop": "La Cabane Plaza",
@@ -348,7 +348,7 @@
             "url": ""
           }
         },
-        "retailer_gcg7ot": {
+        "retailer_fgvsdt": {
           "type": "retailer",
           "settings": {
             "shop": "Fati Fati Concept Store",
@@ -361,7 +361,7 @@
             "url": ""
           }
         },
-        "retailer_vyf1sn": {
+        "retailer_8mi6a6": {
           "type": "retailer",
           "settings": {
             "shop": "Di Mare",
@@ -374,7 +374,7 @@
             "url": ""
           }
         },
-        "retailer_emwgsb": {
+        "retailer_akrdl5": {
           "type": "retailer",
           "settings": {
             "shop": "La Boutique",
@@ -387,7 +387,7 @@
             "url": ""
           }
         },
-        "retailer_18dt6h": {
+        "retailer_ldc0qe": {
           "type": "retailer",
           "settings": {
             "shop": "By dé Bo",
@@ -400,7 +400,7 @@
             "url": ""
           }
         },
-        "retailer_c1w2o7": {
+        "retailer_8hu4mj": {
           "type": "retailer",
           "settings": {
             "shop": "L'Atelier 31",
@@ -413,7 +413,7 @@
             "url": ""
           }
         },
-        "retailer_rmj6gf": {
+        "retailer_5ec6zb": {
           "type": "retailer",
           "settings": {
             "shop": "Spontini",
@@ -426,7 +426,7 @@
             "url": "https://www.spontini.fr"
           }
         },
-        "retailer_w7eg0r": {
+        "retailer_qo2ui7": {
           "type": "retailer",
           "settings": {
             "shop": "Paula",
@@ -439,7 +439,7 @@
             "url": ""
           }
         },
-        "retailer_mzw79b": {
+        "retailer_lfnfch": {
           "type": "retailer",
           "settings": {
             "shop": "Capucine",
@@ -452,7 +452,7 @@
             "url": ""
           }
         },
-        "retailer_xuehpr": {
+        "retailer_49javh": {
           "type": "retailer",
           "settings": {
             "shop": "J'entends le loup",
@@ -465,7 +465,7 @@
             "url": ""
           }
         },
-        "retailer_drs5c6": {
+        "retailer_g53meh": {
           "type": "retailer",
           "settings": {
             "shop": "J'entends le loup",
@@ -478,7 +478,7 @@
             "url": ""
           }
         },
-        "retailer_2nie43": {
+        "retailer_7gqzib": {
           "type": "retailer",
           "settings": {
             "shop": "Snob",
@@ -491,7 +491,7 @@
             "url": ""
           }
         },
-        "retailer_vkplvm": {
+        "retailer_akskmk": {
           "type": "retailer",
           "settings": {
             "shop": "L'Ylang",
@@ -504,7 +504,7 @@
             "url": ""
           }
         },
-        "retailer_5runzs": {
+        "retailer_chvyue": {
           "type": "retailer",
           "settings": {
             "shop": "AB33",
@@ -517,7 +517,7 @@
             "url": "https://www.ab33.fr"
           }
         },
-        "retailer_d5b7da": {
+        "retailer_ssnlhe": {
           "type": "retailer",
           "settings": {
             "shop": "Club 55",
@@ -530,7 +530,7 @@
             "url": "https://www.club55.fr"
           }
         },
-        "retailer_f307cn": {
+        "retailer_r23q52": {
           "type": "retailer",
           "settings": {
             "shop": "Nude",
@@ -543,7 +543,7 @@
             "url": ""
           }
         },
-        "retailer_5c0dvs": {
+        "retailer_t110ar": {
           "type": "retailer",
           "settings": {
             "shop": "Moma",
@@ -556,7 +556,7 @@
             "url": ""
           }
         },
-        "retailer_2toypv": {
+        "retailer_j29i1e": {
           "type": "retailer",
           "settings": {
             "shop": "Gipsy James",
@@ -569,7 +569,7 @@
             "url": ""
           }
         },
-        "retailer_eof1o8": {
+        "retailer_j9yvjl": {
           "type": "retailer",
           "settings": {
             "shop": "Les Cocottes",
@@ -577,12 +577,12 @@
             "zip": "97490",
             "city": "Saint-Denis - Réunion",
             "country": "France",
-            "lat": "20.8805",
-            "long": "55.4505",
+            "lat": "-20.9000384",
+            "long": "55.4944505",
             "url": ""
           }
         },
-        "retailer_t9gs7s": {
+        "retailer_m7551l": {
           "type": "retailer",
           "settings": {
             "shop": "La Plaza Cosy",
@@ -595,7 +595,7 @@
             "url": ""
           }
         },
-        "retailer_4qe9zr": {
+        "retailer_mg3qc4": {
           "type": "retailer",
           "settings": {
             "shop": "Tentation",
@@ -608,7 +608,7 @@
             "url": ""
           }
         },
-        "retailer_hl8zcj": {
+        "retailer_x47xa9": {
           "type": "retailer",
           "settings": {
             "shop": "Alba",
@@ -621,7 +621,7 @@
             "url": ""
           }
         },
-        "retailer_4b72pg": {
+        "retailer_dln24y": {
           "type": "retailer",
           "settings": {
             "shop": "Vestiras",
@@ -634,7 +634,7 @@
             "url": ""
           }
         },
-        "retailer_sn4t62": {
+        "retailer_xtxkkz": {
           "type": "retailer",
           "settings": {
             "shop": "Mad",
@@ -647,7 +647,7 @@
             "url": ""
           }
         },
-        "retailer_xihjsx": {
+        "retailer_x0ixeb": {
           "type": "retailer",
           "settings": {
             "shop": "Dandelion",
@@ -660,7 +660,7 @@
             "url": ""
           }
         },
-        "retailer_6jeipd": {
+        "retailer_t0rn4r": {
           "type": "retailer",
           "settings": {
             "shop": "Boto & Co",
@@ -673,7 +673,7 @@
             "url": ""
           }
         },
-        "retailer_jcdcd1": {
+        "retailer_ymnk19": {
           "type": "retailer",
           "settings": {
             "shop": "Pour Toi",
@@ -686,7 +686,7 @@
             "url": ""
           }
         },
-        "retailer_bc5bsm": {
+        "retailer_tttkti": {
           "type": "retailer",
           "settings": {
             "shop": "Itsomi",
@@ -699,7 +699,7 @@
             "url": ""
           }
         },
-        "retailer_utqoji": {
+        "retailer_k3trz1": {
           "type": "retailer",
           "settings": {
             "shop": "BLiNk",
@@ -712,7 +712,7 @@
             "url": ""
           }
         },
-        "retailer_jt5uut": {
+        "retailer_vdv221": {
           "type": "retailer",
           "settings": {
             "shop": "Noss",
@@ -725,7 +725,7 @@
             "url": ""
           }
         },
-        "retailer_mcb7ub": {
+        "retailer_4ac3nr": {
           "type": "retailer",
           "settings": {
             "shop": "Kala",
@@ -738,7 +738,7 @@
             "url": ""
           }
         },
-        "retailer_duauo3": {
+        "retailer_7ovpx2": {
           "type": "retailer",
           "settings": {
             "shop": "Tommy",
@@ -751,7 +751,7 @@
             "url": ""
           }
         },
-        "retailer_5e7q9d": {
+        "retailer_1tr8jo": {
           "type": "retailer",
           "settings": {
             "shop": "Il Baco di Seta",
@@ -764,7 +764,7 @@
             "url": ""
           }
         },
-        "retailer_bpiudc": {
+        "retailer_5n5z6r": {
           "type": "retailer",
           "settings": {
             "shop": "Zoe",
@@ -777,7 +777,7 @@
             "url": ""
           }
         },
-        "retailer_yuyzbv": {
+        "retailer_5iypmu": {
           "type": "retailer",
           "settings": {
             "shop": "Maria Nava",
@@ -790,7 +790,7 @@
             "url": ""
           }
         },
-        "retailer_l30nbe": {
+        "retailer_ck7n2u": {
           "type": "retailer",
           "settings": {
             "shop": "Maria Alonso",
@@ -803,7 +803,7 @@
             "url": ""
           }
         },
-        "retailer_8pee6h": {
+        "retailer_phwivu": {
           "type": "retailer",
           "settings": {
             "shop": "Yuppi",
@@ -816,7 +816,7 @@
             "url": ""
           }
         },
-        "retailer_9p44w9": {
+        "retailer_2v3xwu": {
           "type": "retailer",
           "settings": {
             "shop": "Pez",
@@ -829,7 +829,7 @@
             "url": ""
           }
         },
-        "retailer_mhh77t": {
+        "retailer_ac0gk9": {
           "type": "retailer",
           "settings": {
             "shop": "Leto",
@@ -842,7 +842,7 @@
             "url": ""
           }
         },
-        "retailer_rul3q6": {
+        "retailer_8u5l9p": {
           "type": "retailer",
           "settings": {
             "shop": "Cedry",
@@ -855,7 +855,7 @@
             "url": ""
           }
         },
-        "retailer_57fqt8": {
+        "retailer_9dofb7": {
           "type": "retailer",
           "settings": {
             "shop": "Blanca",
@@ -868,7 +868,7 @@
             "url": ""
           }
         },
-        "retailer_uq4dak": {
+        "retailer_60e5di": {
           "type": "retailer",
           "settings": {
             "shop": "Alberta",
@@ -881,7 +881,7 @@
             "url": ""
           }
         },
-        "retailer_z7kqge": {
+        "retailer_d04qbl": {
           "type": "retailer",
           "settings": {
             "shop": "Mequieres",
@@ -894,7 +894,7 @@
             "url": ""
           }
         },
-        "retailer_kyfdib": {
+        "retailer_huunoi": {
           "type": "retailer",
           "settings": {
             "shop": "Be On Blue",
@@ -907,7 +907,7 @@
             "url": ""
           }
         },
-        "retailer_6wsc4s": {
+        "retailer_sgmrbd": {
           "type": "retailer",
           "settings": {
             "shop": "Be On Blue",
@@ -920,7 +920,7 @@
             "url": ""
           }
         },
-        "retailer_y4g0x5": {
+        "retailer_oywtd9": {
           "type": "retailer",
           "settings": {
             "shop": "India Mon Amour",
@@ -933,7 +933,7 @@
             "url": ""
           }
         },
-        "retailer_hzfxj5": {
+        "retailer_dchtzd": {
           "type": "retailer",
           "settings": {
             "shop": "Global",
@@ -946,7 +946,7 @@
             "url": ""
           }
         },
-        "retailer_7qhoto": {
+        "retailer_s9ndk1": {
           "type": "retailer",
           "settings": {
             "shop": "Safari Blu",
@@ -959,7 +959,7 @@
             "url": ""
           }
         },
-        "retailer_j4dgz7": {
+        "retailer_jho8of": {
           "type": "retailer",
           "settings": {
             "shop": "Gallery A",
@@ -972,7 +972,7 @@
             "url": ""
           }
         },
-        "retailer_yugfxi": {
+        "retailer_p1e4za": {
           "type": "retailer",
           "settings": {
             "shop": "The Family Market",
@@ -985,7 +985,7 @@
             "url": ""
           }
         },
-        "retailer_grza9d": {
+        "retailer_f53huk": {
           "type": "retailer",
           "settings": {
             "shop": "Brunello Shoes & Fashion",
@@ -998,7 +998,7 @@
             "url": ""
           }
         },
-        "retailer_osuyr9": {
+        "retailer_x5scfk": {
           "type": "retailer",
           "settings": {
             "shop": "Boutique Mai",
@@ -1011,7 +1011,7 @@
             "url": ""
           }
         },
-        "retailer_jh66s7": {
+        "retailer_j3ey0q": {
           "type": "retailer",
           "settings": {
             "shop": "Pompons",
@@ -1026,84 +1026,84 @@
         }
       },
       "block_order": [
-        "retailer_aerwez",
-        "retailer_w8u784",
-        "retailer_ddaw4d",
-        "retailer_8o3bwf",
-        "retailer_86vxba",
-        "retailer_wweh9d",
-        "retailer_59ij0f",
-        "retailer_l3ly0h",
-        "retailer_4moecp",
-        "retailer_u1ld2n",
-        "retailer_6amdtu",
-        "retailer_9h9rzp",
-        "retailer_proidx",
-        "retailer_17mpkn",
-        "retailer_yrr7dt",
-        "retailer_am4dar",
-        "retailer_sdzfcs",
-        "retailer_nok5fz",
-        "retailer_whya22",
-        "retailer_nt357i",
-        "retailer_5632ot",
-        "retailer_jwwhbe",
-        "retailer_29gs0x",
-        "retailer_9pmxfy",
-        "retailer_p96myl",
-        "retailer_f63ndh",
-        "retailer_gcg7ot",
-        "retailer_vyf1sn",
-        "retailer_emwgsb",
-        "retailer_18dt6h",
-        "retailer_c1w2o7",
-        "retailer_rmj6gf",
-        "retailer_w7eg0r",
-        "retailer_mzw79b",
-        "retailer_xuehpr",
-        "retailer_drs5c6",
-        "retailer_2nie43",
-        "retailer_vkplvm",
-        "retailer_5runzs",
-        "retailer_d5b7da",
-        "retailer_f307cn",
-        "retailer_5c0dvs",
-        "retailer_2toypv",
-        "retailer_eof1o8",
-        "retailer_t9gs7s",
-        "retailer_4qe9zr",
-        "retailer_hl8zcj",
-        "retailer_4b72pg",
-        "retailer_sn4t62",
-        "retailer_xihjsx",
-        "retailer_6jeipd",
-        "retailer_jcdcd1",
-        "retailer_bc5bsm",
-        "retailer_utqoji",
-        "retailer_jt5uut",
-        "retailer_mcb7ub",
-        "retailer_duauo3",
-        "retailer_5e7q9d",
-        "retailer_bpiudc",
-        "retailer_yuyzbv",
-        "retailer_l30nbe",
-        "retailer_8pee6h",
-        "retailer_9p44w9",
-        "retailer_mhh77t",
-        "retailer_rul3q6",
-        "retailer_57fqt8",
-        "retailer_uq4dak",
-        "retailer_z7kqge",
-        "retailer_kyfdib",
-        "retailer_6wsc4s",
-        "retailer_y4g0x5",
-        "retailer_hzfxj5",
-        "retailer_7qhoto",
-        "retailer_j4dgz7",
-        "retailer_yugfxi",
-        "retailer_grza9d",
-        "retailer_osuyr9",
-        "retailer_jh66s7"
+        "retailer_fsnfgd",
+        "retailer_m0o496",
+        "retailer_04lnpl",
+        "retailer_s2nwzl",
+        "retailer_cylgra",
+        "retailer_yii0vv",
+        "retailer_c8bomu",
+        "retailer_wz770r",
+        "retailer_b1vjry",
+        "retailer_xe6zc6",
+        "retailer_za42fh",
+        "retailer_acx2z9",
+        "retailer_9ovjcs",
+        "retailer_yx1q95",
+        "retailer_t4sec1",
+        "retailer_fra4v8",
+        "retailer_6epwyp",
+        "retailer_2jp9i6",
+        "retailer_1vnw58",
+        "retailer_ppii6k",
+        "retailer_nazc6q",
+        "retailer_yczsbv",
+        "retailer_rzfbat",
+        "retailer_4e9gz1",
+        "retailer_x1cac0",
+        "retailer_cht214",
+        "retailer_fgvsdt",
+        "retailer_8mi6a6",
+        "retailer_akrdl5",
+        "retailer_ldc0qe",
+        "retailer_8hu4mj",
+        "retailer_5ec6zb",
+        "retailer_qo2ui7",
+        "retailer_lfnfch",
+        "retailer_49javh",
+        "retailer_g53meh",
+        "retailer_7gqzib",
+        "retailer_akskmk",
+        "retailer_chvyue",
+        "retailer_ssnlhe",
+        "retailer_r23q52",
+        "retailer_t110ar",
+        "retailer_j29i1e",
+        "retailer_j9yvjl",
+        "retailer_m7551l",
+        "retailer_mg3qc4",
+        "retailer_x47xa9",
+        "retailer_dln24y",
+        "retailer_xtxkkz",
+        "retailer_x0ixeb",
+        "retailer_t0rn4r",
+        "retailer_ymnk19",
+        "retailer_tttkti",
+        "retailer_k3trz1",
+        "retailer_vdv221",
+        "retailer_4ac3nr",
+        "retailer_7ovpx2",
+        "retailer_1tr8jo",
+        "retailer_5n5z6r",
+        "retailer_5iypmu",
+        "retailer_ck7n2u",
+        "retailer_phwivu",
+        "retailer_2v3xwu",
+        "retailer_ac0gk9",
+        "retailer_8u5l9p",
+        "retailer_9dofb7",
+        "retailer_60e5di",
+        "retailer_d04qbl",
+        "retailer_huunoi",
+        "retailer_sgmrbd",
+        "retailer_oywtd9",
+        "retailer_dchtzd",
+        "retailer_s9ndk1",
+        "retailer_jho8of",
+        "retailer_p1e4za",
+        "retailer_f53huk",
+        "retailer_x5scfk",
+        "retailer_j3ey0q"
       ],
       "name": "Retailers Data",
       "settings": {}

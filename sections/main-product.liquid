@@ -97,12 +97,12 @@
                   {{- block.settings.text -}}
                 </p>
               {%- when 'title' -%}
-                {%- assign title_parts = product.title | split: ' - ' -%}
+                {%- assign title_parts = product.title | split: ' | ' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
                   <h1>
                     {%- if title_parts.size > 1 -%}
                       <span class="product__title-bold">{{ title_parts[0] | downcase }}</span>
-                      <span class="product__title-regular"> - {{ title_parts[1] | downcase }}</span>
+                      <span class="product__title-regular"> | {{ title_parts[1] | downcase }}</span>
                     {%- else -%}
                       {{ product.title | downcase | escape }}
                     {%- endif -%}
@@ -111,7 +111,7 @@
                     <h2 class="h1">
                       {%- if title_parts.size > 1 -%}
                         <span class="product__title-bold">{{ title_parts[0] | downcase }}</span>
-                        <span class="product__title-regular"> - {{ title_parts[1] | downcase }}</span>
+                        <span class="product__title-regular"> | {{ title_parts[1] | downcase }}</span>
                       {%- else -%}
                         {{ product.title | downcase | escape }}
                       {%- endif -%}

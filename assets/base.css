@@ -4926,6 +4926,7 @@ body[class*='retailers'] .underlined-link {
 .cart__title {
   color: #000 !important;
   margin-top: 100px !important;
+  text-transform: lowercase !important;
 }
 
 /* Cart page - continue shopping link above checkout */

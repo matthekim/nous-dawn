@@ -13,7 +13,7 @@ body {
   }
 }
 footer {
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
 }
 /* Menu Blend Overlay - body level for proper mix-blend-mode */
 #menu-blend-overlay {

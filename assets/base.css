@@ -4922,6 +4922,12 @@ body[class*='retailers'] .underlined-link {
   display: none !important;
 }
 
+/* Cart page - title */
+.cart__title {
+  color: #000 !important;
+  margin-top: 100px !important;
+}
+
 /* Cart page - continue shopping link above checkout */
 .cart__continue-shopping {
   display: block;

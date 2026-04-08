@@ -98,30 +98,46 @@
 
     container.innerHTML = html;
 
-    // Accordion — JS-driven animation (bypasses CSS caching)
+    // jQuery-style slide animation — pure JS, no CSS transitions
+    function animateHeight(el, toOpen) {
+      if (el._rafId) cancelAnimationFrame(el._rafId);
+
+      // Override ALL stylesheet constraints before measuring
+      el.style.cssText = 'overflow:hidden;height:auto;max-height:none;display:block;';
+      const fullH = el.offsetHeight;
+
+      const startH = toOpen ? 0 : fullH;
+      const endH   = toOpen ? fullH : 0;
+      el.style.height = startH + 'px';
+
+      const duration = 350;
+      let startTime = null;
+
+      function ease(t) { return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t; }
+
+      function tick(ts) {
+        if (!startTime) startTime = ts;
+        const t = Math.min((ts - startTime) / duration, 1);
+        el.style.height = (startH + (endH - startH) * ease(t)) + 'px';
+        if (t < 1) {
+          el._rafId = requestAnimationFrame(tick);
+        } else {
+          el.style.cssText = toOpen ? 'overflow:hidden;max-height:none;' : 'overflow:hidden;height:0;max-height:none;';
+        }
+      }
+
+      el._rafId = requestAnimationFrame(tick);
+    }
+
     container.querySelectorAll('.retailers-country').forEach(item => {
       const header = item.querySelector('.retailers-country__title');
-      const list = item.querySelector('.retailers-country__list');
-      const icon = item.querySelector('.retailers-country__icon');
+      const list   = item.querySelector('.retailers-country__list');
+      const icon   = item.querySelector('.retailers-country__icon');
 
       header.addEventListener('click', () => {
         const isOpen = item.classList.toggle('is-open');
         icon.textContent = isOpen ? '\u2212' : '+';
-
-        console.warn('NOUS', 'scrollH:', list.scrollHeight, 'offH:', list.offsetHeight, 'transition:', list.style.transition, 'height:', list.style.height);
-
-        if (isOpen) {
-          list.style.height = list.scrollHeight + 'px';
-          list.addEventListener('transitionend', function done() {
-            list.style.height = 'auto';
-            list.removeEventListener('transitionend', done);
-          });
-        } else {
-          list.style.height = list.offsetHeight + 'px';
-          requestAnimationFrame(() => {
-            list.style.height = '0px';
-          });
-        }
+        animateHeight(list, isOpen);
       });
     });
   });

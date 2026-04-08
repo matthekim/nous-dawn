@@ -104,6 +104,9 @@
                 </small>
               </div>
             {%- else -%}
+              <a href="{{ routes.all_products_collection_url }}" class="underlined-link cart__continue-shopping">
+                {{- 'general.continue_shopping' | t -}}
+              </a>
               <div class="cart__ctas" {{ block.shopify_attributes }}>
                 <button
                   type="submit"

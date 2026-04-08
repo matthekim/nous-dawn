@@ -18,6 +18,9 @@ footer {
 .footer__copyright {
   display: none !important;
 }
+.footer__payment {
+  margin-bottom: 1.5rem;
+}
 /* Menu Blend Overlay - body level for proper mix-blend-mode */
 #menu-blend-overlay {
   display: block !important;

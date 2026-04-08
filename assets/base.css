@@ -15,6 +15,9 @@ body {
 footer {
   padding-bottom: 0 !important;
 }
+.footer__copyright {
+  display: none !important;
+}
 /* Menu Blend Overlay - body level for proper mix-blend-mode */
 #menu-blend-overlay {
   display: block !important;

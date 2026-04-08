@@ -178,18 +178,24 @@ class RetailersMap {
       el.style.transition = 'opacity 0.2s ease';
       el.style.cursor = 'pointer';
 
-      el.addEventListener('click', () => {
-        this.closeActivePopup();
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.activePopup) {
+          this.activePopup.remove();
+          this.activePopup = null;
+          return;
+        }
         const popup = new mapboxgl.Popup({
           offset: [0, -32],
           closeButton: true,
-          closeOnClick: true,
+          closeOnClick: false,
           className: 'retailers-map__popup-container'
         })
           .setLngLat([lng, lat])
           .setHTML(this.createPopupContent(retailer))
           .addTo(this.map);
         this.activePopup = popup;
+        popup.on('close', () => { this.activePopup = null; });
       });
 
       const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })
@@ -198,6 +204,9 @@ class RetailersMap {
 
       this.markers.push({ marker, el, index });
     });
+
+    // Click on map background closes popup
+    this.map.on('click', () => { this.closeActivePopup(); });
   }
 
   highlightMarker(index) {

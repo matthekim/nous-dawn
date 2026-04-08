@@ -12,6 +12,9 @@ body {
     opacity: 1;
   }
 }
+#MainContent {
+  min-height: 100dvh;
+}
 footer {
   padding-bottom: 0 !important;
 }

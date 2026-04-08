@@ -102,9 +102,13 @@
     function animateHeight(el, toOpen) {
       if (el._rafId) cancelAnimationFrame(el._rafId);
 
-      // Override ALL stylesheet constraints before measuring
       el.style.cssText = 'overflow:hidden;height:auto;max-height:none;display:block;';
       const fullH = el.offsetHeight;
+
+      // On-screen debug — shows measured height
+      let dbg = document.getElementById('nous-dbg');
+      if (!dbg) { dbg = document.createElement('div'); dbg.id = 'nous-dbg'; dbg.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:99999;background:red;color:#fff;padding:12px 18px;font-size:16px;font-family:monospace;border-radius:6px;'; document.body.appendChild(dbg); }
+      dbg.textContent = (toOpen ? 'OPEN' : 'CLOSE') + ' fullH=' + fullH + ' at ' + new Date().toLocaleTimeString();
 
       const startH = toOpen ? 0 : fullH;
       const endH   = toOpen ? fullH : 0;

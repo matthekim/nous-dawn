@@ -92,6 +92,7 @@
 .retailers-country__title {
   cursor: pointer;
   padding: 0;
+  line-height: 1.3em;
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   font-size: calc(var(--font-heading-scale) * 4rem);
   text-transform: lowercase;

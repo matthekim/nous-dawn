@@ -221,7 +221,7 @@ class RetailersMap {
           'icon-allow-overlap': true
         },
         paint: {
-          'icon-opacity': ['case', ['boolean', ['feature-state', 'highlight'], false], 1, 0.7]
+          'icon-opacity': 0.7
         }
       });
       this._bindMarkerEvents();
@@ -438,12 +438,14 @@ function buildCountryAccordion() {
     shopEl.addEventListener('mouseenter', () => {
       const map = window._retailersMapInstance && window._retailersMapInstance.map;
       if (!map || isNaN(idx)) return;
-      map.setFeatureState({ source: 'retailers', id: idx }, { highlight: true });
+      map.setPaintProperty('retailer-markers', 'icon-opacity',
+        ['case', ['==', ['get', 'index'], idx], 1, 0.7]
+      );
     });
     shopEl.addEventListener('mouseleave', () => {
       const map = window._retailersMapInstance && window._retailersMapInstance.map;
       if (!map || isNaN(idx)) return;
-      map.setFeatureState({ source: 'retailers', id: idx }, { highlight: false });
+      map.setPaintProperty('retailer-markers', 'icon-opacity', 0.7);
     });
   });
 }

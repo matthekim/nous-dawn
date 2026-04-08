@@ -4,6 +4,12 @@
   position: fixed;
 }
 
+.retailer-spacer {
+  position: relative;
+  width: 100%;
+  height: calc(100dvh - 150px);
+}
+
 .retailers-map-left {
   position: fixed;
   top: 0;

@@ -194,15 +194,15 @@
   padding: 1.2rem 1.5rem;
   text-decoration: none;
   color: var(--seasonal-color);
-  cursor: pointer;
+  cursor: default;
 }
 
 .retailers-map__popup--link {
   cursor: pointer;
 }
 
-.retailers-map__popup--link:hover .retailers-map__popup-title {
-  text-decoration: underline;
+.retailers-map__popup--link:hover {
+  text-decoration: none;
 }
 
 .retailers-map__popup-title {

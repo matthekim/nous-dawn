@@ -105,7 +105,7 @@
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   font-size: calc(var(--font-heading-scale) * 4rem);
   text-transform: lowercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   list-style: none;
   display: flex;
   justify-content: space-between;

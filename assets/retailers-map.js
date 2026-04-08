@@ -179,11 +179,13 @@ class RetailersMap {
 
       el.addEventListener('click', (e) => {
         e.stopPropagation();
+        const isSamePin = this.activePopup && this.activePopup._lngLat &&
+          this.activePopup._lngLat.lng === lng && this.activePopup._lngLat.lat === lat;
         if (this.activePopup) {
           this.activePopup.remove();
           this.activePopup = null;
-          return;
         }
+        if (isSamePin) return;
         const popup = new mapboxgl.Popup({
           offset: [0, -32],
           closeButton: true,

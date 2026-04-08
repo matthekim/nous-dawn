@@ -2,6 +2,8 @@
 
 .retailers-page-layout {
   position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .retailer-spacer {
@@ -23,6 +25,8 @@
 
 .retailers-map-left.is-at-bottom {
   position: absolute;
+  top: auto;
+  bottom: 0;
 }
 
 .retailers-map-top-bar {

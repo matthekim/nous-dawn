@@ -150,28 +150,6 @@
       });
     });
   })();
-
-  // Detach fixed map panel when layout bottom passes viewport bottom, letting footer show
-  const layout = document.querySelector('.retailers-page-layout');
-  const mapLeft = document.querySelector('.retailers-map-left');
-
-  if (layout && mapLeft) {
-    function updateMapPosition() {
-      const layoutBottom = layout.getBoundingClientRect().bottom;
-      if (layoutBottom <= window.innerHeight) {
-        if (!mapLeft.classList.contains('is-at-bottom')) {
-          mapLeft.style.top = (window.scrollY - layout.offsetTop) + 'px';
-          mapLeft.classList.add('is-at-bottom');
-        }
-      } else {
-        if (mapLeft.classList.contains('is-at-bottom')) {
-          mapLeft.classList.remove('is-at-bottom');
-          mapLeft.style.top = '';
-        }
-      }
-    }
-    window.addEventListener('scroll', updateMapPosition, { passive: true });
-  }
 </script>
 
 {% schema %}

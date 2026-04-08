@@ -411,6 +411,18 @@ document.addEventListener('DOMContentLoaded', () => {
     layout.insertAdjacentElement('afterend', spacer);
   }
 
+  // Detach fixed map panel when layout bottom passes viewport bottom
+  const layoutEl = document.querySelector('.retailers-page-layout');
+  const mapLeftEl = document.querySelector('.retailers-map-left');
+  if (layoutEl && mapLeftEl) {
+    function updateMapPosition() {
+      const atBottom = layoutEl.getBoundingClientRect().bottom <= window.innerHeight;
+      mapLeftEl.classList.toggle('is-at-bottom', atBottom);
+    }
+    window.addEventListener('scroll', updateMapPosition, { passive: true });
+    updateMapPosition();
+  }
+
   new RetailersMap();
   buildCountryAccordion();
 });

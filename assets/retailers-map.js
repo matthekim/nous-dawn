@@ -381,35 +381,46 @@ function buildCountryAccordion() {
   });
   container.innerHTML = html;
 
-  container.querySelectorAll('.retailers-country').forEach(item => {
+  function animateItem(item, list, opening) {
+    if (list._raf) cancelAnimationFrame(list._raf);
+    list.style.height = 'auto';
+    list.style.maxHeight = 'none';
+    const fullH = list.offsetHeight;
+    const startH = opening ? 0 : fullH;
+    const endH   = opening ? fullH : 0;
+    list.style.height = startH + 'px';
+    const duration = 350;
+    let t0 = null;
+    function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+    function tick(ts) {
+      if (!t0) t0 = ts;
+      const p = Math.min((ts - t0) / duration, 1);
+      list.style.height = (startH + (endH - startH) * ease(p)) + 'px';
+      if (p < 1) { list._raf = requestAnimationFrame(tick); }
+      else { list.style.height = opening ? 'auto' : '0'; }
+    }
+    list._raf = requestAnimationFrame(tick);
+  }
+
+  const allItems = Array.from(container.querySelectorAll('.retailers-country'));
+
+  allItems.forEach(item => {
     const header = item.querySelector('.retailers-country__title');
     const list   = item.querySelector('.retailers-country__list');
-    const icon   = item.querySelector('.retailers-country__icon');
 
     header.addEventListener('click', () => {
-      const opening = item.classList.toggle('is-open');
+      const opening = !item.classList.contains('is-open');
 
-      if (list._raf) cancelAnimationFrame(list._raf);
+      // Close all other open items
+      allItems.forEach(other => {
+        if (other !== item && other.classList.contains('is-open')) {
+          other.classList.remove('is-open');
+          animateItem(other, other.querySelector('.retailers-country__list'), false);
+        }
+      });
 
-      // Measure with no constraints
-      list.style.height = 'auto';
-      list.style.maxHeight = 'none';
-      const fullH = list.offsetHeight;
-      const startH = opening ? 0 : fullH;
-      const endH   = opening ? fullH : 0;
-      list.style.height = startH + 'px';
-
-      const duration = 350;
-      let t0 = null;
-      function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
-      function tick(ts) {
-        if (!t0) t0 = ts;
-        const p = Math.min((ts - t0) / duration, 1);
-        list.style.height = (startH + (endH - startH) * ease(p)) + 'px';
-        if (p < 1) { list._raf = requestAnimationFrame(tick); }
-        else { list.style.height = opening ? 'auto' : '0'; }
-      }
-      list._raf = requestAnimationFrame(tick);
+      item.classList.toggle('is-open', opening);
+      animateItem(item, list, opening);
     });
   });
 }

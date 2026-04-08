@@ -105,7 +105,14 @@
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                       {%- endif -%}
 
-                      <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                      {%- assign cart_title_parts = item.product.title | split: ' - ' -%}
+                      <a href="{{ item.url }}" class="cart-item__name h4 break">
+                        {%- if cart_title_parts.size > 1 -%}
+                          <span class="product__title-bold">{{ cart_title_parts[0] | downcase }}</span><span class="product__title-regular"> - {{ cart_title_parts[1] | downcase }}</span>
+                        {%- else -%}
+                          {{ item.product.title | downcase | escape }}
+                        {%- endif -%}
+                      </a>
 
                       {%- if item.original_price != item.final_price -%}
                         <div class="cart-item__discounted-prices">

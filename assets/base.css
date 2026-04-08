@@ -12,7 +12,9 @@ body {
     opacity: 1;
   }
 }
-
+footer {
+  padding-bottom: 0;
+}
 /* Menu Blend Overlay - body level for proper mix-blend-mode */
 #menu-blend-overlay {
   display: block !important;

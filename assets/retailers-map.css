@@ -1,7 +1,7 @@
 /* Retailers Map Styles */
 
 .retailers-page-layout {
-  position: relative;
+  position: fixed;
 }
 
 .retailers-map-left {
@@ -107,7 +107,6 @@
 .retailers-country__title::-webkit-details-marker {
   display: none;
 }
-
 
 .retailers-country__list {
   list-style: none;
@@ -261,7 +260,9 @@
   background-color: rgba(var(--color-foreground), 0.03);
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .retailers-map__list-item:hover,

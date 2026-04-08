@@ -65,7 +65,7 @@ class RetailersMap {
     });
 
     // Add navigation controls
-    this.map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+    this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
     // Wait for map to load before adding markers
     this.map.on('load', () => {
@@ -180,7 +180,7 @@ class RetailersMap {
       if (isNaN(lng) || isNaN(lat)) return;
 
       const el = this.createMarkerElement(retailer);
-      el.style.opacity = '0.7';
+      el.style.opacity = '0.55';
       el.style.transition = 'opacity 0.2s ease';
       el.style.cursor = 'pointer';
 
@@ -209,7 +209,7 @@ class RetailersMap {
   highlightMarker(index) {
     this.markers.forEach(({ el, index: i }) => {
       const active = i === index;
-      el.style.opacity = active ? '1' : '0.7';
+      el.style.opacity = active ? '1' : '0.55';
       el.style.zIndex  = active ? '10' : '';
       const img = el.querySelector('img');
       if (img) img.style.transform = active ? 'scale(1.35)' : 'scale(1)';
@@ -218,7 +218,7 @@ class RetailersMap {
 
   resetMarkerHighlight() {
     this.markers.forEach(({ el }) => {
-      el.style.opacity = '0.7';
+      el.style.opacity = '0.55';
       el.style.zIndex  = '';
       const img = el.querySelector('img');
       if (img) img.style.transform = 'scale(1)';

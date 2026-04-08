@@ -134,6 +134,7 @@ class RetailersMap {
     img.style.display = 'block';
     img.style.cursor = 'pointer';
     img.style.pointerEvents = 'none'; // Let click pass through to parent div
+    img.style.transition = 'transform 0.2s ease';
 
     el.appendChild(img);
 
@@ -207,8 +208,11 @@ class RetailersMap {
 
   highlightMarker(index) {
     this.markers.forEach(({ el, index: i }) => {
-      el.style.opacity = (i === index) ? '1' : '0.7';
-      el.style.zIndex  = (i === index) ? '10' : '';
+      const active = i === index;
+      el.style.opacity = active ? '1' : '0.7';
+      el.style.zIndex  = active ? '10' : '';
+      const img = el.querySelector('img');
+      if (img) img.style.transform = active ? 'scale(1.35)' : 'scale(1)';
     });
   }
 
@@ -216,6 +220,8 @@ class RetailersMap {
     this.markers.forEach(({ el }) => {
       el.style.opacity = '0.7';
       el.style.zIndex  = '';
+      const img = el.querySelector('img');
+      if (img) img.style.transform = 'scale(1)';
     });
   }
 

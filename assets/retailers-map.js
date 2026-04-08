@@ -407,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (layout && !document.querySelector('.retailer-spacer')) {
     const spacer = document.createElement('div');
     spacer.className = 'retailer-spacer';
+    spacer.innerHTML = '&nbsp;';
     layout.insertAdjacentElement('afterend', spacer);
   }
 

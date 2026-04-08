@@ -122,7 +122,11 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.video-section__media.deferred-media').forEach(function (el) {
+    var sectionEl = document.querySelector('.section-{{ section.id }}-padding');
+    if (!sectionEl) return;
+    var shopifySection = sectionEl.closest('.shopify-section');
+    if (shopifySection && shopifySection.style.display === 'none') return;
+    sectionEl.querySelectorAll('.video-section__media.deferred-media').forEach(function (el) {
       const poster = el.querySelector('.video-section__poster');
       if (poster) poster.style.display = 'none';
       if (typeof el.loadContent === 'function') {

@@ -1,8 +1,8 @@
 function getFocusableElements(container) {
   return Array.from(
     container.querySelectorAll(
-      "summary, a[href], button:enabled, [tabindex]:not([tabindex^='-']), [draggable], area, input:not([type=hidden]):enabled, select:enabled, textarea:enabled, object, iframe"
-    )
+      "summary, a[href], button:enabled, [tabindex]:not([tabindex^='-']), [draggable], area, input:not([type=hidden]):enabled, select:enabled, textarea:enabled, object, iframe",
+    ),
   );
 }
 
@@ -177,7 +177,7 @@ function focusVisiblePolyfill() {
       currentFocusedElement = document.activeElement;
       currentFocusedElement.classList.add('focused');
     },
-    true
+    true,
   );
 }
 
@@ -221,7 +221,7 @@ class QuantityInput extends HTMLElement {
     this.changeEvent = new Event('change', { bubbles: true });
     this.input.addEventListener('change', this.onInputChange.bind(this));
     this.querySelectorAll('button').forEach((button) =>
-      button.addEventListener('click', this.onButtonClick.bind(this))
+      button.addEventListener('click', this.onButtonClick.bind(this)),
     );
   }
 
@@ -286,7 +286,6 @@ function debounce(fn, wait) {
     t = setTimeout(() => fn.apply(this, args), wait);
   };
 }
-
 
 function throttle(fn, delay) {
   let lastCall = 0;
@@ -432,10 +431,10 @@ class MenuDrawer extends HTMLElement {
 
   bindEvents() {
     this.querySelectorAll('summary').forEach((summary) =>
-      summary.addEventListener('click', this.onSummaryClick.bind(this))
+      summary.addEventListener('click', this.onSummaryClick.bind(this)),
     );
     this.querySelectorAll(
-      'button:not(.localization-selector):not(.country-selector__close-button):not(.country-filter__reset-button)'
+      'button:not(.localization-selector):not(.country-selector__close-button):not(.country-filter__reset-button)',
     ).forEach((button) => button.addEventListener('click', this.onCloseButtonClick.bind(this)));
   }
 
@@ -477,9 +476,11 @@ class MenuDrawer extends HTMLElement {
 
   openMenuDrawer(summaryElement) {
     // Re-open all submenu details
-    this.mainDetailsToggle.querySelectorAll('.menu-drawer__menu details, .menu-drawer__submenu details').forEach((details) => {
-      details.setAttribute('open', '');
-    });
+    this.mainDetailsToggle
+      .querySelectorAll('.menu-drawer__menu details, .menu-drawer__submenu details')
+      .forEach((details) => {
+        details.setAttribute('open', '');
+      });
     setTimeout(() => {
       this.mainDetailsToggle.classList.add('menu-opening');
     });
@@ -496,7 +497,8 @@ class MenuDrawer extends HTMLElement {
     this.mainDetailsToggle.querySelectorAll('details').forEach((details) => {
       // Skip submenu details - they should stay open
       if (details.id && details.id.includes('menu-drawer-menu-item')) return;
-      if (details.id && details.id.includes('Details-menu-drawer-') && details.id !== 'Details-menu-drawer-container') return;
+      if (details.id && details.id.includes('Details-menu-drawer-') && details.id !== 'Details-menu-drawer-container')
+        return;
       details.removeAttribute('open');
       details.classList.remove('menu-opening');
     });
@@ -568,7 +570,7 @@ class HeaderDrawer extends MenuDrawer {
       this.borderOffset || this.closest('.header-wrapper').classList.contains('header-wrapper--border-bottom') ? 1 : 0;
     document.documentElement.style.setProperty(
       '--header-bottom-position',
-      `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`
+      `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`,
     );
     this.header.classList.add('menu-open');
 
@@ -593,7 +595,7 @@ class HeaderDrawer extends MenuDrawer {
     this.header &&
       document.documentElement.style.setProperty(
         '--header-bottom-position',
-        `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`
+        `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`,
       );
     document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`);
   };
@@ -671,7 +673,7 @@ class BulkModal extends HTMLElement {
     };
 
     new IntersectionObserver(handleIntersection.bind(this)).observe(
-      document.querySelector(`#QuickBulk-${this.dataset.productId}-${this.dataset.sectionId}`)
+      document.querySelector(`#QuickBulk-${this.dataset.productId}-${this.dataset.sectionId}`),
     );
   }
 }
@@ -754,7 +756,7 @@ class SliderComponent extends HTMLElement {
     if (this.sliderItemsToShow.length < 2) return;
     this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
     this.slidesPerPage = Math.floor(
-      (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset
+      (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset,
     );
     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
     this.update();
@@ -785,7 +787,7 @@ class SliderComponent extends HTMLElement {
             currentPage: this.currentPage,
             currentElement: this.sliderItemsToShow[this.currentPage - 1],
           },
-        })
+        }),
       );
     }
 
@@ -862,7 +864,7 @@ class SlideshowComponent extends SliderComponent {
           () => {
             this.announcementBarArrowButtonWasClicked = true;
           },
-          { once: true }
+          { once: true },
         );
       });
     }
@@ -1106,7 +1108,7 @@ class VariantSelects extends HTMLElement {
 
       selectedDropdownSwatchValue.style.setProperty(
         '--swatch-focal-point',
-        target.selectedOptions[0].dataset.optionSwatchFocalPoint || 'unset'
+        target.selectedOptions[0].dataset.optionSwatchFocalPoint || 'unset',
       );
     } else if (tagName === 'INPUT' && target.type === 'radio') {
       const selectedSwatchValue = target.closest(`.product-form__input`).querySelector('[data-selected-value]');
@@ -1120,7 +1122,7 @@ class VariantSelects extends HTMLElement {
 
   get selectedOptionValues() {
     return Array.from(this.querySelectorAll('select option[selected], fieldset input:checked')).map(
-      ({ dataset }) => dataset.optionValueId
+      ({ dataset }) => dataset.optionValueId,
     );
   }
 }
@@ -1146,7 +1148,7 @@ class ProductRecommendations extends HTMLElement {
         observer.unobserve(this);
         this.loadRecommendations(productId);
       },
-      { rootMargin: '0px 0px 400px 0px' }
+      { rootMargin: '0px 0px 400px 0px' },
     );
     this.observer.observe(this);
   }
@@ -1284,62 +1286,50 @@ if (!customElements.get('bulk-add')) {
 }
 
 class CartPerformance {
-  static #metric_prefix = "cart-performance"
+  static #metric_prefix = 'cart-performance';
 
   static createStartingMarker(benchmarkName) {
-    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`
+    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`;
     return performance.mark(`${metricName}:start`);
   }
 
   static measureFromEvent(benchmarkName, event) {
-    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`
+    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`;
     const startMarker = performance.mark(`${metricName}:start`, {
-      startTime: event.timeStamp
+      startTime: event.timeStamp,
     });
 
     const endMarker = performance.mark(`${metricName}:end`);
 
-    performance.measure(
-      metricName,
-      `${metricName}:start`,
-      `${metricName}:end`
-    );
+    performance.measure(metricName, `${metricName}:start`, `${metricName}:end`);
   }
 
   static measureFromMarker(benchmarkName, startMarker) {
-    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`
+    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`;
     const endMarker = performance.mark(`${metricName}:end`);
 
-    performance.measure(
-      metricName,
-      startMarker.name,
-      `${metricName}:end`
-    );
+    performance.measure(metricName, startMarker.name, `${metricName}:end`);
   }
 
   static measure(benchmarkName, callback) {
-    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`
+    const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`;
     const startMarker = performance.mark(`${metricName}:start`);
 
     callback();
 
     const endMarker = performance.mark(`${metricName}:end`);
 
-    performance.measure(
-      metricName,
-      `${metricName}:start`,
-      `${metricName}:end`
-    );
+    performance.measure(metricName, `${metricName}:start`, `${metricName}:end`);
   }
 }
 
 // Style "Follow on Shop" button
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const seasonalColor = getComputedStyle(document.documentElement).getPropertyValue('--seasonal-color').trim();
-  
+
   function findAndStyleButtons() {
     let found = false;
-    
+
     // 1. Check regular DOM for .bg-purple-primary and .gravity-button
     const purpleButtons = document.querySelectorAll('.bg-purple-primary');
     if (purpleButtons.length > 0) {
@@ -1348,7 +1338,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       found = true;
     }
-    
+
     // Check for .gravity-button class
     const gravityButtons = document.querySelectorAll('.gravity-button');
     if (gravityButtons.length > 0) {
@@ -1357,19 +1347,19 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       found = true;
     }
-    
+
     // Check for <gravity-button> custom element (has its own shadow DOM)
     const gravityElements = document.querySelectorAll('gravity-button');
     gravityElements.forEach((el, i) => {
       if (el.shadowRoot) {
         const innerButtons = el.shadowRoot.querySelectorAll('button, [role="button"]');
-        innerButtons.forEach(btn => {
+        innerButtons.forEach((btn) => {
           btn.style.setProperty('background-color', seasonalColor, 'important');
           found = true;
         });
         // Also style the host itself via adoptedStyleSheets or direct style
         const allInner = el.shadowRoot.querySelectorAll('*');
-        allInner.forEach(inner => {
+        allInner.forEach((inner) => {
           const bg = getComputedStyle(inner).backgroundColor;
           if (bg.includes('128') || bg.includes('124') || bg.includes('purple')) {
             inner.style.setProperty('background-color', seasonalColor, 'important');
@@ -1380,12 +1370,11 @@ document.addEventListener('DOMContentLoaded', function() {
       // Also style the element itself if it has bg
       el.style.setProperty('background-color', seasonalColor, 'important');
     });
-    
+
     // 2. Find ALL elements with shadow roots and check inside them
     const allElements = document.querySelectorAll('*');
-    allElements.forEach(el => {
+    allElements.forEach((el) => {
       if (el.shadowRoot) {
-        
         // Inject a style element into every shadow DOM to override purple styles
         if (!el.shadowRoot.querySelector('#nous-custom-style')) {
           const styleEl = document.createElement('style');
@@ -1420,42 +1409,45 @@ document.addEventListener('DOMContentLoaded', function() {
           // Prepend instead of append for higher priority
           el.shadowRoot.prepend(styleEl);
         }
-        
+
         const shadowPurple = el.shadowRoot.querySelectorAll('.bg-purple-primary');
         const shadowButtons = el.shadowRoot.querySelectorAll('button');
-        
+
         shadowPurple.forEach((btn, i) => {
           btn.style.setProperty('background-color', seasonalColor, 'important');
           found = true;
         });
-        
+
         // Also check for .gravity-button in shadow DOM
         const shadowGravity = el.shadowRoot.querySelectorAll('.gravity-button');
         shadowGravity.forEach((btn, i) => {
           btn.style.setProperty('background-color', seasonalColor, 'important');
           found = true;
         });
-        
+
         // Also style any purple-colored button
-        shadowButtons.forEach(btn => {
+        shadowButtons.forEach((btn) => {
           const computedBg = getComputedStyle(btn).backgroundColor;
           // Check for purple-ish colors (rgb values around 128-140, 90-100, 213-220)
-          if (computedBg.includes('128') || computedBg.includes('purple') || btn.classList.contains('bg-purple-primary')) {
+          if (
+            computedBg.includes('128') ||
+            computedBg.includes('purple') ||
+            btn.classList.contains('bg-purple-primary')
+          ) {
             btn.style.setProperty('background-color', seasonalColor, 'important');
             found = true;
           }
         });
       }
     });
-    
+
     // 3. Log all custom elements for debugging
     const customElements = document.querySelectorAll('[class*="shop"], shop-follow, shop-login-button, [id*="shop"]');
-    customElements.forEach(el => {
-    });
-    
+    customElements.forEach((el) => {});
+
     // 4. Find ALL gravity-related elements (any tag/class/id containing 'gravity')
     const allElems = document.querySelectorAll('*');
-    allElems.forEach(el => {
+    allElems.forEach((el) => {
       const tag = el.tagName.toLowerCase();
       const cls = String(el.className || '');
       const id = typeof el.id === 'string' ? el.id : '';
@@ -1465,7 +1457,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Also check shadow DOM for gravity
       if (el.shadowRoot) {
         const shadowAll = el.shadowRoot.querySelectorAll('*');
-        shadowAll.forEach(inner => {
+        shadowAll.forEach((inner) => {
           const innerTag = inner.tagName.toLowerCase();
           const innerCls = String(inner.className || '');
           const innerId = typeof inner.id === 'string' ? inner.id : '';
@@ -1475,19 +1467,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
     });
-    
+
     // 5. Check footer__follow-on-shop for nested elements with shadow DOM
     const followOnShopContainer = document.querySelector('.footer__follow-on-shop');
     if (followOnShopContainer) {
       const nestedElements = followOnShopContainer.querySelectorAll('*');
-      nestedElements.forEach(el => {
-        
+      nestedElements.forEach((el) => {
         // Helper function to force style and lock it
         const forceStyle = (element, color) => {
           if (!element) return;
           // Remove purple classes
           if (element.className && typeof element.className === 'string') {
-            element.className = element.className.replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
+            element.className = element.className
+              .replace(/bg-purple[^\s]*/g, '')
+              .replace(/group-hover_bg-purple[^\s]*/g, '');
           }
           // Set inline style
           element.style.cssText = `background-color: ${color} !important; background: ${color} !important;`;
@@ -1498,31 +1491,33 @@ document.addEventListener('DOMContentLoaded', function() {
               get: () => element.getAttribute('class') || '',
               set: (val) => {
                 // Filter out purple classes when being set
-                const filtered = String(val).replace(/bg-purple[^\s]*/g, '').replace(/group-hover_bg-purple[^\s]*/g, '');
+                const filtered = String(val)
+                  .replace(/bg-purple[^\s]*/g, '')
+                  .replace(/group-hover_bg-purple[^\s]*/g, '');
                 element.setAttribute('class', filtered);
               },
-              configurable: true
+              configurable: true,
             });
-          } catch(e) { /* ignore */ }
+          } catch (e) {
+            /* ignore */
+          }
         };
-        
+
         // Also try targeting SHOP-FOLLOW-BUTTON directly
         if (el.tagName === 'SHOP-FOLLOW-BUTTON' && el.shadowRoot) {
-          
           // NUCLEAR OPTION: Apply hue-rotate filter to shift purple to blue
           // Purple is ~270deg hue, our blue is ~200deg, so rotate by -70deg
           // Also try applying to the element itself
           el.style.setProperty('--shop-color-primary', seasonalColor, 'important');
           el.style.setProperty('--color-purple-primary', seasonalColor, 'important');
-          
+
           // Target the background div by its structural classes (not purple which we remove)
           // The purple div has: absolute inset-y-0 -z-10 rounded-max
           const bgDiv = el.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
           if (bgDiv) {
-            
             // Try hiding the purple div and creating our own
             bgDiv.style.setProperty('display', 'none', 'important');
-            
+
             // Create a replacement div
             if (!el.shadowRoot.querySelector('#nous-bg-replacement')) {
               const replacement = document.createElement('div');
@@ -1539,18 +1534,18 @@ document.addEventListener('DOMContentLoaded', function() {
               bgDiv.parentNode.insertBefore(replacement, bgDiv);
             }
           }
-          
+
           // Also hide any other purple divs found
           const purpleDiv = el.shadowRoot.querySelector('[class*="purple"]');
           if (purpleDiv && purpleDiv.id !== 'nous-bg-replacement') {
             purpleDiv.style.setProperty('display', 'none', 'important');
           }
-          
+
           // Add MutationObserver on shadow DOM to catch re-renders
           if (!el.shadowRoot._nousObserverAdded) {
             el.shadowRoot._nousObserverAdded = true;
             const shadowObserver = new MutationObserver((mutations) => {
-              mutations.forEach(mutation => {
+              mutations.forEach((mutation) => {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                   const target = mutation.target;
                   const cls = String(target.className || '');
@@ -1560,7 +1555,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 // If new nodes added, check for purple
                 if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                  mutation.addedNodes.forEach(node => {
+                  mutation.addedNodes.forEach((node) => {
                     if (node.nodeType === 1) {
                       const cls = String(node.className || '');
                       if (cls.includes('purple') && node.id !== 'nous-bg-replacement') {
@@ -1575,16 +1570,15 @@ document.addEventListener('DOMContentLoaded', function() {
               attributes: true,
               attributeFilter: ['class', 'style'],
               childList: true,
-              subtree: true
+              subtree: true,
             });
           }
         }
         if (el.shadowRoot) {
-          
           // Try modifying existing adoptedStyleSheets to hide purple
           try {
             const existingSheets = el.shadowRoot.adoptedStyleSheets || [];
-            
+
             // Create a completely new stylesheet array - HIDE purple elements
             const ourSheet = new CSSStyleSheet();
             ourSheet.replaceSync(`
@@ -1601,12 +1595,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 opacity: 0 !important;
               }
             `);
-            
+
             // Put our sheet LAST
             el.shadowRoot.adoptedStyleSheets = [...existingSheets, ourSheet];
-          } catch (e) {
-          }
-          
+          } catch (e) {}
+
           // First, find and modify the existing STYLE element in shadow DOM
           const existingStyle = el.shadowRoot.querySelector('style');
           if (existingStyle) {
@@ -1623,7 +1616,7 @@ document.addEventListener('DOMContentLoaded', function() {
               }
             `;
           }
-          
+
           // Also inject a style element as fallback
           if (!el.shadowRoot.querySelector('#nous-custom-style')) {
             const styleEl = document.createElement('style');
@@ -1638,12 +1631,12 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             el.shadowRoot.prepend(styleEl);
           }
-          
+
           // Also directly hide any purple elements we find
           const shadowAll = el.shadowRoot.querySelectorAll('*');
-          shadowAll.forEach(inner => {
+          shadowAll.forEach((inner) => {
             const cls = String(inner.className || '');
-            
+
             // Hide any element with purple class (except our replacement)
             if ((cls.includes('bg-purple') || cls.includes('purple')) && inner.id !== 'nous-bg-replacement') {
               inner.style.setProperty('display', 'none', 'important');
@@ -1652,25 +1645,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
-    
+
     return found;
   }
-  
+
   const observer = new MutationObserver(() => {
     findAndStyleButtons();
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
-  
+
   // Try immediately
   findAndStyleButtons();
-  
+
   // Retry a few times with delays since shadow DOM may load later
   setTimeout(findAndStyleButtons, 500);
   setTimeout(findAndStyleButtons, 1000);
   setTimeout(findAndStyleButtons, 2000);
   setTimeout(findAndStyleButtons, 4000);
-  
+
   // Also poll every second for 10 seconds to catch late-renders
   let pollCount = 0;
   const pollInterval = setInterval(() => {
@@ -1683,17 +1676,16 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 // Shop Pay Button Override (Product Pages)
 // ============================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const seasonalColor = '#000000';
-  
+
   function styleShopPayButton() {
     // Find all shop-pay-wallet-button elements
     const shopPayButtons = document.querySelectorAll('shop-pay-wallet-button');
-    
+
     shopPayButtons.forEach((btn, idx) => {
-      
       // Log all children to understand structure
-      
+
       // Check for iframes inside
       const iframes = btn.querySelectorAll('iframe');
       if (iframes.length) {
@@ -1702,27 +1694,26 @@ document.addEventListener('DOMContentLoaded', function() {
           iframe.style.setProperty('filter', 'grayscale(1) contrast(100)', 'important');
         });
       }
-      
+
       // FALLBACK: Apply CSS filter to shift purple to black
       if (!btn.shadowRoot && !btn._nousFilterApplied) {
         btn._nousFilterApplied = true;
         btn.style.setProperty('filter', 'grayscale(1) contrast(100)', 'important');
-        
+
         // Also style parent container
         const container = btn.closest('.shopify-payment-button');
         if (container) {
           container.style.setProperty('isolation', 'isolate');
         }
       }
-      
+
       // Try shadow root if available
       if (btn.shadowRoot) {
-        
         // Target the purple background div
         const bgDiv = btn.shadowRoot.querySelector('div[class*="absolute"][class*="inset-y-0"][class*="-z-10"]');
         if (bgDiv) {
           bgDiv.style.setProperty('display', 'none', 'important');
-          
+
           // Create replacement
           if (!btn.shadowRoot.querySelector('#nous-shoppay-bg')) {
             const replacement = document.createElement('div');
@@ -1738,27 +1729,26 @@ document.addEventListener('DOMContentLoaded', function() {
             bgDiv.parentNode.insertBefore(replacement, bgDiv);
           }
         }
-        
+
         // Also try broader purple selector
         const purpleEls = btn.shadowRoot.querySelectorAll('[class*="purple"]');
-        purpleEls.forEach(el => {
+        purpleEls.forEach((el) => {
           if (el.id !== 'nous-shoppay-bg') {
             el.style.setProperty('display', 'none', 'important');
           }
         });
       }
     });
-    
-    // Also apply to shopify-accelerated-checkout container  
+
+    // Also apply to shopify-accelerated-checkout container
     const checkoutEls = document.querySelectorAll('shopify-accelerated-checkout');
     checkoutEls.forEach((checkout, idx) => {
-      
       // Apply filter to the checkout element if no shadow access
       if (!checkout._nousFilterApplied) {
         checkout._nousFilterApplied = true;
         checkout.style.setProperty('filter', 'grayscale(1) contrast(100)', 'important');
       }
-      
+
       if (checkout.shadowRoot) {
         const innerBtn = checkout.shadowRoot.querySelector('shop-pay-wallet-button');
         if (innerBtn) {
@@ -1770,20 +1760,20 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
+
   // Run immediately and with delays
   styleShopPayButton();
   setTimeout(styleShopPayButton, 500);
   setTimeout(styleShopPayButton, 1000);
   setTimeout(styleShopPayButton, 2000);
   setTimeout(styleShopPayButton, 3000);
-  
+
   // Observer for dynamically added buttons
   const observer = new MutationObserver(() => {
     styleShopPayButton();
   });
   observer.observe(document.body, { childList: true, subtree: true });
-  
+
   // Poll for late shadow DOM
   let pollCount = 0;
   const pollInterval = setInterval(() => {
@@ -1796,25 +1786,39 @@ document.addEventListener('DOMContentLoaded', function() {
 // Random tie-dye borders on cards
 document.addEventListener('DOMContentLoaded', () => {
   const tieDyeClasses = ['tie-dye-top', 'tie-dye-bottom', 'tie-dye-both'];
-  
+
   function applyRandomTieDye() {
     const cardInners = document.querySelectorAll('.card__inner:not([data-tie-dye-applied])');
-    cardInners.forEach(card => {
+    cardInners.forEach((card) => {
       const randomClass = tieDyeClasses[Math.floor(Math.random() * tieDyeClasses.length)];
       card.classList.add(randomClass);
       card.setAttribute('data-tie-dye-applied', 'true');
     });
   }
-  
+
   // Run immediately
   applyRandomTieDye();
-  
+
   // Observer for dynamically added cards
   const tieDyeObserver = new MutationObserver(() => {
     applyRandomTieDye();
   });
   tieDyeObserver.observe(document.body, { childList: true, subtree: true });
 });
+
+// Random video selector — runs synchronously on parse (deferred script, before DOMContentLoaded)
+// This hides the loser BEFORE the inline DOMContentLoaded listeners in video sections fire.
+(function () {
+  const sections = Array.from(document.querySelectorAll('.shopify-section'));
+  for (let i = 0; i < sections.length - 1; i++) {
+    const a = sections[i];
+    const b = sections[i + 1];
+    if (!a.querySelector('.video-section') || !b.querySelector('.video-section')) continue;
+    const loser = Math.random() < 0.5 ? a : b;
+    loser.style.display = 'none';
+    i++;
+  }
+})();
 
 // Random video selector: stack consecutive video sections, show one at random
 document.addEventListener('DOMContentLoaded', () => {
@@ -1824,14 +1828,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const b = sections[i + 1];
     if (!a.querySelector('.video-section') || !b.querySelector('.video-section')) continue;
 
-    // They're consecutive video sections — pick one to show
-    const winner = Math.random() < 0.5 ? a : b;
-    const loser  = winner === a ? b : a;
+    // Find which one is already showing (set by synchronous block above)
+    const winner = a.style.display !== 'none' ? a : b;
 
-    loser.style.display = 'none';
-
-    // Force the winner's deferred-media to load (in case the inline script already ran on the hidden one)
-    winner.querySelectorAll('.video-section__media.deferred-media').forEach(el => {
+    // Ensure winner's deferred-media loads
+    winner.querySelectorAll('.video-section__media.deferred-media').forEach((el) => {
       const poster = el.querySelector('.video-section__poster');
       if (poster) poster.style.display = 'none';
       if (typeof el.loadContent === 'function') {
@@ -1842,6 +1843,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    i++; // skip loser in next iteration
+    i++;
   }
 });

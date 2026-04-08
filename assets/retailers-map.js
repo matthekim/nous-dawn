@@ -196,6 +196,8 @@ class RetailersMap {
           .addTo(this.map);
         this.activePopup = popup;
         popup.on('close', () => { this.activePopup = null; });
+        // Prevent map click from firing when clicking inside the popup
+        popup.getElement().addEventListener('click', (e) => e.stopPropagation());
       });
 
       const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })

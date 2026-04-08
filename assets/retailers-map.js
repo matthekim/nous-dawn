@@ -153,7 +153,10 @@ class RetailersMap {
     const inner = `${name}${address}`;
     const url = retailer.url ? (retailer.url.startsWith('http') ? retailer.url : 'https://' + retailer.url) : '';
 
-    return `<div class="retailers-map__popup${url ? ' retailers-map__popup--link' : ''}" data-url="${url}">${inner}</div>`;
+    if (url) {
+      return `<a class="retailers-map__popup retailers-map__popup--link" href="${url}" target="_blank" rel="noopener">${inner}</a>`;
+    }
+    return `<div class="retailers-map__popup">${inner}</div>`;
   }
 
   escapeHtml(text) {
@@ -192,15 +195,6 @@ class RetailersMap {
           .addTo(this.map);
         this.activePopup = popup;
         popup.on('close', () => { this.activePopup = null; });
-        popup.once('open', () => {
-          const inner = popup.getElement().querySelector('.retailers-map__popup');
-          if (!inner) return;
-          inner.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const url = inner.dataset.url;
-            if (url) window.open(url, '_blank', 'noopener');
-          });
-        });
       });
 
       const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })

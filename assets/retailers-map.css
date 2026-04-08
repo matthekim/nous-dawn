@@ -83,6 +83,7 @@
   min-height: calc(100dvh - 156px);
   padding: 100px 2rem 2rem 2rem;
   box-sizing: border-box;
+  overflow: scroll;
 }
 
 /* Retailers List Styles */

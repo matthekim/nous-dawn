@@ -84,6 +84,7 @@
   padding: 100px 2rem 2rem 2rem;
   box-sizing: border-box;
   overflow: scroll;
+  height: calc(100dvh - 156px);
 }
 
 /* Retailers List Styles */

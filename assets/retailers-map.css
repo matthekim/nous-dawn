@@ -85,6 +85,7 @@
 
 .retailers-map__spacer {
   margin-left: calc(100vw - (((100vw - 1200px) / 2) + 300px));
+  margin-top: 156px;
   min-height: calc(100dvh - 156px);
   padding: 100px 2rem 2rem 2rem;
   box-sizing: border-box;

@@ -134,6 +134,7 @@
   display: block;
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif;
   font-size: 1.6rem;
+  line-height: 1.4em;
   margin-bottom: 0.25rem;
   text-transform: lowercase;
 }
@@ -146,6 +147,7 @@
   color: var(--seasonal-color);
   line-height: 1.4;
   text-transform: lowercase;
+  padding-bottom: 10px;
 }
 
 /* Mapbox overrides */

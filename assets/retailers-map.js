@@ -17,6 +17,7 @@ class RetailersMap {
     this.markers = [];
     this.map = null;
     this.activePopup = null;
+    window._retailersMapInstance = this;
 
     if (!this.token) {
       console.warn('Mapbox token not provided');
@@ -182,6 +183,7 @@ class RetailersMap {
           if (isNaN(lng) || isNaN(lat)) return null;
           return {
             type: 'Feature',
+            id: index,
             geometry: { type: 'Point', coordinates: [lng, lat] },
             properties: {
               index,
@@ -217,6 +219,9 @@ class RetailersMap {
           'icon-size': 1,
           'icon-anchor': 'bottom',
           'icon-allow-overlap': true
+        },
+        paint: {
+          'icon-opacity': ['case', ['boolean', ['feature-state', 'highlight'], false], 1, 0.7]
         }
       });
       this._bindMarkerEvents();
@@ -370,12 +375,15 @@ function buildCountryAccordion() {
     html += `<div class="retailers-country">
       <div class="retailers-country__title">${country}</div>
       <ul class="retailers-country__list" style="overflow:hidden;height:0;">${
-        shops.map(s => `<li class="retailers-country__shop">
+        shops.map(s => {
+          const idx = retailers.indexOf(s);
+          return `<li class="retailers-country__shop" data-index="${idx}">
           <a href="${s.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
             <span class="retailers-shop__name">${s.shop}</span>
           </a>
           <span class="retailers-shop__address">${s.address}, ${s.zip} ${s.city}</span>
-        </li>`).join('')
+        </li>`;
+        }).join('')
       }</ul>
     </div>`;
   });
@@ -421,6 +429,21 @@ function buildCountryAccordion() {
 
       item.classList.toggle('is-open', opening);
       animateItem(item, list, opening);
+    });
+  });
+
+  // Pin opacity: highlight pin when hovering a shop in the list
+  container.querySelectorAll('.retailers-country__shop').forEach(shopEl => {
+    const idx = parseInt(shopEl.dataset.index, 10);
+    shopEl.addEventListener('mouseenter', () => {
+      const map = window._retailersMapInstance && window._retailersMapInstance.map;
+      if (!map || isNaN(idx)) return;
+      map.setFeatureState({ source: 'retailers', id: idx }, { highlight: true });
+    });
+    shopEl.addEventListener('mouseleave', () => {
+      const map = window._retailersMapInstance && window._retailersMapInstance.map;
+      if (!map || isNaN(idx)) return;
+      map.setFeatureState({ source: 'retailers', id: idx }, { highlight: false });
     });
   });
 }

@@ -713,7 +713,10 @@ class DeferredMedia extends HTMLElement {
       const deferredElement = this.appendChild(content.querySelector('video, model-viewer, iframe'));
       if (focus) deferredElement.focus();
       if (deferredElement.nodeName == 'VIDEO' && deferredElement.getAttribute('autoplay')) {
-        // force autoplay for safari
+        // Chrome clones template elements without syncing the muted IDL attribute,
+        // so video.muted stays false even though muted="muted" is in the HTML.
+        // Chrome's autoplay policy checks the property, not the attribute.
+        deferredElement.muted = true;
         deferredElement.play();
       }
 
@@ -1807,16 +1810,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Random video selector — runs synchronously on parse (deferred script, before DOMContentLoaded)
-// This hides the loser BEFORE the inline DOMContentLoaded listeners in video sections fire.
+// Hides all but one section in any run of consecutive video sections.
+// Works with 2, 3, or any number of consecutive video sections.
 (function () {
   const sections = Array.from(document.querySelectorAll('.shopify-section'));
-  for (let i = 0; i < sections.length - 1; i++) {
-    const a = sections[i];
-    const b = sections[i + 1];
-    if (!a.querySelector('.video-section') || !b.querySelector('.video-section')) continue;
-    const loser = Math.random() < 0.5 ? a : b;
-    loser.style.display = 'none';
-    i++;
+  let i = 0;
+  while (i < sections.length) {
+    if (!sections[i].querySelector('.video-section')) { i++; continue; }
+    // collect the full consecutive group
+    const groupStart = i;
+    while (i < sections.length && sections[i].querySelector('.video-section')) i++;
+    const group = sections.slice(groupStart, i);
+    if (group.length < 2) continue;
+    const winnerIdx = Math.floor(Math.random() * group.length);
+    group.forEach((s, idx) => { if (idx !== winnerIdx) s.style.display = 'none'; });
   }
 })();
 

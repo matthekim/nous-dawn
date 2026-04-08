@@ -4927,4 +4927,16 @@ body[class*='retailers'] .underlined-link {
   display: block;
   text-align: center;
   margin-bottom: 1.5rem;
+  font-weight: bold;
+  font-size: 2.7rem;
+  color: var(--seasonal-color);
+  text-decoration: none;
+  text-transform: lowercase;
+  background: none;
+  transform: rotate(-0.8deg);
+}
+
+.cart__continue-shopping:hover {
+  text-decoration: none;
+  color: var(--seasonal-color);
 }

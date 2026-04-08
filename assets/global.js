@@ -1820,29 +1820,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 
-// Random video selector: stack consecutive video sections, show one at random
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = Array.from(document.querySelectorAll('.shopify-section'));
-  for (let i = 0; i < sections.length - 1; i++) {
-    const a = sections[i];
-    const b = sections[i + 1];
-    if (!a.querySelector('.video-section') || !b.querySelector('.video-section')) continue;
 
-    // Find which one is already showing (set by synchronous block above)
-    const winner = a.style.display !== 'none' ? a : b;
-
-    // Ensure winner's deferred-media loads
-    winner.querySelectorAll('.video-section__media.deferred-media').forEach((el) => {
-      const poster = el.querySelector('.video-section__poster');
-      if (poster) poster.style.display = 'none';
-      if (typeof el.loadContent === 'function') {
-        el.loadContent(false);
-      } else {
-        const btn = el.querySelector('[id^="Deferred-Poster-"]');
-        if (btn) btn.click();
-      }
-    });
-
-    i++;
-  }
-});

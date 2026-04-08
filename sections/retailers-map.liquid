@@ -144,7 +144,6 @@
       header.addEventListener('click', () => {
         const isOpen = item.classList.toggle('is-open');
         icon.textContent = isOpen ? '\u2212' : '+';
-        alert('CLICK FIRED. scrollH=' + list.scrollHeight + ' offH=' + list.offsetHeight);
         animateHeight(list, isOpen);
       });
     });

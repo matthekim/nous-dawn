@@ -368,7 +368,7 @@ function buildCountryAccordion() {
   Object.keys(grouped).sort().forEach(country => {
     const shops = grouped[country].sort((a, b) => a.shop.localeCompare(b.shop));
     html += `<div class="retailers-country">
-      <div class="retailers-country__title">${country}<span class="retailers-country__icon">+</span></div>
+      <div class="retailers-country__title">${country}</div>
       <ul class="retailers-country__list" style="overflow:hidden;height:0;">${
         shops.map(s => `<li class="retailers-country__shop">
           <a href="${s.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
@@ -388,7 +388,6 @@ function buildCountryAccordion() {
 
     header.addEventListener('click', () => {
       const opening = item.classList.toggle('is-open');
-      icon.textContent = opening ? '\u2212' : '+';
 
       if (list._raf) cancelAnimationFrame(list._raf);
 

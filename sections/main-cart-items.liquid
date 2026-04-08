@@ -105,7 +105,7 @@
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                       {%- endif -%}
 
-                      {%- assign cart_title_parts = item.product.title | split: ' i ' -%}
+                      {%- assign cart_title_parts = item.product.title | split: ' I ' -%}
                       <a href="{{ item.url }}" class="cart-item__name h4 break">
                         {%- if cart_title_parts.size > 1 -%}
                           <span class="product__title-bold">{{ cart_title_parts[0] | downcase }}</span><span class="product__title-regular"> i {{ cart_title_parts[1] | downcase }}</span>

@@ -150,14 +150,10 @@ class RetailersMap {
       addressParts.push(`${this.escapeHtml(retailer.zip || '')} ${this.escapeHtml(retailer.city || '')}`.trim());
     }
     const address = addressParts.length > 0 ? `<span class="retailers-map__popup-address">${addressParts.join(', ')}</span>` : '';
-
     const inner = `${name}${address}`;
+    const url = retailer.url ? (retailer.url.startsWith('http') ? retailer.url : 'https://' + retailer.url) : '';
 
-    if (retailer.url) {
-      const href = this.escapeHtml(retailer.url.startsWith('http') ? retailer.url : 'https://' + retailer.url);
-      return `<a href="${href}" target="_blank" rel="noopener" class="retailers-map__popup">${inner}</a>`;
-    }
-    return `<div class="retailers-map__popup">${inner}</div>`;
+    return `<div class="retailers-map__popup${url ? ' retailers-map__popup--link' : ''}" data-url="${url}">${inner}</div>`;
   }
 
   escapeHtml(text) {
@@ -196,8 +192,15 @@ class RetailersMap {
           .addTo(this.map);
         this.activePopup = popup;
         popup.on('close', () => { this.activePopup = null; });
-        // Prevent map click from firing when clicking inside the popup
-        popup.getElement().addEventListener('click', (e) => e.stopPropagation());
+        popup.once('open', () => {
+          const inner = popup.getElement().querySelector('.retailers-map__popup');
+          if (!inner) return;
+          inner.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const url = inner.dataset.url;
+            if (url) window.open(url, '_blank', 'noopener');
+          });
+        });
       });
 
       const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })

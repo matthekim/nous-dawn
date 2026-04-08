@@ -197,6 +197,14 @@
   cursor: pointer;
 }
 
+.retailers-map__popup--link {
+  cursor: pointer;
+}
+
+.retailers-map__popup--link:hover .retailers-map__popup-title {
+  text-decoration: underline;
+}
+
 .retailers-map__popup-title {
   display: block;
   font-family: 'europa_trial-bold', helvetica, arial, sans-serif;

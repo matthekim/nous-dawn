@@ -1815,3 +1815,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   tieDyeObserver.observe(document.body, { childList: true, subtree: true });
 });
+
+// Random video selector: stack consecutive video sections, show one at random
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = Array.from(document.querySelectorAll('.shopify-section'));
+  for (let i = 0; i < sections.length - 1; i++) {
+    const a = sections[i];
+    const b = sections[i + 1];
+    if (!a.querySelector('.video-section') || !b.querySelector('.video-section')) continue;
+
+    // They're consecutive video sections — stack them
+    const showA = Math.random() < 0.5;
+    a.style.display = showA ? '' : 'none';
+    b.style.display = showA ? 'none' : '';
+    i++; // skip b in next iteration
+  }
+});

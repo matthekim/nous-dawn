@@ -402,6 +402,14 @@ function buildCountryAccordion() {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  // Inject spacer after .retailers-page-layout if not already in DOM
+  const layout = document.querySelector('.retailers-page-layout');
+  if (layout && !document.querySelector('.retailer-spacer')) {
+    const spacer = document.createElement('div');
+    spacer.className = 'retailer-spacer';
+    layout.insertAdjacentElement('afterend', spacer);
+  }
+
   new RetailersMap();
   buildCountryAccordion();
 });

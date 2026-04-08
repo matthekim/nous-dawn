@@ -173,108 +173,54 @@ class RetailersMap {
   }
 
   addMarkers() {
-    // Build GeoJSON from retailers
-    const geojson = {
-      type: 'FeatureCollection',
-      features: this.retailers
-        .map((retailer, index) => {
-          const lng = parseFloat(retailer.long);
-          const lat = parseFloat(retailer.lat);
-          if (isNaN(lng) || isNaN(lat)) return null;
-          return {
-            type: 'Feature',
-            id: index,
-            geometry: { type: 'Point', coordinates: [lng, lat] },
-            properties: {
-              index,
-              shop: retailer.shop || '',
-              address: retailer.address || '',
-              zip: retailer.zip || '',
-              city: retailer.city || '',
-              country: retailer.country || '',
-              url: retailer.url || ''
-            }
-          };
+    this.retailers.forEach((retailer, index) => {
+      const lng = parseFloat(retailer.long);
+      const lat = parseFloat(retailer.lat);
+      if (isNaN(lng) || isNaN(lat)) return;
+
+      const el = this.createMarkerElement(retailer);
+      el.style.opacity = '0.7';
+      el.style.transition = 'opacity 0.2s ease';
+      el.style.cursor = 'pointer';
+
+      el.addEventListener('click', () => {
+        this.closeActivePopup();
+        const popup = new mapboxgl.Popup({
+          offset: [0, -32],
+          closeButton: true,
+          closeOnClick: true,
+          className: 'retailers-map__popup-container'
         })
-        .filter(Boolean)
-    };
-
-    // Load SVG pin image then add layer
-    this.map.loadImage(this.markerSvg, (error, image) => {
-      if (error) {
-        console.warn('Could not load marker SVG, using circle fallback:', error);
-        this._addCircleLayer(geojson);
-        return;
-      }
-      if (!this.map.hasImage('retailer-pin')) {
-        this.map.addImage('retailer-pin', image, { pixelRatio: 2 });
-      }
-      this.map.addSource('retailers', { type: 'geojson', data: geojson });
-      this.map.addLayer({
-        id: 'retailer-markers',
-        type: 'symbol',
-        source: 'retailers',
-        layout: {
-          'icon-image': 'retailer-pin',
-          'icon-size': 1,
-          'icon-anchor': 'bottom',
-          'icon-allow-overlap': true
-        },
-        paint: {
-          'icon-opacity': 0.7
-        }
+          .setLngLat([lng, lat])
+          .setHTML(this.createPopupContent(retailer))
+          .addTo(this.map);
+        this.activePopup = popup;
       });
-      this._bindMarkerEvents();
-    });
-  }
 
-  _addCircleLayer(geojson) {
-    this.map.addSource('retailers', { type: 'geojson', data: geojson });
-    this.map.addLayer({
-      id: 'retailer-markers',
-      type: 'circle',
-      source: 'retailers',
-      paint: {
-        'circle-radius': 8,
-        'circle-color': this.markerColor || '#000000',
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#ffffff'
-      }
-    });
-    this._bindMarkerEvents();
-  }
-
-  _bindMarkerEvents() {
-    // Click to show popup
-    this.map.on('click', 'retailer-markers', (e) => {
-      const props = e.features[0].properties;
-      const coords = e.features[0].geometry.coordinates.slice();
-      const retailer = this.retailers[props.index];
-
-      this.closeActivePopup();
-
-      const popup = new mapboxgl.Popup({
-        offset: [0, -30],
-        closeButton: true,
-        closeOnClick: true,
-        className: 'retailers-map__popup-container'
-      })
-        .setLngLat(coords)
-        .setHTML(this.createPopupContent(retailer))
+      const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })
+        .setLngLat([lng, lat])
         .addTo(this.map);
 
-      this.activePopup = popup;
-      this.highlightListItem(props.index);
-    });
-
-    // Pointer cursor on hover
-    this.map.on('mouseenter', 'retailer-markers', () => {
-      this.map.getCanvas().style.cursor = 'pointer';
-    });
-    this.map.on('mouseleave', 'retailer-markers', () => {
-      this.map.getCanvas().style.cursor = '';
+      this.markers.push({ marker, el, index });
     });
   }
+
+  highlightMarker(index) {
+    this.markers.forEach(({ el, index: i }) => {
+      el.style.opacity = (i === index) ? '1' : '0.7';
+      el.style.zIndex  = (i === index) ? '10' : '';
+    });
+  }
+
+  resetMarkerHighlight() {
+    this.markers.forEach(({ el }) => {
+      el.style.opacity = '0.7';
+      el.style.zIndex  = '';
+    });
+  }
+
+  _bindMarkerEvents() {}
+
 
   closeActivePopup() {
     if (this.activePopup) {
@@ -436,16 +382,14 @@ function buildCountryAccordion() {
   container.querySelectorAll('.retailers-country__shop').forEach(shopEl => {
     const idx = parseInt(shopEl.dataset.index, 10);
     shopEl.addEventListener('mouseenter', () => {
-      const map = window._retailersMapInstance && window._retailersMapInstance.map;
-      if (!map || isNaN(idx)) return;
-      map.setPaintProperty('retailer-markers', 'icon-opacity',
-        ['case', ['==', ['get', 'index'], idx], 1, 0.7]
-      );
+      const inst = window._retailersMapInstance;
+      if (!inst || isNaN(idx)) return;
+      inst.highlightMarker(idx);
     });
     shopEl.addEventListener('mouseleave', () => {
-      const map = window._retailersMapInstance && window._retailersMapInstance.map;
-      if (!map || isNaN(idx)) return;
-      map.setPaintProperty('retailer-markers', 'icon-opacity', 0.7);
+      const inst = window._retailersMapInstance;
+      if (!inst) return;
+      inst.resetMarkerHighlight();
     });
   });
 }

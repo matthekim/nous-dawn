@@ -60,11 +60,14 @@
 <script src="{{ 'retailers-map.js' | asset_url }}" defer></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  (function init() {
     const retailers = window.retailersData || [];
     const container = document.getElementById('retailers-country-list');
-
-    if (!retailers.length || !container) return;
+    if (!retailers.length || !container) {
+      // retailersData may not be ready yet — retry once after a tick
+      setTimeout(init, 50);
+      return;
+    }
 
     const grouped = retailers.reduce((acc, r) => {
       const country = (r.country || 'Other').toLowerCase();
@@ -145,7 +148,7 @@
         animateHeight(list, isOpen);
       });
     });
-  });
+  })();
 
   // Detach fixed map panel when layout bottom passes viewport bottom, letting footer show
   const layout = document.querySelector('.retailers-page-layout');

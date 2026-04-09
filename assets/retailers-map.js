@@ -61,7 +61,7 @@ class RetailersMap {
       center: center,
       zoom: this.zoom,
       projection: 'mercator', // Force mercator - Mapbox v3 defaults to globe which misplaces markers
-      attributionControl: true
+      attributionControl: true,
     });
 
     // Add navigation controls
@@ -96,7 +96,7 @@ class RetailersMap {
   calculateCenter() {
     if (this.retailers.length === 0) return [4.5, 50.5]; // Default: Belgium
 
-    const validRetailers = this.retailers.filter(r => r.lat && r.long);
+    const validRetailers = this.retailers.filter((r) => r.lat && r.long);
     if (validRetailers.length === 0) return [4.5, 50.5];
 
     const sumLat = validRetailers.reduce((sum, r) => sum + parseFloat(r.lat), 0);
@@ -106,17 +106,17 @@ class RetailersMap {
   }
 
   fitMapToBounds() {
-    const validRetailers = this.retailers.filter(r => r.lat && r.long);
+    const validRetailers = this.retailers.filter((r) => r.lat && r.long);
     if (validRetailers.length < 2) return;
 
     const bounds = new mapboxgl.LngLatBounds();
-    validRetailers.forEach(retailer => {
+    validRetailers.forEach((retailer) => {
       bounds.extend([parseFloat(retailer.long), parseFloat(retailer.lat)]);
     });
 
     this.map.fitBounds(bounds, {
       padding: { top: 50, bottom: 50, left: 50, right: 50 },
-      maxZoom: 12
+      maxZoom: 12,
     });
   }
 
@@ -142,14 +142,17 @@ class RetailersMap {
   }
 
   createPopupContent(retailer) {
-    const name = retailer.shop ? `<span class="retailers-map__popup-title">${this.escapeHtml(retailer.shop)}</span>` : '';
+    const name = retailer.shop
+      ? `<span class="retailers-map__popup-title">${this.escapeHtml(retailer.shop)}</span>`
+      : '';
 
     const addressParts = [];
     if (retailer.address) addressParts.push(this.escapeHtml(retailer.address));
     if (retailer.zip || retailer.city) {
       addressParts.push(`${this.escapeHtml(retailer.zip || '')} ${this.escapeHtml(retailer.city || '')}`.trim());
     }
-    const address = addressParts.length > 0 ? `<span class="retailers-map__popup-address">${addressParts.join(', ')}</span>` : '';
+    const address =
+      addressParts.length > 0 ? `<span class="retailers-map__popup-address">${addressParts.join(', ')}</span>` : '';
     const inner = `${name}${address}`;
     const url = retailer.url ? (retailer.url.startsWith('http') ? retailer.url : 'https://' + retailer.url) : '';
 
@@ -179,8 +182,11 @@ class RetailersMap {
 
       el.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isSamePin = this.activePopup && this.activePopup._lngLat &&
-          this.activePopup._lngLat.lng === lng && this.activePopup._lngLat.lat === lat;
+        const isSamePin =
+          this.activePopup &&
+          this.activePopup._lngLat &&
+          this.activePopup._lngLat.lng === lng &&
+          this.activePopup._lngLat.lat === lat;
         if (this.activePopup) {
           this.activePopup.remove();
           this.activePopup = null;
@@ -190,31 +196,33 @@ class RetailersMap {
           offset: [0, -32],
           closeButton: true,
           closeOnClick: false,
-          className: 'retailers-map__popup-container'
+          className: 'retailers-map__popup-container',
         })
           .setLngLat([lng, lat])
           .setHTML(this.createPopupContent(retailer))
           .addTo(this.map);
         this.activePopup = popup;
-        popup.on('close', () => { this.activePopup = null; });
+        popup.on('close', () => {
+          this.activePopup = null;
+        });
       });
 
-      const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' })
-        .setLngLat([lng, lat])
-        .addTo(this.map);
+      const marker = new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat([lng, lat]).addTo(this.map);
 
       this.markers.push({ marker, el, index });
     });
 
     // Click on map background closes popup
-    this.map.on('click', () => { this.closeActivePopup(); });
+    this.map.on('click', () => {
+      this.closeActivePopup();
+    });
   }
 
   highlightMarker(index) {
     this.markers.forEach(({ el, index: i }) => {
       const active = i === index;
       el.style.opacity = active ? '1' : '0.55';
-      el.style.zIndex  = active ? '10' : '';
+      el.style.zIndex = active ? '10' : '';
       const img = el.querySelector('img');
       if (img) img.style.transform = active ? 'scale(1.35)' : 'scale(1)';
     });
@@ -223,14 +231,13 @@ class RetailersMap {
   resetMarkerHighlight() {
     this.markers.forEach(({ el }) => {
       el.style.opacity = '0.55';
-      el.style.zIndex  = '';
+      el.style.zIndex = '';
       const img = el.querySelector('img');
       if (img) img.style.transform = 'scale(1)';
     });
   }
 
   _bindMarkerEvents() {}
-
 
   closeActivePopup() {
     if (this.activePopup) {
@@ -250,15 +257,16 @@ class RetailersMap {
     const listContainer = document.getElementById('retailers-list');
     if (!listContainer) return;
 
-    const html = this.retailers.map((retailer, index) => {
-      const addressParts = [];
-      if (retailer.address) addressParts.push(this.escapeHtml(retailer.address));
-      if (retailer.zip || retailer.city) {
-        addressParts.push(`${this.escapeHtml(retailer.zip || '')} ${this.escapeHtml(retailer.city || '')}`.trim());
-      }
-      if (retailer.country) addressParts.push(this.escapeHtml(retailer.country));
+    const html = this.retailers
+      .map((retailer, index) => {
+        const addressParts = [];
+        if (retailer.address) addressParts.push(this.escapeHtml(retailer.address));
+        if (retailer.zip || retailer.city) {
+          addressParts.push(`${this.escapeHtml(retailer.zip || '')} ${this.escapeHtml(retailer.city || '')}`.trim());
+        }
+        if (retailer.country) addressParts.push(this.escapeHtml(retailer.country));
 
-      return `
+        return `
         <div class="retailers-map__list-item" data-index="${index}">
           <div class="retailers-map__list-item-content">
             ${retailer.shop ? `<h4 class="retailers-map__list-name">${this.escapeHtml(retailer.shop)}</h4>` : ''}
@@ -273,7 +281,8 @@ class RetailersMap {
           </button>
         </div>
       `;
-    }).join('');
+      })
+      .join('');
 
     listContainer.innerHTML = html;
 
@@ -293,7 +302,7 @@ class RetailersMap {
     this.map.flyTo({
       center: [lng, lat],
       zoom: 14,
-      duration: 1000
+      duration: 1000,
     });
 
     this.closeActivePopup();
@@ -302,7 +311,7 @@ class RetailersMap {
       offset: [0, -30],
       closeButton: true,
       closeOnClick: true,
-      className: 'retailers-map__popup-container'
+      className: 'retailers-map__popup-container',
     })
       .setLngLat([lng, lat])
       .setHTML(this.createPopupContent(retailer))
@@ -326,12 +335,14 @@ function buildCountryAccordion() {
   }, {});
 
   let html = '';
-  Object.keys(grouped).sort().forEach(country => {
-    const shops = grouped[country].sort((a, b) => a.shop.localeCompare(b.shop));
-    html += `<div class="retailers-country">
+  Object.keys(grouped)
+    .sort()
+    .forEach((country) => {
+      const shops = grouped[country].sort((a, b) => a.shop.localeCompare(b.shop));
+      html += `<div class="retailers-country">
       <div class="retailers-country__title">${country}</div>
-      <ul class="retailers-country__list" style="overflow:hidden;height:0;">${
-        shops.map(s => {
+      <ul class="retailers-country__list" style="overflow:hidden;height:0;">${shops
+        .map((s) => {
           const idx = retailers.indexOf(s);
           return `<li class="retailers-country__shop" data-index="${idx}">
           <a href="${s.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
@@ -339,10 +350,10 @@ function buildCountryAccordion() {
           </a>
           <span class="retailers-shop__address">${s.address}, ${s.zip} ${s.city}</span>
         </li>`;
-        }).join('')
-      }</ul>
+        })
+        .join('')}</ul>
     </div>`;
-  });
+    });
   container.innerHTML = html;
 
   function animateItem(item, list, opening) {
@@ -351,32 +362,37 @@ function buildCountryAccordion() {
     list.style.maxHeight = 'none';
     const fullH = list.offsetHeight;
     const startH = opening ? 0 : fullH;
-    const endH   = opening ? fullH : 0;
+    const endH = opening ? fullH : 0;
     list.style.height = startH + 'px';
     const duration = 350;
     let t0 = null;
-    function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+    function ease(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
     function tick(ts) {
       if (!t0) t0 = ts;
       const p = Math.min((ts - t0) / duration, 1);
-      list.style.height = (startH + (endH - startH) * ease(p)) + 'px';
-      if (p < 1) { list._raf = requestAnimationFrame(tick); }
-      else { list.style.height = opening ? 'auto' : '0'; }
+      list.style.height = startH + (endH - startH) * ease(p) + 'px';
+      if (p < 1) {
+        list._raf = requestAnimationFrame(tick);
+      } else {
+        list.style.height = opening ? 'auto' : '0';
+      }
     }
     list._raf = requestAnimationFrame(tick);
   }
 
   const allItems = Array.from(container.querySelectorAll('.retailers-country'));
 
-  allItems.forEach(item => {
+  allItems.forEach((item) => {
     const header = item.querySelector('.retailers-country__title');
-    const list   = item.querySelector('.retailers-country__list');
+    const list = item.querySelector('.retailers-country__list');
 
     header.addEventListener('click', () => {
       const opening = !item.classList.contains('is-open');
 
       // Close all other open items
-      allItems.forEach(other => {
+      allItems.forEach((other) => {
         if (other !== item && other.classList.contains('is-open')) {
           other.classList.remove('is-open');
           animateItem(other, other.querySelector('.retailers-country__list'), false);
@@ -389,7 +405,7 @@ function buildCountryAccordion() {
   });
 
   // Pin opacity: highlight pin when hovering a shop in the list
-  container.querySelectorAll('.retailers-country__shop').forEach(shopEl => {
+  container.querySelectorAll('.retailers-country__shop').forEach((shopEl) => {
     const idx = parseInt(shopEl.dataset.index, 10);
     shopEl.addEventListener('mouseenter', () => {
       const inst = window._retailersMapInstance;

@@ -9,16 +9,18 @@
 
     <style>
       @font-face {
-        font-family: 'europa_trial-medium';
-        src: url('{{ "Europa-Medium.woff2" | asset_url }}') format('woff2');
+        font-family: 'Europa-Medium';
+        src: url('{{ "Europa-Medium.woff2" | asset_url }}') format('woff2'),
+             url('{{ "Europa-Medium.woff" | asset_url }}') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
 
       @font-face {
-        font-family: 'europa_trial-bold';
-        src: url('{{ "Europa-Bold.woff2" | asset_url }}') format('woff2');
+        font-family: 'Europa-Bold';
+        src: url('{{ "Europa-Bold.woff2" | asset_url }}') format('woff2'),
+             url('{{ "Europa-Bold.woff" | asset_url }}') format('woff');
         font-weight: normal;
         font-style: normal;
         font-display: swap;

@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  font-family: 'europa_trial-bold', helvetica, arial, sans-serif !important;
+  font-family: 'Europa-Bold', helvetica, arial, sans-serif !important;
 }
 
 .pagination__list > li {

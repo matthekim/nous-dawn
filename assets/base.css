@@ -2493,6 +2493,12 @@ input[type='checkbox'] {
   }
 }
 
+@media screen and (max-width: 659px) {
+  .header__icon--search {
+    display: none;
+  }
+}
+
 .shopify-section-group-header-group {
   z-index: 200;
 }

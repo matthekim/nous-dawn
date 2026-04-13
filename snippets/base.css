@@ -2500,6 +2500,9 @@ input[type='checkbox'] {
   .header__icon--account {
     display: block !important;
   }
+  .menu-drawer-container .button-container {
+    top: 15px;
+  }
 }
 
 .shopify-section-group-header-group {

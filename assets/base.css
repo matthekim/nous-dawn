@@ -2865,7 +2865,7 @@ shop-follow-button {
   display: flex;
   grid-area: icons;
   justify-self: end;
-  padding-right: 40px;
+  padding-right: 60px;
   position: relative;
   z-index: 99999;
 }

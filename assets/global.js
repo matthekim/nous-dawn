@@ -1816,15 +1816,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = Array.from(document.querySelectorAll('.shopify-section'));
   let i = 0;
   while (i < sections.length) {
-    if (!sections[i].querySelector('.video-section')) { i++; continue; }
+    if (!sections[i].querySelector('.video-section')) {
+      i++;
+      continue;
+    }
     // collect the full consecutive group
     const groupStart = i;
     while (i < sections.length && sections[i].querySelector('.video-section')) i++;
     const group = sections.slice(groupStart, i);
     if (group.length < 2) continue;
     const winnerIdx = Math.floor(Math.random() * group.length);
-    group.forEach((s, idx) => { if (idx !== winnerIdx) s.style.display = 'none'; });
+    group.forEach((s, idx) => {
+      if (idx !== winnerIdx) s.style.display = 'none';
+    });
   }
 })();
-
-

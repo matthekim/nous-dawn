@@ -2497,6 +2497,9 @@ input[type='checkbox'] {
   .header__icon--search {
     display: none;
   }
+  .header__icon--account {
+    display: block !important;
+  }
 }
 
 .shopify-section-group-header-group {

@@ -4055,22 +4055,21 @@ details-disclosure > details {
 }
 
 /* Staggered grid effect for product grid */
-@media screen and (min-width: 0px) {
-  .product-grid {
-    align-items: flex-start;
-  }
 
-  .product-grid .grid__item:nth-child(3n + 2) {
-    margin-top: 10rem;
-  }
+.product-grid {
+  align-items: flex-start;
+}
 
-  .product-grid .grid__item:nth-child(6n + 4) {
-    margin-top: 5rem;
-  }
+.product-grid .grid__item:nth-child(3n + 2) {
+  margin-top: 10rem;
+}
 
-  .product-grid .grid__item:nth-child(6n + 6) {
-    margin-top: 8rem;
-  }
+.product-grid .grid__item:nth-child(6n + 4) {
+  margin-top: 5rem;
+}
+
+.product-grid .grid__item:nth-child(6n + 6) {
+  margin-top: 8rem;
 }
 
 .font-body-bold {

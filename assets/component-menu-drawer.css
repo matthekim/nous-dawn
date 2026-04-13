@@ -293,3 +293,15 @@ details[open] > .menu-drawer__submenu {
     transition: none !important;
   }
 }
+
+@media screen and (max-width: 659px) {
+  .menu-drawer__navigation-container {
+    top: 80px;
+  }
+  .menu-drawer__inner-container {
+    left: 34px;
+  }
+  .menu-drawer__menu-item {
+    font-size: 30px !important;
+  }
+}

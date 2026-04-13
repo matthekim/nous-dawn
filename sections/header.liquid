@@ -375,17 +375,18 @@
 
 {% if request.page_type == 'index' %}
 <script>
-  // Header icon color animation on scroll (homepage only)
+  // Header icon color animation on scroll (homepage only, desktop only)
   const headerEl = document.querySelector('.header');
   if (headerEl) {
     const checkScroll = () => {
-      if (window.scrollY >= window.innerHeight - 200) {
+      if (window.innerWidth >= 1024 && window.scrollY >= window.innerHeight - 200) {
         headerEl.classList.add('header--scrolled');
       } else {
         headerEl.classList.remove('header--scrolled');
       }
     };
     window.addEventListener('scroll', checkScroll, { passive: true });
+    window.addEventListener('resize', checkScroll, { passive: true });
     checkScroll();
   }
 </script>

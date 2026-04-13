@@ -2470,6 +2470,26 @@ input[type='checkbox'] {
     right: 0;
     width: 100%;
     z-index: 200;
+    /* Kill any JS-driven slide-up/down transition */
+    transition: none !important;
+  }
+
+  /* Prevent StickyHeader's reduce-logo-size width animation */
+  .header__heading-logo-wrapper {
+    transition: none !important;
+    width: auto !important;
+  }
+  .scrolled-past-header .header__heading-logo-wrapper {
+    width: auto !important;
+  }
+
+  /* Prevent scroll-based color changes inside the header */
+  .header--scrolled .header__heading-logo,
+  .header--scrolled .header__custom-icon {
+    filter: inherit !important;
+  }
+  .header--scrolled .button-container span {
+    background: inherit !important;
   }
 }
 

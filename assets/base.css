@@ -2851,11 +2851,6 @@ shop-follow-button {
     margin-left: -0.75rem;
   }
 
-  .header__heading,
-  .header__heading-link {
-    justify-self: start;
-  }
-
   .header--middle-center .header__heading-link,
   .header--middle-center .header__heading {
     justify-self: center;

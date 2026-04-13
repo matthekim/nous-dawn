@@ -2461,6 +2461,18 @@ input[type='checkbox'] {
   transition: top 0.15s ease-out;
 }
 
+/* Mobile / tablet (<1024px): keep header fixed at top, never hide on scroll */
+@media screen and (max-width: 1023px) {
+  .section-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 200;
+  }
+}
+
 .shopify-section-group-header-group {
   z-index: 200;
 }

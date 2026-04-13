@@ -4055,7 +4055,7 @@ details-disclosure > details {
 }
 
 /* Staggered grid effect for product grid */
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 0px) {
   .product-grid {
     align-items: flex-start;
   }

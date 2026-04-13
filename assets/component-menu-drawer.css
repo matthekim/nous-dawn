@@ -296,7 +296,7 @@ details[open] > .menu-drawer__submenu {
 
 @media screen and (max-width: 659px) {
   .menu-drawer__navigation-container {
-    top: 80px;
+    padding-top: 80px;
   }
   .menu-drawer__inner-container {
     left: 34px;

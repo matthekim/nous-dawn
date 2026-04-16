@@ -360,7 +360,9 @@
   .retailers-map-left {
     width: 100vw;
     height: 50dvh;
-    position: fixed;
+    position: fixed !important;
+    top: 0 !important;
+    bottom: unset !important;
     z-index: 99;
   }
 

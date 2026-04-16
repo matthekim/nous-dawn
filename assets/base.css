@@ -2875,6 +2875,11 @@ body:has(product-info) .button-container span {
   background: var(--seasonal-color) !important;
 }
 
+/* Product page - hide tie-dye banner image */
+body:has(product-info) .banner__tie-dye {
+  display: none !important;
+}
+
 .header-bg.is-visible {
   opacity: 1;
 }

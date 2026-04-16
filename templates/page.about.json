@@ -34,8 +34,7 @@
       "custom_css": [
         "h1 {color: var(--seasonal-color);}",
         "@media screen and (min-width: 990px) {.page-width--narrow {max-width: var(--page-width); padding: 0 5rem; }}",
-        ".rte {/*column-count: 2; column-gap: 4rem;*/  font-size: 4rem; line-height: 1.3em; text-align: justify; color: var(--seasonal-color);}",
-        ".rte p { font-family: Europa-Bold, helvetica, arial, sans-serif !important;}",
+        ".rte {/*column-count: 2; column-gap: 4rem;*/ font-family: 'Europa-Bold', helvetica, arial, sans-serif !important; font-size: 4rem; line-height: 1.3em; text-align: justify; color: var(--seasonal-color);}",
         "@media (max-width: 768px) {.rte {column-count: 1; }}",
         "strong,b {font-family: Europa-Bold, helvetica, arial, sans-serif !important;}",
         ".rte a {color: var(--seasonal-color); text-decoration: none; border-bottom: 1px solid var(--seasonal-color);}"

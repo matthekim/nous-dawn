@@ -2716,6 +2716,11 @@ body.template-page-about .header__icon .icon {
   color: #000 !important;
 }
 
+body.template-page-about .rte,
+body.template-page-about .rte * {
+  font-family: 'Europa-Bold', helvetica, arial, sans-serif !important;
+}
+
 /* Collection pages - no header-bg, black logo/icons/hamburger */
 body.template-collection .header-bg,
 body.template-collection .header-bg.is-visible {

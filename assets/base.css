@@ -3024,9 +3024,17 @@ predictive-search * {
     padding: 1rem;
   }
 
+  .product__title {
+    padding-left: 1rem;
+  }
+
   .product__title h1,
   .product__title.h1 {
     padding-top: 0 !important;
+  }
+
+  .multicolumn.color-scheme-1 {
+    display: none !important;
   }
 
   .card__information {

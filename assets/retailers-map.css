@@ -366,6 +366,10 @@
     z-index: 99;
   }
 
+  .retailers-map-wrapper {
+    height: 100%;
+  }
+
   .retailers-map__spacer {
     position: absolute;
     width: 100vw;

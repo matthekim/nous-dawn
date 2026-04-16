@@ -84,7 +84,7 @@
 }
 
 .retailers-map__spacer {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   width: 390px;
@@ -354,4 +354,24 @@
   background-color: var(--seasonal-color, #000);
   border-color: var(--seasonal-color, #000);
   color: #fff;
+}
+
+@media screen and (max-width: 960px) {
+  .retailers-map-left {
+    width: 100vw;
+    height: 50dvh;
+    position: fixed;
+    z-index: 99;
+  }
+
+  .retailers-map__spacer {
+    position: absolute;
+    width: 100vw;
+    right: 0;
+    top: 50dvh;
+    height: auto;
+    min-height: unset;
+    margin-top: 0;
+    z-index: 90;
+  }
 }

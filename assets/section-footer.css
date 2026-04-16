@@ -502,6 +502,9 @@
 }
 
 @media screen and (max-width: 749px) {
+  .footer-block__details-content {
+    grid-template-columns: 1fr;
+  }
   .footer-block__details-content .footer-menu-column {
     column-count: 2;
   }

@@ -2721,6 +2721,27 @@ body.template-page-about .rte * {
   font-family: 'Europa-Bold', helvetica, arial, sans-serif !important;
 }
 
+/* Legal page - no header-bg, black logo/icons/hamburger */
+body.template-page-legal .header-bg,
+body.template-page-legal .header-bg.is-visible {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+body.template-page-legal .header__custom-icon,
+body.template-page-legal .header__heading-logo {
+  filter: brightness(0) !important;
+}
+
+body.template-page-legal .button-container span {
+  background: #000 !important;
+}
+
+body.template-page-legal .header__icon .icon {
+  stroke: #000 !important;
+  color: #000 !important;
+}
+
 /* Collection pages - no header-bg, black logo/icons/hamburger */
 body.template-collection .header-bg,
 body.template-collection .header-bg.is-visible {

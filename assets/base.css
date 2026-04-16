@@ -2807,6 +2807,27 @@ body.template-collection .header__icon .icon {
   color: #000 !important;
 }
 
+/* Shipping page - no header-bg, black logo/icons/hamburger */
+body.page-shipping .header-bg,
+body.page-shipping .header-bg.is-visible {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+body.page-shipping .header__custom-icon,
+body.page-shipping .header__heading-logo {
+  filter: brightness(0) !important;
+}
+
+body.page-shipping .button-container span {
+  background: #000 !important;
+}
+
+body.page-shipping .header__icon .icon {
+  stroke: #000 !important;
+  color: #000 !important;
+}
+
 /* Cart page - no header-bg, black logo/icons/hamburger */
 body.template-cart .header-bg,
 body.template-cart .header-bg.is-visible {

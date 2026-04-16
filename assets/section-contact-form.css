@@ -11,8 +11,8 @@
 .contact .field__input,
 .contact .text-area.field__input {
   background-color: #fff !important;
-  border-radius: 50px !important;
-  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  border: 1px solid #000 !important;
   padding: 1.2rem 2rem !important;
 }
 
@@ -28,7 +28,7 @@
 
 .contact .text-area.field__input {
   min-height: 150px;
-  border-radius: 25px !important;
+  border-radius: 0 !important;
 }
 
 /* Contact submit button - tilted seasonal style */

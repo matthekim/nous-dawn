@@ -364,7 +364,6 @@ a.product__text {
 }
 
 .product-form__buttons {
-  max-width: 44rem;
 }
 
 .product--no-media .product__info-container > modal-opener {
@@ -386,6 +385,10 @@ a.product__text {
 }
 
 @media screen and (max-width: 749px) {
+  .product-form__input {
+    padding-left: 1rem;
+  }
+
   .product__media-list {
     margin-left: -2.5rem;
     margin-bottom: 3rem;

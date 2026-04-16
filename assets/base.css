@@ -3011,6 +3011,15 @@ predictive-search * {
     padding: 20px 10px 20px 10px;
   }
 
+  .product__description {
+    padding: 1rem;
+  }
+
+  .product__title h1,
+  .product__title.h1 {
+    padding-top: 0;
+  }
+
   .card__information {
     flex-direction: column;
     align-items: center;

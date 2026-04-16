@@ -2951,12 +2951,14 @@ shop-follow-button {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  color: #000 !important;
+  color: var(--seasonal-color) !important;
   font-family: 'Europa-Bold', helvetica, arial, sans-serif !important;
-  font-size: 2rem !important;
+  font-weight: bold !important;
+  font-size: 2.7rem !important;
   text-transform: lowercase !important;
   text-decoration: none !important;
-  transform: rotate(-1deg) !important;
+  transform: rotate(-0.8deg) !important;
+  display: inline-block !important;
   padding: 0 !important;
   min-width: unset !important;
   min-height: unset !important;
@@ -2976,6 +2978,14 @@ shop-follow-button {
 .customer button:hover {
   background: none !important;
   background-color: transparent !important;
+}
+
+@media screen and (min-width: 750px) {
+  .button,
+  .shopify-challenge__button,
+  .customer button {
+    font-size: 3rem !important;
+  }
 }
 
 @media screen and (max-width: 749px) {

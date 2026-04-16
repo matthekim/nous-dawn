@@ -2928,6 +2928,12 @@ shop-follow-button {
   --shop-follow-button-color: var(--seasonal-color);
 }
 
+@media screen and (max-width: 749px) {
+  .header {
+    padding: 20px 10px 20px 10px;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .header--middle-left .header__heading-link,
   .header--top-left .header__heading-link {

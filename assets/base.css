@@ -3020,6 +3020,10 @@ predictive-search * {
     width: 100% !important;
     font-size: 1.8rem !important;
   }
+
+  .quick-add__submit.button {
+    font-size: 1.8rem !important;
+  }
 }
 
 @media screen and (min-width: 990px) {

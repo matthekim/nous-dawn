@@ -2949,6 +2949,18 @@ predictive-search * {
   color: #000 !important;
 }
 
+/* Search field reset (x) button - no border, black icon */
+.reset__button::after,
+.reset__button:not(:focus-visible)::after,
+.reset__button:not(:focus)::after {
+  border-right: none !important;
+}
+
+.reset__button .icon {
+  stroke: #000 !important;
+  color: #000 !important;
+}
+
 /* Global button style - match 'view all' link look */
 .button,
 .shopify-challenge__button,

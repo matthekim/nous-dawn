@@ -3010,6 +3010,16 @@ predictive-search * {
   .header {
     padding: 20px 10px 20px 10px;
   }
+
+  .card__information {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card__information > * {
+    width: 100% !important;
+    font-size: 1.8rem !important;
+  }
 }
 
 @media screen and (min-width: 990px) {

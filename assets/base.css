@@ -2696,6 +2696,10 @@ body:has(product-info) .header-bg.is-visible {
 }
 
 /* About page - no header-bg, black logo/icons/hamburger */
+body.template-page-about .banner--large:not(.banner--adapt) {
+  min-height: 67dvh;
+}
+
 body.template-page-about .header-bg,
 body.template-page-about .header-bg.is-visible {
   opacity: 0 !important;

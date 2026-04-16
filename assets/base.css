@@ -5104,7 +5104,6 @@ shop-paypal-button iframe,
 }
 
 .product-media-overlay {
-  display: none !important;
   position: absolute;
   top: 0;
   left: 0;
@@ -5113,6 +5112,12 @@ shop-paypal-button iframe,
   z-index: 2;
   pointer-events: none;
   transform: rotate(180deg);
+}
+
+@media screen and (max-width: 749px) {
+  .product-media-overlay {
+    display: none !important;
+  }
 }
 
 /* Related products heading */

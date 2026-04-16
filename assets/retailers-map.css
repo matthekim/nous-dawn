@@ -381,4 +381,8 @@
     z-index: 90;
     overflow: scroll;
   }
+
+  body.template-page-retailers .footer {
+    display: none;
+  }
 }

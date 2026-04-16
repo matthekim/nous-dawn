@@ -2943,6 +2943,12 @@ shop-follow-button {
   --shop-follow-button-color: var(--seasonal-color);
 }
 
+/* Predictive search - all text black */
+predictive-search,
+predictive-search * {
+  color: #000 !important;
+}
+
 /* Global button style - match 'view all' link look */
 .button,
 .shopify-challenge__button,

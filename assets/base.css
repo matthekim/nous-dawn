@@ -3027,6 +3027,10 @@ predictive-search * {
     font-size: 1.8rem !important;
   }
 
+  .quick-add {
+    text-align: center;
+  }
+
   .quick-add__arrow {
     height: 0.7em !important;
   }

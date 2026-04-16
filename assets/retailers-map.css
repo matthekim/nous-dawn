@@ -18,7 +18,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: calc(((100vw - 1200px) / 2) + 300px);
+  width: calc(100vw - 390px);
   height: 100dvh;
   z-index: 1;
   overflow: visible;
@@ -84,7 +84,10 @@
 }
 
 .retailers-map__spacer {
-  margin-left: calc(100vw - (((100vw - 1200px) / 2) + 300px));
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 390px;
   margin-top: 156px;
   min-height: calc(100dvh - 156px);
   padding: 100px 2rem 2rem 2rem;

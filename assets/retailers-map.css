@@ -380,6 +380,7 @@
     margin-top: 0;
     z-index: 90;
     overflow: scroll;
+    padding: 50px 2rem 2rem;
   }
 
   body.template-page-retailers .footer {

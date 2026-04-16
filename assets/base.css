@@ -2700,6 +2700,14 @@ body.template-page-about .banner--large:not(.banner--adapt) {
   min-height: 67dvh;
 }
 
+@media screen and (max-width: 749px) {
+  body.template-page-about .banner--large:not(.banner--mobile-bottom):not(.banner--adapt) .banner__content,
+  body.template-page-about .banner--large.banner--mobile-bottom:not(.banner--adapt) .banner__media,
+  body.template-page-about .banner--large.banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt) > .banner__media {
+    min-height: 67dvh;
+  }
+}
+
 body.template-page-about .header-bg,
 body.template-page-about .header-bg.is-visible {
   opacity: 0 !important;

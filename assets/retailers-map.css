@@ -371,7 +371,7 @@
   }
 
   .retailers-map__spacer {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     right: 0;
     top: 50dvh;
@@ -379,5 +379,6 @@
     min-height: unset;
     margin-top: 0;
     z-index: 90;
+    overflow: scroll;
   }
 }

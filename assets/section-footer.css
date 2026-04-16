@@ -501,6 +501,12 @@
   }
 }
 
+@media screen and (max-width: 749px) {
+  .footer-block__details-content .footer-menu-column {
+    column-count: 2;
+  }
+}
+
 /* check for flexbox gap in older Safari versions */
 @supports not (inset: 10px) {
   @media screen and (max-width: 749px) {

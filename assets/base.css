@@ -2740,6 +2740,27 @@ body.template-page-about .rte * {
   }
 }
 
+/* Contact page - no header-bg, black logo/icons/hamburger */
+body.template-page-contact .header-bg,
+body.template-page-contact .header-bg.is-visible {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+body.template-page-contact .header__custom-icon,
+body.template-page-contact .header__heading-logo {
+  filter: brightness(0) !important;
+}
+
+body.template-page-contact .button-container span {
+  background: #000 !important;
+}
+
+body.template-page-contact .header__icon .icon {
+  stroke: #000 !important;
+  color: #000 !important;
+}
+
 /* Legal page - no header-bg, black logo/icons/hamburger */
 body.template-page-legal .header-bg,
 body.template-page-legal .header-bg.is-visible {

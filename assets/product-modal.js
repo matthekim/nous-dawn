@@ -6,13 +6,17 @@ if (!customElements.get('product-modal')) {
         super();
       }
 
-      hide() {
-        super.hide();
-      }
-
       show(opener) {
         super.show(opener);
         this.showActiveMedia();
+        const header = document.querySelector('.section-header');
+        if (header) header.style.display = 'none';
+      }
+
+      hide() {
+        super.hide();
+        const header = document.querySelector('.section-header');
+        if (header) header.style.display = '';
       }
 
       showActiveMedia() {

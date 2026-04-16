@@ -3024,6 +3024,10 @@ predictive-search * {
     padding: 1rem;
   }
 
+  .price-item {
+    padding-left: 1rem;
+  }
+
   .product__title {
     padding-left: 1rem;
   }

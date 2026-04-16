@@ -421,6 +421,11 @@ a.product__text {
     width: 100%;
   }
 
+  .product__media-icon,
+  .product__modal-opener:hover .product__media-icon {
+    display: none !important;
+  }
+
   .product--mobile-columns .product__media-item {
     width: calc(50% - 1.5rem - var(--grid-mobile-horizontal-spacing));
   }

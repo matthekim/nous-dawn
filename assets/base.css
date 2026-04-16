@@ -4902,6 +4902,8 @@ button.cart__checkout-button,
   color: white !important;
   position: relative;
   isolation: isolate;
+  transform: none !important;
+  font-size: 2.7rem !important;
 }
 
 button.cart__checkout-button::before,

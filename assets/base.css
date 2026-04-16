@@ -2736,6 +2736,7 @@ body.template-page-about .rte * {
 @media screen and (max-width: 749px) {
   body.template-page-about .rte {
     font-size: 3rem !important;
+    text-align: left !important;
   }
 }
 

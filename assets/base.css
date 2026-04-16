@@ -3013,16 +3013,22 @@ predictive-search * {
 
   .card__information {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    text-align: center;
   }
 
   .card__information > * {
     width: 100% !important;
     font-size: 1.8rem !important;
+    text-align: center !important;
   }
 
   .quick-add__submit.button {
     font-size: 1.8rem !important;
+  }
+
+  .quick-add__arrow {
+    height: 0.7em;
   }
 }
 

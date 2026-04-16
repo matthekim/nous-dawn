@@ -57,14 +57,19 @@
   </div>
 </div>
 
+<div class="retailer-spacer"></div>
+
 <script src="{{ 'retailers-map.js' | asset_url }}" defer></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  (function init() {
     const retailers = window.retailersData || [];
     const container = document.getElementById('retailers-country-list');
-
-    if (!retailers.length || !container) return;
+    if (!retailers.length || !container) {
+      // retailersData may not be ready yet — retry once after a tick
+      setTimeout(init, 50);
+      return;
+    }
 
     const grouped = retailers.reduce((acc, r) => {
       const country = (r.country || 'Other').toLowerCase();
@@ -80,9 +85,9 @@
       const shops = grouped[country].sort((a, b) => a.shop.localeCompare(b.shop));
 
       html += `
-        <details class="retailers-country">
-          <summary class="retailers-country__title">${country}</summary>
-          <ul class="retailers-country__list">
+        <div class="retailers-country">
+          <div class="retailers-country__title">${country}<span class="retailers-country__icon">+</span></div>
+          <ul class="retailers-country__list" style="overflow:hidden;height:0;transition:height 0.4s ease;">
             ${shops.map(shop => `
               <li class="retailers-country__shop">
                 <a href="${shop.url || '#'}" target="_blank" rel="noopener" class="retailers-shop__link">
@@ -92,34 +97,59 @@
               </li>
             `).join('')}
           </ul>
-        </details>
+        </div>
       `;
     });
 
     container.innerHTML = html;
-  });
 
-  // Detach fixed map panel when layout bottom passes viewport bottom, letting footer show
-  const layout = document.querySelector('.retailers-page-layout');
-  const mapLeft = document.querySelector('.retailers-map-left');
+    // jQuery-style slide animation — pure JS, no CSS transitions
+    function animateHeight(el, toOpen) {
+      if (el._rafId) cancelAnimationFrame(el._rafId);
 
-  if (layout && mapLeft) {
-    function updateMapPosition() {
-      const layoutBottom = layout.getBoundingClientRect().bottom;
-      if (layoutBottom <= window.innerHeight) {
-        if (!mapLeft.classList.contains('is-at-bottom')) {
-          mapLeft.style.top = (window.scrollY - layout.offsetTop) + 'px';
-          mapLeft.classList.add('is-at-bottom');
-        }
-      } else {
-        if (mapLeft.classList.contains('is-at-bottom')) {
-          mapLeft.classList.remove('is-at-bottom');
-          mapLeft.style.top = '';
+      el.style.cssText = 'overflow:hidden;height:auto;max-height:none;display:block;';
+      const fullH = el.offsetHeight;
+
+      // On-screen debug — shows measured height
+      let dbg = document.getElementById('nous-dbg');
+      if (!dbg) { dbg = document.createElement('div'); dbg.id = 'nous-dbg'; dbg.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:99999;background:red;color:#fff;padding:12px 18px;font-size:16px;font-family:monospace;border-radius:6px;'; document.body.appendChild(dbg); }
+      dbg.textContent = (toOpen ? 'OPEN' : 'CLOSE') + ' fullH=' + fullH + ' at ' + new Date().toLocaleTimeString();
+
+      const startH = toOpen ? 0 : fullH;
+      const endH   = toOpen ? fullH : 0;
+      el.style.height = startH + 'px';
+
+      const duration = 350;
+      let startTime = null;
+
+      function ease(t) { return t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t; }
+
+      function tick(ts) {
+        if (!startTime) startTime = ts;
+        const t = Math.min((ts - startTime) / duration, 1);
+        el.style.height = (startH + (endH - startH) * ease(t)) + 'px';
+        if (t < 1) {
+          el._rafId = requestAnimationFrame(tick);
+        } else {
+          el.style.cssText = toOpen ? 'overflow:hidden;max-height:none;' : 'overflow:hidden;height:0;max-height:none;';
         }
       }
+
+      el._rafId = requestAnimationFrame(tick);
     }
-    window.addEventListener('scroll', updateMapPosition, { passive: true });
-  }
+
+    container.querySelectorAll('.retailers-country').forEach(item => {
+      const header = item.querySelector('.retailers-country__title');
+      const list   = item.querySelector('.retailers-country__list');
+      const icon   = item.querySelector('.retailers-country__icon');
+
+      header.addEventListener('click', () => {
+        const isOpen = item.classList.toggle('is-open');
+        icon.textContent = isOpen ? '\u2212' : '+';
+        animateHeight(list, isOpen);
+      });
+    });
+  })();
 </script>
 
 {% schema %}
@@ -145,13 +175,14 @@
       "id": "map_style",
       "label": "Map Style",
       "options": [
+        { "value": "mapbox://styles/matthekim/cmneszhir003v01s7h5sp009o", "label": "Custom" },
         { "value": "mapbox://styles/mapbox/streets-v12", "label": "Streets" },
         { "value": "mapbox://styles/mapbox/light-v11", "label": "Light" },
         { "value": "mapbox://styles/mapbox/dark-v11", "label": "Dark" },
         { "value": "mapbox://styles/mapbox/outdoors-v12", "label": "Outdoors" },
         { "value": "mapbox://styles/mapbox/satellite-streets-v12", "label": "Satellite" }
       ],
-      "default": "mapbox://styles/mapbox/light-v11"
+      "default": "mapbox://styles/matthekim/cmneszhir003v01s7h5sp009o"
     },
     {
       "type": "range",

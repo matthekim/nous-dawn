@@ -3026,7 +3026,7 @@ predictive-search * {
 
   .product__title h1,
   .product__title.h1 {
-    padding-top: 0;
+    padding-top: 0 !important;
   }
 
   .card__information {

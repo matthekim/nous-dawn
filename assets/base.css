@@ -2894,6 +2894,21 @@ body:has(product-info) .button-container span {
   background: #000;
 }
 
+/* Menu open state - logo, icons and hamburger go white */
+.header.menu-open .header__heading-logo,
+.header.menu-open .header__custom-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+.header.menu-open .button-container span {
+  background: #fff !important;
+}
+
+.header.menu-open .header__icon .icon {
+  stroke: #fff !important;
+  color: #fff !important;
+}
+
 .header-padder {
   position: relative;
   width: 100%;
@@ -2926,6 +2941,41 @@ body:has(product-info) .button-container span {
 shop-follow-button {
   --shop-follow-button-background: #fff;
   --shop-follow-button-color: var(--seasonal-color);
+}
+
+/* Global button style - match 'view all' link look */
+.button,
+.shopify-challenge__button,
+.customer button {
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-transform: lowercase !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.3rem !important;
+  text-decoration-thickness: 0.1rem !important;
+  transform: rotate(-1deg) !important;
+  padding: 0 !important;
+  min-width: unset !important;
+  min-height: unset !important;
+}
+
+.button:before,
+.button:after,
+.shopify-challenge__button:before,
+.shopify-challenge__button:after,
+.customer button:before,
+.customer button:after {
+  display: none !important;
+}
+
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover {
+  background: none !important;
+  background-color: transparent !important;
+  text-decoration-thickness: 0.2rem !important;
 }
 
 @media screen and (max-width: 749px) {

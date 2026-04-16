@@ -386,4 +386,8 @@
   body.template-page-retailers .footer {
     display: none;
   }
+
+  .retailers-country__title {
+    font-size: calc(var(--font-heading-scale) * 3rem);
+  }
 }

@@ -2951,10 +2951,11 @@ shop-follow-button {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  color: #000 !important;
+  font-family: 'Europa-Bold', helvetica, arial, sans-serif !important;
+  font-size: 2rem !important;
   text-transform: lowercase !important;
-  text-decoration: underline !important;
-  text-underline-offset: 0.3rem !important;
-  text-decoration-thickness: 0.1rem !important;
+  text-decoration: none !important;
   transform: rotate(-1deg) !important;
   padding: 0 !important;
   min-width: unset !important;
@@ -2975,7 +2976,6 @@ shop-follow-button {
 .customer button:hover {
   background: none !important;
   background-color: transparent !important;
-  text-decoration-thickness: 0.2rem !important;
 }
 
 @media screen and (max-width: 749px) {

@@ -10,6 +10,7 @@
 @media screen and (max-width: 749px) {
   .collection-title {
     font-size: 2rem;
+    margin-top: 0;
   }
   
   .collection .grid__item:only-child {

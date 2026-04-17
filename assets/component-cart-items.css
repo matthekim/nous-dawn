@@ -296,6 +296,16 @@ cart-remove-button .icon-remove {
   .discounts__discount {
     justify-content: center;
   }
+
+  .cart-item__image-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .price.price--end {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
 }
 
 @media screen and (min-width: 960px) {

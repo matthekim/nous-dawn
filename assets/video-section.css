@@ -49,3 +49,18 @@
 .video-section__media.media-fit-cover video {
   object-fit: cover;
 }
+
+/* Down arrow overlay */
+.video-section__media::before {
+  content: '';
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 30px;
+  height: 30px;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  z-index: 3;
+  pointer-events: none;
+}

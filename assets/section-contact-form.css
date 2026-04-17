@@ -98,3 +98,22 @@
     grid-column-gap: 2rem;
   }
 }
+
+.contact__info {
+  margin-top: 3rem;
+  font-size: 1.4rem;
+  color: rgb(var(--color-foreground));
+}
+
+.contact__info p {
+  margin: 0.3rem 0;
+}
+
+.contact__info a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact__info a:hover {
+  text-decoration: underline;
+}

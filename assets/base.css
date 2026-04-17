@@ -2707,7 +2707,9 @@ body.template-page-about .banner--large:not(.banner--adapt) {
 @media screen and (max-width: 749px) {
   body.template-page-about .banner--large:not(.banner--mobile-bottom):not(.banner--adapt) .banner__content,
   body.template-page-about .banner--large.banner--mobile-bottom:not(.banner--adapt) .banner__media,
-  body.template-page-about .banner--large.banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt) > .banner__media {
+  body.template-page-about
+    .banner--large.banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt)
+    > .banner__media {
     min-height: 67dvh;
   }
 }
@@ -5126,7 +5128,7 @@ shop-paypal-button iframe,
 
 .product-media-overlay {
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
   width: 100%;
   height: auto;

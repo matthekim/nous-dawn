@@ -376,7 +376,7 @@ quick-add-modal .product-form__buttons {
 .quick-add__arrow {
   display: inline-flex;
   width: 2em;
-  height: 2em;
+  height: 0.7em;
   flex-shrink: 0;
   color: var(--seasonal-color);
 }

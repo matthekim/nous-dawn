@@ -2,7 +2,7 @@
   color: var(--seasonal-color);
   text-align: left;
   text-transform: lowercase;
-  margin-top: 200px;
+  margin-top: 0;
   margin-bottom: 3rem;
   font-size: 3rem;
 }

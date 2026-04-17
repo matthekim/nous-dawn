@@ -223,7 +223,7 @@ cart-remove-button .icon-remove {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 959px) {
   .cart-items,
   .cart-items thead,
   .cart-items tbody {
@@ -243,6 +243,7 @@ cart-remove-button .icon-remove {
     grid-template-columns: 1fr auto;
     gap: 1rem 1.5rem;
     margin-bottom: 3.5rem;
+    text-align: center;
   }
 
   .cart-item:has(+ .cart-item__nested-line) {
@@ -274,16 +275,26 @@ cart-remove-button .icon-remove {
     flex-wrap: wrap;
   }
 
+  /* override medium-hide utility (750–989px) so price shows in mobile layout */
   .cart-item__totals {
     grid-column: 2;
     grid-row: 3;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: flex-end;
   }
+
+  /* hide the desktop-only price column in mobile layout */
+  .cart-item__totals.small-hide {
+    display: none !important;
+  }
+
+  .quantity {
+    padding-top: 7px;
+  }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 960px) {
   .cart-items {
     border-spacing: 0;
     border-collapse: separate;
@@ -350,7 +361,7 @@ cart-remove-button .icon-remove {
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 960px) {
   .cart-items .cart-items__heading--quantity,
   .cart-item .cart-item__quantity,
   .cart-item__quantity--info quantity-popover > * {

@@ -292,6 +292,10 @@ cart-remove-button .icon-remove {
   .quantity {
     padding-top: 7px;
   }
+
+  .discounts__discount {
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: 960px) {

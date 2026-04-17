@@ -102,7 +102,7 @@
 .contact__info {
   margin-top: 3rem;
   font-size: 1.4rem;
-  color: rgb(var(--color-foreground));
+  color: #000;
 }
 
 .contact__info p {

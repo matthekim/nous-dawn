@@ -4135,7 +4135,7 @@ details-disclosure > details {
 .product__media-item::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   right: 0;
   width: 100%;
@@ -5128,7 +5128,7 @@ shop-paypal-button iframe,
 
 .product-media-overlay {
   position: absolute;
-  top: -1px;
+  top: 0;
   left: 0;
   width: 100%;
   height: auto;

@@ -165,7 +165,7 @@ menu-drawer > details[open] > summary::before {
   text-decoration: none;
   font-size: 40px;
   font-family: 'Europa-Bold', helvetica, arial, sans-serif !important;
-  text-align: center;
+  text-align: left;
   display: block;
   width: 100%;
   color: #fff !important;

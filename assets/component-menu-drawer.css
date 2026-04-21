@@ -122,7 +122,8 @@ menu-drawer > details[open] > summary::before {
 
 .menu-drawer__inner-container {
   position: absolute;
-  left: 25vw;
+  padding-left: 20vw;
+  width: 100%;
   z-index: 2;
   height: 100%;
   display: flex;

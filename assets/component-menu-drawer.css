@@ -300,7 +300,8 @@ details[open] > .menu-drawer__submenu {
     padding-top: 80px;
   }
   .menu-drawer__inner-container {
-    left: 34px;
+    left: 0px;
+    padding-left: 34px;
   }
   .menu-drawer__menu-item {
     font-size: 30px !important;

@@ -166,7 +166,6 @@
 
 .facets {
   display: block;
-  display: none;
   grid-column-start: span 2;
 }
 
@@ -775,6 +774,7 @@ a.active-facets__button.focused .active-facets__button-inner {
 .mobile-facets__wrapper {
   margin-left: 0;
   display: flex;
+  display: none;
 }
 
 .mobile-facets__wrapper .disclosure-has-popup[open] > summary::before {

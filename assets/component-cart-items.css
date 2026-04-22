@@ -273,6 +273,7 @@ cart-remove-button .icon-remove {
 
   .cart-item__quantity-wrapper {
     flex-wrap: wrap;
+    margin-top: 15px;
   }
 
   /* override medium-hide utility (750–989px) so price shows in mobile layout */

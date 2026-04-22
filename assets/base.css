@@ -5186,7 +5186,13 @@ h2.related-products__heading {
 .newsletter-form__button:hover .icon-arrow {
   color: var(--seasonal-color) !important;
 }
-
+.shipping-table {
+  font-size: 40px;
+  font-weight: 700;
+}
+.shipping-table td {
+  border-bottom: 3px solid #000;
+}
 /* Size Chart Toggle - europa font override */
 button[data-size-chart-toggle],
 button.size-chart-toggle {

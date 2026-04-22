@@ -5201,6 +5201,11 @@ h2.related-products__heading {
 .shipping-table td {
   border-bottom: 3px solid #000;
 }
+@media screen and (max-width: 749px) {
+  .shipping-table {
+    font-size: 30px;
+  }
+}
 /* Size Chart Toggle - europa font override */
 button[data-size-chart-toggle],
 button.size-chart-toggle {

@@ -2830,6 +2830,14 @@ body.page-shipping .header__icon .icon {
   color: #000 !important;
 }
 
+@media screen and (max-width: 749px) {
+  body.page-shipping .rte {
+    font-size: 3rem !important;
+    line-height: 1.3em !important;
+    text-align: left !important;
+  }
+}
+
 /* Cart page - no header-bg, black logo/icons/hamburger */
 body.template-cart .header-bg,
 body.template-cart .header-bg.is-visible {

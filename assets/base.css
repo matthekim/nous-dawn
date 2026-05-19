@@ -5060,6 +5060,7 @@ shop-pay-wallet-button {
   margin: 0 !important;
   clip-path: inset(0 round 50px) !important;
   -webkit-clip-path: inset(0 round 50px) !important;
+  --shopify-accelerated-checkout-button-border-radius: 50px;
 }
 
 /* Cart page - Google Pay button */
@@ -5070,6 +5071,7 @@ shopify-google-pay-button {
   display: block;
   clip-path: inset(0 round 50px) !important;
   -webkit-clip-path: inset(0 round 50px) !important;
+  --shopify-accelerated-checkout-button-border-radius: 50px;
 }
 
 /* Cart page - PayPal button */

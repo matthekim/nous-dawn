@@ -5054,6 +5054,7 @@ body .wallet-cart-button-container,
 
 /* Cart page - Shop Pay button */
 shop-pay-wallet-button {
+  border-radius: 50px !important;
   overflow: hidden !important;
   display: block;
   margin: 0 !important;
@@ -5062,6 +5063,7 @@ shop-pay-wallet-button {
 
 /* Cart page - Google Pay button */
 shopify-google-pay-button {
+  border-radius: 50px !important;
   overflow: hidden !important;
   display: block;
   margin: 0 !important;

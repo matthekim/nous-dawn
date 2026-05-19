@@ -4991,6 +4991,7 @@ button.cart__checkout-button,
   isolation: isolate;
   transform: none !important;
   font-size: 2.7rem !important;
+  min-height: 54px !important;
 }
 
 button.cart__checkout-button::before,

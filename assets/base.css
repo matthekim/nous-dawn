@@ -5081,7 +5081,7 @@ shopify-apple-pay-button {
 /* Cart page - PayPal button */
 shopify-paypal-button,
 shop-paypal-button,
-.additional-checkout-buttons > *:not(shop-pay-wallet-button):not(shopify-google-pay-button),
+.additional-checkout-buttons > *:not(shop-pay-wallet-button):not(shopify-google-pay-button):not(div),
 .shopify-payment-button__button {
   border-radius: 50px !important;
   overflow: hidden !important;

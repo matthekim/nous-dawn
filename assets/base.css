@@ -1449,12 +1449,12 @@ button.shopify-payment-button__button--unbranded {
 /* Shopify Accelerated Checkout */
 
 shopify-accelerated-checkout {
-  --shopify-accelerated-checkout-button-border-radius: var(--buttons-radius-outset);
+  --shopify-accelerated-checkout-button-border-radius: 50px;
   --shopify-accelerated-checkout-button-box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset)
     var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
 }
 shopify-accelerated-checkout-cart {
-  --shopify-accelerated-checkout-button-border-radius: var(--buttons-radius-outset);
+  --shopify-accelerated-checkout-button-border-radius: 50px;
   --shopify-accelerated-checkout-button-box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset)
     var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
 }
@@ -5054,31 +5054,25 @@ body .wallet-cart-button-container,
 
 /* Cart page - Shop Pay button */
 shop-pay-wallet-button {
-  border-radius: 50px !important;
   overflow: hidden !important;
   display: block;
   margin: 0 !important;
-  clip-path: inset(0 round 50px) !important;
-  -webkit-clip-path: inset(0 round 50px) !important;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  isolation: isolate;
-  contain: paint;
   --shopify-accelerated-checkout-button-border-radius: 50px;
 }
 
 /* Cart page - Google Pay button */
 shopify-google-pay-button {
-  border-radius: 50px !important;
   overflow: hidden !important;
-  margin: 0 !important;
   display: block;
-  clip-path: inset(0 round 50px) !important;
-  -webkit-clip-path: inset(0 round 50px) !important;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  isolation: isolate;
-  contain: paint;
+  margin: 0 !important;
+  --shopify-accelerated-checkout-button-border-radius: 50px;
+}
+
+/* Cart page - Apple Pay button */
+shopify-apple-pay-button {
+  overflow: hidden !important;
+  display: block;
+  margin: 0 !important;
   --shopify-accelerated-checkout-button-border-radius: 50px;
 }
 

@@ -89,22 +89,6 @@
         "padding_bottom": 0
       }
     },
-    "video_aLYczB": {
-      "type": "video",
-      "name": "t:sections.video.presets.name",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": true,
-        "video": "shopify://files/videos/03.mp4",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": true,
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "rich_text_h8L4yj": {
       "type": "rich-text",
       "blocks": {
@@ -125,7 +109,7 @@
         "button_nmDyBi": {
           "type": "button",
           "settings": {
-            "button_label": "shop all",
+            "button_label": "shop sales",
             "button_link": "shopify://collections/all-products",
             "button_style_secondary": false,
             "button_label_2": "",
@@ -205,7 +189,6 @@
     "image_banner",
     "video",
     "video_b7YXKL",
-    "video_aLYczB",
     "rich_text_h8L4yj",
     "featured_collection",
     "retailers_data_DjECJx"

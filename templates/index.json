@@ -136,9 +136,9 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "popular-products",
+        "collection": "sales",
         "products_to_show": 6,
-        "title": "popular products",
+        "title": "",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
